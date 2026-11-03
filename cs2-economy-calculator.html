@@ -2,87 +2,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CS2 Economy Calculator | PlayVanta</title>
-<meta name="description" content="Plan your Counter-Strike 2 team economy, weapon purchases and remaining cash.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CS2 Economy Calculator — Counter-Strike 2 Buy Planner | PlayVanta</title>
+<meta name="description" content="Plan your Counter-Strike 2 team buy. Estimate total weapon, armor and utility spending, remaining money and team affordability.">
+<link rel="canonical" href="https://playvanta.github.io/cs2-economy-calculator.html">
+<link rel="icon" href="playvanta-logo.jpg">
 <style>
-:root{--c:#e5b34b;--bg:#161208;--panel:#292213;--border:#796331;--text:#fff9e8;--muted:#d9cba9}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 80% 15%,#70501b,transparent 55%),radial-gradient(ellipse at 10% 85%,#3f3217,transparent 60%),#100e08}
-body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.14;background:repeating-linear-gradient(90deg,transparent 0 90px,var(--c) 91px 92px,transparent 93px 180px)}
-header{padding:15px 5%;background:#151107e8;border-bottom:1px solid var(--border)}
-nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:white;font-size:21px;font-weight:900}
-.brand img{width:46px;height:46px;object-fit:contain;border-radius:50%}
-.brand span{color:var(--c)}
-nav>a:last-child{color:var(--muted);text-decoration:none}
-main{width:92%;max-width:1000px;margin:45px auto}
-.hero{text-align:center;margin-bottom:30px}
-h1{font-size:clamp(30px,5vw,47px)}h1 span{color:var(--c)}
-p{color:var(--muted);line-height:1.75}
-.card{background:#292213ed;border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:20px}
-h2{margin-top:0}
-label{display:block;margin:12px 0 7px;font-weight:bold}
-input,select{width:100%;padding:12px;background:#141107;border:1px solid #94783d;border-radius:10px;color:white;font-size:15px}
-table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:10px 7px;border-bottom:1px solid #67572e}
-th{color:#f5d18a}
-button{width:100%;padding:15px;margin-top:18px;background:var(--c);color:#1b1507;border:0;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
-.summary{font-size:20px;color:#f7d78b;font-weight:bold}
-.scroll{overflow-x:auto}
-footer{text-align:center;color:var(--muted);padding:30px}
-@media(max-width:650px){.card{padding:17px}th,td{padding:8px 4px;font-size:13px}input,select{padding:9px;font-size:13px}}
+*{box-sizing:border-box}body{margin:0;background:#17140b;color:white;font:16px system-ui,sans-serif}
+header,footer{padding:20px;background:#292314}a{color:#f4cc73;text-decoration:none;font-weight:800}
+main{max-width:850px;margin:auto;padding:35px 20px 75px}
+h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#e8bb54}
+p{color:#d3c7a7;line-height:1.7}
+.panel{background:#292316;border:1px solid #675633;border-radius:15px;padding:25px;margin:22px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:18px}
+label{display:block;margin-bottom:8px;color:#f9e7b7}
+input,select{width:100%;padding:13px;border:1px solid #887342;border-radius:9px;background:#17140b;color:white;font:inherit}
+button{padding:14px 20px;background:#e8bb54;border:0;border-radius:9px;font-weight:800;cursor:pointer}
+.result{font-size:29px;color:#f6d783;font-weight:900}
 </style>
 </head>
 <body>
-<header><nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta logo">PLAY<span>VANTA</span></a><a href="index.html">Home</a></nav></header>
+<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
 <main>
-<section class="hero"><p>COUNTER-STRIKE 2 GAMING TOOL</p><h1>CS2 <span>Economy Calculator</span></h1><p>Plan purchases for your five-player team.</p></section>
-<section class="card">
-<h2>Team Buy Planner</h2>
-<label for="side">Team Side</label>
-<select id="side"><option value="CT">Counter-Terrorists</option><option value="T">Terrorists</option></select>
-<p>Enter each player's cash and select a planned buy.</p>
-<div class="scroll"><table>
-<thead><tr><th>Player</th><th>Cash ($)</th><th>Buy Type</th><th>Cost</th><th>Remaining</th></tr></thead>
-<tbody id="players"></tbody>
-</table></div>
-<button onclick="calculate()">Calculate Team Economy</button>
-</section>
-<section class="card"><h2>Team Summary</h2><div id="summary" aria-live="polite"></div></section>
-<section class="card"><h2>About This Planner</h2><p>Preset buy costs are editable planning estimates, not an item-by-item live CS2 shop. Actual prices vary by weapon, team, armor, utility and game updates. You can use a custom cost for any player's buy.</p></section>
-</main>
-<footer>© 2026 PlayVanta · Every Game. One Hub.</footer>
+<h1>CS2 <span>Economy Calculator</span></h1>
+<p>Plan your team's next buy using customizable weapon, armor and utility costs.</p>
+<section class="panel"><div class="grid">
+<div><label for="players">Players buying</label><input id="players" type="number" min="1" max="5" value="5"></div>
+<div><label for="cash">Cash per player ($)</label><input id="cash" type="number" min="0" max="16000" value="5000"></div>
+<div><label for="weapon">Weapon</label><select id="weapon"><option value="0">No weapon — $0</option><option value="2700">AK-47 — $2700</option><option value="2900">M4A1-S — $2900</option><option value="3000">M4A4 — $3000</option><option value="4750">AWP — $4750</option><option value="1250">MP9 — $1250</option><option value="1500">MAC-10 — $1050</option></select></div>
+<div><label for="armor">Armor budget ($)</label><input id="armor" type="number" min="0" value="1000"></div>
+<div><label for="utility">Utility budget ($)</label><input id="utility" type="number" min="0" value="800"></div>
+<div><label for="kit">Other purchases per player ($)</label><input id="kit" type="number" min="0" value="0"></div>
+</div><p><button id="calculate">Calculate team buy</button></p></section>
+<section class="panel"><h2>Team buy result</h2><div class="result" id="result">—</div><p id="details"></p></section>
+<section class="panel"><h2>CS2 economy planning</h2><p>Counter-Strike 2 teams often coordinate their spending so players can afford weapons, armor and utility together. This calculator models identical purchases for each player and shows the resulting team budget.</p><p>Costs and available equipment may differ by side, loadout or game update. You can adjust armor and utility budgets to match your intended purchase.</p></section>
+</main><footer>PlayVanta · Free gaming calculators</footer>
 <script>
-const $=id=>document.getElementById(id);
-const players=$("players");
-for(let i=1;i<=5;i++){
-const tr=document.createElement("tr");
-tr.innerHTML='<td>'+i+'</td><td><input type="number" min="0" step="1" id="cash'+i+'" value="5000" aria-label="Player '+i+' cash"></td><td><select id="buy'+i+'" aria-label="Player '+i+' buy"><option value="0">Save / Eco</option><option value="1500">Light Buy ($1500)</option><option value="3000">Force Buy ($3000)</option><option value="4500" selected>Full Buy ($4500)</option><option value="custom">Custom</option></select><input type="number" min="0" step="1" id="custom'+i+'" value="4000" aria-label="Custom buy cost for player '+i+'" style="display:none;margin-top:6px"></td><td id="cost'+i+'">—</td><td id="remain'+i+'">—</td>';
-players.appendChild(tr);
-$("buy"+i).addEventListener("change",()=>{$("custom"+i).style.display=$("buy"+i).value==="custom"?"block":"none";calculate();});
-$("cash"+i).addEventListener("input",calculate);
-$("custom"+i).addEventListener("input",calculate);
-}
 function calculate(){
-let cashTotal=0,costTotal=0,short=0;
-for(let i=1;i<=5;i++){
-const cash=Number($("cash"+i).value);
-const buy=$("buy"+i).value;
-const cost=Number(buy==="custom"?$("custom"+i).value:buy);
-if(!Number.isFinite(cash)||!Number.isFinite(cost)||cash<0||cost<0||!Number.isInteger(cash)||!Number.isInteger(cost)){
-$("summary").textContent="Enter valid nonnegative whole-dollar amounts.";return;
+const n=Number(document.getElementById("players").value),cash=Number(document.getElementById("cash").value);
+const weapon=Number(document.getElementById("weapon").value),armor=Number(document.getElementById("armor").value);
+const utility=Number(document.getElementById("utility").value),other=Number(document.getElementById("kit").value);
+const result=document.getElementById("result"),details=document.getElementById("details");
+if(![n,cash,weapon,armor,utility,other].every(Number.isFinite)||!Number.isInteger(n)||n<1||n>5||cash<0||armor<0||utility<0||other<0){
+result.textContent="Check your inputs";details.textContent="Use 1–5 players and nonnegative costs.";return;
 }
-$("cost"+i).textContent="$"+cost.toLocaleString();
-$("remain"+i).textContent=cash>=cost?"$"+(cash-cost).toLocaleString():"Short $"+(cost-cash).toLocaleString();
-cashTotal+=cash;costTotal+=cost;if(cash<cost)short++;
+const per=weapon+armor+utility+other,total=per*n,available=cash*n,remaining=available-total;
+result.textContent=remaining>=0?"Buy affordable":"Not enough money";
+details.textContent=`Cost per player: $${per.toLocaleString()} · Team cost: $${total.toLocaleString()} · Team funds: $${available.toLocaleString()} · ${remaining>=0?"Remaining":"Shortfall"}: $${Math.abs(remaining).toLocaleString()}`;
 }
-$("summary").innerHTML='<p>Total Team Cash: <span class="summary">$'+cashTotal.toLocaleString()+'</span></p><p>Planned Spend: <span class="summary">$'+costTotal.toLocaleString()+'</span></p><p>Team Cash After Buy: <span class="summary">$'+(cashTotal-costTotal).toLocaleString()+'</span></p><p>Players Who Cannot Afford Their Buy: <span class="summary">'+short+'</span></p>';
-}
-$("side").addEventListener("change",calculate);
+document.getElementById("calculate").onclick=calculate;
+document.querySelectorAll("input,select").forEach(e=>e.addEventListener("input",calculate));
 calculate();
 </script>
-</body>
-</html>
+</body></html>
