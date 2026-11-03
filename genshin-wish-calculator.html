@@ -3,54 +3,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Genshin Impact Wish Calculator — PlayVanta</title>
-<meta name="description" content="Calculate Genshin Impact wishes from Primogems and Fates, estimate your pity progress and plan how many more wishes you need.">
+<title>Genshin Impact Wish & Primogem Calculator | PlayVanta</title>
+<meta name="description" content="Convert Genshin Impact Primogems into wishes and estimate limited character banner hard pity and worst-case guarantee requirements.">
 <link rel="canonical" href="https://playvanta.github.io/genshin-wish-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg">
-<style>
-*{box-sizing:border-box}body{margin:0;background:#151122;color:white;font:16px system-ui,sans-serif}
-header,footer{padding:20px;background:#241c36}a{color:#d2bfff;text-decoration:none;font-weight:800}
-main{max-width:800px;margin:auto;padding:35px 20px 75px}
-h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#b8a2ff}
-p{color:#d0c5e5;line-height:1.7}
-.panel{background:#251d38;border:1px solid #594878;border-radius:15px;padding:25px;margin:22px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-label{display:block;margin-bottom:8px;color:#e7dcff}
-input,select{width:100%;padding:13px;border:1px solid #78629d;border-radius:9px;background:#151122;color:white;font:inherit}
-button{padding:14px 20px;background:#b8a2ff;border:0;border-radius:9px;font-weight:800;cursor:pointer}
-.result{font-size:31px;color:#d1c3ff;font-weight:900}
-</style>
+<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
 </head>
-<body>
-<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
-<main>
-<h1>Genshin <span>Wish Calculator</span></h1>
-<p>Convert your Primogems and Fates into wishes and estimate your progress toward pity.</p>
-<section class="panel"><div class="grid">
-<div><label for="primos">Primogems</label><input id="primos" type="number" min="0" value="8000"></div>
-<div><label for="fates">Available Fates</label><input id="fates" type="number" min="0" value="10"></div>
-<div><label for="pity">Current pity count</label><input id="pity" type="number" min="0" value="20"></div>
-<div><label for="banner">Banner type</label><select id="banner"><option value="90">Character Event Wish (90)</option><option value="80">Weapon Event Wish (80)</option><option value="90">Standard Wish (90)</option></select></div>
-</div><p><button id="calculate">Calculate wishes</button></p></section>
-<section class="panel"><h2>Available wishes</h2><div class="result" id="result">—</div><p id="details"></p></section>
-<section class="panel"><h2>How the wish calculator works</h2>
-<p>One wish costs 160 Primogems. This calculator combines the wishes purchasable with your Primogems and your existing Fates, then compares the total with the selected banner's standard hard-pity threshold.</p>
-<p>The pity calculation is a simplified estimate. Banner-specific guarantees, featured-item rules, pity carryover and other mechanics are not modeled. Use the appropriate Fate type for your chosen banner.</p></section>
-</main><footer>PlayVanta · Free gaming calculators</footer>
+<body style="--accent:#d2b2ff;--hero-art:url('https://static.animecorner.me/2021/07/genshin-impact-packshot-01-en-18jun21.jpg')">
+<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
+<section class="page-hero"><div class="hero-inner"><div class="overline">Genshin Impact / Wishes & Primogems</div><h1>Wish <span>Calculator</span></h1><p>Plan your next journey through Teyvat. Count your available wishes and estimate how far you are from your next five-star character.</p><div class="hero-tags"><span>Primogems</span><span>Intertwined Fates</span><span>Character Pity</span></div></div></section>
+<main class="page-container"><div class="content-grid"><div>
+<section class="panel"><div class="panel-kicker">Plan Your Next Banner</div><h2>Primogem & Wish Calculator</h2><p>Enter your saved resources and current pity for a limited character event wish banner.</p>
+<div class="field-grid">
+<div class="field"><label for="primos">Primogems</label><input id="primos" type="number" min="0" step="1" value="16000"></div>
+<div class="field"><label for="fates">Intertwined Fates</label><input id="fates" type="number" min="0" step="1" value="10"></div>
+<div class="field"><label for="pity">Current Character Banner Pity</label><input id="pity" type="number" min="0" max="89" step="1" value="30"><small>Enter pulls since your last five-star on the relevant banner type.</small></div>
+<div class="field"><label for="guaranteed">Featured Character Guaranteed?</label><select id="guaranteed"><option value="no">No / Not Sure</option><option value="yes">Yes</option></select></div>
+</div>
+<div class="results">
+<div class="metric"><span>Available Wishes</span><strong id="wishes">—</strong></div>
+<div class="metric"><span>Wishes Until 5-Star Hard Pity</span><strong id="hard">—</strong></div>
+<div class="metric"><span>Worst-Case Wishes for Featured 5-Star</span><strong id="worst">—</strong></div>
+<div class="metric"><span>Additional Primogems for Worst Case</span><strong id="shortfall">—</strong></div>
+</div>
+<div class="note">This is a simplified planning tool for limited character event wishes using a 90-pull hard-pity assumption and a conventional guarantee model. It does not model soft pity, probabilities, Capturing Radiance or every current banner rule. Check the in-game Wish Details for the latest mechanics.</div>
+</section>
+<section class="panel"><h2>How to Plan Your Wishes</h2><ol class="steps"><li>Count your Primogems and Intertwined Fates.</li><li>Check your wish history to estimate current pity.</li><li>Indicate whether your next five-star is guaranteed to be featured.</li><li>Compare your resources with the worst-case estimate.</li></ol></section>
+</div>
+<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">About Genshin Impact</div><h2>Explore Teyvat</h2><p>Genshin Impact is an open-world action RPG featuring elemental combat, exploration and a large cast of playable characters. Players use wishes to obtain characters and weapons.</p></section><section class="panel"><h3>Explore More</h3><div class="related"><a href="minecraft-nether-calculator.html">Minecraft Nether Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside>
+</div></main>
+<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made tool. Not affiliated with HoYoverse.</p></footer>
 <script>
-function calculate(){
-const p=Number(document.getElementById("primos").value),f=Number(document.getElementById("fates").value);
-const pity=Number(document.getElementById("pity").value),cap=Number(document.getElementById("banner").value);
-const result=document.getElementById("result"),details=document.getElementById("details");
-if(![p,f,pity].every(Number.isFinite)||p<0||f<0||pity<0||pity>=cap){
-result.textContent="Check your inputs";details.textContent="Pity must be below the selected banner's threshold.";return;
+const $=id=>document.getElementById(id);
+function update(){
+ const p=Number($("primos").value),f=Number($("fates").value),pity=Number($("pity").value);
+ if([p,f,pity].some(v=>!Number.isFinite(v))||p<0||f<0||pity<0||pity>89){
+  ["wishes","hard","worst","shortfall"].forEach(id=>$(id).textContent="—");return;
+ }
+ const wishes=Math.floor(p/160)+Math.floor(f);
+ const hard=90-Math.floor(pity);
+ const worst=$("guaranteed").value==="yes"?hard:hard+90;
+ const shortfall=Math.max(0,worst-wishes)*160;
+ $("wishes").textContent=wishes.toLocaleString();
+ $("hard").textContent=hard;
+ $("worst").textContent=worst;
+ $("shortfall").textContent=shortfall.toLocaleString();
 }
-const wishes=Math.floor(p/160)+Math.floor(f),remaining=cap-pity;
-result.textContent=wishes.toLocaleString()+" wishes";
-details.textContent=`Wishes from Primogems: ${Math.floor(p/160)} · Wishes to hard pity: ${remaining} · ${wishes>=remaining?"Enough wishes to reach the threshold":"Additional wishes needed: "+(remaining-wishes)}`;
-}
-document.getElementById("calculate").onclick=calculate;
-document.querySelectorAll("input,select").forEach(e=>e.addEventListener("input",calculate));
-calculate();
+document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",update));
+update();
 </script>
 </body></html>
