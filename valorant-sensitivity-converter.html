@@ -2,250 +2,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Valorant Sensitivity Converter | PlayVanta</title>
-<meta name="description" content="Convert Valorant, CS2, Apex Legends and Overwatch 2 mouse sensitivity. Calculate eDPI and cm/360.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Valorant Sensitivity Converter — PlayVanta</title>
+<meta name="description" content="Convert mouse sensitivity between Valorant, CS2, Overwatch 2 and Apex Legends. Calculate estimated eDPI and cm per 360 degrees.">
+<link rel="canonical" href="https://playvanta.github.io/valorant-sensitivity-converter.html">
+<link rel="icon" href="playvanta-logo.jpg">
 <style>
-:root{
-  --main:#ff4655;
-  --light:#ff8992;
-  --dark:#190b11;
-  --panel:#21121b;
-  --text:#fff5f6;
-  --muted:#cdb9be;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:Arial,sans-serif;
-  color:var(--text);
-  background:#10090e;
-}
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  background:
-    radial-gradient(circle at 80% 15%,#7d1e32,transparent 55%),
-    radial-gradient(circle at 10% 90%,#44121e,transparent 55%),
-    linear-gradient(140deg,#10090e,#290e19,#10090e);
-}
-body:after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  opacity:.17;
-  pointer-events:none;
-  background:
-    repeating-linear-gradient(135deg,transparent 0 90px,#ff4655 91px 92px,transparent 93px 180px);
-}
-header{
-  padding:15px 5%;
-  background:#12090edc;
-  border-bottom:1px solid #783040;
-}
-nav{
-  max-width:1050px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:white;
-  text-decoration:none;
-  font-size:21px;
-  font-weight:900;
-}
-.brand img{
-  width:46px;
-  height:46px;
-  object-fit:contain;
-  border-radius:50%;
-}
-.brand span{color:var(--main)}
-nav>a:last-child{color:#f2bdc4;text-decoration:none}
-main{width:92%;max-width:950px;margin:45px auto}
-.hero{text-align:center;margin-bottom:30px}
-.tag{color:var(--light);font-size:12px;letter-spacing:3px;font-weight:bold}
-h1{font-size:clamp(30px,5vw,48px);margin:15px 0}
-h1 span{color:var(--main)}
-p{line-height:1.7;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{
-  background:rgba(33,18,27,.94);
-  border:1px solid #73313f;
-  border-radius:18px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 15px 35px #0004;
-}
-h2{margin-top:0;font-size:21px}
-label{display:block;font-weight:bold;font-size:14px;margin:16px 0 8px}
-input,select{
-  width:100%;
-  padding:14px;
-  border:1px solid #8b4654;
-  border-radius:10px;
-  background:#150c12;
-  color:white;
-  font-size:16px;
-}
-button{
-  width:100%;
-  padding:15px;
-  margin-top:20px;
-  border:0;
-  border-radius:10px;
-  background:var(--main);
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.result{
-  padding:18px;
-  background:#140c12;
-  border:1px solid #7b3544;
-  border-radius:12px;
-  margin-top:12px;
-}
-.result strong{display:block;color:var(--light);font-size:23px;margin-top:6px}
-.small{font-size:13px}
-footer{text-align:center;padding:30px;color:var(--muted)}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:20px}}
+*{box-sizing:border-box}body{margin:0;background:#110d15;color:white;font:16px system-ui,sans-serif}
+header,footer{padding:20px;background:#1c1520}a{color:#ff6676;text-decoration:none;font-weight:750}
+main{max-width:780px;margin:auto;padding:35px 20px 75px}
+h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#ff596a}
+p{color:#cbbec7;line-height:1.7}
+.panel{background:#201720;border:1px solid #553843;border-radius:15px;padding:25px;margin:22px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+label{display:block;margin-bottom:8px;color:#f2c7cf}
+input,select{width:100%;padding:13px;border:1px solid #654450;border-radius:9px;background:#110d15;color:white;font:inherit}
+button{padding:14px 20px;background:#ff596a;border:0;border-radius:9px;font-weight:800;cursor:pointer}
+.result{font-size:30px;color:#ff7786;font-weight:900;overflow-wrap:anywhere}
+small{color:#b8a9b4}
 </style>
 </head>
 <body>
-<header>
-<nav>
-<a class="brand" href="index.html">
-<img src="playvanta-logo.jpg" alt="PlayVanta logo">
-PLAY<span>VANTA</span>
-</a>
-<a href="index.html">Home</a>
-</nav>
-</header>
-
+<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
 <main>
-<div class="hero">
-<div class="tag">VALORANT GAMING TOOL</div>
-<h1>Sensitivity <span>Converter</span></h1>
-<p>Convert your mouse sensitivity between popular FPS games.</p>
-</div>
-
+<h1>Valorant <span>Sensitivity Converter</span></h1>
+<p>Keep approximately the same physical mouse movement when switching between popular first-person shooters.</p>
+<section class="panel">
 <div class="grid">
-<section class="card">
-<h2>Your Settings</h2>
-<label for="game">Current Game</label>
-<select id="game">
-<option value="valorant">Valorant</option>
-<option value="cs2">Counter-Strike 2</option>
-<option value="apex">Apex Legends</option>
-<option value="overwatch">Overwatch 2</option>
-</select>
-
-<label for="sens">Current Sensitivity</label>
-<input id="sens" type="number" min="0.000001" step="any" value="0.35">
-
-<label for="dpi">Mouse DPI</label>
-<input id="dpi" type="number" min="1" step="1" value="800">
-
-<button onclick="calculate()">Convert Sensitivity</button>
-</section>
-
-<section class="card">
-<h2>Converted Results</h2>
-<div id="results" aria-live="polite"></div>
-</section>
+<div><label for="from">From game</label><select id="from"><option value="valorant">Valorant</option><option value="cs2">CS2</option><option value="overwatch">Overwatch 2</option><option value="apex">Apex Legends</option></select></div>
+<div><label for="to">To game</label><select id="to"><option value="cs2">CS2</option><option value="valorant">Valorant</option><option value="overwatch">Overwatch 2</option><option value="apex">Apex Legends</option></select></div>
+<div><label for="sens">Current sensitivity</label><input id="sens" type="number" min="0.0001" step="any" value="0.35"></div>
+<div><label for="dpi">Mouse DPI</label><input id="dpi" type="number" min="1" step="1" value="800"></div>
 </div>
-
-<section class="card">
-<h2>How Does Sensitivity Conversion Work?</h2>
-<p>
-Different FPS games use different mouse sensitivity scales.
-This calculator uses commonly accepted yaw values to preserve
-approximately the same physical mouse movement for a 360-degree turn.
-</p>
-<p>
-eDPI is your mouse DPI multiplied by in-game sensitivity.
-It is useful for comparing settings within the same game,
-but not directly between games with different yaw values.
-</p>
-<p class="small">
-Assumes default horizontal sensitivity scaling and no additional
-mouse acceleration. ADS, scoped sensitivity and special game settings
-are not included.
-</p>
+<p><button id="calculate">Convert sensitivity</button></p>
 </section>
-</main>
-
-<footer>© 2026 PlayVanta · Every Game. One Hub.</footer>
-
+<section class="panel">
+<h2>Converted sensitivity</h2><div class="result" id="output">—</div>
+<p id="details"></p>
+</section>
+<section class="panel"><h2>How sensitivity conversion works</h2>
+<p>The calculator uses standard yaw values to estimate the sensitivity required for the same 360-degree mouse movement. It assumes default mouse input settings and ignores aim-down-sights multipliers, scoped sensitivity and field-of-view differences.</p>
+<p>eDPI is your in-game sensitivity multiplied by your mouse DPI. It is most useful when comparing settings within the same game.</p></section>
+</main><footer>PlayVanta · Free gaming calculators</footer>
 <script>
-const yaw={
-  valorant:0.07,
-  cs2:0.022,
-  apex:0.022,
-  overwatch:0.0066
-};
-const names={
-  valorant:"Valorant",
-  cs2:"Counter-Strike 2",
-  apex:"Apex Legends",
-  overwatch:"Overwatch 2"
-};
-
+const yaw={valorant:0.07,cs2:0.022,overwatch:0.0066,apex:0.022};
 function calculate(){
-  const game=document.getElementById("game").value;
-  const sens=Number(document.getElementById("sens").value);
-  const dpi=Number(document.getElementById("dpi").value);
-  const output=document.getElementById("results");
-
-  if(!Number.isFinite(sens)||sens<=0||
-     !Number.isFinite(dpi)||dpi<=0){
-    output.textContent="Enter a valid positive sensitivity and DPI.";
-    return;
-  }
-
-  const effectiveYaw=sens*yaw[game];
-  const cm360=914.4/(dpi*effectiveYaw);
-  const edpi=sens*dpi;
-
-  output.innerHTML="";
-
-  Object.keys(yaw).forEach(key=>{
-    const converted=effectiveYaw/yaw[key];
-    const div=document.createElement("div");
-    div.className="result";
-    div.innerHTML="<span></span><strong></strong>";
-    div.querySelector("span").textContent=names[key];
-    div.querySelector("strong").textContent=converted.toFixed(4);
-    output.appendChild(div);
-  });
-
-  const info=document.createElement("div");
-  info.className="result";
-  info.innerHTML=
-    "<span>Current-game eDPI</span><strong>"+
-    edpi.toFixed(2)+
-    "</strong><span>Physical distance per 360°</span><strong>"+
-    cm360.toFixed(2)+" cm</strong>";
-  output.appendChild(info);
+const from=document.getElementById("from").value,to=document.getElementById("to").value;
+const s=Number(document.getElementById("sens").value),dpi=Number(document.getElementById("dpi").value);
+if(!(s>0&&dpi>0)){document.getElementById("output").textContent="Enter positive values";document.getElementById("details").textContent="";return;}
+const converted=s*yaw[from]/yaw[to];
+const cm360=360*2.54/(s*yaw[from]*dpi);
+document.getElementById("output").textContent=converted.toFixed(5);
+document.getElementById("details").textContent=`Original eDPI: ${(s*dpi).toFixed(2)} · Estimated cm/360°: ${cm360.toFixed(2)} cm`;
 }
-
-document.querySelectorAll("input,select").forEach(el=>{
-  el.addEventListener("input",calculate);
-  el.addEventListener("change",calculate);
-});
+document.getElementById("calculate").onclick=calculate;
+["from","to","sens","dpi"].forEach(id=>document.getElementById(id).addEventListener("input",calculate));
 calculate();
 </script>
-</body>
-</html>
+</body></html>
