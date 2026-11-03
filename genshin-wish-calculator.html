@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Genshin Impact Wish Calculator | PlayVanta</title>
+<meta name="description" content="Calculate Genshin Impact wishes, Primogems, pity progress and savings goals.">
+<style>
+:root{--c:#8b9bff;--bg:#0d1025;--panel:#1b2040;--border:#545f9c;--text:#f5f4ff;--muted:#c5c9e7}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:var(--text);background:var(--bg)}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 80% 15%,#5554a4,transparent 55%),radial-gradient(ellipse at 10% 90%,#29275e,transparent 60%),#0d1025}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:radial-gradient(circle,var(--c) 1px,transparent 2px);background-size:45px 45px}
+header{padding:15px 5%;background:#0e1128e8;border-bottom:1px solid var(--border)}
+nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;font-size:21px;font-weight:900}
+.brand img{width:46px;height:46px;object-fit:contain;border-radius:50%}
+.brand span{color:var(--c)}
+nav>a:last-child{color:var(--muted);text-decoration:none}
+main{width:92%;max-width:950px;margin:45px auto}
+.hero{text-align:center;margin-bottom:30px}
+h1{font-size:clamp(30px,5vw,47px)}h1 span{color:var(--c)}
+p{color:var(--muted);line-height:1.75}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:#1b2040ed;border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:20px}
+h2{margin-top:0}
+label{display:block;margin:15px 0 7px;font-weight:bold}
+input,select{width:100%;padding:14px;background:#10142d;color:white;border:1px solid #6571b1;border-radius:10px;font-size:16px}
+button{width:100%;padding:15px;margin-top:18px;border:0;border-radius:10px;background:var(--c);color:#0c1030;font-size:16px;font-weight:bold;cursor:pointer}
+.result{background:#11152e;border:1px solid var(--border);padding:17px;border-radius:12px;margin:12px 0}
+.result strong{display:block;color:#c0c8ff;font-size:25px;margin-top:6px}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header><nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta logo">PLAY<span>VANTA</span></a><a href="index.html">Home</a></nav></header>
+<main>
+<section class="hero"><p>GENSHIN IMPACT GAMING TOOL</p><h1>Wish & <span>Pity Calculator</span></h1><p>Plan your wishes and Primogem savings.</p></section>
+<div class="grid">
+<section class="card">
+<h2>Wish Planner</h2>
+<label for="pity">Current Character Event Wish Pity</label><input id="pity" type="number" min="0" max="89" step="1" value="35">
+<label for="wishes">Intertwined Fates Owned</label><input id="wishes" type="number" min="0" step="1" value="10">
+<label for="primos">Primogems Owned</label><input id="primos" type="number" min="0" step="1" value="3200">
+<label for="guaranteed">Next 5-Star Featured Character Guaranteed?</label>
+<select id="guaranteed"><option value="no">No</option><option value="yes">Yes</option></select>
+<button onclick="calculate()">Calculate Wishes</button>
+</section>
+<section class="card"><h2>Results</h2><div id="results" aria-live="polite"></div></section>
+</div>
+<section class="card"><h2>Important Notes</h2><p>This planner uses 90 wishes as the hard-pity ceiling for a character event banner and 160 Primogems per wish. A featured character can arrive earlier. When not guaranteed, this tool uses a conservative two-5-star ceiling rather than modeling current special banner mechanics or probabilities.</p><p>It does not model soft pity, Capturing Radiance, Fate Points, or historical wish records. Check current in-game banner details before relying on a savings target.</p></section>
+</main>
+<footer>© 2026 PlayVanta · Every Game. One Hub.</footer>
+<script>
+const $=id=>document.getElementById(id);
+function calculate(){
+const pity=Number($("pity").value),wishes=Number($("wishes").value),primos=Number($("primos").value);
+if(["pity","wishes","primos"].some(id=>$(id).value.trim()==="")||![pity,wishes,primos].every(Number.isFinite)||[pity,wishes,primos].some(v=>!Number.isInteger(v))||pity<0||pity>89||wishes<0||primos<0){
+$("results").textContent="Enter valid nonnegative whole numbers, with pity from 0 to 89.";return;
+}
+const first=90-pity;
+const conservative=first+($("guaranteed").value==="yes"?0:90);
+const owned=wishes+Math.floor(primos/160);
+const missing=Math.max(0,conservative-owned);
+const format=n=>n.toLocaleString();
+$("results").innerHTML=
+'<div class="result">Wishes Until First Hard-Pity Ceiling<strong>'+format(first)+'</strong></div>'+
+'<div class="result">Conservative Featured-Character Wish Target<strong>'+format(conservative)+'</strong></div>'+
+'<div class="result">Wishes Available<strong>'+format(owned)+'</strong></div>'+
+'<div class="result">Additional Wishes Needed<strong>'+format(missing)+'</strong></div>'+
+'<div class="result">Additional Primogems Needed<strong>'+format(missing*160)+'</strong></div>';
+}
+document.querySelectorAll("input,select").forEach(el=>{el.addEventListener("input",calculate);el.addEventListener("change",calculate)});
+calculate();
+</script>
+</body>
+</html>
