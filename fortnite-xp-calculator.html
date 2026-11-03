@@ -2,77 +2,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fortnite XP Calculator | PlayVanta</title>
-<meta name="description" content="Calculate Fortnite levels, XP remaining and daily XP goals.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortnite XP Calculator — Battle Pass Level Planner | PlayVanta</title>
+<meta name="description" content="Estimate Fortnite XP needed to reach your target level and how many matches or days it could take based on your XP earnings.">
+<link rel="canonical" href="https://playvanta.github.io/fortnite-xp-calculator.html">
+<link rel="icon" href="playvanta-logo.jpg">
 <style>
-:root{--c:#a66bff;--bg:#10091e;--panel:#211333;--border:#65418e;--text:#f8f1ff;--muted:#cbb9e5}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 85% 15%,#6133a2,transparent 55%),radial-gradient(ellipse at 5% 90%,#321957,transparent 60%),#10091e}
-body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.15;pointer-events:none;background:repeating-radial-gradient(circle at 75% 45%,transparent 0 70px,var(--c) 72px 74px,transparent 76px 140px)}
-header{padding:15px 5%;background:#10091ee8;border-bottom:1px solid var(--border)}
-nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:white;font-size:21px;font-weight:900}
-.brand img{width:46px;height:46px;object-fit:contain;border-radius:50%}
-.brand span{color:var(--c)}
-nav>a:last-child{color:var(--muted);text-decoration:none}
-main{width:92%;max-width:950px;margin:45px auto}
-.hero{text-align:center;margin-bottom:30px}
-h1{font-size:clamp(30px,5vw,47px)}h1 span{color:var(--c)}
-p{color:var(--muted);line-height:1.75}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{background:#211333ed;border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:20px}
-h2{margin-top:0}
-label{display:block;margin:15px 0 7px;font-weight:bold}
-input{width:100%;padding:14px;background:#120b20;color:white;border:1px solid #7655a0;border-radius:10px;font-size:16px}
-button{width:100%;margin-top:18px;padding:15px;background:var(--c);color:#160825;border:0;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
-.result{background:#140c23;border:1px solid var(--border);padding:17px;border-radius:12px;margin:12px 0}
-.result strong{display:block;color:#d4b6ff;font-size:25px;margin-top:6px;overflow-wrap:anywhere}
-footer{text-align:center;color:var(--muted);padding:30px}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:20px}}
+*{box-sizing:border-box}body{margin:0;background:#130e21;color:white;font:16px system-ui,sans-serif}
+header,footer{padding:20px;background:#211633}a{color:#c9a8ff;text-decoration:none;font-weight:800}
+main{max-width:800px;margin:auto;padding:35px 20px 75px}
+h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#b48aff}
+p{color:#c9bcdb;line-height:1.7}
+.panel{background:#221832;border:1px solid #554074;border-radius:15px;padding:25px;margin:22px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+label{display:block;margin-bottom:8px;color:#e3d3ff}
+input{width:100%;padding:13px;border:1px solid #705293;border-radius:9px;background:#130e21;color:white;font:inherit}
+button{padding:14px 20px;background:#b48aff;border:0;border-radius:9px;font-weight:800;cursor:pointer}
+.result{font-size:30px;color:#d1b3ff;font-weight:900}
 </style>
 </head>
 <body>
-<header><nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta logo">PLAY<span>VANTA</span></a><a href="index.html">Home</a></nav></header>
+<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
 <main>
-<section class="hero"><p>FORTNITE GAMING TOOL</p><h1>XP & <span>Level Calculator</span></h1><p>Plan your leveling goals and daily XP grind.</p></section>
-<div class="grid">
-<section class="card">
-<h2>Your XP Goal</h2>
-<label for="current">Current Level</label><input id="current" type="number" min="1" step="1" value="25">
-<label for="target">Target Level</label><input id="target" type="number" min="1" step="1" value="100">
-<label for="progress">XP Already Earned Toward Next Level</label><input id="progress" type="number" min="0" step="1" value="0">
-<label for="perlevel">Estimated XP Per Level</label><input id="perlevel" type="number" min="1" step="1" value="80000">
-<label for="days">Days Remaining</label><input id="days" type="number" min="1" step="1" value="30">
-<button onclick="calculate()">Calculate XP</button>
-</section>
-<section class="card"><h2>Your Results</h2><div id="results" aria-live="polite"></div></section>
-</div>
-<section class="card"><h2>About This Calculator</h2><p>This is an XP planning tool, not a live Fortnite account tracker. The default XP-per-level estimate may not match the current season or every level. Change it to match the progression rules you are using.</p></section>
-</main>
-<footer>© 2026 PlayVanta · Every Game. One Hub.</footer>
+<h1>Fortnite <span>XP Calculator</span></h1>
+<p>Plan how much experience you need to reach your target level.</p>
+<section class="panel"><div class="grid">
+<div><label for="current">Current level</label><input id="current" type="number" min="1" value="25"></div>
+<div><label for="target">Target level</label><input id="target" type="number" min="1" value="100"></div>
+<div><label for="progress">XP already earned toward next level</label><input id="progress" type="number" min="0" value="0"></div>
+<div><label for="perLevel">Estimated XP per level</label><input id="perLevel" type="number" min="1" value="80000"></div>
+<div><label for="perMatch">Average XP per match</label><input id="perMatch" type="number" min="1" value="15000"></div>
+<div><label for="perDay">Average XP per day</label><input id="perDay" type="number" min="1" value="100000"></div>
+</div><p><button id="calculate">Calculate XP</button></p></section>
+<section class="panel"><h2>XP remaining</h2><div class="result" id="result">—</div><p id="details"></p></section>
+<section class="panel"><h2>How to calculate Fortnite XP</h2><p>Enter your current level, target level and estimated XP requirement per level. The calculator subtracts your existing progress and estimates the number of matches or days needed based on your averages.</p><p>This is a planning estimate, not a live Battle Pass tracker. Check the current season's leveling requirements and any XP caps or bonuses.</p></section>
+</main><footer>PlayVanta · Free gaming calculators</footer>
 <script>
-const $=id=>document.getElementById(id);
-const fmt=n=>Math.ceil(n).toLocaleString();
+const val=id=>Number(document.getElementById(id).value);
 function calculate(){
-const current=Number($("current").value),target=Number($("target").value),progress=Number($("progress").value),per=Number($("perlevel").value),days=Number($("days").value);
-const values=[current,target,progress,per,days];
-if(values.some(v=>!Number.isFinite(v))||current<1||target<current||progress<0||per<=0||days<=0||![current,target,progress,per,days].every(Number.isInteger)||progress>=per){
-$("results").textContent="Enter valid levels, XP progress, and days. XP progress must be below XP per level.";return;
+const current=val("current"),target=val("target"),progress=val("progress"),xp=val("perLevel"),match=val("perMatch"),day=val("perDay");
+const result=document.getElementById("result"),details=document.getElementById("details");
+if(![current,target,progress,xp,match,day].every(Number.isFinite)||current<1||target<current||xp<=0||match<=0||day<=0||progress<0||progress>=xp){
+result.textContent="Check your inputs";details.textContent="Target must be at least your current level, and current XP progress must be below XP per level.";return;
 }
-const xp=Math.max(0,(target-current)*per-progress);
-const daily=xp/days;
-const weekly=daily*7;
-$("results").innerHTML=
-'<div class="result">Levels to Gain<strong>'+fmt(target-current)+'</strong></div>'+
-'<div class="result">XP Remaining<strong>'+fmt(xp)+'</strong></div>'+
-'<div class="result">Daily XP Goal<strong>'+fmt(daily)+'</strong></div>'+
-'<div class="result">Weekly XP Pace<strong>'+fmt(weekly)+'</strong></div>';
+const remaining=target===current?0:Math.max(0,(target-current)*xp-progress);
+result.textContent=remaining.toLocaleString()+" XP";
+details.textContent=`Estimated matches: ${Math.ceil(remaining/match).toLocaleString()} · Estimated days: ${Math.ceil(remaining/day).toLocaleString()}`;
 }
-document.querySelectorAll("input").forEach(el=>el.addEventListener("input",calculate));
+document.getElementById("calculate").onclick=calculate;
+document.querySelectorAll("input").forEach(e=>e.addEventListener("input",calculate));
 calculate();
 </script>
-</body>
-</html>
+</body></html>
