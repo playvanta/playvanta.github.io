@@ -1,29 +1,257 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Minecraft Nether Portal Coordinate Calculator | PlayVanta</title><meta name="description" content="Convert Minecraft Overworld and Nether X/Z coordinates using the 8:1 horizontal travel ratio."><link rel="canonical" href="https://playvanta.github.io/minecraft-nether-calculator.html"><link rel="icon" type="image/jpeg" href="playvanta-logo.jpg"><style>
-:root{color-scheme:dark;--bg:#070d1a;--panel:#111f36;--line:#294362;--blue:#27b6ff;--white:#f0f7ff;--muted:#adc0d8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#153e6a,transparent 45%),var(--bg);color:var(--white);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--blue)}.wrap{width:min(1080px,92%);margin:auto}header{border-bottom:1px solid var(--line);background:#071122df;position:sticky;top:0;z-index:2}nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none;font-size:1.25rem;font-weight:800}.brand img{width:50px;height:50px;object-fit:cover;border-radius:50%;border:1px solid var(--blue)}.links{display:flex;gap:18px;flex-wrap:wrap}.links a{text-decoration:none;color:#d6e8fc}main{padding:42px 0 70px}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.14;margin:8px 0 18px}h1 span{color:var(--blue)}h2{margin-top:0}.lead{color:var(--muted);max-width:760px}.eyebrow{color:var(--blue);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}.panel{background:#111f36e8;border:1px solid var(--line);border-radius:20px;padding:clamp(18px,4vw,30px);margin:28px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.field{display:flex;flex-direction:column;gap:8px}label{font-weight:650}input,select{font:inherit;width:100%;padding:13px 14px;border-radius:10px;background:#091529;border:1px solid #42638b;color:white;min-width:0}input:focus,select:focus{outline:2px solid var(--blue);outline-offset:2px}.result{background:#08182d;border:1px solid #2e6597;border-radius:14px;padding:20px;margin-top:22px}.result strong{font-size:clamp(1.5rem,4vw,2.4rem);color:#61caff;display:block;overflow-wrap:anywhere}.note{font-size:.92rem;color:var(--muted)}.btn{display:inline-block;padding:10px 18px;background:var(--blue);color:#051222;font-weight:800;border-radius:10px;text-decoration:none}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:16px}.card{background:#111f36;border:1px solid var(--line);border-radius:15px;padding:20px;text-decoration:none;color:var(--white)}.card:hover{border-color:var(--blue)}.card h3{margin:0 0 8px}.card p{color:var(--muted);margin:0}footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);text-align:center}@media(max-width:550px){.brand{font-size:1.05rem}.links{font-size:.88rem;gap:12px}}
 
-/* PLAYVANTA MINECRAFT NEON BACKGROUND */
-
-body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minecraft Nether Calculator | PlayVanta</title>
+<meta name="description" content="Convert Minecraft Overworld coordinates to Nether coordinates and Nether coordinates to Overworld coordinates.">
+<style>
+:root{
+  --main:#43c66b;
+  --light:#a1efb6;
+  --text:#f0fff3;
+  --muted:#b9d8c2;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:var(--text);
+  background:#08150c;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
   background:
-radial-gradient(ellipse at 85% 15%, rgba(30,205,125,.65), transparent 65%),
-    radial-gradient(ellipse at 10% 80%, rgba(25,105,255,.20), transparent 50%),
-    #06121b;
-  background-attachment: fixed;
-  min-height: 100vh;
-  position: relative;
-  isolation: isolate;
+    radial-gradient(ellipse at 85% 15%,#245f35,transparent 55%),
+    radial-gradient(ellipse at 10% 85%,#164327,transparent 55%),
+    linear-gradient(135deg,#08150c,#122a19,#08150c);
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.13;
+  pointer-events:none;
   background-image:
-    linear-gradient(rgba(65,210,140,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(65,210,140,.055) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(#43c66b 2px,transparent 2px),
+    linear-gradient(90deg,#43c66b 2px,transparent 2px);
+  background-size:64px 64px;
+}
+header{
+  padding:15px 5%;
+  background:#07140bdf;
+  border-bottom:1px solid #326e43;
+}
+nav{
+  max-width:1000px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:white;
+  font-size:21px;
+  font-weight:900;
+}
+.brand img{width:46px;height:46px;object-fit:contain;border-radius:50%}
+.brand span{color:var(--main)}
+nav>a:last-child{color:var(--muted);text-decoration:none}
+main{max-width:950px;width:92%;margin:45px auto}
+.hero{text-align:center;margin-bottom:32px}
+.tag{font-size:12px;letter-spacing:3px;color:var(--light);font-weight:bold}
+h1{font-size:clamp(30px,5vw,47px);margin:15px 0}
+h1 span{color:var(--main)}
+p{color:var(--muted);line-height:1.8}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{
+  padding:25px;
+  background:rgba(12,33,19,.94);
+  border:1px solid #326e43;
+  border-radius:18px;
+  margin-bottom:20px;
+  box-shadow:0 15px 30px #0004;
+}
+h2{margin-top:0;font-size:21px}
+label{display:block;margin:15px 0 8px;font-weight:bold}
+input,select{
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  border-radius:10px;
+  background:#07160d;
+  border:1px solid #427d51;
+  color:white;
+}
+button{
+  width:100%;
+  padding:15px;
+  margin-top:20px;
+  border:0;
+  border-radius:10px;
+  background:var(--main);
+  color:#06200d;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.output{
+  padding:18px;
+  margin-top:12px;
+  background:#07180e;
+  border:1px solid #387649;
+  border-radius:12px;
+}
+.output strong{
+  display:block;
+  color:var(--light);
+  font-size:23px;
+  margin-top:7px;
+  overflow-wrap:anywhere;
+}
+footer{text-align:center;padding:30px;color:var(--muted)}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="brand" href="index.html">
+<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+PLAY<span>VANTA</span>
+</a>
+<a href="index.html">Home</a>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<div class="tag">MINECRAFT GAMING TOOL</div>
+<h1>Nether <span>Calculator</span></h1>
+<p>Convert your coordinates and plan faster travel through the Nether.</p>
+</section>
+
+<div class="grid">
+<section class="card">
+<h2>Enter Coordinates</h2>
+
+<label for="direction">Conversion Direction</label>
+<select id="direction">
+<option value="nether">Overworld → Nether</option>
+<option value="overworld">Nether → Overworld</option>
+</select>
+
+<label for="x">X Coordinate</label>
+<input id="x" type="number" step="any" value="800">
+
+<label for="y">Y Coordinate</label>
+<input id="y" type="number" step="any" value="64">
+
+<label for="z">Z Coordinate</label>
+<input id="z" type="number" step="any" value="-400">
+
+<button onclick="calculate()">Calculate Coordinates</button>
+</section>
+
+<section class="card">
+<h2>Converted Coordinates</h2>
+<div class="output">
+<span>X Coordinate</span>
+<strong id="outX">—</strong>
+</div>
+<div class="output">
+<span>Y Coordinate</span>
+<strong id="outY">—</strong>
+</div>
+<div class="output">
+<span>Z Coordinate</span>
+<strong id="outZ">—</strong>
+</div>
+<button onclick="copyCoords()">Copy Coordinates</button>
+<p id="status" aria-live="polite"></p>
+</section>
+</div>
+
+<section class="card">
+<h2>How Nether Travel Works</h2>
+<p>
+In Minecraft, traveling one block horizontally in the Nether
+corresponds to eight blocks in the Overworld.
+</p>
+<p>
+To convert Overworld coordinates to Nether coordinates,
+divide X and Z by 8. To convert Nether coordinates to
+Overworld coordinates, multiply X and Z by 8.
+</p>
+<p>
+The Y coordinate is not scaled. Actual portal linking
+also depends on nearby portals and valid portal locations,
+so these are target coordinates rather than a guarantee
+of where a portal will appear.
+</p>
+</section>
+</main>
+
+<footer>© 2026 PlayVanta · Every Game. One Hub.</footer>
+
+<script>
+let latest="";
+
+function calculate(){
+  const x=Number(document.getElementById("x").value);
+  const y=Number(document.getElementById("y").value);
+  const z=Number(document.getElementById("z").value);
+  const direction=document.getElementById("direction").value;
+
+  const fields=["x","y","z"];
+  if(fields.some(id=>document.getElementById(id).value.trim()==="")||
+     ![x,y,z].every(Number.isFinite)){
+    document.getElementById("outX").textContent="Invalid";
+    document.getElementById("outY").textContent="Invalid";
+    document.getElementById("outZ").textContent="Invalid";
+    latest="";
+    return;
+  }
+
+  const factor=direction==="nether"?1/8:8;
+  const rx=x*factor;
+  const rz=z*factor;
+  const fmt=n=>Number(n.toFixed(4)).toString();
+
+  document.getElementById("outX").textContent=fmt(rx);
+  document.getElementById("outY").textContent=fmt(y);
+  document.getElementById("outZ").textContent=fmt(rz);
+
+  latest=fmt(rx)+", "+fmt(y)+", "+fmt(rz);
+  document.getElementById("status").textContent="";
 }
 
-</style></head><body><header><nav class="wrap"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta logo">PLAYVANTA</a><div class="links"><a href="index.html">Home</a><a href="index.html#genres">Genres</a><a href="index.html#tools">All tools</a></div></nav></header><main class="wrap"><div class="eyebrow">Free gaming tools · PlayVanta</div><h1>🧱 <span>Minecraft Nether Calculator</span></h1><p class="lead">Find the corresponding X and Z coordinates for a portal in Minecraft's Overworld or Nether. The horizontal scale ratio is 8:1.</p><section class="panel"><h2>Portal coordinate converter</h2><div class="grid"><div class="field"><label for="direction">Conversion direction</label><select id="direction"><option value="nether">Overworld → Nether</option><option value="overworld">Nether → Overworld</option></select></div><div class="field"><label for="x">X coordinate</label><input id="x" type="number" step="any" value="800" inputmode="decimal"></div><div class="field"><label for="z">Z coordinate</label><input id="z" type="number" step="any" value="-400" inputmode="decimal"></div></div><div class="result" aria-live="polite"><div>Target dimension coordinates</div><strong id="coords">—</strong><div id="hint" class="note"></div></div><p class="note">Y (height) is not scaled by 8. Portal placement and linking also depend on nearby existing portals and valid placement locations; this tool gives target horizontal coordinates, not a guaranteed portal link.</p></section><section class="panel"><h2>Example</h2><p>Overworld X = 800 and Z = −400 becomes Nether X = 100 and Z = −50. Reverse the direction to multiply Nether X and Z by 8.</p></section><section><h2>Explore more tools</h2><div class="cards"><a class="card" href="valorant-sensitivity-converter.html"><h3>🎯 FPS Sensitivity Converter</h3><p>Match mouse turning distance across supported games.</p></a><a class="card" href="minecraft-nether-calculator.html"><h3>🧱 Minecraft Nether Calculator</h3><p>Convert X and Z portal coordinates.</p></a><a class="card" href="fps-frame-time-calculator.html"><h3>⚡ FPS & Frame Time</h3><p>Convert frames per second to milliseconds per frame.</p></a></div></section></main><footer>© <span id="year"></span> PlayVanta · Every Game. One Hub. · Independent gaming resource.</footer><script>const $=id=>document.getElementById(id);const num=id=>{const e=$(id);return e.value.trim()===''?NaN:Number(e.value)};const fmt=(n,d=3)=>Number.isFinite(n)?n.toLocaleString('en-US',{maximumFractionDigits:d}):'—';document.getElementById('year').textContent=new Date().getFullYear();function update(){let x=num('x'),z=num('z'),f=$('direction').value==='nether'?1/8:8;if(!Number.isFinite(x)||!Number.isFinite(z)){$('coords').textContent='Enter valid X and Z coordinates';$('hint').textContent='';return;}$('coords').textContent='X: '+fmt(x*f,3)+' · Z: '+fmt(z*f,3);$('hint').textContent=$('direction').value==='nether'?'Divide Overworld X and Z by 8.':'Multiply Nether X and Z by 8.';}['direction','x','z'].forEach(id=>$(id).addEventListener('input',update));update();</script></body></html>
+async function copyCoords(){
+  if(!latest)return;
+  try{
+    await navigator.clipboard.writeText(latest);
+    document.getElementById("status").textContent="Coordinates copied!";
+  }catch(e){
+    document.getElementById("status").textContent=
+      "Copy manually: "+latest;
+  }
+}
+
+document.querySelectorAll("input,select").forEach(el=>{
+  el.addEventListener("input",calculate);
+  el.addEventListener("change",calculate);
+});
+calculate();
+</script>
+</body>
+</html>
