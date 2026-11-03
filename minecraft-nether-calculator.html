@@ -3,55 +3,58 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Minecraft Nether Portal Calculator — PlayVanta</title>
-<meta name="description" content="Convert Minecraft Overworld and Nether coordinates instantly. Find approximate X and Z coordinates for linking Nether portals.">
+<title>Minecraft Nether Portal Coordinate Calculator | PlayVanta</title>
+<meta name="description" content="Convert Minecraft Overworld and Nether coordinates instantly. Plan portal locations using the 8:1 coordinate ratio.">
 <link rel="canonical" href="https://playvanta.github.io/minecraft-nether-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg">
-<style>
-*{box-sizing:border-box}body{margin:0;background:#0b160e;color:#f1fff2;font:16px system-ui,sans-serif}
-header,footer{padding:20px;background:#132619}a{color:#7cde8b;text-decoration:none;font-weight:800}
-main{max-width:790px;margin:auto;padding:35px 20px 75px}
-h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#66ce78}
-p{color:#b7d3bd;line-height:1.7}
-.panel{background:#15261a;border:1px solid #355b3d;border-radius:15px;padding:25px;margin:22px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-label{display:block;margin-bottom:8px;color:#d4f5da}
-input,select{width:100%;padding:13px;border:1px solid #4d7855;border-radius:9px;background:#0b160e;color:white;font:inherit}
-button{padding:14px 20px;background:#66ce78;border:0;border-radius:9px;font-weight:800;cursor:pointer}
-.result{font-size:27px;color:#86ef98;font-weight:900;overflow-wrap:anywhere}
-</style>
+<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
 </head>
-<body>
-<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
-<main>
-<h1>Minecraft <span>Nether Calculator</span></h1>
-<p>Find approximate portal coordinates when traveling between the Overworld and the Nether.</p>
-<section class="panel">
-<div class="grid">
-<div><label for="direction">Conversion direction</label><select id="direction"><option value="nether">Overworld → Nether</option><option value="overworld">Nether → Overworld</option></select></div>
-<div><label for="x">X coordinate</label><input id="x" type="number" step="any" value="800"></div>
-<div><label for="z">Z coordinate</label><input id="z" type="number" step="any" value="-400"></div>
-<div><label for="y">Y coordinate (optional)</label><input id="y" type="number" step="any" value="64"></div>
+<body style="--accent:#7de38b;--hero-art:url('https://static.actugaming.net/media/2024/09/minecraft-key-art-ps5.webp')">
+<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
+<section class="page-hero"><div class="hero-inner"><div class="overline">Minecraft / World Navigation</div><h1>Nether Portal <span>Calculator</span></h1><p>Travel smarter between dimensions. Convert your Overworld and Nether coordinates to plan efficient routes across your Minecraft world.</p><div class="hero-tags"><span>Overworld ↔ Nether</span><span>8:1 Ratio</span><span>Instant Results</span></div></div></section>
+<main class="page-container"><div class="content-grid"><div>
+<section class="panel"><div class="panel-kicker">Travel Between Dimensions</div><h2>Portal Coordinate Converter</h2><p>Enter the X and Z coordinates of your current location. Choose the dimension you're traveling from.</p>
+<div class="field-grid">
+<div class="field full"><label for="dimension">Current Dimension</label><select id="dimension"><option value="overworld">Overworld → Nether</option><option value="nether">Nether → Overworld</option></select></div>
+<div class="field"><label for="x">X Coordinate</label><input id="x" type="number" step="any" value="800"></div>
+<div class="field"><label for="z">Z Coordinate</label><input id="z" type="number" step="any" value="-400"></div>
+<div class="field full"><label for="y">Y Coordinate (Optional)</label><input id="y" type="number" step="any" placeholder="e.g. 64"><small>Y is not scaled by the Nether coordinate ratio.</small></div>
 </div>
-<p><button id="calculate">Convert coordinates</button></p>
+<div class="results">
+<div class="metric"><span>Destination X</span><strong id="resultX">—</strong></div>
+<div class="metric"><span>Destination Z</span><strong id="resultZ">—</strong></div>
+<div class="metric wide"><span>Conversion Ratio</span><strong id="ratio">8 Overworld : 1 Nether</strong></div>
+</div>
+<div class="action-row"><button class="btn" id="copy">Copy Destination Coordinates</button><button class="btn secondary" id="swap">Swap Direction</button></div>
+<p id="status" role="status"></p>
+<div class="note">The 8:1 rule applies to horizontal X and Z coordinates. Actual portal linking can depend on nearby portals, Y position and game mechanics. Results may be fractional; choose an appropriate block location.</div>
 </section>
-<section class="panel"><h2>Converted coordinates</h2><div class="result" id="output"></div><p id="explanation"></p></section>
-<section class="panel"><h2>How Nether coordinates work</h2>
-<p>In Minecraft, horizontal travel in the Nether corresponds to eight times the distance in the Overworld. Divide Overworld X and Z by 8 to estimate Nether coordinates, or multiply Nether X and Z by 8 to estimate Overworld coordinates.</p>
-<p>The Y coordinate is not scaled. Actual portal linking also depends on nearby portals and the game's portal-search rules.</p></section>
-</main><footer>PlayVanta · Free gaming calculators</footer>
+<section class="panel"><h2>How Nether Travel Works</h2><ol class="steps"><li>Locate your destination in the Overworld.</li><li>Divide its X and Z coordinates by 8.</li><li>Travel to those coordinates in the Nether.</li><li>Build or link a portal at a suitable safe location.</li></ol></section>
+</div>
+<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">About Minecraft</div><h2>Explore Every Dimension</h2><p>Minecraft is a sandbox survival and building game featuring vast procedurally generated worlds. The Nether provides a dangerous but useful shortcut for long-distance travel.</p></section><section class="panel"><h3>Discover More</h3><div class="related"><a href="index.html#worlds">Explore Gaming Worlds →</a><a href="fps-frame-time-calculator.html">FPS & Frame Time Tool →</a></div></section></aside>
+</div></main>
+<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made tool. Not affiliated with Mojang or Microsoft.</p></footer>
 <script>
+const $=id=>document.getElementById(id);
+function format(n){return Number(n.toFixed(4)).toLocaleString("en-US",{maximumFractionDigits:4});}
 function calculate(){
-const x=Number(document.getElementById("x").value),z=Number(document.getElementById("z").value);
-const y=document.getElementById("y").value;
-const direction=document.getElementById("direction").value;
-if(!Number.isFinite(x)||!Number.isFinite(z)){document.getElementById("output").textContent="Invalid coordinates";return;}
-const factor=direction==="nether"?1/8:8;
-document.getElementById("output").textContent=`X: ${Number((x*factor).toFixed(3))} · Z: ${Number((z*factor).toFixed(3))}`;
-document.getElementById("explanation").textContent=`Destination: ${direction==="nether"?"Nether":"Overworld"}${y.trim()!==""?" · Y: "+y+" (unchanged)":""}. Use these as approximate portal placement coordinates.`;
+ const x=Number($("x").value),z=Number($("z").value),from=$("dimension").value;
+ if($("x").value===""||$("z").value===""||!Number.isFinite(x)||!Number.isFinite(z)){
+  $("resultX").textContent=$("resultZ").textContent="—";return;
+ }
+ const factor=from==="overworld"?1/8:8;
+ $("resultX").textContent=format(x*factor);
+ $("resultZ").textContent=format(z*factor);
+ $("ratio").textContent=from==="overworld"?"Divide X and Z by 8":"Multiply X and Z by 8";
 }
-document.getElementById("calculate").onclick=calculate;
-["direction","x","y","z"].forEach(id=>document.getElementById(id).addEventListener("input",calculate));
+document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",calculate));
+$("swap").onclick=()=>{$("dimension").value=$("dimension").value==="overworld"?"nether":"overworld";calculate();};
+$("copy").onclick=async()=>{
+ const x=$("resultX").textContent,z=$("resultZ").textContent;
+ if(x==="—")return;
+ const text=`X: ${x}, Z: ${z}`+($("y").value!==""?`, Y: ${$("y").value}`:"");
+ try{await navigator.clipboard.writeText(text);$("status").textContent="Coordinates copied!";}
+ catch{$("status").textContent="Copy unavailable. Use the displayed coordinates.";}
+};
 calculate();
 </script>
 </body></html>
