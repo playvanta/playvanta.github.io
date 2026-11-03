@@ -3,62 +3,56 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FPS to Frame Time Calculator — PlayVanta</title>
-<meta name="description" content="Convert FPS to frame time in milliseconds, compare two frame rates and calculate how long each frame takes to render.">
+<title>FPS & Frame Time Calculator | PlayVanta</title>
+<meta name="description" content="Convert FPS into milliseconds per frame, compare target FPS and calculate frame-time improvements for PC gaming.">
 <link rel="canonical" href="https://playvanta.github.io/fps-frame-time-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg">
-<style>
-*{box-sizing:border-box}body{margin:0;background:#091b22;color:white;font:16px system-ui,sans-serif}
-header,footer{padding:20px;background:#112e39}a{color:#88edff;text-decoration:none;font-weight:800}
-main{max-width:800px;margin:auto;padding:35px 20px 75px}
-h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#64d9ef}
-p{color:#b4d4dc;line-height:1.7}
-.panel{background:#122c35;border:1px solid #366574;border-radius:15px;padding:25px;margin:22px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-label{display:block;margin-bottom:8px;color:#d5f6ff}
-input,select{width:100%;padding:13px;border:1px solid #4a899a;border-radius:9px;background:#091b22;color:white;font:inherit}
-button{padding:14px 20px;background:#64d9ef;border:0;border-radius:9px;font-weight:800;cursor:pointer}
-.result{font-size:31px;color:#90edff;font-weight:900}
-table{width:100%;border-collapse:collapse;margin-top:18px}
-td,th{padding:12px;text-align:left;border-bottom:1px solid #34515b}
-</style>
+<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
 </head>
-<body>
-<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
-<main>
-<h1>FPS & <span>Frame Time Calculator</span></h1>
-<p>Convert frames per second into milliseconds per frame and compare performance targets.</p>
-<section class="panel"><div class="grid">
-<div><label for="fps">Current FPS</label><input id="fps" type="number" min="0.01" step="any" value="144"></div>
-<div><label for="target">Comparison FPS</label><input id="target" type="number" min="0.01" step="any" value="240"></div>
-</div><p><button id="calculate">Calculate frame time</button></p></section>
-<section class="panel"><h2>Current frame time</h2><div class="result" id="result">—</div><p id="details"></p>
-<h2>Common frame rates</h2>
-<table><thead><tr><th>FPS</th><th>Frame time</th></tr></thead><tbody>
-<tr><td>30</td><td>33.33 ms</td></tr>
-<tr><td>60</td><td>16.67 ms</td></tr>
-<tr><td>120</td><td>8.33 ms</td></tr>
-<tr><td>144</td><td>6.94 ms</td></tr>
-<tr><td>240</td><td>4.17 ms</td></tr>
-<tr><td>360</td><td>2.78 ms</td></tr>
-</tbody></table></section>
-<section class="panel"><h2>How to convert FPS to milliseconds</h2>
-<p>Frame time in milliseconds is calculated using <strong>1000 ÷ FPS</strong>. At 60 FPS, each frame takes approximately 16.67 milliseconds. At 120 FPS, each frame takes approximately 8.33 milliseconds.</p>
-<p>This represents average time per frame at a constant frame rate. Actual gaming smoothness also depends on frame-time consistency, input latency, display behavior and other system factors.</p></section>
-</main><footer>PlayVanta · Free gaming calculators</footer>
+<body style="--accent:#79e7ff;--hero-art:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=85')">
+<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
+<section class="page-hero"><div class="hero-inner"><div class="overline">PC Gaming / Performance</div><h1>FPS & Frame Time <span>Calculator</span></h1><p>Understand what your frame rate means for gaming performance. Convert FPS into milliseconds and compare your current experience with your target.</p><div class="hero-tags"><span>FPS Conversion</span><span>Frame Time</span><span>Performance Comparison</span></div></div></section>
+<main class="page-container"><div class="content-grid"><div>
+<section class="panel"><div class="panel-kicker">Performance Breakdown</div><h2>Frame Rate Calculator</h2><p>Enter your current FPS, target FPS and optional 1% low FPS to compare their frame times.</p>
+<div class="field-grid">
+<div class="field"><label for="fps">Current FPS</label><input id="fps" type="number" min="0.01" step="any" value="144"></div>
+<div class="field"><label for="target">Target FPS</label><input id="target" type="number" min="0.01" step="any" value="240"></div>
+<div class="field full"><label for="low">1% Low FPS (Optional)</label><input id="low" type="number" min="0.01" step="any" value="90"><small>Enter a measured 1% low from a benchmark, if available.</small></div>
+</div>
+<div class="results">
+<div class="metric"><span>Current Frame Time</span><strong id="currentMs">—</strong></div>
+<div class="metric"><span>Target Frame Time</span><strong id="targetMs">—</strong></div>
+<div class="metric"><span>Frame Time Difference</span><strong id="difference">—</strong></div>
+<div class="metric"><span>FPS Increase to Target</span><strong id="increase">—</strong></div>
+<div class="metric wide"><span>1% Low Equivalent Frame Time</span><strong id="lowMs">—</strong></div>
+</div>
+<div class="note">Frame time in milliseconds is calculated as 1000 ÷ FPS. These figures represent average or equivalent frame durations; they do not measure actual frame pacing, input latency or stuttering. A 1% low FPS value is a benchmark statistic rather than an individual frame-time reading.</div>
+</section>
+<section class="panel"><h2>FPS vs Frame Time</h2><p>FPS measures how many frames are displayed per second. Frame time measures the duration of a frame in milliseconds. Lower and more consistent frame times generally contribute to smoother motion.</p>
+<div class="results">
+<div class="metric"><span>60 FPS</span><strong>16.67 ms</strong></div>
+<div class="metric"><span>120 FPS</span><strong>8.33 ms</strong></div>
+<div class="metric"><span>144 FPS</span><strong>6.94 ms</strong></div>
+<div class="metric"><span>240 FPS</span><strong>4.17 ms</strong></div>
+</div></section>
+</div>
+<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">About PC Gaming</div><h2>Performance Matters</h2><p>PC gaming performance depends on hardware, software settings, display refresh rate and game optimization. Understanding FPS and frame time can help you interpret benchmarks and performance goals.</p></section><section class="panel"><h3>More FPS Tools</h3><div class="related"><a href="valorant-sensitivity-converter.html">Sensitivity Converter →</a><a href="cs2-economy-calculator.html">CS2 Economy Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside>
+</div></main>
+<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Free browser-based gaming calculators.</p></footer>
 <script>
-function calculate(){
-const fps=Number(document.getElementById("fps").value),target=Number(document.getElementById("target").value);
-const result=document.getElementById("result"),details=document.getElementById("details");
-if(!Number.isFinite(fps)||!Number.isFinite(target)||fps<=0||target<=0){
-result.textContent="Check your inputs";details.textContent="Both frame rates must be greater than zero.";return;
+const $=id=>document.getElementById(id);
+function update(){
+ const fps=Number($("fps").value),target=Number($("target").value),low=Number($("low").value);
+ if(!Number.isFinite(fps)||fps<=0||!Number.isFinite(target)||target<=0){
+  ["currentMs","targetMs","difference","increase","lowMs"].forEach(id=>$(id).textContent="—");return;
+ }
+ const currentMs=1000/fps,targetMs=1000/target;
+ $("currentMs").textContent=currentMs.toFixed(2)+" ms";
+ $("targetMs").textContent=targetMs.toFixed(2)+" ms";
+ $("difference").textContent=(currentMs-targetMs).toFixed(2)+" ms";
+ $("increase").textContent=((target/fps-1)*100).toFixed(1)+"%";
+ $("lowMs").textContent=$("low").value!==""&&Number.isFinite(low)&&low>0?(1000/low).toFixed(2)+" ms":"—";
 }
-const a=1000/fps,b=1000/target;
-result.textContent=a.toFixed(3)+" ms";
-details.textContent=`At ${target} FPS: ${b.toFixed(3)} ms per frame · Frame-time difference: ${Math.abs(a-b).toFixed(3)} ms · ${target>fps?"Higher target FPS reduces average frame time.":target<fps?"The comparison FPS has a longer average frame time.":"Both frame rates are equal."}`;
-}
-document.getElementById("calculate").onclick=calculate;
-document.querySelectorAll("input").forEach(e=>e.addEventListener("input",calculate));
-calculate();
+document.querySelectorAll("input").forEach(el=>el.addEventListener("input",update));
+update();
 </script>
 </body></html>
