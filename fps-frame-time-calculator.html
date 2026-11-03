@@ -3,659 +3,93 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FPS & Frame-Time Calculator | PlayVanta</title>
-
-<meta name="description" content="Free FPS and frame-time calculator by PlayVanta. Convert FPS to milliseconds, milliseconds to FPS, and compare gaming performance instantly.">
-
-<meta name="theme-color" content="#050b1c">
-
+<meta name="description" content="Convert FPS to milliseconds, calculate frame times and compare gaming performance.">
 <style>
-:root {
-  --bg: #050b1c;
-  --panel: #101b32;
-  --blue: #248bff;
-  --cyan: #38dfff;
-  --text: #f4f8ff;
-  --muted: #b0c1d9;
-  --border: rgba(55,155,255,.25);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(
-      ellipse at 85% 15%,
-      rgba(0,205,255,.55),
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse at 10% 80%,
-      rgba(40,85,255,.35),
-      transparent 55%
-    ),
-    #050b1c;
-  background-attachment: fixed;
-}
-
-/* ANIMATED NEON GRID */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background-image:
-    linear-gradient(
-      rgba(55,155,255,.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(55,155,255,.08) 1px,
-      transparent 1px
-    );
-  background-size: 55px 55px;
-  animation: gridMove 25s linear infinite;
-}
-
-@keyframes gridMove {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 55px 55px;
-  }
-}
-
-/* HEADER */
-
-header {
-  padding: 18px 6%;
-  background: rgba(5,10,24,.9);
-  border-bottom: 1px solid var(--border);
-}
-
-nav {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 23px;
-  font-weight: 800;
-}
-
-.brand img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  border-radius: 50%;
-}
-
-.brand span {
-  color: var(--cyan);
-}
-
-.home {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 15px;
-}
-
-.home:hover {
-  color: white;
-}
-
-/* MAIN */
-
-main {
-  width: 92%;
-  max-width: 900px;
-  margin: 55px auto;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.tag {
-  display: inline-block;
-  color: var(--cyan);
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-
-h1 {
-  font-size: clamp(30px, 6vw, 46px);
-  margin: 12px 0;
-}
-
-h1 span {
-  color: var(--cyan);
-}
-
-.hero p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-/* CARDS */
-
-.card {
-  padding: 30px;
-  margin-bottom: 25px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: rgba(12,22,43,.93);
-  box-shadow:
-    0 0 45px rgba(0,180,255,.12),
-    0 18px 45px rgba(0,0,0,.25);
-}
-
-.card h2 {
-  margin-top: 0;
-  font-size: 23px;
-}
-
-.card p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-/* INPUTS */
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #344762;
-  border-radius: 10px;
-  background: #081326;
-  color: white;
-  font-size: 17px;
-  outline: none;
-}
-
-input:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 2px rgba(0,205,255,.15);
-}
-
-.field {
-  margin-bottom: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-button {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 11px;
-  background: linear-gradient(110deg, #147bff, #00bde9);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform .2s, filter .2s;
-}
-
-button:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
-}
-
-/* RESULTS */
-
-.result {
-  margin-top: 22px;
-  padding: 25px;
-  border: 1px solid rgba(0,205,255,.3);
-  border-radius: 14px;
-  background: rgba(0,180,255,.07);
-  text-align: center;
-}
-
-.result strong {
-  display: block;
-  font-size: clamp(30px, 7vw, 44px);
-  color: var(--cyan);
-  margin: 8px 0;
-  overflow-wrap: anywhere;
-}
-
-.result small {
-  color: var(--muted);
-}
-
-.comparison {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.stat {
-  padding: 20px;
-  border: 1px solid #2a3e5c;
-  border-radius: 12px;
-  background: rgba(5,14,31,.75);
-  text-align: center;
-}
-
-.stat strong {
-  display: block;
-  color: var(--cyan);
-  font-size: 27px;
-  margin-bottom: 8px;
-}
-
-.stat small {
-  color: var(--muted);
-}
-
-/* TABLE */
-
-.table-wrap {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-th, td {
-  padding: 14px;
-  text-align: left;
-  border-bottom: 1px solid #293b56;
-}
-
-th {
-  color: var(--cyan);
-}
-
-td {
-  color: #d9e7fa;
-}
-
-/* FOOTER */
-
-footer {
-  text-align: center;
-  padding: 35px 15px;
-  border-top: 1px solid #263b56;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-footer a {
-  color: var(--cyan);
-  text-decoration: none;
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-  main {
-    margin-top: 35px;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  .grid, .comparison {
-    grid-template-columns: 1fr;
-  }
-
-  .brand {
-    font-size: 18px;
-  }
-
-  .brand img {
-    width: 42px;
-    height: 42px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before {
-    animation: none;
-  }
-}
+:root{--c:#35d9e8;--bg:#061c22;--panel:#102e36;--border:#28747e;--text:#effeff;--muted:#b4d8dd}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:var(--text);background:var(--bg)}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 85% 15%,#126c7c,transparent 55%),radial-gradient(ellipse at 10% 90%,#0a424c,transparent 60%),#061c22}
+body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.13;pointer-events:none;background-image:linear-gradient(var(--c) 1px,transparent 1px),linear-gradient(90deg,var(--c) 1px,transparent 1px);background-size:55px 55px}
+header{padding:15px 5%;background:#061c22e8;border-bottom:1px solid var(--border)}
+nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:white;font-size:21px;font-weight:900}
+.brand img{width:46px;height:46px;object-fit:contain;border-radius:50%}
+.brand span{color:var(--c)}
+nav>a:last-child{color:var(--muted);text-decoration:none}
+main{width:92%;max-width:950px;margin:45px auto}
+.hero{text-align:center;margin-bottom:30px}
+h1{font-size:clamp(30px,5vw,47px)}h1 span{color:var(--c)}
+p{color:var(--muted);line-height:1.75}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:#102e36ed;border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:20px}
+h2{margin-top:0}
+label{display:block;margin:15px 0 7px;font-weight:bold}
+input{width:100%;padding:14px;background:#081e24;color:white;border:1px solid #368a95;border-radius:10px;font-size:16px}
+button{width:100%;padding:15px;margin-top:18px;background:var(--c);color:#042026;border:0;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
+.result{background:#081e25;border:1px solid var(--border);padding:17px;border-radius:12px;margin:12px 0}
+.result strong{display:block;color:#8cf4fc;font-size:25px;margin-top:6px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px;border-bottom:1px solid #2c6470}
+th{color:#8cf4fc}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:20px}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <nav>
-    <a class="brand" href="index.html">
-      <img src="playvanta-logo.jpg" alt="PlayVanta logo">
-      PLAY<span>VANTA</span>
-    </a>
-    <a class="home" href="index.html">Home</a>
-  </nav>
-</header>
-
+<header><nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta logo">PLAY<span>VANTA</span></a><a href="index.html">Home</a></nav></header>
 <main>
-
-<section class="hero">
-  <div class="tag">FREE GAMING TOOL</div>
-
-  <h1>FPS & <span>Frame-Time Calculator</span></h1>
-
-  <p>
-    Calculate frame time, convert milliseconds to FPS,
-    and compare gaming performance instantly.
-  </p>
-</section>
-
-<!-- FPS TO FRAME TIME -->
-
+<section class="hero"><p>PC GAMING TOOL</p><h1>FPS & <span>Frame-Time Calculator</span></h1><p>Understand frame rates, latency and performance differences.</p></section>
+<div class="grid">
 <section class="card">
-  <h2>FPS to Frame Time</h2>
-
-  <p>
-    Enter your frames per second to calculate
-    the time available for each frame.
-  </p>
-
-  <div class="field">
-    <label for="fps">Frames Per Second (FPS)</label>
-    <input
-      type="number"
-      id="fps"
-      value="144"
-      min="0.000001"
-      step="any"
-      inputmode="decimal"
-    >
-  </div>
-
-  <button type="button" onclick="calculateFrameTime()">
-    Calculate Frame Time
-  </button>
-
-  <div class="result" aria-live="polite">
-    <small>FRAME TIME</small>
-    <strong id="frameResult">6.94 ms</strong>
-    <small>Milliseconds per frame</small>
-  </div>
+<h2>FPS to Frame Time</h2>
+<label for="fps">Frames Per Second (FPS)</label><input id="fps" type="number" min="0.001" step="any" value="144">
+<div class="result">Time Per Frame<strong id="frametime">—</strong></div>
+<label for="ms">Frame Time to FPS (Milliseconds)</label><input id="ms" type="number" min="0.001" step="any" value="6.94">
+<div class="result">Equivalent FPS<strong id="fromms">—</strong></div>
 </section>
-
-<!-- FRAME TIME TO FPS -->
-
 <section class="card">
-  <h2>Frame Time to FPS</h2>
-
-  <p>
-    Enter a frame time in milliseconds
-    to calculate the equivalent FPS.
-  </p>
-
-  <div class="field">
-    <label for="milliseconds">Frame Time (ms)</label>
-    <input
-      type="number"
-      id="milliseconds"
-      value="8.33"
-      min="0.000001"
-      step="any"
-      inputmode="decimal"
-    >
-  </div>
-
-  <button type="button" onclick="calculateFPS()">
-    Calculate FPS
-  </button>
-
-  <div class="result" aria-live="polite">
-    <small>EQUIVALENT FPS</small>
-    <strong id="fpsResult">120.05 FPS</strong>
-    <small>Frames per second</small>
-  </div>
+<h2>FPS Comparison</h2>
+<label for="old">Original FPS</label><input id="old" type="number" min="0.001" step="any" value="60">
+<label for="new">New FPS</label><input id="new" type="number" min="0.001" step="any" value="144">
+<div id="comparison" aria-live="polite"></div>
 </section>
-
-<!-- FPS COMPARISON -->
-
+</div>
 <section class="card">
-  <h2>Compare Two FPS Values</h2>
-
-  <p>
-    Compare frame times and see the percentage
-    increase between two FPS values.
-  </p>
-
-  <div class="grid">
-
-    <div class="field">
-      <label for="fpsA">Current FPS</label>
-      <input
-        type="number"
-        id="fpsA"
-        value="60"
-        min="0.000001"
-        step="any"
-        inputmode="decimal"
-      >
-    </div>
-
-    <div class="field">
-      <label for="fpsB">New FPS</label>
-      <input
-        type="number"
-        id="fpsB"
-        value="144"
-        min="0.000001"
-        step="any"
-        inputmode="decimal"
-      >
-    </div>
-
-  </div>
-
-  <button type="button" onclick="compareFPS()">
-    Compare FPS
-  </button>
-
-  <div class="comparison" aria-live="polite">
-
-    <div class="stat">
-      <strong id="difference">140.00%</strong>
-      <small>FPS Change</small>
-    </div>
-
-    <div class="stat">
-      <strong id="timeSaved">9.72 ms</strong>
-      <small>Frame-Time Reduction</small>
-    </div>
-
-  </div>
+<h2>FPS Reference Table</h2>
+<table><thead><tr><th>FPS</th><th>Frame Time</th></tr></thead><tbody id="reference"></tbody></table>
 </section>
-
-<!-- REFERENCE TABLE -->
-
 <section class="card">
-  <h2>Common FPS & Frame Times</h2>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>FPS</th>
-          <th>Frame Time</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr><td>30 FPS</td><td>33.33 ms</td></tr>
-        <tr><td>60 FPS</td><td>16.67 ms</td></tr>
-        <tr><td>75 FPS</td><td>13.33 ms</td></tr>
-        <tr><td>120 FPS</td><td>8.33 ms</td></tr>
-        <tr><td>144 FPS</td><td>6.94 ms</td></tr>
-        <tr><td>165 FPS</td><td>6.06 ms</td></tr>
-        <tr><td>240 FPS</td><td>4.17 ms</td></tr>
-        <tr><td>360 FPS</td><td>2.78 ms</td></tr>
-        <tr><td>500 FPS</td><td>2.00 ms</td></tr>
-      </tbody>
-    </table>
-  </div>
+<h2>Understanding FPS and Frame Time</h2>
+<p>Frame time is the duration of one rendered frame. At 60 FPS, each frame takes about 16.67 milliseconds; at 120 FPS, about 8.33 milliseconds.</p>
+<p>This calculator shows ideal average frame intervals. Actual input latency and perceived smoothness also depend on frame pacing, hardware, display refresh rate and other factors.</p>
 </section>
-
-<!-- EXPLANATION -->
-
-<section class="card">
-  <h2>What Is Frame Time?</h2>
-
-  <p>
-    Frame time is the amount of time each frame
-    takes to render, measured in milliseconds.
-    Lower frame times generally mean a higher
-    frame rate.
-  </p>
-
-  <p>
-    The formula is:
-    <strong>Frame Time = 1000 / FPS</strong>
-  </p>
-
-  <h2>Why Does FPS Matter?</h2>
-
-  <p>
-    Higher FPS can make games appear smoother
-    and reduce the time between newly rendered
-    frames. This is especially useful in
-    competitive games such as Valorant,
-    Counter-Strike 2 and Apex Legends.
-  </p>
-
-  <p>
-    Actual smoothness also depends on frame-time
-    consistency, display refresh rate,
-    input latency and other factors.
-  </p>
-</section>
-
 </main>
-
-<footer>
-  &copy; 2026 PlayVanta · Every Game. One Hub.
-  <p>
-    <a href="index.html">Back to PlayVanta</a>
-  </p>
-</footer>
-
+<footer>© 2026 PlayVanta · Every Game. One Hub.</footer>
 <script>
-
-function positiveNumber(id) {
-  const value = Number(document.getElementById(id).value);
-  return Number.isFinite(value) && value > 0
-    ? value
-    : null;
+const $=id=>document.getElementById(id);
+function positive(id){const e=$(id);const n=Number(e.value);return e.value.trim()!==""&&Number.isFinite(n)&&n>0?n:null;}
+function calculate(){
+const fps=positive("fps"),ms=positive("ms"),old=positive("old"),newfps=positive("new");
+$("frametime").textContent=fps===null?"Enter positive FPS":(1000/fps).toFixed(3)+" ms";
+$("fromms").textContent=ms===null?"Enter positive ms":(1000/ms).toFixed(2)+" FPS";
+if(old===null||newfps===null){$("comparison").textContent="Enter two positive FPS values.";return;}
+const change=(newfps-old)/old*100;
+const difference=1000/old-1000/newfps;
+$("comparison").innerHTML=
+'<div class="result">FPS Change<strong>'+change.toFixed(2)+'%</strong></div>'+
+'<div class="result">Original Frame Time<strong>'+(1000/old).toFixed(3)+' ms</strong></div>'+
+'<div class="result">New Frame Time<strong>'+(1000/newfps).toFixed(3)+' ms</strong></div>'+
+'<div class="result">Frame Time Reduction<strong>'+difference.toFixed(3)+' ms</strong></div>';
 }
-
-function calculateFrameTime() {
-  const fps = positiveNumber("fps");
-  const output = document.getElementById("frameResult");
-
-  if (fps === null) {
-    output.textContent = "Invalid FPS";
-    return;
-  }
-
-  const frameTime = 1000 / fps;
-  output.textContent = frameTime.toFixed(2) + " ms";
-}
-
-function calculateFPS() {
-  const ms = positiveNumber("milliseconds");
-  const output = document.getElementById("fpsResult");
-
-  if (ms === null) {
-    output.textContent = "Invalid time";
-    return;
-  }
-
-  const fps = 1000 / ms;
-  output.textContent = fps.toFixed(2) + " FPS";
-}
-
-function compareFPS() {
-  const a = positiveNumber("fpsA");
-  const b = positiveNumber("fpsB");
-
-  const difference = document.getElementById("difference");
-  const timeSaved = document.getElementById("timeSaved");
-
-  if (a === null || b === null) {
-    difference.textContent = "Invalid input";
-    timeSaved.textContent = "-";
-    return;
-  }
-
-  const percentChange = ((b - a) / a) * 100;
-  const saved = (1000 / a) - (1000 / b);
-
-  difference.textContent = percentChange.toFixed(2) + "%";
-  timeSaved.textContent = saved.toFixed(2) + " ms";
-}
-
-document.getElementById("fps")
-  .addEventListener("input", calculateFrameTime);
-
-document.getElementById("milliseconds")
-  .addEventListener("input", calculateFPS);
-
-document.getElementById("fpsA")
-  .addEventListener("input", compareFPS);
-
-document.getElementById("fpsB")
-  .addEventListener("input", compareFPS);
-
-calculateFrameTime();
-calculateFPS();
-compareFPS();
-
+[30,60,75,120,144,165,240,360,500].forEach(f=>{
+const tr=document.createElement("tr");
+tr.innerHTML="<td>"+f+"</td><td>"+(1000/f).toFixed(3)+" ms</td>";
+$("reference").appendChild(tr);
+});
+document.querySelectorAll("input").forEach(el=>el.addEventListener("input",calculate));
+calculate();
 </script>
-
 </body>
 </html>
