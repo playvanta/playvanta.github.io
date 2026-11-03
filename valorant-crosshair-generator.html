@@ -4,38 +4,318 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Valorant Crosshair Generator & Preview | PlayVanta</title>
-<meta name="description" content="Create and preview Valorant crosshairs. Customize color, outlines, center dot and inner lines, then copy your crosshair code.">
+
+<title>Valorant Crosshair Generator & Codes (Free) | PlayVanta</title>
+
+<meta name="description" content="Free Valorant crosshair generator with live preview, customizable colors, center dots, inner lines and copyable import codes. Try 4 crosshair presets.">
+
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#090d1d">
+
 <link rel="canonical" href="https://playvanta.github.io/valorant-crosshair-generator.html">
 <link rel="icon" href="playvanta-logo.jpg">
 <link rel="stylesheet" href="playvanta-theme.css">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Valorant Crosshair Generator | PlayVanta">
+<meta property="og:description" content="Create, preview and copy custom Valorant crosshair codes with PlayVanta.">
+<meta property="og:url" content="https://playvanta.github.io/valorant-crosshair-generator.html">
+
 <style>
-.cross-line{position:absolute;background:var(--cross-color,#00ffff);border-radius:1px}
-.cross-dot{position:absolute;background:var(--cross-color,#00ffff);transform:translate(-50%,-50%)}
+:root {
+  --accent:#ff657b;
+}
+
+.crosshair-stage {
+  position:relative;
+  height:300px;
+  margin:20px 0 26px;
+  border-radius:17px;
+  overflow:hidden;
+  border:1px solid #475374;
+  background:
+    linear-gradient(120deg,#10172cc7,#12172b55),
+    linear-gradient(135deg,#294f63,#202b4b 45%,#51405d);
+}
+
+.crosshair-stage:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(#ffffff09 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff09 1px,transparent 1px);
+  background-size:32px 32px;
+}
+
+.crosshair-stage:after {
+  content:"";
+  position:absolute;
+  width:180px;
+  height:250px;
+  bottom:-75px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(0deg,#0a1327aa,#1a304e77);
+  clip-path:polygon(35% 0,65% 0,75% 15%,68% 35%,100% 55%,100% 100%,0 100%,0 55%,32% 35%,25% 15%);
+  filter:blur(2px);
+}
+
+.preview-label {
+  position:absolute;
+  top:16px;
+  left:16px;
+  z-index:4;
+  font-size:11px;
+  font-weight:850;
+  color:#d7e6fa;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  background:#0b142dbb;
+  padding:9px 12px;
+  border:1px solid #ffffff25;
+  border-radius:8px;
+}
+
+.crosshair {
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  z-index:5;
+}
+
+.cross-line {
+  position:absolute;
+  background:var(--cross-color,#00ffff);
+}
+
+.cross-dot {
+  position:absolute;
+  background:var(--cross-color,#00ffff);
+  transform:translate(-50%,-50%);
+}
+
+.presets {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:20px 0 28px;
+}
+
+.preset {
+  padding:16px 8px;
+  border:1px solid #3a4868;
+  border-radius:12px;
+  background:#101b35;
+  color:#dce5f6;
+  font-size:12px;
+  font-weight:800;
+  transition:background .2s,border-color .2s;
+}
+
+.preset:hover,
+.preset.active {
+  border-color:var(--accent);
+  background:#3b2445;
+  color:white;
+}
+
+.preset-icon {
+  display:block;
+  font-size:23px;
+  margin-bottom:7px;
+  color:#9df6ff;
+}
+
+.subheading {
+  margin-top:30px!important;
+  padding-top:20px;
+  border-top:1px solid #ffffff16;
+}
+
+.seo-content {
+  margin-top:24px;
+}
+
+.seo-content h2 {
+  font-size:25px;
+  line-height:1.3;
+  margin:0 0 15px;
+}
+
+.seo-content h3 {
+  font-size:17px;
+  margin:24px 0 9px;
+}
+
+.seo-content p,
+.seo-content li {
+  font-size:14px;
+  color:#b9c8e2;
+  line-height:1.85;
+}
+
+.seo-content ul {
+  padding-left:22px;
+}
+
+.example-box {
+  padding:18px;
+  margin:18px 0;
+  background:#0d1831;
+  border:1px solid #344969;
+  border-radius:12px;
+}
+
+.example-box strong {
+  color:#e8efff;
+}
+
+.example-box p {
+  margin-bottom:0;
+}
+
+.faq {
+  border-bottom:1px solid #ffffff20;
+  padding:15px 0;
+}
+
+.faq summary {
+  cursor:pointer;
+  font-size:14px;
+  font-weight:850;
+  color:#eef3ff;
+  line-height:1.6;
+}
+
+.faq p {
+  padding:3px 0;
+  margin-bottom:0;
+}
+
+.breadcrumbs {
+  color:#a8b7d5;
+  font-size:12px;
+  margin-bottom:16px;
+}
+
+.breadcrumbs a:hover {
+  color:white;
+}
+
+.status {
+  min-height:20px;
+  font-size:12px;
+  color:#9de7c4;
+}
+
+@media(max-width:550px) {
+  .crosshair-stage {height:250px}
+  .presets {grid-template-columns:repeat(2,1fr)}
+  .seo-content h2 {font-size:22px}
+}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"PlayVanta Valorant Crosshair Generator",
+  "url":"https://playvanta.github.io/valorant-crosshair-generator.html",
+  "description":"Free browser-based Valorant crosshair generator with live preview and copyable import codes.",
+  "applicationCategory":"GameApplication",
+  "operatingSystem":"Any modern web browser",
+  "isAccessibleForFree":true,
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"USD"
+  },
+  "publisher":{
+    "@type":"Organization",
+    "name":"PlayVanta",
+    "url":"https://playvanta.github.io/"
+  }
+}
+</script>
 </head>
+
 <body style="--accent:#ff657b;--hero-art:url('https://www.washingtonpost.com/resizer/L-FezVuIJTTa89o_Wqt5HbWWnUs%3D/arc-anglerfish-washpost-prod-washpost/public/5RSLEPTG25GRZKEN6ITNF6R4MM.jpg')">
 
-<header class="site-header"><nav class="nav">
-<a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a>
-<div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a href="index.html#tools" class="nav-cta">All Calculators →</a></div>
-</nav></header>
+<header class="site-header">
+<nav class="nav" aria-label="Main navigation">
 
-<section class="page-hero"><div class="hero-inner">
-<div class="overline">Valorant / Competitive FPS</div>
-<h1>Crosshair <span>Generator</span></h1>
-<p>Build your perfect crosshair for Valorant. Experiment with colors, inner lines and center dots while previewing your changes in real time.</p>
-<div class="hero-tags"><span>Live Preview</span><span>Custom Settings</span><span>Import Code</span></div>
-</div></section>
+<a class="brand" href="index.html">
+<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+<span>PLAY<b>VANTA</b></span>
+</a>
 
-<main class="page-container"><div class="content-grid">
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="index.html#worlds">Explore Games</a>
+<a href="index.html#tools" class="nav-cta">All Calculators →</a>
+</div>
+
+</nav>
+</header>
+
+<section class="page-hero">
+<div class="hero-inner">
+
+<div class="breadcrumbs">
+<a href="index.html">Home</a> /
+<a href="index.html#worlds">Valorant</a> /
+Crosshair Generator
+</div>
+
+<div class="overline">Valorant / Free Gaming Tool</div>
+
+<h1>Valorant Crosshair <span>Generator</span></h1>
+
+<p>
+Create your own Valorant crosshair with our free online
+generator. Customize colors, outlines, center dots and
+inner lines, then copy your crosshair import code
+directly into Valorant.
+</p>
+
+<div class="hero-tags">
+<span>Free Crosshair Generator</span>
+<span>Live Preview</span>
+<span>4 Presets</span>
+<span>Copy Import Codes</span>
+</div>
+
+</div>
+</section>
+
+<main class="page-container">
+
+<div class="content-grid">
+
 <div>
-<section class="panel">
-<div class="panel-kicker">Precision Starts Here</div>
-<h2>Design Your Crosshair</h2>
-<p>Adjust the settings below to create a crosshair that matches your preferred aiming style.</p>
 
-<div class="preview" id="preview" aria-label="Crosshair preview">
+<!-- MAIN CALCULATOR -->
+
+<section class="panel">
+
+<div class="panel-kicker">PlayVanta Gaming Tools</div>
+
+<h2>Create Your Perfect Valorant Crosshair</h2>
+
+<p>
+Adjust your crosshair settings below. The preview
+updates as you change the options, allowing you
+to experiment before copying your import code.
+</p>
+
+<div class="crosshair-stage" aria-label="Crosshair preview area">
+
+<div class="preview-label">Live Crosshair Preview</div>
+
+<div class="crosshair" id="crosshair">
 <div class="cross-line" id="top"></div>
 <div class="cross-line" id="bottom"></div>
 <div class="cross-line" id="left"></div>
@@ -43,84 +323,662 @@
 <div class="cross-dot" id="dot"></div>
 </div>
 
+</div>
+
+<h3>Choose a Crosshair Preset</h3>
+
+<div class="presets">
+
+<button type="button" class="preset active" data-preset="classic">
+<span class="preset-icon">＋</span>
+Classic
+</button>
+
+<button type="button" class="preset" data-preset="dot">
+<span class="preset-icon">•</span>
+Center Dot
+</button>
+
+<button type="button" class="preset" data-preset="compact">
+<span class="preset-icon">⌖</span>
+Compact
+</button>
+
+<button type="button" class="preset" data-preset="wide">
+<span class="preset-icon">✛</span>
+Wide
+</button>
+
+</div>
+
+<h3 class="subheading">Customize Your Crosshair</h3>
+
 <div class="field-grid">
-<div class="field"><label for="color">Crosshair Color</label><select id="color">
-<option value="0">White</option><option value="1">Green</option>
-<option value="2">Yellow</option><option value="5" selected>Cyan</option>
-<option value="6">Pink</option><option value="7">Red</option>
-</select></div>
-<div class="field"><label for="length">Inner Line Length</label><input id="length" type="number" min="0" max="20" value="4"></div>
-<div class="field"><label for="thickness">Inner Line Thickness</label><input id="thickness" type="number" min="1" max="10" value="2"></div>
-<div class="field"><label for="offset">Inner Line Offset</label><input id="offset" type="number" min="0" max="20" value="2"></div>
-<div class="field"><label for="dotSize">Center Dot Thickness</label><input id="dotSize" type="number" min="1" max="10" value="2"></div>
+
+<div class="field">
+<label for="color">Crosshair Color</label>
+<select id="color">
+<option value="0">White</option>
+<option value="1">Green</option>
+<option value="2">Yellow</option>
+<option value="3">Blue-Green</option>
+<option value="4">Green-Yellow</option>
+<option value="5" selected>Cyan</option>
+<option value="6">Pink</option>
+<option value="7">Red</option>
+</select>
+</div>
+
+<div class="field">
+<label for="length">Inner Line Length</label>
+<input id="length" type="number" min="0" max="20" step="1" value="4">
+<small>Controls the length of the four crosshair lines.</small>
+</div>
+
+<div class="field">
+<label for="thickness">Inner Line Thickness</label>
+<input id="thickness" type="number" min="1" max="10" step="1" value="2">
+<small>Controls how thick the crosshair lines appear.</small>
+</div>
+
+<div class="field">
+<label for="offset">Inner Line Offset</label>
+<input id="offset" type="number" min="0" max="20" step="1" value="2">
+<small>Controls the gap between the center and the lines.</small>
+</div>
+
+<div class="field">
+<label for="dotSize">Center Dot Thickness</label>
+<input id="dotSize" type="number" min="1" max="10" step="1" value="2">
+</div>
+
 </div>
 
 <div class="check-row">
-<label><input type="checkbox" id="outlines"> Outlines</label>
-<label><input type="checkbox" id="centerDot"> Center Dot</label>
-<label><input type="checkbox" id="innerLines" checked> Inner Lines</label>
+
+<label>
+<input type="checkbox" id="innerLines" checked>
+Show Inner Lines
+</label>
+
+<label>
+<input type="checkbox" id="centerDot">
+Show Center Dot
+</label>
+
+<label>
+<input type="checkbox" id="outlines">
+Show Outlines
+</label>
+
 </div>
 
-<h3>Your Crosshair Import Code</h3>
+<h3 class="subheading">Your Valorant Crosshair Code</h3>
+
+<p>
+Copy the code below and import it into your
+Valorant crosshair settings.
+</p>
+
 <div class="output-code" id="code" aria-live="polite"></div>
-<div class="action-row"><button class="btn" id="copy">Copy Crosshair Code</button><button class="btn secondary" id="reset">Reset Settings</button></div>
-<p id="copyStatus" role="status"></p>
-<div class="note">The preview is an approximation of the in-game appearance. Import code compatibility and exact rendering should be verified in Valorant.</div>
+
+<div class="action-row">
+<button type="button" class="btn" id="copy">
+Copy Crosshair Code
+</button>
+
+<button type="button" class="btn secondary" id="reset">
+Reset Crosshair
+</button>
+</div>
+
+<p class="status" id="copyStatus" role="status"></p>
+
+<div class="note">
+The preview is a visual approximation. Crosshair rendering
+and import compatibility should be checked inside Valorant.
+This tool is not affiliated with Riot Games.
+</div>
+
 </section>
 
-<section class="panel"><h2>How to Import Your Crosshair</h2>
-<ol class="steps"><li>Copy the generated crosshair code.</li><li>Open Valorant and navigate to Settings → Crosshair.</li><li>Choose Import Profile Code.</li><li>Paste the code and confirm.</li><li>Test the crosshair in the Practice Range.</li></ol>
+<!-- HOW TO USE -->
+
+<section class="panel seo-content" id="guide">
+
+<div class="panel-kicker">Step-by-Step Guide</div>
+
+<h2>How to Use the Valorant Crosshair Generator</h2>
+
+<p>
+PlayVanta's Valorant Crosshair Generator allows
+you to experiment with different aiming reticles
+without manually changing every setting in-game.
+</p>
+
+<ol class="steps">
+
+<li>
+<strong>Select a preset.</strong>
+Start with Classic, Center Dot, Compact or Wide.
+</li>
+
+<li>
+<strong>Choose a color.</strong>
+Pick a crosshair color that is easy to see
+against different environments.
+</li>
+
+<li>
+<strong>Adjust line settings.</strong>
+Change thickness, length and offset until
+the preview looks comfortable.
+</li>
+
+<li>
+<strong>Enable optional settings.</strong>
+Try a center dot or outlines.
+</li>
+
+<li>
+<strong>Copy the import code.</strong>
+Use the Copy Crosshair Code button.
+</li>
+
+<li>
+<strong>Import into Valorant.</strong>
+Open Valorant, go to Settings → Crosshair,
+and use the Import Profile Code option.
+</li>
+
+</ol>
+
 </section>
+
+<!-- EDUCATIONAL CONTENT -->
+
+<section class="panel seo-content">
+
+<div class="panel-kicker">Crosshair Guide</div>
+
+<h2>How to Choose the Best Valorant Crosshair</h2>
+
+<p>
+There is no single best Valorant crosshair for every
+player. Different players prefer different sizes,
+colors and line styles based on their visibility
+preferences, screen resolution and aiming habits.
+</p>
+
+<h3>1. Small Crosshairs for Precision</h3>
+
+<p>
+Compact crosshairs take up less screen space.
+They can be useful for players who prefer a
+minimal reticle while holding angles or
+aiming at distant opponents.
+</p>
+
+<h3>2. Larger Crosshairs for Visibility</h3>
+
+<p>
+A slightly larger crosshair can be easier to
+locate during fast movement and hectic fights.
+The tradeoff is that it occupies more of the
+area around your target.
+</p>
+
+<h3>3. Center Dot Crosshairs</h3>
+
+<p>
+Center dot crosshairs provide a small focal point
+in the middle of your screen. Some players enjoy
+the minimal appearance, while others prefer
+visible lines for easier tracking.
+</p>
+
+<h3>4. Crosshair Colors</h3>
+
+<p>
+Cyan, green, white and yellow are common
+choices because they can stand out against
+different map environments. The best option
+is whichever remains visible to you during
+actual gameplay.
+</p>
+
+</section>
+
+<!-- EXAMPLES -->
+
+<section class="panel seo-content">
+
+<div class="panel-kicker">Crosshair Examples</div>
+
+<h2>Valorant Crosshair Settings to Try</h2>
+
+<p>
+If you're unsure where to start, try one
+of these simple crosshair styles.
+They are examples created for this tool,
+not claimed professional-player settings.
+</p>
+
+<div class="example-box">
+<strong>Classic Crosshair</strong>
+<p>
+Cyan color, length 4, thickness 2,
+offset 2, no center dot. A balanced
+starting point with clearly visible lines.
+</p>
 </div>
+
+<div class="example-box">
+<strong>Compact Crosshair</strong>
+<p>
+Green color, length 3, thickness 1,
+offset 2, no center dot. A smaller
+reticle that occupies less screen space.
+</p>
+</div>
+
+<div class="example-box">
+<strong>Center Dot Crosshair</strong>
+<p>
+White color, center dot enabled,
+inner lines disabled. A minimal
+design focused on the center of your screen.
+</p>
+</div>
+
+<div class="example-box">
+<strong>Wide Crosshair</strong>
+<p>
+Yellow color, length 7, thickness 2,
+offset 4. A more visible design
+for players who prefer larger crosshairs.
+</p>
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="panel seo-content">
+
+<div class="panel-kicker">Frequently Asked Questions</div>
+
+<h2>Valorant Crosshair FAQ</h2>
+
+<details class="faq">
+<summary>How do I import a crosshair code into Valorant?</summary>
+<p>
+Open Valorant and navigate to Settings → Crosshair.
+Find the Import Profile Code option, paste your
+crosshair code and confirm the import.
+</p>
+</details>
+
+<details class="faq">
+<summary>What is the best crosshair color in Valorant?</summary>
+<p>
+There is no universal best color. Cyan, green,
+white and yellow are popular options.
+Choose a color that stays visible against
+different map backgrounds.
+</p>
+</details>
+
+<details class="faq">
+<summary>Should I use a center dot crosshair?</summary>
+<p>
+A center dot can provide a minimal aiming
+reference, but it may be harder for some players
+to see. Experiment with both center dot and
+line-based crosshairs to find your preference.
+</p>
+</details>
+
+<details class="faq">
+<summary>Can a crosshair improve my aim?</summary>
+<p>
+A comfortable and visible crosshair can help
+you maintain visual focus, but aiming skill
+also depends on practice, positioning,
+crosshair placement and mouse control.
+</p>
+</details>
+
+<details class="faq">
+<summary>Is the PlayVanta Valorant Crosshair Generator free?</summary>
+<p>
+Yes. You can customize and preview crosshairs
+and copy generated codes without creating an
+account or paying a fee.
+</p>
+</details>
+
+<details class="faq">
+<summary>Does PlayVanta change my Valorant settings automatically?</summary>
+<p>
+No. The generator works in your browser.
+You must copy the generated code and
+import it into Valorant yourself.
+</p>
+</details>
+
+</section>
+
+</div>
+
+<!-- SIDEBAR -->
 
 <aside>
-<section class="panel"><div class="art-tile"></div><div class="panel-kicker">About the Game</div><h2>Valorant</h2>
-<p>Valorant is Riot Games' tactical 5v5 shooter, combining precise gunplay with agents who have unique abilities. A comfortable crosshair can help you maintain consistent visual focus.</p>
-</section>
-<section class="panel"><h3>More Valorant Tools</h3><div class="related">
-<a href="valorant-sensitivity-converter.html">Sensitivity Converter →</a>
-<a href="index.html#tools">Browse All Calculators →</a>
-</div></section>
-</aside>
-</div></main>
 
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made tools. Not affiliated with Riot Games.</p></footer>
+<section class="panel">
+
+<div class="art-tile"></div>
+
+<div class="panel-kicker">About the Game</div>
+
+<h2>Valorant</h2>
+
+<p>
+Valorant is a competitive tactical first-person
+shooter developed by Riot Games. Players
+compete in teams using precise gunplay,
+strategic coordination and unique agent abilities.
+</p>
+
+<p>
+Crosshair customization is one way to make
+the aiming experience feel more comfortable
+and consistent.
+</p>
+
+</section>
+
+<section class="panel">
+
+<h3>More Valorant Tools</h3>
+
+<div class="related">
+<a href="valorant-sensitivity-converter.html">
+Valorant Sensitivity Converter →
+</a>
+
+<a href="fps-frame-time-calculator.html">
+FPS & Frame Time Calculator →
+</a>
+
+<a href="cs2-economy-calculator.html">
+CS2 Economy Calculator →
+</a>
+
+<a href="index.html#tools">
+Browse All Gaming Tools →
+</a>
+</div>
+
+</section>
+
+<section class="panel">
+
+<div class="panel-kicker">PlayVanta</div>
+
+<h3>Every Game. One Hub.</h3>
+
+<p>
+Explore free gaming calculators for
+Valorant, Fortnite, Minecraft, Roblox,
+Counter-Strike 2, Genshin Impact,
+Rocket League and more.
+</p>
+
+<a class="btn" href="index.html">
+Explore PlayVanta →
+</a>
+
+</section>
+
+</aside>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+
+<strong>PLAY<span>VANTA</span></strong>
+
+<p>Every Game. One Hub.</p>
+
+<p>
+© <span id="year"></span> PlayVanta.
+Free gaming calculators and tools.
+</p>
+
+<p>
+PlayVanta is an independent fan-made website
+and is not affiliated with or endorsed by Riot Games.
+Valorant is a trademark of Riot Games.
+</p>
+
+</footer>
 
 <script>
-const $=id=>document.getElementById(id);
-const colors={"0":"#ffffff","1":"#00ff00","2":"#ffff00","5":"#00ffff","6":"#ff80ff","7":"#ff4545"};
-const clamp=(v,min,max,def)=>Number.isFinite(Number(v))?Math.max(min,Math.min(max,Number(v))):def;
-function update(){
- const c=$("color").value,L=clamp($("length").value,0,20,4),T=clamp($("thickness").value,1,10,2),O=clamp($("offset").value,0,20,2),D=clamp($("dotSize").value,1,10,2);
- const on=$("innerLines").checked,dotOn=$("centerDot").checked;
- const color=colors[c]||"#00ffff",unit=3;
- $("preview").style.setProperty("--cross-color",color);
- const length=L*unit,offset=O*unit,thick=T*unit;
- const positions={
- top:{width:thick,height:length,top:`calc(50% - ${offset+length}px)`,left:"50%",transform:"translateX(-50%)"},
- bottom:{width:thick,height:length,top:`calc(50% + ${offset}px)`,left:"50%",transform:"translateX(-50%)"},
- left:{width:length,height:thick,top:"50%",left:`calc(50% - ${offset+length}px)`,transform:"translateY(-50%)"},
- right:{width:length,height:thick,top:"50%",left:`calc(50% + ${offset}px)`,transform:"translateY(-50%)"}
- };
- for(const [id,p] of Object.entries(positions)){
-  const el=$(id);el.style.width=p.width+"px";el.style.height=p.height+"px";
-  el.style.top=p.top;el.style.left=p.left;el.style.transform=p.transform;
-  el.style.display=on&&L>0?"block":"none";
-  el.style.outline=$("outlines").checked?"1px solid #000":"none";
- }
- $("dot").style.cssText=`left:50%;top:50%;width:${D*unit}px;height:${D*unit}px;display:${dotOn?"block":"none"};background:${color};transform:translate(-50%,-50%);`;
- $("code").textContent=`0;P;c;${c};h;${$("outlines").checked?1:0};d;${dotOn?1:0};z;${D};f;0;0b;${on?1:0};0t;${T};0l;${L};0o;${O};0a;1;0f;0;1b;0`;
+const $ = id => document.getElementById(id);
+
+const colors = {
+  "0":"#ffffff",
+  "1":"#00ff00",
+  "2":"#ffff00",
+  "3":"#00e6b8",
+  "4":"#c6ff3b",
+  "5":"#00ffff",
+  "6":"#ff80ff",
+  "7":"#ff4545"
+};
+
+const presets = {
+  classic:{
+    color:"5",
+    length:4,
+    thickness:2,
+    offset:2,
+    dotSize:2,
+    innerLines:true,
+    centerDot:false,
+    outlines:false
+  },
+  dot:{
+    color:"0",
+    length:0,
+    thickness:1,
+    offset:0,
+    dotSize:2,
+    innerLines:false,
+    centerDot:true,
+    outlines:false
+  },
+  compact:{
+    color:"1",
+    length:3,
+    thickness:1,
+    offset:2,
+    dotSize:2,
+    innerLines:true,
+    centerDot:false,
+    outlines:false
+  },
+  wide:{
+    color:"2",
+    length:7,
+    thickness:2,
+    offset:4,
+    dotSize:2,
+    innerLines:true,
+    centerDot:false,
+    outlines:false
+  }
+};
+
+function clamp(value,min,max,fallback) {
+  const n=Number(value);
+  if(!Number.isFinite(n)) return fallback;
+  return Math.round(Math.max(min,Math.min(max,n)));
 }
-document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",update));
-$("copy").onclick=async()=>{
- try{await navigator.clipboard.writeText($("code").textContent);$("copyStatus").textContent="Code copied!";}
- catch{$("copyStatus").textContent="Copy unavailable. Select and copy the code above manually.";}
-};
-$("reset").onclick=()=>{
- $("color").value="5";$("length").value=4;$("thickness").value=2;$("offset").value=2;$("dotSize").value=2;
- $("outlines").checked=false;$("centerDot").checked=false;$("innerLines").checked=true;update();
-};
-update();
+
+function applyPreset(name) {
+  const p=presets[name];
+  if(!p)return;
+
+  $("color").value=p.color;
+  $("length").value=p.length;
+  $("thickness").value=p.thickness;
+  $("offset").value=p.offset;
+  $("dotSize").value=p.dotSize;
+  $("innerLines").checked=p.innerLines;
+  $("centerDot").checked=p.centerDot;
+  $("outlines").checked=p.outlines;
+
+  document.querySelectorAll(".preset").forEach(button=>{
+    button.classList.toggle(
+      "active",
+      button.dataset.preset===name
+    );
+  });
+
+  update();
+}
+
+function update() {
+  const color=$("color").value;
+  const length=clamp($("length").value,0,20,4);
+  const thickness=clamp($("thickness").value,1,10,2);
+  const offset=clamp($("offset").value,0,20,2);
+  const dotSize=clamp($("dotSize").value,1,10,2);
+
+  const inner=$("innerLines").checked;
+  const center=$("centerDot").checked;
+  const outline=$("outlines").checked;
+
+  const scale=3;
+  const lineLength=length*scale;
+  const lineThickness=thickness*scale;
+  const lineOffset=offset*scale;
+
+  $("crosshair").style.setProperty(
+    "--cross-color",
+    colors[color]||"#00ffff"
+  );
+
+  const positions={
+    top:{
+      width:lineThickness,
+      height:lineLength,
+      left:-lineThickness/2,
+      top:-(lineOffset+lineLength)
+    },
+    bottom:{
+      width:lineThickness,
+      height:lineLength,
+      left:-lineThickness/2,
+      top:lineOffset
+    },
+    left:{
+      width:lineLength,
+      height:lineThickness,
+      left:-(lineOffset+lineLength),
+      top:-lineThickness/2
+    },
+    right:{
+      width:lineLength,
+      height:lineThickness,
+      left:lineOffset,
+      top:-lineThickness/2
+    }
+  };
+
+  Object.entries(positions).forEach(([id,p])=>{
+    const el=$(id);
+    el.style.width=p.width+"px";
+    el.style.height=p.height+"px";
+    el.style.left=p.left+"px";
+    el.style.top=p.top+"px";
+    el.style.display=inner&&length>0?"block":"none";
+    el.style.outline=outline?"1px solid #000":"none";
+  });
+
+  const dot=$("dot");
+  dot.style.width=dotSize*scale+"px";
+  dot.style.height=dotSize*scale+"px";
+  dot.style.left="0px";
+  dot.style.top="0px";
+  dot.style.display=center?"block":"none";
+  dot.style.outline=outline?"1px solid #000":"none";
+
+  const code=[
+    "0","P",
+    "c",color,
+    "h",outline?1:0,
+    "d",center?1:0,
+    "z",dotSize,
+    "f",0,
+    "0b",inner?1:0,
+    "0t",thickness,
+    "0l",length,
+    "0o",offset,
+    "0a",1,
+    "0f",0,
+    "1b",0
+  ].join(";");
+
+  $("code").textContent=code;
+
+  document.querySelectorAll(".preset").forEach(button=>{
+    button.classList.remove("active");
+  });
+}
+
+document.querySelectorAll(
+  "#color,#length,#thickness,#offset,#dotSize,#innerLines,#centerDot,#outlines"
+).forEach(el=>{
+  el.addEventListener("input",update);
+});
+
+document.querySelectorAll(".preset").forEach(button=>{
+  button.addEventListener("click",()=>{
+    applyPreset(button.dataset.preset);
+    button.classList.add("active");
+  });
+});
+
+$("copy").addEventListener("click",async()=>{
+  const text=$("code").textContent;
+
+  try {
+    await navigator.clipboard.writeText(text);
+    $("copyStatus").textContent="Crosshair code copied!";
+  } catch {
+    $("copyStatus").textContent=
+      "Automatic copying is unavailable. Select and copy the code above.";
+  }
+});
+
+$("reset").addEventListener("click",()=>{
+  applyPreset("classic");
+  document.querySelector('[data-preset="classic"]')
+    .classList.add("active");
+  $("copyStatus").textContent="";
+});
+
+$("year").textContent=new Date().getFullYear();
+
+applyPreset("classic");
+document.querySelector('[data-preset="classic"]')
+  .classList.add("active");
 </script>
+
 </body>
 </html>
