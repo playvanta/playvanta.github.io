@@ -3,55 +3,50 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LoL LP Calculator — League of Legends Ranked Planner | PlayVanta</title>
-<meta name="description" content="Calculate League of Legends LP progress, estimated wins and ranked games needed to reach your target LP using gains, losses and win rate.">
+<title>League of Legends LP Calculator | PlayVanta</title>
+<meta name="description" content="Estimate League of Legends ranked LP progress, wins and matches needed using your current LP, LP gains, losses and win rate.">
 <link rel="canonical" href="https://playvanta.github.io/lol-lp-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg">
-<style>
-*{box-sizing:border-box}body{margin:0;background:#0b1b1c;color:white;font:16px system-ui,sans-serif}
-header,footer{padding:20px;background:#142d2d}a{color:#82e6dc;text-decoration:none;font-weight:800}
-main{max-width:800px;margin:auto;padding:35px 20px 75px}
-h1{font-size:clamp(30px,5vw,46px)}h1 span{color:#52d5c9}
-p{color:#b6d3d0;line-height:1.7}
-.panel{background:#142b2b;border:1px solid #356260;border-radius:15px;padding:25px;margin:22px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-label{display:block;margin-bottom:8px;color:#d1f6f2}
-input{width:100%;padding:13px;border:1px solid #4c8580;border-radius:9px;background:#0b1b1c;color:white;font:inherit}
-button{padding:14px 20px;background:#52d5c9;border:0;border-radius:9px;font-weight:800;cursor:pointer}
-.result{font-size:31px;color:#7be9df;font-weight:900}
-</style>
+<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
 </head>
-<body>
-<header><a href="index.html">← PlayVanta · Every Game. One Hub.</a></header>
-<main>
-<h1>League of Legends <span>LP Calculator</span></h1>
-<p>Estimate your ranked climb using your current LP, target LP and expected match results.</p>
-<section class="panel"><div class="grid">
-<div><label for="current">Current LP</label><input id="current" type="number" min="0" value="30"></div>
-<div><label for="target">Target LP (total goal)</label><input id="target" type="number" min="0" value="100"></div>
-<div><label for="gain">LP gained per win</label><input id="gain" type="number" min="0.1" step="any" value="25"></div>
-<div><label for="loss">LP lost per loss</label><input id="loss" type="number" min="0" step="any" value="20"></div>
-<div><label for="rate">Expected win rate (%)</label><input id="rate" type="number" min="0" max="100" step="any" value="55"></div>
-</div><p><button id="calculate">Calculate LP</button></p></section>
-<section class="panel"><h2>Estimated ranked progress</h2><div class="result" id="result">—</div><p id="details"></p></section>
-<section class="panel"><h2>How the LP calculator works</h2>
-<p>For a simple LP goal, subtract your current LP from your target. The calculator divides the difference by your expected LP gain to estimate consecutive wins. It also estimates progress using your win rate and average LP lost in defeats.</p>
-<p>This is a simplified LP model. Rank promotions, demotions, hidden MMR and Riot's current ranked rules can change actual results. For goals across divisions, enter a cumulative LP target rather than assuming the game treats all divisions as one continuous LP counter.</p></section>
-</main><footer>PlayVanta · Free gaming calculators</footer>
+<body style="--accent:#78e3d7;--hero-art:url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg')">
+<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
+<section class="page-hero"><div class="hero-inner"><div class="overline">League of Legends / Ranked Progression</div><h1>Ranked LP <span>Calculator</span></h1><p>Plan your ranked journey. Estimate how many games you may need to gain LP and work toward your next competitive milestone.</p><div class="hero-tags"><span>LP Planning</span><span>Win Rate</span><span>Ranked Climb</span></div></div></section>
+<main class="page-container"><div class="content-grid"><div>
+<section class="panel"><div class="panel-kicker">Your Ranked Journey</div><h2>LP Progress Calculator</h2><p>Use your current LP and desired cumulative LP target. For example, 45 current LP and a 200 LP target means you want to earn another 155 LP.</p>
+<div class="field-grid">
+<div class="field"><label for="current">Current LP</label><input id="current" type="number" min="0" step="1" value="45"></div>
+<div class="field"><label for="target">Cumulative LP Target</label><input id="target" type="number" min="0" step="1" value="200"></div>
+<div class="field"><label for="gain">Average LP Gained per Win</label><input id="gain" type="number" min="0.1" step="0.1" value="25"></div>
+<div class="field"><label for="loss">Average LP Lost per Defeat</label><input id="loss" type="number" min="0.1" step="0.1" value="20"></div>
+<div class="field full"><label for="rate">Expected Win Rate (%)</label><input id="rate" type="number" min="0" max="100" value="55"></div>
+</div>
+<div class="results">
+<div class="metric"><span>LP Still Needed</span><strong id="needed">—</strong></div>
+<div class="metric"><span>Wins Needed Without Losses</span><strong id="wins">—</strong></div>
+<div class="metric"><span>Expected Net LP per Game</span><strong id="net">—</strong></div>
+<div class="metric"><span>Estimated Games to Target</span><strong id="games">—</strong></div>
+</div>
+<div class="note">This is a simplified LP projection, not a live account tracker. It treats your goal as a cumulative LP amount and does not model rank boundaries, demotion protection, placement games, LP adjustments or changes to your MMR.</div>
+</section>
+<section class="panel"><h2>Planning a Ranked Climb</h2><p>Your average LP gains and losses influence how quickly you climb. A positive expected LP change per match suggests progress over time, although individual match outcomes can vary significantly.</p></section>
+</div>
+<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">About League of Legends</div><h2>Rise Through the Ranks</h2><p>League of Legends is Riot Games' multiplayer online battle arena. Two teams compete to destroy the opposing Nexus through champion abilities, strategy and teamwork.</p></section><section class="panel"><h3>More Competitive Tools</h3><div class="related"><a href="rocket-league-rank-tracker.html">Rocket League Rank Progress →</a><a href="valorant-sensitivity-converter.html">Valorant Sensitivity →</a><a href="index.html#tools">All Calculators →</a></div></section></aside>
+</div></main>
+<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made tool. Not endorsed by Riot Games.</p></footer>
 <script>
-function calculate(){
-const current=Number(document.getElementById("current").value),target=Number(document.getElementById("target").value);
-const gain=Number(document.getElementById("gain").value),loss=Number(document.getElementById("loss").value),rate=Number(document.getElementById("rate").value);
-const result=document.getElementById("result"),details=document.getElementById("details");
-if(![current,target,gain,loss,rate].every(Number.isFinite)||current<0||target<0||gain<=0||loss<0||rate<0||rate>100){
-result.textContent="Check your inputs";details.textContent="Enter valid LP, gains, losses and win rate.";return;
+const $=id=>document.getElementById(id);
+function update(){
+ const c=Number($("current").value),t=Number($("target").value),g=Number($("gain").value),l=Number($("loss").value),r=Number($("rate").value);
+ if([c,t,g,l,r].some(v=>!Number.isFinite(v))||c<0||t<0||g<=0||l<=0||r<0||r>100){
+  ["needed","wins","net","games"].forEach(id=>$(id).textContent="—");return;
+ }
+ const diff=Math.max(0,t-c),net=r/100*g-(1-r/100)*l;
+ $("needed").textContent=diff.toLocaleString();
+ $("wins").textContent=Math.ceil(diff/g).toLocaleString();
+ $("net").textContent=net.toFixed(2);
+ $("games").textContent=diff===0?"0":net>0?Math.ceil(diff/net).toLocaleString():"No positive progress";
 }
-const gap=Math.max(0,target-current),wins=Math.ceil(gap/gain),net=(rate/100)*gain-(1-rate/100)*loss;
-result.textContent=gap===0?"Goal reached":wins+" consecutive wins";
-details.textContent=gap===0?"You have already reached your LP goal.":`LP needed: ${gap} · Expected LP per game: ${net.toFixed(2)} · ${net>0?"Estimated games at your win rate: "+Math.ceil(gap/net):"Your expected LP change per game is not positive."}`;
-}
-document.getElementById("calculate").onclick=calculate;
-document.querySelectorAll("input").forEach(e=>e.addEventListener("input",calculate));
-calculate();
+document.querySelectorAll("input").forEach(el=>el.addEventListener("input",update));
+update();
 </script>
 </body></html>
