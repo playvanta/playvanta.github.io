@@ -1,15 +1,58 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- PlayVanta Homepage -->
   <url>
     <loc>https://playvanta.github.io/</loc>
+  </url>
+
+  <!-- Valorant -->
+  <url>
+    <loc>https://playvanta.github.io/valorant-crosshair-generator.html</loc>
   </url>
   <url>
     <loc>https://playvanta.github.io/valorant-sensitivity-converter.html</loc>
   </url>
+
+  <!-- Minecraft -->
   <url>
     <loc>https://playvanta.github.io/minecraft-nether-calculator.html</loc>
   </url>
+
+  <!-- Fortnite -->
+  <url>
+    <loc>https://playvanta.github.io/fortnite-xp-calculator.html</loc>
+  </url>
+
+  <!-- Roblox -->
+  <url>
+    <loc>https://playvanta.github.io/roblox-robux-tax-calculator.html</loc>
+  </url>
+
+  <!-- Counter-Strike 2 -->
+  <url>
+    <loc>https://playvanta.github.io/cs2-economy-calculator.html</loc>
+  </url>
+
+  <!-- Genshin Impact -->
+  <url>
+    <loc>https://playvanta.github.io/genshin-wish-calculator.html</loc>
+  </url>
+
+  <!-- Rocket League -->
+  <url>
+    <loc>https://playvanta.github.io/rocket-league-rank-tracker.html</loc>
+  </url>
+
+  <!-- League of Legends -->
+  <url>
+    <loc>https://playvanta.github.io/lol-lp-calculator.html</loc>
+  </url>
+
+  <!-- PC Gaming -->
   <url>
     <loc>https://playvanta.github.io/fps-frame-time-calculator.html</loc>
   </url>
+
 </urlset>
