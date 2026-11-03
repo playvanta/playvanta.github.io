@@ -3,514 +3,499 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PlayVanta | Free Gaming Tools & Calculators</title>
-<meta name="description" content="PlayVanta offers free gaming calculators and tools for Valorant, Minecraft, FPS and more. Convert sensitivity, create crosshairs and calculate gaming stats.">
-<meta name="theme-color" content="#050b19">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlayVanta | Every Game. One Hub.</title>
+<meta name="description" content="Free gaming calculators for Valorant, Minecraft, Fortnite, Roblox, CS2, Genshin Impact, Rocket League, League of Legends and PC gaming.">
+<meta name="theme-color" content="#08142c">
 <link rel="canonical" href="https://playvanta.github.io/">
-
 <style>
 :root {
-  --bg:#050b19;
-  --panel:#101b32;
-  --blue:#248bff;
-  --cyan:#40dfff;
-  --text:#f4f8ff;
-  --muted:#afc0d9;
-  --border:rgba(60,145,255,.25);
+  --accent:#4b9fff;
+  --second:#32e5ef;
+  --glow:rgba(50,130,255,.28);
+  --bg:#071126;
 }
-
-* { box-sizing:border-box; }
-
-html { scroll-behavior:smooth; }
-
-body {
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
   margin:0;
   min-height:100vh;
   font-family:Arial,Helvetica,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(ellipse at 15% 20%,rgba(0,115,255,.3),transparent 50%),
-    radial-gradient(ellipse at 85% 75%,rgba(0,210,255,.17),transparent 50%),
-    #050b19;
-  background-attachment:fixed;
+  color:#f6f9ff;
+  background:var(--bg);
+  transition:background .4s;
 }
-
-body::before {
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(ellipse at 85% 15%,var(--glow),transparent 55%),
+    radial-gradient(ellipse at 5% 90%,var(--glow),transparent 55%),
+    linear-gradient(145deg,#071126,#111c39 55%,#071126);
+}
+body::after{
   content:"";
   position:fixed;
   inset:0;
   z-index:-1;
   pointer-events:none;
+  opacity:.35;
   background-image:
-    linear-gradient(rgba(55,130,255,.065) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(55,130,255,.065) 1px,transparent 1px);
-  background-size:55px 55px;
-  animation:gridMove 25s linear infinite;
+    linear-gradient(var(--accent) 1px,transparent 1px),
+    linear-gradient(90deg,var(--accent) 1px,transparent 1px);
+  background-size:75px 75px;
+  mask-image:linear-gradient(to bottom,transparent,#000 50%,transparent);
 }
-
-@keyframes gridMove {
-  from { background-position:0 0; }
-  to { background-position:55px 55px; }
+header{
+  background:rgba(4,9,22,.87);
+  border-bottom:1px solid #31425d;
+  padding:14px 5%;
 }
-
-a { color:inherit; }
-
-header {
-  padding:18px 6%;
-  background:rgba(5,11,25,.9);
-  border-bottom:1px solid var(--border);
-}
-
-nav {
-  max-width:1150px;
+nav{
+  max-width:1200px;
   margin:auto;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:15px;
 }
-
-.brand {
+.brand{
   display:flex;
   align-items:center;
-  gap:12px;
-  text-decoration:none;
+  gap:10px;
   color:white;
-  font-size:24px;
-  font-weight:800;
+  text-decoration:none;
+  font-weight:900;
+  font-size:22px;
 }
-
-.brand img {
-  width:55px;
-  height:55px;
+.brand img{
+  width:48px;
+  height:48px;
   object-fit:contain;
   border-radius:50%;
 }
-
-.brand span { color:var(--cyan); }
-
-.navlinks {
-  display:flex;
-  gap:20px;
-}
-
-.navlinks a {
+.brand span{color:var(--second)}
+nav .links{display:flex;gap:18px}
+nav .links a{
+  color:#c0d2e9;
   text-decoration:none;
-  color:var(--muted);
   font-size:14px;
 }
-
-.navlinks a:hover { color:white; }
-
-main {
-  max-width:1150px;
-  width:92%;
-  margin:auto;
-}
-
-.hero {
+main{max-width:1200px;width:92%;margin:auto}
+.hero{
+  padding:70px 10px 55px;
   text-align:center;
-  padding:85px 15px 65px;
 }
-
-.hero-logo {
+.hero-logo{
   width:125px;
   height:125px;
   object-fit:contain;
   border-radius:50%;
-  filter:drop-shadow(0 0 25px rgba(0,145,255,.45));
+  filter:drop-shadow(0 0 30px var(--glow));
 }
-
-.eyebrow {
-  margin-top:25px;
-  color:var(--cyan);
-  font-size:13px;
-  font-weight:bold;
+.eyebrow{
+  color:var(--second);
   letter-spacing:3px;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:22px;
 }
-
-h1 {
-  font-size:clamp(38px,7vw,68px);
+h1{
+  font-size:clamp(39px,7vw,70px);
   margin:18px 0;
   letter-spacing:-2px;
 }
-
-h1 span {
-  color:var(--cyan);
-  text-shadow:0 0 35px rgba(0,200,255,.35);
-}
-
-.hero p {
-  color:var(--muted);
-  font-size:18px;
+h1 span{color:var(--accent)}
+.hero p{
+  color:#bfcee2;
   line-height:1.8;
+  font-size:17px;
   max-width:680px;
-  margin:0 auto 30px;
+  margin:0 auto 28px;
 }
-
-.primary-button {
+.cta{
   display:inline-block;
-  padding:16px 30px;
-  background:linear-gradient(110deg,#176bff,#00bde9);
+  background:linear-gradient(110deg,var(--accent),var(--second));
+  color:#061123;
+  padding:15px 27px;
   border-radius:12px;
+  font-weight:800;
   text-decoration:none;
-  color:white;
-  font-weight:bold;
-  box-shadow:0 0 25px rgba(0,140,255,.22);
-  transition:transform .2s;
 }
-
-.primary-button:hover {
-  transform:translateY(-3px);
-}
-
-.section {
-  padding:25px 0 70px;
-}
-
-.section-title {
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.section-title h2 {
-  font-size:clamp(27px,5vw,37px);
-  margin-bottom:12px;
-}
-
-.section-title p {
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.tools-grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:22px;
-}
-
-.tool-card {
-  display:flex;
-  flex-direction:column;
-  padding:28px;
-  border:1px solid var(--border);
+section{margin-bottom:65px}
+.section-title{text-align:center;margin-bottom:28px}
+.section-title h2{font-size:32px;margin-bottom:8px}
+.section-title p{color:#b8c9df}
+.panel{
+  background:rgba(10,20,40,.9);
+  border:1px solid #334563;
   border-radius:20px;
-  background:rgba(13,24,46,.92);
-  box-shadow:0 12px 35px rgba(0,0,0,.18);
-  transition:transform .2s,border-color .2s;
+  padding:25px;
 }
-
-.tool-card:hover {
-  transform:translateY(-5px);
-  border-color:rgba(65,180,255,.65);
-}
-
-.tool-card.valorant {
-  border-color:rgba(255,70,85,.35);
-}
-
-.tool-card.minecraft {
-  border-color:rgba(45,205,130,.35);
-}
-
-.tool-card.fps {
-  border-color:rgba(40,200,255,.35);
-}
-
-.icon {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:60px;
-  height:60px;
-  border-radius:15px;
-  background:rgba(30,120,255,.13);
-  font-size:30px;
-  margin-bottom:18px;
-}
-
-.tool-card h3 {
-  font-size:23px;
-  margin:0 0 12px;
-}
-
-.tool-card p {
-  color:var(--muted);
-  line-height:1.75;
-  font-size:15px;
-  flex:1;
-}
-
-.tool-tag {
-  color:var(--cyan);
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:1px;
-  margin-bottom:12px;
-}
-
-.tool-card.valorant .tool-tag {
-  color:#ff8290;
-}
-
-.tool-card.minecraft .tool-tag {
-  color:#55e7a3;
-}
-
-.tool-link {
-  display:inline-block;
-  align-self:flex-start;
-  margin-top:18px;
-  padding:13px 20px;
-  border:1px solid rgba(55,150,255,.4);
-  border-radius:10px;
-  background:rgba(25,95,210,.2);
-  text-decoration:none;
+.search{
+  width:100%;
+  padding:16px;
+  font-size:16px;
+  background:#09152b;
   color:white;
+  border:1px solid #506580;
+  border-radius:12px;
+  margin-bottom:22px;
+}
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.tab{
+  background:#172742;
+  border:1px solid #425673;
+  color:#e9f2ff;
+  padding:12px 17px;
+  border-radius:12px;
   font-weight:bold;
+  cursor:pointer;
 }
-
-.tool-card.valorant .tool-link {
-  background:rgba(255,70,85,.15);
-  border-color:rgba(255,70,85,.4);
+.tab.active{
+  color:#081122;
+  background:var(--accent);
+  border-color:var(--accent);
 }
-
-.tool-card.minecraft .tool-link {
-  background:rgba(30,180,110,.13);
-  border-color:rgba(30,180,110,.4);
-}
-
-.about {
-  margin-bottom:70px;
-  padding:32px;
-  background:rgba(12,23,44,.85);
-  border:1px solid var(--border);
-  border-radius:20px;
-}
-
-.about h2 {
-  margin-top:0;
-}
-
-.about p {
-  color:var(--muted);
-  line-height:1.9;
-}
-
-footer {
-  padding:35px 15px;
-  text-align:center;
-  border-top:1px solid var(--border);
-  color:var(--muted);
+.tab:hover{border-color:var(--second)}
+.results{
+  color:#b9cbe0;
+  margin-top:20px;
   font-size:14px;
 }
-
-footer a {
-  color:var(--cyan);
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+  margin-top:25px;
+}
+.card{
+  --card:#4b9fff;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  background:rgba(11,23,44,.95);
+  border:1px solid color-mix(in srgb,var(--card) 45%,#334563);
+  border-radius:19px;
+  padding:26px;
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
+  transition:transform .2s,border-color .2s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:var(--card);
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:var(--card);
+}
+.icon{
+  display:grid;
+  place-items:center;
+  width:58px;height:58px;
+  background:color-mix(in srgb,var(--card) 15%,#0c1930);
+  border-radius:15px;
+  font-size:28px;
+  margin-bottom:16px;
+}
+.category{
+  color:var(--card);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+}
+.card h3{
+  font-size:22px;
+  margin:10px 0;
+}
+.card p{
+  color:#b6c7dd;
+  font-size:15px;
+  line-height:1.75;
+  flex:1;
+}
+.card a{
+  align-self:flex-start;
+  display:inline-block;
+  padding:12px 18px;
+  margin-top:12px;
+  color:white;
   text-decoration:none;
+  font-weight:bold;
+  border-radius:10px;
+  border:1px solid var(--card);
+  background:color-mix(in srgb,var(--card) 15%,#0c1930);
 }
-
-@media(max-width:700px) {
-  .tools-grid {
-    grid-template-columns:1fr;
-  }
-
-  .hero {
-    padding:60px 10px 45px;
-  }
-
-  .hero-logo {
-    width:100px;
-    height:100px;
-  }
-
-  .brand {
-    font-size:19px;
-  }
-
-  .brand img {
-    width:43px;
-    height:43px;
-  }
-
-  .navlinks {
-    gap:12px;
-  }
-
-  .navlinks a {
-    font-size:12px;
-  }
-
-  .tool-card {
-    padding:23px;
-  }
+.about p{color:#b9c9de;line-height:1.85}
+footer{
+  padding:32px;
+  border-top:1px solid #30425c;
+  text-align:center;
+  color:#aebed3;
 }
-
-@media(prefers-reduced-motion:reduce) {
-  body::before {
-    animation:none;
-  }
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:55px 5px 40px}
+  .hero-logo{width:100px;height:100px}
+  .brand{font-size:17px}
+  .brand img{width:40px;height:40px}
+  nav .links{gap:10px}
+  nav .links a{font-size:12px}
+  .panel{padding:17px}
+  .card{padding:22px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
 <nav>
-  <a class="brand" href="index.html">
+  <a href="index.html" class="brand">
     <img src="playvanta-logo.jpg" alt="PlayVanta logo">
     PLAY<span>VANTA</span>
   </a>
-
-  <div class="navlinks">
-    <a href="#tools">Gaming Tools</a>
+  <div class="links">
+    <a href="#games">Choose Game</a>
+    <a href="#tools">Tools</a>
     <a href="#about">About</a>
   </div>
 </nav>
 </header>
 
 <main>
-
 <section class="hero">
-  <img
-    class="hero-logo"
-    src="playvanta-logo.jpg"
-    alt="PlayVanta gaming logo"
-  >
-
-  <div class="eyebrow">WELCOME TO PLAYVANTA</div>
-
+  <img class="hero-logo" src="playvanta-logo.jpg" alt="PlayVanta official logo">
+  <div class="eyebrow">YOUR ULTIMATE GAMING TOOL HUB</div>
   <h1>Every Game. <span>One Hub.</span></h1>
-
   <p>
-    Your home for free gaming tools and calculators.
-    Improve your aim, calculate game stats,
-    and make smarter gaming decisions.
+    Discover free gaming calculators and tools.
+    Choose your favorite game, customize your experience,
+    and find exactly what you need.
   </p>
-
-  <a class="primary-button" href="#tools">
-    Explore Gaming Tools
-  </a>
+  <a class="cta" href="#games">Explore Gaming Tools</a>
 </section>
 
-<section class="section" id="tools">
-
+<section id="games">
   <div class="section-title">
-    <h2>Explore Our Gaming Tools</h2>
-    <p>
-      Free, fast and easy-to-use tools
-      built for gamers.
-    </p>
+    <h2>Choose Your Game</h2>
+    <p>Select a game to change the theme and find its tools.</p>
   </div>
-
-  <div class="tools-grid">
-
-    <!-- VALORANT CROSSHAIR -->
-
-    <article class="tool-card valorant">
-      <div class="icon">🎯</div>
-      <div class="tool-tag">VALORANT</div>
-      <h3>Valorant Crosshair Generator</h3>
-      <p>
-        Create your own Valorant crosshair,
-        customize its appearance, preview it live,
-        and generate a profile import code.
-      </p>
-      <a class="tool-link"
-         href="valorant-crosshair-generator.html">
-        Create Crosshair →
-      </a>
-    </article>
-
-    <!-- VALORANT SENSITIVITY -->
-
-    <article class="tool-card valorant">
-      <div class="icon">🖱️</div>
-      <div class="tool-tag">VALORANT / FPS</div>
-      <h3>Valorant Sensitivity Converter</h3>
-      <p>
-        Convert your mouse sensitivity between
-        Valorant, CS2, Apex Legends and Overwatch 2.
-        Calculate eDPI and cm/360.
-      </p>
-      <a class="tool-link"
-         href="valorant-sensitivity-converter.html">
-        Convert Sensitivity →
-      </a>
-    </article>
-
-    <!-- MINECRAFT NETHER -->
-
-    <article class="tool-card minecraft">
-      <div class="icon">🟩</div>
-      <div class="tool-tag">MINECRAFT</div>
-      <h3>Minecraft Nether Calculator</h3>
-      <p>
-        Convert Minecraft Overworld and Nether
-        coordinates to plan faster travel
-        and connect portals.
-      </p>
-      <a class="tool-link"
-         href="minecraft-nether-calculator.html">
-        Calculate Coordinates →
-      </a>
-    </article>
-
-    <!-- FPS CALCULATOR -->
-
-    <article class="tool-card fps">
-      <div class="icon">⚡</div>
-      <div class="tool-tag">PC GAMING / PERFORMANCE</div>
-      <h3>FPS & Frame-Time Calculator</h3>
-      <p>
-        Convert FPS into milliseconds,
-        calculate frame times,
-        and compare gaming performance.
-      </p>
-      <a class="tool-link"
-         href="fps-frame-time-calculator.html">
-        Calculate FPS →
-      </a>
-    </article>
-
+  <div class="panel">
+    <input
+      class="search"
+      id="search"
+      type="search"
+      placeholder="Search for a game or calculator..."
+      aria-label="Search gaming tools"
+    >
+    <div class="tabs" id="tabs"></div>
+    <div class="results" id="results"></div>
   </div>
 </section>
 
-<section class="about" id="about">
-  <h2>What Is PlayVanta?</h2>
-
-  <p>
-    PlayVanta is a free gaming tools website
-    designed to help players find useful
-    calculators and gaming utilities
-    in one convenient place.
-  </p>
-
-  <p>
-    Whether you play competitive shooters,
-    survival games, sandbox games or PC games,
-    our goal is to provide simple and practical
-    tools that are easy to use.
-  </p>
-
-  <p>
-    We're continuing to expand our collection
-    of gaming tools and guides.
-  </p>
+<section id="tools">
+  <div class="section-title">
+    <h2>Gaming Tools</h2>
+    <p>Pick a calculator and start playing smarter.</p>
+  </div>
+  <div class="grid" id="toolGrid"></div>
 </section>
 
+<section id="about" class="panel about">
+  <h2>Welcome to PlayVanta</h2>
+  <p>
+    PlayVanta is a free collection of gaming calculators
+    designed for players of competitive shooters,
+    sandbox games, RPGs and more.
+  </p>
+  <p>
+    We aim to make useful gaming information accessible
+    in one place, with fast tools that work on mobile
+    devices and computers.
+  </p>
+  <p>
+    New games and calculators will be added as PlayVanta grows.
+  </p>
+</section>
 </main>
 
 <footer>
   &copy; 2026 PlayVanta. Every Game. One Hub.
-  <p>
-    Free gaming tools for players everywhere.
-  </p>
-  <a href="#tools">Back to Gaming Tools</a>
+  <p>Independent gaming tools website.</p>
 </footer>
 
+<script>
+const themes={
+  "All Games":["#4b9fff","#32e5ef","rgba(50,130,255,.28)"],
+  "Valorant":["#ff4655","#38bdf8","rgba(255,70,85,.35)"],
+  "Minecraft":["#53dc7d","#b6ec68","rgba(50,190,85,.32)"],
+  "Fortnite":["#ad7aff","#29e5ff","rgba(155,80,255,.35)"],
+  "Roblox":["#ff6067","#ffbd61","rgba(255,75,80,.3)"],
+  "Counter-Strike 2":["#ffb54a","#e88b42","rgba(255,155,50,.32)"],
+  "Genshin Impact":["#c8a8ff","#7fb7ff","rgba(170,135,255,.3)"],
+  "Rocket League":["#ff993c","#46c7ff","rgba(255,140,35,.3)"],
+  "League of Legends":["#d7b76c","#40c6c2","rgba(190,155,65,.28)"],
+  "PC Gaming":["#3cdbff","#4d85ff","rgba(30,180,255,.3)"]
+};
+
+const tools=[
+  {
+    game:"Valorant",
+    name:"Valorant Crosshair Generator",
+    desc:"Design a crosshair, preview it and generate a Valorant import code.",
+    icon:"🎯",
+    url:"valorant-crosshair-generator.html"
+  },
+  {
+    game:"Valorant",
+    name:"Valorant Sensitivity Converter",
+    desc:"Convert sensitivity between Valorant, CS2, Apex and Overwatch 2.",
+    icon:"🖱️",
+    url:"valorant-sensitivity-converter.html"
+  },
+  {
+    game:"Minecraft",
+    name:"Minecraft Nether Calculator",
+    desc:"Convert coordinates between the Overworld and the Nether.",
+    icon:"🟩",
+    url:"minecraft-nether-calculator.html"
+  },
+  {
+    game:"Fortnite",
+    name:"Fortnite XP Calculator",
+    desc:"Plan your XP grind and estimate daily XP goals.",
+    icon:"⚡",
+    url:"fortnite-xp-calculator.html"
+  },
+  {
+    game:"Roblox",
+    name:"Roblox Robux Tax Calculator",
+    desc:"Estimate creator earnings and calculate game pass pricing.",
+    icon:"💎",
+    url:"roblox-robux-tax-calculator.html"
+  },
+  {
+    game:"Counter-Strike 2",
+    name:"CS2 Economy Calculator",
+    desc:"Plan your team's purchases and remaining cash.",
+    icon:"💰",
+    url:"cs2-economy-calculator.html"
+  },
+  {
+    game:"Genshin Impact",
+    name:"Genshin Wish Calculator",
+    desc:"Estimate wishes, Primogems and character pity progress.",
+    icon:"✨",
+    url:"genshin-wish-calculator.html"
+  },
+  {
+    game:"Rocket League",
+    name:"Rocket League Rank Tracker",
+    desc:"Track your rating and estimate matches to reach your goal.",
+    icon:"🚗",
+    url:"rocket-league-rank-tracker.html"
+  },
+  {
+    game:"League of Legends",
+    name:"LoL LP Calculator",
+    desc:"Estimate how many ranked games you need to reach target LP.",
+    icon:"🏆",
+    url:"lol-lp-calculator.html"
+  },
+  {
+    game:"PC Gaming",
+    name:"FPS & Frame-Time Calculator",
+    desc:"Convert FPS and frame times, and compare gaming performance.",
+    icon:"🖥️",
+    url:"fps-frame-time-calculator.html"
+  }
+];
+
+let selected="All Games";
+const search=document.getElementById("search");
+const tabs=document.getElementById("tabs");
+const grid=document.getElementById("toolGrid");
+const results=document.getElementById("results");
+
+function setTheme(game){
+  const t=themes[game]||themes["All Games"];
+  document.documentElement.style.setProperty("--accent",t[0]);
+  document.documentElement.style.setProperty("--second",t[1]);
+  document.documentElement.style.setProperty("--glow",t[2]);
+}
+
+function renderTabs(){
+  tabs.innerHTML="";
+  Object.keys(themes).forEach(game=>{
+    const b=document.createElement("button");
+    b.className="tab"+(game===selected?" active":"");
+    b.textContent=game;
+    b.type="button";
+    b.setAttribute("aria-pressed",game===selected?"true":"false");
+    b.onclick=()=>{
+      selected=game;
+      setTheme(game);
+      renderTabs();
+      renderTools();
+    };
+    tabs.appendChild(b);
+  });
+}
+
+function renderTools(){
+  const q=search.value.toLowerCase().trim();
+  const filtered=tools.filter(t=>
+    (selected==="All Games"||t.game===selected)&&
+    (t.name+" "+t.game+" "+t.desc).toLowerCase().includes(q)
+  );
+  grid.innerHTML="";
+  results.textContent=filtered.length+
+    (filtered.length===1?" tool found":" tools found");
+
+  filtered.forEach(t=>{
+    const card=document.createElement("article");
+    card.className="card";
+    card.style.setProperty("--card",themes[t.game][0]);
+
+    const icon=document.createElement("div");
+    icon.className="icon";
+    icon.textContent=t.icon;
+
+    const category=document.createElement("div");
+    category.className="category";
+    category.textContent=t.game;
+
+    const heading=document.createElement("h3");
+    heading.textContent=t.name;
+
+    const desc=document.createElement("p");
+    desc.textContent=t.desc;
+
+    const link=document.createElement("a");
+    link.href=t.url;
+    link.textContent="Open Tool →";
+
+    card.append(icon,category,heading,desc,link);
+    grid.appendChild(card);
+  });
+
+  if(!filtered.length){
+    grid.textContent="No tools found. Try another game or search.";
+  }
+}
+
+search.addEventListener("input",renderTools);
+renderTabs();
+renderTools();
+</script>
 </body>
 </html>
