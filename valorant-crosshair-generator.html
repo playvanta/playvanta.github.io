@@ -5,40 +5,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Valorant Crosshair Generator | PlayVanta</title>
-<meta name="description" content="Customize a Valorant crosshair with sliders, colors, presets and a live preview.">
-<link rel="icon" href="playvanta-logo.jpg">
-<link rel="stylesheet" href="playvanta-tools.css?v=1">
+<meta name="description" content="Create and preview custom Valorant crosshairs with sliders and presets.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#05091e;color:white;font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:12px 5%;background:#080d29;border-bottom:1px solid #a849f5;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}
+.brand img{width:38px;height:38px;object-fit:cover;border-radius:8px}
+.brand span{color:#ef72ff}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+nav a:hover{color:#ed7bff}
+.hero{padding:48px 5%;background:linear-gradient(90deg,#080b28ee,#10144199),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #8d42e6}
+.hero small{color:#ff627b;font-weight:bold;letter-spacing:3px}
+h1{font-size:clamp(35px,5vw,65px);margin:12px 0;font-style:italic}
+h1 span{color:#ed76ff}
+.hero p{color:#d6def7;max-width:650px;line-height:1.7}
+main{max-width:1450px;margin:auto;padding:25px 4%}
+.layout{display:grid;grid-template-columns:1fr 1.1fr .7fr;gap:16px}
+.panel{background:linear-gradient(145deg,#141b46,#090e2c);border:1px solid #a34deb;border-radius:14px;padding:20px;box-shadow:0 0 15px #9435f544}
+h2{margin:0 0 20px;font-size:19px}
+.control{margin:15px 0}
+.control label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;font-weight:bold}
+input[type=range]{width:100%;accent-color:#d35aff}
+input[type=color]{width:100%;height:40px;background:#111936;border:1px solid #9658e8}
+input[type=checkbox]{accent-color:#d35aff}
+.preview{height:300px;position:relative;border:1px solid #7d63d9;border-radius:12px;overflow:hidden;background:radial-gradient(circle at center,#243c5a,#10142c 70%)}
+.preview:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 48%,#45648a22 49%,transparent 51%)}
+svg{width:100%;height:100%;position:relative}
+button{background:linear-gradient(110deg,#c130e9,#642bca);color:white;border:1px solid #e18cff;border-radius:9px;padding:12px 15px;font-weight:bold;cursor:pointer}
+button:hover{box-shadow:0 0 15px #d34bff}
+.actions{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.presets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.presets button{background:#19214e}
+.note{font-size:12px;color:#c7d5f4;line-height:1.8}
+.tools{margin-top:35px}
+.links{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.links a{background:#151b44;border:1px solid #8e50d5;padding:14px;border-radius:9px;font-size:12px;text-align:center}
+.links a:hover{border-color:#ef82ff}
+#status{color:#55edff;font-size:12px;margin-top:12px}
+footer{text-align:center;padding:25px;color:#aebde0;font-size:12px}
+@media(max-width:1000px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
-<body data-tool="crosshair" style="--accent:#ff4655">
-<div class="tool-shell">
-<nav class="tool-nav">
-<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
-<div class="tool-nav-links">
-<a href="index.html">⌂ Home</a>
-<a class="active" href="index.html#calculators">⚙ Calculators</a>
-<a href="download-games.html">↓ Download Games</a>
-<a href="download-games.html">🎮 Game Discovery</a>
-</div>
-</nav>
-<header class="tool-hero">
-<div class="tool-hero-content">
-<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
-<div class="tool-eyebrow" id="toolGame"></div>
-<h1 id="toolTitle"></h1>
-<p>Design your perfect Valorant crosshair using adjustable sliders, colors, presets, and a live preview.</p>
-</div>
+<body>
+<header>
+<a href="index.html" class="brand"><img src="playvanta-logo.jpg" alt="PlayVanta"><div>Play<span>Vanta</span></div></a>
+<nav><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a><a href="download-games.html">Game Discovery</a></nav>
 </header>
-<main class="tool-main">
-<div class="tool-layout">
-<section class="tool-card"><h2>🎯 Customize Crosshair</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
-<section class="tool-card"><h2>✦ Live Preview</h2><div id="toolPreview"></div></section>
-<aside class="tool-card"><h2>⚡ Quick Presets & Tips</h2><div class="tool-note" id="toolTips"></div></aside>
+<section class="hero">
+<small>VALORANT GAMING TOOLS</small>
+<h1>CROSSHAIR <span>GENERATOR</span></h1>
+<p>Customize your crosshair with sliders, colors and presets. See your changes instantly.</p>
+</section>
+<main>
+<div class="layout">
+<section class="panel">
+<h2>🎯 Customize Crosshair</h2>
+<div class="control"><label>Inner Line Length <output id="lengthValue">6</output></label><input type="range" id="length" min="0" max="20" value="6"></div>
+<div class="control"><label>Inner Line Thickness <output id="thickValue">2</output></label><input type="range" id="thick" min="1" max="10" value="2"></div>
+<div class="control"><label>Center Gap <output id="gapValue">3</output></label><input type="range" id="gap" min="0" max="20" value="3"></div>
+<div class="control"><label>Outer Line Length <output id="outerValue">0</output></label><input type="range" id="outer" min="0" max="20" value="0"></div>
+<div class="control"><label>Outline Thickness <output id="outlineValue">1</output></label><input type="range" id="outline" min="0" max="5" value="1"></div>
+<div class="control"><label>Crosshair Color</label><input type="color" id="color" value="#00ff99"></div>
+<div class="control"><label><span>Show Center Dot</span><input type="checkbox" id="dot"></label></div>
+<div class="control"><label><span>Show Outline</span><input type="checkbox" id="showOutline" checked></label></div>
+</section>
+<section class="panel">
+<h2>✦ Live Preview</h2>
+<div class="preview">
+<svg viewBox="0 0 400 300" aria-label="Live crosshair preview"><g id="crosshair"></g></svg>
 </div>
-<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
-<div class="tool-directory" id="toolDirectory"></div>
+<div class="actions">
+<button onclick="copySettings()">Copy Settings</button>
+<button onclick="resetCrosshair()">Reset</button>
+</div>
+<p id="status"></p>
+</section>
+<aside class="panel">
+<h2>⚡ Quick Presets</h2>
+<div class="presets">
+<button onclick="preset(6,2,3,0,false)">Classic</button>
+<button onclick="preset(4,2,2,0,false)">Pro</button>
+<button onclick="preset(0,2,0,0,true)">Dot</button>
+<button onclick="preset(3,1,4,0,false)">Minimal</button>
+</div>
+<p class="note">Adjust your settings, preview the result, then copy the values to recreate your crosshair manually in Valorant.</p>
+</aside>
+</div>
+<section class="tools">
+<h2>🎮 Explore More PlayVanta Tools</h2>
+<div class="links" id="toolLinks"></div>
+</section>
 </main>
-<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
-</div>
-<script src="playvanta-tools.js?v=1" defer></script>
+<footer>© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+<script>
+const $=id=>document.getElementById(id);
+const ids=["length","thick","gap","outer","outline"];
+function draw(){
+ids.forEach(id=>$(id+"Value").textContent=$(id).value);
+const len=+$("length").value*2.5,t=+$("thick").value*1.5,g=+$("gap").value*2.2,o=+$("outer").value*2.5;
+const color=$("color").value,stroke=$("showOutline").checked?+$("outline").value:0;
+const shapes=[];
+function rect(x,y,w,h){shapes.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color}" stroke="#000" stroke-width="${stroke}"/>`)}
+const x=200,y=150;
+if(len>0){
+rect(x-g-len,y-t/2,len,t);rect(x+g,y-t/2,len,t);
+rect(x-t/2,y-g-len,t,len);rect(x-t/2,y+g,t,len);
+}
+if(o>0){
+const d=g+len+8;
+rect(x-d-o,y-t/2,o,t);rect(x+d,y-t/2,o,t);
+rect(x-t/2,y-d-o,t,o);rect(x-t/2,y+d,t,o);
+}
+if($("dot").checked)shapes.push(`<circle cx="${x}" cy="${y}" r="3" fill="${color}"/>`);
+$("crosshair").innerHTML=shapes.join("");
+}
+function preset(l,t,g,o,d){
+$("length").value=l;$("thick").value=t;$("gap").value=g;$("outer").value=o;$("dot").checked=d;draw();
+}
+function resetCrosshair(){
+preset(6,2,3,0,false);$("outline").value=1;$("color").value="#00ff99";$("showOutline").checked=true;draw();
+}
+async function copySettings(){
+const text=ids.map(id=>id+": "+$(id).value).join("\n")+"\nColor: "+$("color").value+"\nCenter dot: "+$("dot").checked+"\nOutline enabled: "+$("showOutline").checked;
+try{await navigator.clipboard.writeText(text);$("status").textContent="Settings copied for manual entry (not an import code)."}
+catch{$("status").textContent="Clipboard unavailable. Please copy the displayed values manually."}
+}
+document.querySelectorAll("input").forEach(el=>el.addEventListener("input",draw));
+$("year").textContent=new Date().getFullYear();
+draw();
+const tools=[
+["Sensitivity Converter","valorant-sensitivity-converter.html"],
+["Minecraft Nether Calculator","minecraft-nether-calculator.html"],
+["FPS Frame-Time Calculator","fps-frame-time-calculator.html"],
+["Fortnite XP Calculator","fortnite-xp-calculator.html"],
+["Robux Tax Calculator","roblox-robux-tax-calculator.html"],
+["CS2 Economy Calculator","cs2-economy-calculator.html"],
+["Genshin Wish Calculator","genshin-wish-calculator.html"],
+["Rocket League Rank Tracker","rocket-league-rank-tracker.html"],
+["LoL LP Calculator","lol-lp-calculator.html"]
+];
+tools.forEach(([name,url])=>{
+const a=document.createElement("a");a.href=url;a.textContent=name;$("toolLinks").append(a);
+});
+</script>
 </body>
 </html>
