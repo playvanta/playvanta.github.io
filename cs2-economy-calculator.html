@@ -1,135 +1,96 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<script>
-(function () {
-  const title = document.title;
-  const description =
-    document.querySelector('meta[name="description"]')
-      ?.content || "Free gaming tools and calculators on PlayVanta.";
-
-  const url = new URL(location.pathname, "https://playvanta.github.io").href;
-
-  function addMeta(attribute, name, content) {
-    const tag = document.createElement("meta");
-    tag.setAttribute(attribute, name);
-    tag.content = content;
-    document.head.appendChild(tag);
-  }
-
-  const canonical = document.createElement("link");
-  canonical.rel = "canonical";
-  canonical.href = url;
-  document.head.appendChild(canonical);
-
-  addMeta("name", "robots", "index,follow");
-  addMeta("property", "og:type", "website");
-  addMeta("property", "og:site_name", "PlayVanta");
-  addMeta("property", "og:title", title);
-  addMeta("property", "og:description", description);
-  addMeta("property", "og:url", url);
-  addMeta("name", "twitter:card", "summary");
-  addMeta("name", "twitter:title", title);
-  addMeta("name", "twitter:description", description);
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": title.replace(" | PlayVanta", ""),
-        "url": url,
-        "description": description,
-        "applicationCategory": "GameApplication",
-        "operatingSystem": "Web",
-        "isAccessibleForFree": true,
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://playvanta.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Gaming Calculators",
-            "item": "https://playvanta.github.io/#calculators"
-          },
-          {
-  "@type": "ListItem",
-  "position": 3,
-  "name": "CS2 Economy Calculator",
-  "item": {
-    "@type": "Thing",
-    "@id": url,
-    "name": "CS2 Economy Calculator"
-  }
-}
-        ]
-      }
-    ]
-  };
-
-  const json = document.createElement("script");
-  json.type = "application/ld+json";
-  json.textContent = JSON.stringify(schema);
-  document.head.appendChild(json);
-})();
-</script>
-
-  <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CS2 Economy Calculator | PlayVanta</title>
-<meta name="description" content="Plan Counter-Strike 2 team buys and calculate remaining economy.">
+<meta name="description" content="Plan Counter-Strike 2 team buys with a free CS2 economy calculator. Estimate team cash, equipment spending and remaining money after purchases.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://playvanta.github.io/cs2-economy-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PlayVanta">
+<meta property="og:title" content="CS2 Economy Calculator | PlayVanta">
+<meta property="og:description" content="Calculate CS2 team money, buy costs and remaining cash.">
+<meta property="og:url" content="https://playvanta.github.io/cs2-economy-calculator.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS2 Economy Calculator | PlayVanta">
+<meta name="twitter:description" content="Free Counter-Strike 2 economy planning tool.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://playvanta.github.io/"},
+{"@type":"ListItem","position":2,"name":"CS2 Economy Calculator","item":"https://playvanta.github.io/cs2-economy-calculator.html"}
+]}
+</script>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#05091e;color:white;font-family:Arial,sans-serif}a{color:inherit;text-decoration:none}
-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;padding:12px 5%;background:#080d29;border-bottom:1px solid #a44bef}
-.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}.brand img{width:38px;height:38px;object-fit:cover;border-radius:8px}.brand b{color:#ed7cff}
-.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
-.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ed,#1014419c),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #a44bef}
-.hero small{color:#ffad43;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(34px,5vw,60px);font-style:italic;margin:12px 0}.hero h1 span{color:#ffad43}.hero p{color:#d4def5;line-height:1.7}
-main{max-width:1250px;margin:auto;padding:25px 4%}.layout{display:grid;grid-template-columns:1fr 1fr .75fr;gap:16px}
-.card{background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a14ee8;border-radius:14px;padding:22px;box-shadow:0 0 15px #8b3cff35}
-h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
-input{width:100%;padding:12px;border:1px solid #7565b6;border-radius:9px;background:#0b1537;color:white}
-.result{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #6b4ca9;border-radius:12px;background:#0b1031;padding:15px}
-.result strong{font-size:clamp(28px,4vw,44px);color:#4deaff;margin:16px 0}.result p,.note{color:#cbd6f3;font-size:13px;line-height:1.8}
-.links{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.links a{padding:13px;border:1px solid #884dd7;border-radius:9px;background:#141b43;text-align:center;font-size:12px}
+:root{--accent:#ffb85e}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#34284b,#05091e 70%);color:#eef2ff;font:15px/1.6 Arial,sans-serif}
+a{color:inherit;text-decoration:none}a:hover{color:#6fe9ff}
+nav{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:12px 5%;background:#080d29;border-bottom:1px solid #8d49e5}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}
+.brand img{width:38px!important;height:38px!important;max-width:38px!important;max-height:38px!important;object-fit:cover;border-radius:8px}
+.brand b{color:#ed7cff}.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ef,#101441a9),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #9348e9}
+.hero small{color:var(--accent);letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.15;font-style:italic;margin:12px 0}h1 span{color:var(--accent)}
+.hero p{color:#d4ddf6;max-width:680px}
+main{max-width:1400px;margin:auto;padding:25px 4%}
+.layout{display:grid;grid-template-columns:1fr 1.1fr .75fr;gap:16px}
+.card{min-width:0;background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a24fe9;border-radius:14px;padding:20px;box-shadow:0 0 15px #8b3cff35}
+h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+.field input{width:100%;padding:12px;border:1px solid #7466ba;border-radius:9px;background:#0b1537;color:white;font:inherit}
+.result{min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#0b1030;border:1px solid #604aa0;border-radius:12px;padding:20px}
+.result strong{font-size:clamp(27px,4vw,43px);color:#5deaff;margin:15px 0;overflow-wrap:anywhere}
+.note,.result p{color:#c7d3f0;font-size:13px;line-height:1.8}
+.links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.links a{padding:13px;background:#141b43;border:1px solid #8450ce;border-radius:9px;text-align:center;font-size:12px}
+.links a:hover{border-color:#e97aff}
+.info{margin-top:30px;color:#cbd6f2}.info h2{color:white}
+details{background:#11183c;border:1px solid #544286;border-radius:9px;padding:13px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:bold}
 footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
-@media(max-width:950px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
-</style></head>
+@media(max-width:1000px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
 <body>
-<nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
-<header class="hero"><small>COUNTER-STRIKE 2 GAMING TOOLS</small><h1>CS2 <span>ECONOMY CALCULATOR</span></h1><p>Plan team purchases and estimate how much money remains after buying equipment.</p></header>
-<main><div class="layout">
-<section class="card"><h2>💰 Team Economy Settings</h2>
-<div class="field"><label for="players">Players on Team</label><input id="players" type="number" min="1" max="5" value="5"></div>
-<div class="field"><label for="cash">Cash Per Player ($)</label><input id="cash" type="number" min="0" max="16000" value="2900"></div>
-<div class="field"><label for="spend">Equipment Cost Per Player ($)</label><input id="spend" type="number" min="0" max="16000" value="2000"></div>
+<nav><a href="index.html" class="brand"><img src="playvanta-logo.jpg" alt="PlayVanta logo"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
+<header class="hero"><small>COUNTER-STRIKE 2 GAMING TOOLS</small><h1>CS2 <span>ECONOMY CALCULATOR</span></h1><p>Plan a Counter-Strike 2 buy round and estimate remaining team cash.</p></header>
+<main>
+<div class="layout">
+<section class="card">
+<h2>💰 Team Economy</h2>
+<div class="field"><label for="players">Number of Players</label><input id="players" type="number" min="1" max="5" step="1" value="5"></div>
+<div class="field"><label for="cash">Cash Per Player ($)</label><input id="cash" type="number" min="0" max="16000" step="1" value="2900"></div>
+<div class="field"><label for="spend">Equipment Cost Per Player ($)</label><input id="spend" type="number" min="0" max="16000" step="1" value="2000"></div>
 </section>
-<section class="card"><h2>✦ Economy Result</h2><div class="result"><span>Estimated Total Team Cash</span><strong id="result">—</strong><p id="detail"></p></div></section>
-<aside class="card"><h2>⚡ Buy Round Guide</h2><p class="note">This is a simplified equal-cash team model.</p><p class="note">For an actual CS2 round, individual players may have different cash amounts. Spending above available money is flagged as unaffordable.</p></aside>
+<section class="card"><h2>✦ Economy Result</h2><div class="result"><span>Total Team Cash</span><strong id="result">—</strong><p id="detail" aria-live="polite"></p></div></section>
+<aside class="card"><h2>⚡ Buying Guide</h2><p class="note">This calculator assumes each selected player has the same cash and buys equipment at the same cost.</p><p class="note">Real CS2 team economies differ between players, so use this as a simple planning estimate.</p></aside>
 </div>
-<section style="margin-top:35px"><h2>🎮 More PlayVanta Tools</h2><div class="links">
-<a href="valorant-crosshair-generator.html">Valorant Crosshair</a><a href="valorant-sensitivity-converter.html">Sensitivity Converter</a><a href="minecraft-nether-calculator.html">Minecraft Nether</a><a href="fps-frame-time-calculator.html">FPS Frame Time</a><a href="fortnite-xp-calculator.html">Fortnite XP</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="rocket-league-rank-tracker.html">Rocket League</a><a href="lol-lp-calculator.html">LoL LP</a>
-</div></section></main><footer>© PlayVanta · Every Game. One Hub.</footer>
+<section class="info"><h2>How to Plan a CS2 Buy Round</h2><p>Enter the number of players, money per player and intended equipment cost. The calculator totals the team's available money and estimates how much remains after purchases.</p><p>For example, five players with $2,900 each have $14,500 combined. If each spends $2,000, the team has $4,500 left.</p></section>
+<section class="info"><h2>Frequently Asked Questions</h2>
+<details><summary>What is an eco round in CS2?</summary><p>An eco round is a round where players spend little or no money to preserve funds for a later purchase.</p></details>
+<details><summary>Does this calculator track each player's money separately?</summary><p>No. It uses an equal-cash estimate for the number of players you select.</p></details>
+</section>
+<section class="info"><h2>🎮 More PlayVanta Tools</h2><div class="links">
+<a href="valorant-crosshair-generator.html">Valorant Crosshair</a><a href="valorant-sensitivity-converter.html">Sensitivity Converter</a><a href="minecraft-nether-calculator.html">Minecraft Nether</a><a href="fps-frame-time-calculator.html">FPS Frame-Time</a><a href="fortnite-xp-calculator.html">Fortnite XP</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="rocket-league-rank-tracker.html">Rocket League</a><a href="lol-lp-calculator.html">LoL LP</a>
+</div></section>
+</main>
+<footer>© PlayVanta · Every Game. One Hub.</footer>
 <script>
 const $=id=>document.getElementById(id);
 function calculate(){
-const p=+$("players").value,c=+$("cash").value,s=+$("spend").value;
-if(!Number.isInteger(p)||p<1||p>5||!Number.isFinite(c)||c<0||c>16000||!Number.isFinite(s)||s<0||s>16000){$("result").textContent="—";$("detail").textContent="Enter valid CS2 economy values.";return}
-$("result").textContent="$"+(p*c).toLocaleString();
-$("detail").textContent=s>c?"Planned purchase is unaffordable per player.":"After purchases: $"+(p*(c-s)).toLocaleString()+" remaining";
+const p=Number($("players").value),c=Number($("cash").value),s=Number($("spend").value);
+if(["players","cash","spend"].some(id=>$(id).value==="")||!Number.isInteger(p)||p<1||p>5||!Number.isInteger(c)||c<0||c>16000||!Number.isInteger(s)||s<0||s>16000){
+$("result").textContent="—";$("detail").textContent="Enter valid CS2 economy values.";return;
 }
-document.querySelectorAll("input").forEach(el=>el.addEventListener("input",calculate));calculate();
-</script></body></html>
+$("result").textContent="$"+(p*c).toLocaleString();
+$("detail").textContent=s>c?"Planned purchase is unaffordable for each player.":"Cash remaining after purchases: $"+(p*(c-s)).toLocaleString();
+}
+document.querySelectorAll("input").forEach(el=>el.addEventListener("input",calculate));
+calculate();
+</script>
+</body>
+</html>
