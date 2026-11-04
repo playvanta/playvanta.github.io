@@ -2,77 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Roblox Robux Tax Calculator – Fees & After-Tax Robux | PlayVanta</title>
-<meta name="description" content="Free Roblox Robux tax calculator. Estimate Robux received after a configurable fee, calculate reverse pricing and plan marketplace transactions.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/roblox-robux-tax-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-<style>
-body{--accent:#e8f0ff;--hero-art:url('https://prod.assets.earlygamecdn.com/images/RobloxActiveCodes_2023-04-03-130932_hzxi.jpg?transform=Article+Webp')}
-.pv-guide p{line-height:1.8}.pv-faq{border-bottom:1px solid #ffffff20;padding:15px 0}.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-btn{margin-top:18px;border:1px solid #7087a9;border-radius:10px;padding:12px 18px;background:#273955;color:white;font-weight:800;cursor:pointer}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Roblox Robux Tax Calculator","url":"https://playvanta.github.io/roblox-robux-tax-calculator.html","applicationCategory":"GameApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox Robux Tax Calculator | PlayVanta</title>
+<meta name="description" content="Estimate how many Robux you receive after marketplace fees on Roblox item or game pass sales.">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">Roblox / Robux Planning</div><h1>Robux Tax <span>Calculator</span></h1><p>Estimate Robux after fees and calculate how much to charge to receive your target amount.</p><div class="hero-tags"><span>After-Fee Robux</span><span>Reverse Calculator</span><span>Custom Fee</span></div></div></section>
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel"><div class="panel-kicker">Robux Fee Estimator</div><h2>Calculate Robux After Tax</h2><p>Select whether you're starting with a sale price or the amount you want to receive.</p>
-<div class="field-grid">
-<div class="field"><label for="mode">Calculation Mode</label><select id="mode"><option value="forward">Sale Price → Robux Received</option><option value="reverse">Target Received → Required Price</option></select></div>
-<div class="field"><label for="amount" id="amountLabel">Sale Price (Robux)</label><input id="amount" type="number" min="0" step="1" value="100"></div>
-<div class="field"><label for="fee">Assumed Fee (%)</label><input id="fee" type="number" min="0" max="99.99" step="any" value="30"></div>
+<body data-tool="robux" style="--accent:#f3f6ff">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 </div>
-<div class="results">
-<div class="metric"><span>Sale Price</span><strong id="price">—</strong></div>
-<div class="metric"><span>Estimated Fee</span><strong id="tax">—</strong></div>
-<div class="metric"><span>Estimated Robux Received</span><strong id="net">—</strong></div>
-<div class="metric"><span>Amount Retained</span><strong id="percent">—</strong></div>
+</nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Calculate your estimated Robux earnings after a marketplace fee, with customizable rates.</p>
 </div>
-<div class="note" id="status">Results use your selected fee assumption. Roblox payouts, commissions and rounding can vary by transaction type.</div>
-<button type="button" class="pv-btn" id="reset">Reset Calculator</button>
-</section>
-<section class="panel pv-guide"><h2>How the Roblox Robux Tax Calculator Works</h2>
-<p>The calculator estimates the portion of a Robux transaction retained after a percentage-based fee. The default 30% is an example commonly associated with some Roblox transactions, but it is not a universal fee for every sale or earning method.</p>
-<h3>Calculate Robux After a Fee</h3><p><strong>Estimated Robux received = Sale Price × (1 − Fee Rate).</strong></p>
-<p>For a 100 Robux sale and a 30% fee, the mathematical result is 70 Robux received and 30 Robux deducted.</p>
-<h3>Reverse Robux Calculation</h3><p><strong>Required Price = Target Robux ÷ (1 − Fee Rate).</strong></p>
-<p>For a target of 100 Robux at a 30% fee, the mathematical required price is approximately 142.86 Robux. Since Robux prices generally use whole numbers, the calculator rounds the required listing price upward.</p>
-<h3>Important Fee Differences</h3><p>Actual Roblox revenue shares depend on the product, experience, creator arrangements, transaction pathway and current platform rules. Use the correct fee for your specific transaction rather than assuming every Robux purchase has the same deduction.</p>
-</section>
-<section class="panel pv-guide"><h2>Robux Tax FAQ</h2>
-<details class="pv-faq"><summary>How much is 100 Robux after a 30% fee?</summary><p>The mathematical result is 70 Robux.</p></details>
-<details class="pv-faq"><summary>How much should I charge to receive 100 Robux?</summary><p>At an assumed 30% fee, approximately 143 Robux is required before accounting for platform-specific payout rounding.</p></details>
-<details class="pv-faq"><summary>Does Roblox always charge 30%?</summary><p>No. Fees and revenue shares vary by transaction type and Roblox policy. Verify the applicable rate.</p></details>
-<details class="pv-faq"><summary>Is this connected to my Roblox account?</summary><p>No. This is an independent estimation calculator.</p></details>
-</section></div>
-<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">Robux Planning</div><h2>Understand Your Earnings</h2><p>Estimate net Robux before setting prices for supported transaction types.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="fortnite-xp-calculator.html">Fortnite XP Calculator →</a><a href="minecraft-nether-calculator.html">Minecraft Nether Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside></div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made website. Not affiliated with Roblox Corporation.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-const nf=new Intl.NumberFormat("en-US",{maximumFractionDigits:2});
-function update(){
- const mode=$("mode").value,a=Number($("amount").value),f=Number($("fee").value)/100;
- $("amountLabel").textContent=mode==="forward"?"Sale Price (Robux)":"Target Robux Received";
- if($("amount").value.trim()===""||$("fee").value.trim()===""||!Number.isFinite(a)||!Number.isFinite(f)||a<0||!Number.isInteger(a)||f<0||f>=1){
-  ["price","tax","net","percent"].forEach(id=>$(id).textContent="—");
-  $("status").textContent="Enter a nonnegative whole-number Robux amount and a fee from 0% to less than 100%.";
-  return;
- }
- const price=mode==="forward"?a:Math.ceil(a/(1-f));
- const net=price*(1-f),fee=price*f;
- $("price").textContent=nf.format(price)+" R$";
- $("tax").textContent=nf.format(fee)+" R$";
- $("net").textContent=nf.format(net)+" R$";
- $("percent").textContent=nf.format((1-f)*100)+"%";
- $("status").textContent="Mathematical estimate only. Actual Roblox payout and rounding rules may produce a different whole-Robux amount.";
-}
-["mode","amount","fee"].forEach(id=>$(id).addEventListener("input",update));
-$("reset").onclick=()=>{$("mode").value="forward";$("amount").value=100;$("fee").value=30;update()};
-update();
-</script></body></html>
+</header>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>💎 Robux Sale Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ Robux Earnings</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Marketplace Fee Guide</h2><div class="tool-note" id="toolTips"></div></aside>
+</div>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+<script src="playvanta-tools.js?v=1" defer></script>
+</body>
+</html>
