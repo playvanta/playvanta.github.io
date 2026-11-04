@@ -2,54 +2,1150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Valorant Sensitivity Converter | PlayVanta</title>
-<meta name="description" content="Convert Valorant, CS2, Apex Legends and Overwatch mouse sensitivity using yaw values. Calculate eDPI and estimated cm per 360 degrees.">
-<link rel="canonical" href="https://playvanta.github.io/valorant-sensitivity-converter.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-</head>
-<body style="--accent:#ff657b;--hero-art:url('https://www.washingtonpost.com/resizer/L-FezVuIJTTa89o_Wqt5HbWWnUs%3D/arc-anglerfish-washpost-prod-washpost/public/5RSLEPTG25GRZKEN6ITNF6R4MM.jpg')">
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">Valorant / Aim Settings</div><h1>Sensitivity <span>Converter</span></h1><p>Take your mouse control from one shooter to another. Convert sensitivity settings and estimate your physical mouse movement for a full turn.</p><div class="hero-tags"><span>Cross-Game Conversion</span><span>eDPI</span><span>cm/360°</span></div></div></section>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel"><div class="panel-kicker">Find Your Perfect Aim</div><h2>Mouse Sensitivity Converter</h2><p>Enter your current sensitivity, mouse DPI and the games you want to convert between.</p>
-<div class="field-grid">
-<div class="field"><label for="from">Convert From</label><select id="from"><option value="valorant">Valorant</option><option value="cs2">Counter-Strike 2</option><option value="apex">Apex Legends</option><option value="overwatch">Overwatch 2</option></select></div>
-<div class="field"><label for="to">Convert To</label><select id="to"><option value="cs2">Counter-Strike 2</option><option value="valorant">Valorant</option><option value="apex">Apex Legends</option><option value="overwatch">Overwatch 2</option></select></div>
-<div class="field"><label for="sens">Current Sensitivity</label><input id="sens" type="number" min="0.001" step="0.001" value="0.35"></div>
-<div class="field"><label for="dpi">Mouse DPI</label><input id="dpi" type="number" min="1" step="1" value="800"></div>
-</div>
-<div class="results">
-<div class="metric"><span>Converted Sensitivity</span><strong id="converted">—</strong></div>
-<div class="metric"><span>Source Game eDPI</span><strong id="edpi">—</strong></div>
-<div class="metric"><span>Estimated cm / 360°</span><strong id="cm">—</strong></div>
-<div class="metric"><span>Estimated inches / 360°</span><strong id="inch">—</strong></div>
-</div>
-<div class="note">Conversions use commonly documented mouse-yaw values and assume comparable raw mouse input. Different FOV, ADS settings, zoom multipliers and game behavior can affect how aiming feels. eDPI is game-specific.</div>
-</section>
-<section class="panel"><h2>What Is eDPI?</h2><p>eDPI means effective dots per inch. Multiply your mouse DPI by your in-game sensitivity to compare settings within the same game. For cross-game comparisons, cm/360° is often more meaningful.</p></section>
-</div>
-<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">About Valorant</div><h2>Precision Matters</h2><p>Valorant rewards accurate crosshair placement and consistent aim. Finding a comfortable sensitivity can help you build muscle memory through practice.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="valorant-crosshair-generator.html">Crosshair Generator →</a><a href="fps-frame-time-calculator.html">FPS & Frame Time Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside>
-</div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made tool, not affiliated with Riot Games or other game publishers.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-const yaw={valorant:0.07,cs2:0.022,apex:0.022,overwatch:0.0066};
-function update(){
- const s=Number($("sens").value),dpi=Number($("dpi").value);
- if(!Number.isFinite(s)||s<=0||!Number.isFinite(dpi)||dpi<=0){
-  ["converted","edpi","cm","inch"].forEach(id=>$(id).textContent="—");return;
- }
- const converted=s*yaw[$("from").value]/yaw[$("to").value];
- const cm=914.4/(dpi*s*yaw[$("from").value]);
- $("converted").textContent=converted.toFixed(4);
- $("edpi").textContent=(dpi*s).toFixed(1);
- $("cm").textContent=cm.toFixed(2)+" cm";
- $("inch").textContent=(cm/2.54).toFixed(2)+" in";
+<title>Valorant Sensitivity Converter to CS2, Apex & Overwatch | PlayVanta</title>
+
+<meta name="description" content="Free Valorant sensitivity converter for CS2, Apex Legends and Overwatch 2. Convert mouse sensitivity instantly and calculate eDPI, cm/360 and inches/360.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#090d1d">
+
+<link rel="canonical" href="https://playvanta.github.io/valorant-sensitivity-converter.html">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-theme.css">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Valorant Sensitivity Converter | PlayVanta">
+<meta property="og:description" content="Convert mouse sensitivity between Valorant, CS2, Apex Legends and Overwatch 2. Includes eDPI and cm/360 calculations.">
+<meta property="og:url" content="https://playvanta.github.io/valorant-sensitivity-converter.html">
+
+<style>
+:root {
+  --accent:#ff657b;
 }
-document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",update));
-update();
+
+/* CONVERTER */
+
+.converter-intro {
+  color:#b9c8e2;
+  line-height:1.8;
+}
+
+.converter-toolbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:18px 0 22px;
+  flex-wrap:wrap;
+}
+
+.tool-pill {
+  display:inline-flex;
+  align-items:center;
+  padding:9px 12px;
+  border:1px solid #ff657b50;
+  border-radius:999px;
+  background:#ff657b12;
+  color:#ff9cac;
+  font-size:11px;
+  font-weight:850;
+}
+
+.swap-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  border:1px solid #ff657b80;
+  border-radius:11px;
+  padding:12px 17px;
+  color:#fff;
+  background:linear-gradient(135deg,#7d334b,#5b2d70);
+  font-size:13px;
+  font-weight:850;
+  cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+
+.swap-button:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px #ff657b25;
+}
+
+.converter-field-note {
+  display:block;
+  margin-top:8px;
+  font-size:11px;
+  line-height:1.5;
+  color:#91a5c7;
+}
+
+.converter-results {
+  margin-top:25px;
+}
+
+.result-highlight {
+  border:1px solid #ff657b65;
+  border-radius:14px;
+  background:linear-gradient(135deg,#401f3e,#1a2143);
+  padding:23px;
+  margin-bottom:15px;
+}
+
+.result-label {
+  display:block;
+  color:#cbd7ed;
+  font-size:12px;
+  font-weight:750;
+  margin-bottom:9px;
+}
+
+.result-highlight strong {
+  display:block;
+  color:#fff;
+  font-size:clamp(27px,5vw,39px);
+  font-weight:900;
+  overflow-wrap:anywhere;
+}
+
+.result-subtitle {
+  display:block;
+  color:#aabbd9;
+  font-size:12px;
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.result-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin:15px 0;
+}
+
+.result-card {
+  padding:19px 15px;
+  background:#101b35;
+  border:1px solid #344260;
+  border-radius:12px;
+}
+
+.result-card span {
+  display:block;
+  color:#9fb0d0;
+  font-size:11px;
+  line-height:1.5;
+  margin-bottom:9px;
+}
+
+.result-card strong {
+  color:#f1f5ff;
+  font-size:clamp(16px,2.4vw,22px);
+  overflow-wrap:anywhere;
+}
+
+.converter-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:19px 0;
+}
+
+.copy-button {
+  border:1px solid #ff657b;
+  border-radius:11px;
+  background:linear-gradient(135deg,#ff657b,#9d4ec4);
+  color:#fff;
+  padding:13px 19px;
+  font-weight:850;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.copy-button:hover {
+  filter:brightness(1.1);
+}
+
+.reset-button {
+  border:1px solid #46577b;
+  border-radius:11px;
+  background:#15213c;
+  color:#e1eafa;
+  padding:13px 19px;
+  font-weight:800;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.copy-status {
+  color:#9de7c4;
+  font-size:12px;
+  min-height:20px;
+}
+
+.converter-error {
+  color:#ff9caa;
+  font-size:12px;
+  min-height:20px;
+}
+
+.seo-section h2 {
+  font-size:25px;
+  line-height:1.35;
+  margin-bottom:16px;
+}
+
+.seo-section h3 {
+  font-size:17px;
+  margin:24px 0 9px;
+}
+
+.seo-section p,
+.seo-section li {
+  color:#b9c8e2;
+  font-size:14px;
+  line-height:1.85;
+}
+
+.seo-section ol,
+.seo-section ul {
+  padding-left:23px;
+}
+
+.example-box {
+  padding:19px;
+  margin:16px 0;
+  border:1px solid #344969;
+  border-radius:12px;
+  background:#0d1831;
+}
+
+.example-box strong {
+  color:#f1f5ff;
+}
+
+.example-box p {
+  margin:8px 0 0;
+}
+
+.formula-box {
+  padding:19px;
+  margin:18px 0;
+  border:1px solid #ff657b50;
+  border-radius:12px;
+  background:#231a35;
+  color:#ffdbe2;
+  font-weight:800;
+  font-size:14px;
+  line-height:1.9;
+  overflow-wrap:anywhere;
+}
+
+.faq {
+  border-bottom:1px solid #ffffff20;
+  padding:16px 0;
+}
+
+.faq summary {
+  color:#eef3ff;
+  font-size:14px;
+  font-weight:850;
+  cursor:pointer;
+  line-height:1.6;
+}
+
+.faq p {
+  margin-bottom:0;
+}
+
+.breadcrumbs {
+  color:#a8b7d5;
+  font-size:12px;
+  margin-bottom:16px;
+}
+
+.breadcrumbs a:hover {
+  color:white;
+}
+
+@media(max-width:600px) {
+  .result-grid {
+    grid-template-columns:1fr;
+  }
+
+  .converter-toolbar {
+    align-items:stretch;
+  }
+
+  .seo-section h2 {
+    font-size:22px;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"PlayVanta Valorant Sensitivity Converter",
+  "url":"https://playvanta.github.io/valorant-sensitivity-converter.html",
+  "description":"Free mouse sensitivity converter for Valorant, CS2, Apex Legends and Overwatch 2.",
+  "applicationCategory":"GameApplication",
+  "operatingSystem":"Any modern web browser",
+  "isAccessibleForFree":true,
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"USD"
+  },
+  "publisher":{
+    "@type":"Organization",
+    "name":"PlayVanta",
+    "url":"https://playvanta.github.io/"
+  }
+}
 </script>
-</body></html>
+</head>
+
+<body style="--accent:#ff657b;--hero-art:url('https://www.washingtonpost.com/resizer/L-FezVuIJTTa89o_Wqt5HbWWnUs%3D/arc-anglerfish-washpost-prod-washpost/public/5RSLEPTG25GRZKEN6ITNF6R4MM.jpg')">
+
+<!-- HEADER -->
+
+<header class="site-header">
+<nav class="nav" aria-label="Main navigation">
+
+<a class="brand" href="index.html">
+<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+<span>PLAY<b>VANTA</b></span>
+</a>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="index.html#worlds">Explore Games</a>
+<a class="nav-cta" href="index.html#tools">All Calculators →</a>
+</div>
+
+</nav>
+</header>
+
+<!-- HERO -->
+
+<section class="page-hero">
+<div class="hero-inner">
+
+<div class="breadcrumbs">
+<a href="index.html">Home</a> /
+Valorant / Sensitivity Converter
+</div>
+
+<div class="overline">
+Valorant / Aim Settings
+</div>
+
+<h1>
+Valorant Sensitivity
+<span>Converter</span>
+</h1>
+
+<p>
+Convert your mouse sensitivity between Valorant,
+Counter-Strike 2, Apex Legends and Overwatch 2.
+Find equivalent hip-fire sensitivity settings,
+calculate eDPI and estimate your physical
+mouse movement for a full 360-degree turn.
+</p>
+
+<div class="hero-tags">
+<span>Cross-Game Conversion</span>
+<span>eDPI Calculator</span>
+<span>cm/360°</span>
+<span>Free Gaming Tool</span>
+</div>
+
+</div>
+</section>
+
+<!-- MAIN -->
+
+<main class="page-container">
+<div class="content-grid">
+
+<div>
+
+<!-- CALCULATOR -->
+
+<section class="panel">
+
+<div class="panel-kicker">
+PlayVanta Aim Tools
+</div>
+
+<h2>Mouse Sensitivity Converter</h2>
+
+<p class="converter-intro">
+Enter your current in-game sensitivity and mouse DPI.
+Select your source game and target game to
+calculate a sensitivity that preserves
+approximately the same physical
+distance for a full 360° turn.
+</p>
+
+<div class="converter-toolbar">
+
+<span class="tool-pill">
+4 Supported FPS Games
+</span>
+
+<button type="button"
+        class="swap-button"
+        id="swap">
+⇄ Swap Games
+</button>
+
+</div>
+
+<div class="field-grid">
+
+<div class="field">
+<label for="from">Convert From</label>
+<select id="from">
+<option value="valorant">Valorant</option>
+<option value="cs2">Counter-Strike 2</option>
+<option value="apex">Apex Legends</option>
+<option value="overwatch">Overwatch 2</option>
+</select>
+</div>
+
+<div class="field">
+<label for="to">Convert To</label>
+<select id="to">
+<option value="cs2">Counter-Strike 2</option>
+<option value="valorant">Valorant</option>
+<option value="apex">Apex Legends</option>
+<option value="overwatch">Overwatch 2</option>
+</select>
+</div>
+
+<div class="field">
+<label for="sens">Current Sensitivity</label>
+<input
+  id="sens"
+  type="number"
+  min="0.0001"
+  step="any"
+  value="0.35"
+  inputmode="decimal">
+<small class="converter-field-note">
+Your in-game hip-fire sensitivity.
+</small>
+</div>
+
+<div class="field">
+<label for="dpi">Mouse DPI</label>
+<input
+  id="dpi"
+  type="number"
+  min="1"
+  step="1"
+  value="800"
+  inputmode="numeric">
+<small class="converter-field-note">
+Your mouse's configured DPI.
+</small>
+</div>
+
+</div>
+
+<!-- RESULTS -->
+
+<div class="converter-results" aria-live="polite">
+
+<div class="result-highlight">
+
+<span class="result-label">
+Converted Sensitivity
+</span>
+
+<strong id="converted">—</strong>
+
+<span class="result-subtitle" id="conversionLabel">
+Valorant → Counter-Strike 2
+</span>
+
+</div>
+
+<div class="result-grid">
+
+<div class="result-card">
+<span>Source Game eDPI</span>
+<strong id="edpi">—</strong>
+</div>
+
+<div class="result-card">
+<span>Estimated cm / 360°</span>
+<strong id="cm">—</strong>
+</div>
+
+<div class="result-card">
+<span>Estimated inches / 360°</span>
+<strong id="inch">—</strong>
+</div>
+
+</div>
+
+</div>
+
+<p class="converter-error" id="error" role="status"></p>
+
+<div class="converter-actions">
+
+<button type="button"
+        class="copy-button"
+        id="copy">
+Copy Converted Sensitivity
+</button>
+
+<button type="button"
+        class="reset-button"
+        id="reset">
+Reset Calculator
+</button>
+
+</div>
+
+<p class="copy-status" id="copyStatus" role="status"></p>
+
+<div class="note">
+Conversions use commonly documented default mouse-yaw
+values and assume comparable raw mouse input.
+FOV, ADS sensitivity, scoped multipliers, acceleration,
+and game-specific settings can change how aiming feels.
+eDPI is most useful for comparisons within the same game.
+</div>
+
+</section>
+
+<!-- GUIDE -->
+
+<section class="panel seo-section">
+
+<div class="panel-kicker">
+Step-by-Step Guide
+</div>
+
+<h2>How to Use the Valorant Sensitivity Converter</h2>
+
+<p>
+PlayVanta's sensitivity converter helps you
+transfer your approximate hip-fire turning
+distance between supported FPS games.
+</p>
+
+<ol>
+
+<li>
+<strong>Choose your source game.</strong>
+Select the game whose sensitivity you already use.
+</li>
+
+<li>
+<strong>Choose your target game.</strong>
+Select the FPS game you want to convert to.
+</li>
+
+<li>
+<strong>Enter your sensitivity.</strong>
+Type your current in-game mouse sensitivity.
+</li>
+
+<li>
+<strong>Enter your mouse DPI.</strong>
+Use the DPI setting configured in your mouse software.
+</li>
+
+<li>
+<strong>Read the results.</strong>
+The converted sensitivity, eDPI and
+physical 360-degree turning distance update automatically.
+</li>
+
+<li>
+<strong>Test in-game.</strong>
+Copy the converted value, apply it in your target
+game and adjust if necessary.
+</li>
+
+</ol>
+
+</section>
+
+<!-- EXPLANATION -->
+
+<section class="panel seo-section">
+
+<div class="panel-kicker">
+Sensitivity Guide
+</div>
+
+<h2>How Does Valorant Sensitivity Conversion Work?</h2>
+
+<p>
+Different FPS games use different sensitivity
+scales. A numerical sensitivity value of 1.0
+does not necessarily produce the same mouse
+movement in two different games.
+</p>
+
+<p>
+One way to compare settings is to use the
+amount of physical mouse movement required
+to rotate your view by 360 degrees.
+This measurement is commonly called
+cm/360°.
+</p>
+
+<h3>What Is Mouse Yaw?</h3>
+
+<p>
+Mouse yaw describes how much your view rotates
+horizontally for a unit of mouse input at a
+given in-game sensitivity. The converter
+uses the following commonly documented
+default values.
+</p>
+
+<div class="example-box">
+
+<strong>Mouse-Yaw Values Used</strong>
+
+<p>
+Valorant: 0.07<br>
+Counter-Strike 2: 0.022<br>
+Apex Legends: 0.022<br>
+Overwatch 2: 0.0066
+</p>
+
+</div>
+
+<h3>How to Calculate Equivalent Sensitivity</h3>
+
+<p>
+The converter uses the source sensitivity
+and the ratio between the two games'
+mouse-yaw values.
+</p>
+
+<div class="formula-box">
+Target Sensitivity = Source Sensitivity ×
+(Source Yaw ÷ Target Yaw)
+</div>
+
+<p>
+This preserves the estimated physical
+mouse distance needed for a full turn
+when using the same DPI.
+</p>
+
+<h3>How to Calculate cm/360°</h3>
+
+<div class="formula-box">
+cm/360° = 914.4 ÷
+(DPI × Sensitivity × Mouse Yaw)
+</div>
+
+<p>
+A smaller cm/360° value means less physical
+mouse movement is needed to turn around.
+A larger value means more movement is required.
+</p>
+
+</section>
+
+<!-- EDPI -->
+
+<section class="panel seo-section">
+
+<div class="panel-kicker">
+Aim Fundamentals
+</div>
+
+<h2>What Is eDPI in Valorant?</h2>
+
+<p>
+eDPI stands for effective dots per inch.
+It is calculated by multiplying your
+mouse DPI by your in-game sensitivity.
+</p>
+
+<div class="formula-box">
+eDPI = Mouse DPI × In-Game Sensitivity
+</div>
+
+<div class="example-box">
+
+<strong>Example: 800 DPI and 0.35 Valorant Sensitivity</strong>
+
+<p>
+800 × 0.35 = 280 eDPI.
+</p>
+
+<p>
+A player using 1600 DPI and 0.175 Valorant
+sensitivity would also have 280 eDPI.
+Under comparable input settings,
+both configurations have the same
+nominal turning sensitivity in Valorant.
+</p>
+
+</div>
+
+<p>
+eDPI is most meaningful when comparing
+players within the same game. Because
+games use different yaw values,
+identical eDPI numbers do not necessarily
+mean identical physical sensitivity
+across different games.
+</p>
+
+</section>
+
+<!-- EXAMPLES -->
+
+<section class="panel seo-section">
+
+<div class="panel-kicker">
+Conversion Examples
+</div>
+
+<h2>Valorant Sensitivity Conversion Examples</h2>
+
+<p>
+The following examples use default mouse-yaw
+values and the same DPI in both games.
+Values are rounded for readability.
+</p>
+
+<div class="example-box">
+<strong>Valorant to CS2</strong>
+<p>
+Valorant sensitivity: 0.35<br>
+Mouse DPI: 800<br>
+Equivalent CS2 sensitivity: approximately 1.1136<br>
+Estimated physical distance: 46.65 cm/360°
+</p>
+</div>
+
+<div class="example-box">
+<strong>Valorant to Apex Legends</strong>
+<p>
+Valorant sensitivity: 0.35<br>
+Mouse DPI: 800<br>
+Equivalent Apex sensitivity: approximately 1.1136
+</p>
+</div>
+
+<div class="example-box">
+<strong>Valorant to Overwatch 2</strong>
+<p>
+Valorant sensitivity: 0.35<br>
+Mouse DPI: 800<br>
+Equivalent Overwatch 2 sensitivity: approximately 3.7121
+</p>
+</div>
+
+<p>
+These examples match estimated 360-degree
+turning distance, not perceived sensitivity
+at every field of view or zoom level.
+</p>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="panel seo-section">
+
+<div class="panel-kicker">
+Frequently Asked Questions
+</div>
+
+<h2>Valorant Sensitivity Converter FAQ</h2>
+
+<details class="faq">
+<summary>How do I convert Valorant sensitivity to CS2?</summary>
+<p>
+Multiply your Valorant sensitivity by
+approximately 3.1818 using the default
+yaw values shown above. For example,
+0.35 Valorant sensitivity converts to
+approximately 1.1136 in CS2.
+</p>
+</details>
+
+<details class="faq">
+<summary>Is Valorant sensitivity the same as Apex Legends?</summary>
+<p>
+Not numerically. Using the default
+yaw values, Apex Legends and CS2
+share the same conversion factor
+from Valorant. Different game mechanics
+and FOV can still make aiming feel different.
+</p>
+</details>
+
+<details class="faq">
+<summary>What is a good eDPI for Valorant?</summary>
+<p>
+There is no universally ideal eDPI.
+Your preferred setting depends on
+mouse control, available desk space,
+playstyle and personal comfort.
+Test different settings rather than
+assuming one value is best for everyone.
+</p>
+</details>
+
+<details class="faq">
+<summary>What does cm/360 mean?</summary>
+<p>
+cm/360° measures the physical distance,
+in centimeters, that you move your mouse
+to rotate your view through one full
+360-degree turn.
+</p>
+</details>
+
+<details class="faq">
+<summary>Does changing DPI affect sensitivity?</summary>
+<p>
+Yes. If you increase your mouse DPI
+without reducing in-game sensitivity,
+your effective turning sensitivity
+will increase under comparable input settings.
+</p>
+</details>
+
+<details class="faq">
+<summary>Does the converter match ADS or scoped sensitivity?</summary>
+<p>
+No. This calculator estimates default
+hip-fire horizontal turning sensitivity.
+ADS and scoped sensitivity can involve
+additional multipliers and visual differences.
+</p>
+</details>
+
+<details class="faq">
+<summary>Is the PlayVanta Sensitivity Converter free?</summary>
+<p>
+Yes. The converter runs in your browser
+without requiring an account or payment.
+</p>
+</details>
+
+</section>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<aside>
+
+<section class="panel">
+
+<div class="art-tile"></div>
+
+<div class="panel-kicker">
+About Valorant
+</div>
+
+<h2>Precision Matters</h2>
+
+<p>
+Valorant is a tactical first-person
+shooter developed by Riot Games.
+Accurate crosshair placement and
+consistent mouse control are important
+parts of competitive gameplay.
+</p>
+
+<p>
+A comfortable sensitivity can help
+you develop more consistent aiming
+habits through practice.
+</p>
+
+</section>
+
+<section class="panel">
+
+<h3>Related Gaming Tools</h3>
+
+<div class="related">
+
+<a href="valorant-crosshair-generator.html">
+Valorant Crosshair Generator →
+</a>
+
+<a href="fps-frame-time-calculator.html">
+FPS & Frame Time Calculator →
+</a>
+
+<a href="cs2-economy-calculator.html">
+CS2 Economy Calculator →
+</a>
+
+<a href="index.html#tools">
+Browse All Gaming Tools →
+</a>
+
+</div>
+
+</section>
+
+<section class="panel">
+
+<div class="panel-kicker">
+PlayVanta
+</div>
+
+<h3>Every Game. One Hub.</h3>
+
+<p>
+Explore free gaming calculators
+for Valorant, Minecraft, Fortnite,
+Roblox, Counter-Strike 2,
+Genshin Impact, Rocket League and more.
+</p>
+
+<a class="btn" href="index.html">
+Explore PlayVanta →
+</a>
+
+</section>
+
+</aside>
+
+</div>
+</main>
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+<strong>
+PLAY<span>VANTA</span>
+</strong>
+
+<p>Every Game. One Hub.</p>
+
+<p>
+© <span id="year"></span> PlayVanta.
+Free gaming calculators and tools.
+</p>
+
+<p>
+PlayVanta is an independent fan-made website
+and is not affiliated with or endorsed by
+Riot Games, Valve, EA or Blizzard Entertainment.
+</p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const $ = id => document.getElementById(id);
+
+const yaw = {
+  valorant:0.07,
+  cs2:0.022,
+  apex:0.022,
+  overwatch:0.0066
+};
+
+const gameNames = {
+  valorant:"Valorant",
+  cs2:"Counter-Strike 2",
+  apex:"Apex Legends",
+  overwatch:"Overwatch 2"
+};
+
+let currentConverted = null;
+
+function formatNumber(number,decimals=4) {
+  return Number(number.toFixed(decimals)).toString();
+}
+
+function update() {
+
+  const from = $("from").value;
+  const to = $("to").value;
+
+  const sensInput = $("sens").value.trim();
+  const dpiInput = $("dpi").value.trim();
+
+  const sens = Number(sensInput);
+  const dpi = Number(dpiInput);
+
+  $("conversionLabel").textContent =
+    gameNames[from] + " → " + gameNames[to];
+
+  $("copyStatus").textContent = "";
+  $("error").textContent = "";
+
+  if (
+    sensInput === "" ||
+    dpiInput === "" ||
+    !Number.isFinite(sens) ||
+    !Number.isFinite(dpi) ||
+    sens <= 0 ||
+    dpi <= 0
+  ) {
+
+    currentConverted = null;
+
+    ["converted","edpi","cm","inch"].forEach(id=>{
+      $(id).textContent = "—";
+    });
+
+    $("error").textContent =
+      "Please enter a positive sensitivity and mouse DPI.";
+
+    return;
+  }
+
+  const converted =
+    sens * yaw[from] / yaw[to];
+
+  const edpi =
+    dpi * sens;
+
+  const cm =
+    914.4 / (dpi * sens * yaw[from]);
+
+  const inch =
+    cm / 2.54;
+
+  if (
+    !Number.isFinite(converted) ||
+    !Number.isFinite(edpi) ||
+    !Number.isFinite(cm) ||
+    !Number.isFinite(inch)
+  ) {
+    currentConverted = null;
+    ["converted","edpi","cm","inch"].forEach(id=>{
+      $(id).textContent = "—";
+    });
+    $("error").textContent =
+      "These values are outside the supported calculation range.";
+    return;
+  }
+
+  currentConverted = converted;
+
+  $("converted").textContent =
+    formatNumber(converted,6);
+
+  $("edpi").textContent =
+    formatNumber(edpi,2);
+
+  $("cm").textContent =
+    formatNumber(cm,2) + " cm";
+
+  $("inch").textContent =
+    formatNumber(inch,2) + " in";
+
+}
+
+/* AUTOMATIC CALCULATION */
+
+document.querySelectorAll(
+  "#from,#to,#sens,#dpi"
+).forEach(el=>{
+  el.addEventListener("input",update);
+});
+
+/* SWAP GAMES */
+
+$("swap").addEventListener("click",()=>{
+
+  const previousFrom = $("from").value;
+  const previousTo = $("to").value;
+
+  const convertedBeforeSwap = currentConverted;
+
+  $("from").value = previousTo;
+  $("to").value = previousFrom;
+
+  if (
+    convertedBeforeSwap !== null &&
+    Number.isFinite(convertedBeforeSwap)
+  ) {
+    $("sens").value =
+      formatNumber(convertedBeforeSwap,8);
+  }
+
+  update();
+
+});
+
+/* COPY RESULT */
+
+$("copy").addEventListener("click",async()=>{
+
+  if (currentConverted === null) {
+    $("copyStatus").textContent =
+      "Enter valid values before copying.";
+    return;
+  }
+
+  const text =
+    formatNumber(currentConverted,6);
+
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+    $("copyStatus").textContent =
+      "Converted sensitivity copied!";
+
+  } catch {
+
+    $("copyStatus").textContent =
+      "Automatic copying is unavailable. Select the result above and copy it manually.";
+
+  }
+
+});
+
+/* RESET */
+
+$("reset").addEventListener("click",()=>{
+
+  $("from").value = "valorant";
+  $("to").value = "cs2";
+  $("sens").value = "0.35";
+  $("dpi").value = "800";
+
+  update();
+
+});
+
+/* FOOTER YEAR */
+
+$("year").textContent =
+  new Date().getFullYear();
+
+/* INITIALIZE */
+
+update();
+
+</script>
+
+</body>
+</html>
