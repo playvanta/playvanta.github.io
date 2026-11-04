@@ -1,0 +1,428 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #060b22;
+  --panel: #0c1434;
+  --panel2: #111b43;
+  --text: #f7f7ff;
+  --muted: #b8c6e7;
+  --purple: #c64cff;
+  --pink: #fa71ee;
+  --cyan: #36e2ff;
+  --line: #884bd1;
+  --accent: #c64cff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 10% 15%, #38236d70, transparent 40%),
+    radial-gradient(ellipse at 90% 55%, #103e7b65, transparent 45%),
+    #05091c;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+
+.tool-shell {
+  max-width: 1500px;
+  margin: 8px auto 30px;
+  border: 1px solid #a65cff;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #070d29;
+  box-shadow: 0 0 28px #a43bff45;
+}
+
+.tool-nav {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 4%;
+  background: #070b22;
+  border-bottom: 1px solid #9854e5;
+}
+
+.tool-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 26px;
+  font-weight: 900;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.tool-brand img {
+  width: 39px !important;
+  height: 39px !important;
+  max-width: 39px !important;
+  max-height: 39px !important;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.tool-brand span span { color: #ef7cff; }
+
+.tool-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-nav-links a {
+  padding: 10px 13px;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 9px;
+}
+
+.tool-nav-links a:hover,
+.tool-nav-links a.active {
+  background: linear-gradient(120deg, #b72be9, #5924ce);
+  box-shadow: 0 0 14px #d54aff;
+}
+
+.tool-hero {
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  padding: 30px 5%;
+  background:
+    linear-gradient(90deg, #060a25ed, #0a0c2b88 60%, #0b0b2b55),
+    url("playvanta-hero.jpg") center/cover;
+  border-bottom: 1px solid #ac57ff;
+}
+
+.tool-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
+.tool-breadcrumb {
+  color: #d4d7f3;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.tool-eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tool-hero h1 {
+  margin: 9px 0 12px;
+  font-size: clamp(36px, 5vw, 67px);
+  line-height: 1.03;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  text-shadow: 0 4px 18px #0009;
+}
+
+.tool-hero h1 span {
+  background: linear-gradient(110deg, #ff8af4, #a97aff, #35d8ff);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.tool-hero p {
+  color: #e5e8ff;
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.tool-main { padding: 25px 4% 35px; }
+
+.tool-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(230px, .65fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.tool-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, #141d47f5, #090e2cf5);
+  box-shadow:
+    0 0 15px #a337ff30,
+    inset 0 0 20px #4d37a31c;
+}
+
+.tool-card h2 {
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #4c437b;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.tool-card h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.field { margin-bottom: 16px; }
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #6464ad;
+  border-radius: 9px;
+  background: #0a1233;
+  color: #fff;
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #e783ff;
+  box-shadow: 0 0 12px #be4cff55;
+}
+
+.field input[type="range"] {
+  padding: 0;
+  accent-color: var(--accent);
+}
+
+.field input[type="color"] {
+  padding: 3px;
+  height: 43px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field-value {
+  float: right;
+  color: #f69bff;
+}
+
+.tool-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 17px;
+  border: 1px solid #f58aff;
+  border-radius: 9px;
+  color: white;
+  background: linear-gradient(120deg, #b82ee8, #5e2bc6);
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 0 13px #b73cff77;
+}
+
+.tool-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px #d75aff;
+}
+
+.tool-button.secondary {
+  background: linear-gradient(120deg, #15396e, #1a2462);
+  border-color: #39dfff;
+}
+
+.tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tool-result {
+  display: grid;
+  align-content: center;
+  text-align: center;
+  min-height: 225px;
+  padding: 25px 15px;
+  border: 1px solid #724bba;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 30%, #642d9a60, transparent 70%),
+    #090e2b;
+}
+
+.result-label {
+  color: #c9d2ef;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.result-number {
+  display: block;
+  margin: 14px 0;
+  color: #5af0ff;
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0 18px #16baff99;
+}
+
+.result-sub {
+  color: #cbd7f5;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.tool-note {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #d1daf5;
+}
+
+.tool-note ul {
+  padding-left: 18px;
+}
+
+.tool-note li { margin-bottom: 10px; }
+
+.tool-presets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tool-presets button {
+  padding: 13px 8px;
+  border: 1px solid #7b65c7;
+  border-radius: 9px;
+  color: white;
+  background: #111a41;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tool-presets button:hover,
+.tool-presets button.active {
+  border-color: #ef83ff;
+  box-shadow: 0 0 13px #c94dff;
+}
+
+.crosshair-preview {
+  height: 290px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #6a68b2;
+  background:
+    linear-gradient(135deg, #132b40cc, #1a1d38cc),
+    url("playvanta-hero.jpg") center/cover;
+}
+
+.crosshair-preview svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.tool-section-title {
+  margin: 35px 0 16px;
+  font-size: 24px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.tool-directory {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.tool-directory a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #aa61f4;
+  border-radius: 11px;
+  background: #10183c;
+  transition: .2s;
+}
+
+.tool-directory a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 17px #c746ff;
+}
+
+.tool-directory img {
+  display: block;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.tool-directory strong {
+  display: block;
+  padding: 11px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.tool-footer {
+  padding: 24px;
+  text-align: center;
+  color: #b7c5e4;
+  background: #070b22;
+  border-top: 1px solid #8644c9;
+  font-size: 11px;
+}
+
+.tool-message {
+  min-height: 20px;
+  margin-top: 12px;
+  color: #71edff;
+  font-size: 12px;
+}
+
+@media(max-width: 1100px) {
+  .tool-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool-layout > :last-child { grid-column: 1/-1; }
+  .tool-directory { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media(max-width: 650px) {
+  .tool-nav { flex-wrap: wrap; }
+  .tool-nav-links { width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .tool-nav-links a { white-space: nowrap; }
+  .tool-hero { min-height: 260px; }
+  .tool-main { padding: 18px 4%; }
+  .tool-layout { grid-template-columns: 1fr; }
+  .tool-layout > :last-child { grid-column: auto; }
+  .tool-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field-row { grid-template-columns: 1fr; }
+  .crosshair-preview { height: 230px; }
+}
