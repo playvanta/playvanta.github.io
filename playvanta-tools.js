@@ -347,4 +347,10 @@ const setups={
 };
 
 initShell();
+
+if(info && current!=="crosshair"){
+  const preview=$("toolPreview");
+  if(preview)preview.innerHTML=result("Calculated result");
+}
+
 if(info && setups[current])setups[current]();
