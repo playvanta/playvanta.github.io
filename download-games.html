@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download Games – Discover PC & Mobile Games | PlayVanta</title>
+<meta name="description" content="Discover free and paid PC and mobile games on PlayVanta. Explore Valorant, Fortnite, Minecraft, Roblox, CS2 and more, with links to official game websites.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#070b1b">
+<link rel="canonical" href="https://playvanta.github.io/download-games.html">
+<link rel="icon" href="playvanta-logo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Discover & Download Games | PlayVanta">
+<meta property="og:description" content="Find your next game, visit official download sites and explore matching PlayVanta tools.">
+<meta property="og:url" content="https://playvanta.github.io/download-games.html">
+<style>
+:root{
+ --bg:#070b1b;--surface:#10182e;--line:#273653;
+ --text:#edf4ff;--muted:#9aaed0;--blue:#43baff;
+ --purple:#936aff
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif
+}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.site-header{
+ position:sticky;top:0;z-index:50;
+ background:#080d1eea;backdrop-filter:blur(18px);
+ border-bottom:1px solid #ffffff17
+}
+.nav{
+ max-width:1240px;margin:auto;padding:15px 24px;
+ display:flex;align-items:center;justify-content:space-between;gap:20px
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:1px;font-size:20px}
+.brand img{width:39px;height:39px;border-radius:10px;object-fit:cover}
+.brand b{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:23px;font-size:13px;font-weight:750}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{
+ background:linear-gradient(120deg,#176dbd,#6947c5);
+ border:1px solid #5abaff70;border-radius:11px;padding:12px 16px
+}
+.nav-links .nav-cta:hover{color:#fff;filter:brightness(1.15)}
+.hero{
+ position:relative;overflow:hidden;isolation:isolate;
+ min-height:530px;display:flex;align-items:center;
+ border-bottom:1px solid #ffffff1c
+}
+.hero::before{
+ content:"";position:absolute;inset:0;z-index:-3;
+ background:
+ radial-gradient(ellipse at 75% 35%,#6428c04d,transparent 45%),
+ radial-gradient(ellipse at 20% 70%,#0b87e34d,transparent 48%),
+ linear-gradient(135deg,#070b1b,#121a39 60%,#0a1026)
+}
+.hero::after{
+ content:"";position:absolute;inset:-70%;z-index:-2;
+ background:repeating-linear-gradient(
+  115deg,transparent 0 90px,#6bbdff08 91px 93px,transparent 94px 170px
+ );
+ animation:drift 24s linear infinite
+}
+@keyframes drift{to{transform:translate(160px,120px)}}
+.orb{
+ position:absolute;z-index:-1;border-radius:50%;
+ filter:blur(2px);opacity:.65;pointer-events:none
+}
+.orb.one{
+ width:310px;height:310px;right:8%;top:10%;
+ border:2px solid #6a6cff50;
+ box-shadow:0 0 90px #4e43e650,inset 0 0 80px #4848e525;
+ animation:float 7s ease-in-out infinite
+}
+.orb.two{
+ width:145px;height:145px;right:26%;bottom:4%;
+ border:2px solid #4fcfff70;
+ box-shadow:0 0 55px #20a8ff40;
+ animation:float 5s ease-in-out infinite reverse
+}
+@keyframes float{50%{transform:translateY(-28px) rotate(12deg)}}
+.hero-inner{width:100%;max-width:1240px;margin:auto;padding:90px 24px;position:relative}
+.eyebrow{
+ color:#80cfff;font-size:12px;font-weight:900;
+ text-transform:uppercase;letter-spacing:2.5px
+}
+.hero h1{
+ font-size:clamp(42px,7vw,84px);line-height:1.04;
+ letter-spacing:-3px;margin:18px 0 23px;max-width:800px
+}
+.gradient{
+ background:linear-gradient(90deg,#5cc9ff,#ac86ff);
+ -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{max-width:640px;color:#b5c7e4;font-size:17px;line-height:1.85}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ padding:14px 21px;border-radius:12px;font-size:13px;font-weight:850;
+ border:1px solid #ffffff30;transition:.2s
+}
+.btn.primary{background:linear-gradient(120deg,#168ee0,#7a52e3);border-color:#5ebaff80}
+.btn.secondary{background:#ffffff0c}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.13)}
+.container{max-width:1240px;margin:auto;padding:65px 24px}
+.section-kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#73c9ff}
+.section-heading{font-size:clamp(28px,4vw,43px);letter-spacing:-1.2px;margin:11px 0}
+.section-description{color:var(--muted);line-height:1.8;max-width:730px}
+.filters{
+ display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;
+ margin:30px 0 20px
+}
+.filters input,.filters select{
+ width:100%;background:#111b33;border:1px solid #344665;
+ border-radius:12px;color:#edf4ff;padding:15px;outline:none
+}
+.filters input:focus,.filters select:focus{border-color:#59bdff}
+.filters select option{background:#111b33}
+.count{font-size:12px;color:#9bb0d1;margin:0 0 20px}
+.game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.game-card{
+ border:1px solid #ffffff1d;background:linear-gradient(160deg,#17213c,#0d1429);
+ border-radius:19px;overflow:hidden;display:flex;flex-direction:column;
+ transition:transform .25s,border-color .25s,box-shadow .25s
+}
+.game-card:hover{
+ transform:translateY(-5px);border-color:#5daeff80;
+ box-shadow:0 18px 50px #0007
+}
+.game-art{
+ position:relative;height:180px;overflow:hidden;
+ background:linear-gradient(135deg,var(--game-color,#245cba),#0a1025)
+}
+.game-art img{
+ width:100%;height:100%;object-fit:cover;
+ transition:transform .4s
+}
+.game-card:hover img{transform:scale(1.06)}
+.game-art::after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(0deg,#0d1429,transparent 65%)
+}
+.game-badge{
+ position:absolute;top:14px;left:14px;z-index:1;
+ border:1px solid #ffffff40;background:#070d1edc;
+ border-radius:99px;padding:7px 10px;font-size:10px;font-weight:900
+}
+.game-body{padding:21px;display:flex;flex-direction:column;flex:1}
+.game-category{color:#86baff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1.4px}
+.game-body h3{font-size:22px;margin:9px 0}
+.game-body p{font-size:13px;line-height:1.75;color:#aebfda;flex:1}
+.game-meta{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
+.game-meta span{
+ border:1px solid #ffffff1b;background:#ffffff08;
+ padding:7px 9px;border-radius:7px;color:#bdcce3;font-size:10px
+}
+.game-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:auto}
+.game-actions a{
+ text-align:center;border-radius:10px;padding:12px 10px;
+ font-size:12px;font-weight:850;transition:.2s
+}
+.game-actions a:hover{filter:brightness(1.18)}
+.download-link{background:linear-gradient(120deg,#197bd0,#7651d7);border:1px solid #6abaff60}
+.tool-link{background:#17243d;border:1px solid #415476}
+.empty{
+ padding:35px;text-align:center;border:1px dashed #4b5a7c;
+ border-radius:14px;color:#adc1df;display:none
+}
+.feature{
+ margin-top:70px;padding:36px;border:1px solid #4c68a34d;
+ border-radius:20px;background:linear-gradient(115deg,#17254a,#211a45);
+ display:flex;justify-content:space-between;align-items:center;gap:25px
+}
+.feature h2{font-size:28px;margin:0 0 12px}
+.feature p{color:#b6c6e0;line-height:1.8;margin:0}
+.faq{max-width:850px;margin-top:60px}
+.faq details{padding:17px 0;border-bottom:1px solid #ffffff20}
+.faq summary{cursor:pointer;font-weight:800}
+.faq p{color:#b5c6df;line-height:1.8}
+footer{
+ padding:45px 24px;text-align:center;border-top:1px solid #ffffff1a;
+ color:#95a9c9;font-size:12px;line-height:1.8
+}
+footer strong{font-size:21px;color:#fff}
+footer strong span{color:#5bbdff}
+@media(max-width:900px){
+ .game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .filters{grid-template-columns:1fr 1fr}
+ .filters input{grid-column:1/-1}
+}
+@media(max-width:600px){
+ .nav{padding:12px 16px;flex-wrap:wrap}
+ .brand{font-size:17px}
+ .nav-links{gap:12px;font-size:11px;flex-wrap:wrap}
+ .nav-cta{padding:9px 11px}
+ .hero{min-height:440px}
+ .hero-inner{padding:65px 20px}
+ .hero h1{letter-spacing:-1.5px}
+ .container{padding:45px 16px}
+ .filters,.game-grid{grid-template-columns:1fr}
+ .filters input{grid-column:auto}
+ .feature{flex-direction:column;align-items:flex-start;padding:24px}
+ .orb.one{right:-130px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"CollectionPage",
+ "name":"Discover and Download Games – PlayVanta",
+ "url":"https://playvanta.github.io/download-games.html",
+ "description":"A curated directory of games with official download and store links.",
+ "isPartOf":{"@type":"WebSite","name":"PlayVanta","url":"https://playvanta.github.io/"}
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+<nav class="nav" aria-label="Main navigation">
+<a class="brand" href="index.html">
+<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+<span>PLAY<b>VANTA</b></span>
+</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="index.html#tools">Gaming Tools</a>
+<a class="nav-cta" href="download-games.html" aria-current="page">Download Games</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<div class="orb one"></div><div class="orb two"></div>
+<div class="hero-inner">
+<div class="eyebrow">PlayVanta / Game Discovery</div>
+<h1>YOUR NEXT <span class="gradient">GAME STARTS HERE.</span></h1>
+<p>Explore new worlds, find your next favorite game and visit its official download page. From competitive shooters to open-world adventures, discover what to play next.</p>
+<div class="hero-actions">
+<a class="btn primary" href="#games">Explore Games ↓</a>
+<a class="btn secondary" href="index.html#tools">Explore Gaming Tools</a>
+</div>
+</div>
+</section>
+
+<main class="container">
+<section id="games">
+<div class="section-kicker">Explore the Library</div>
+<h2 class="section-heading">Discover Your Next Game</h2>
+<p class="section-description">Browse a growing collection of PC and mobile games. Use the filters to find something you like, then follow the official website link to download, install or purchase it.</p>
+
+<div class="filters">
+<input id="search" type="search" placeholder="Search games, genres or keywords..." aria-label="Search games">
+<select id="genre" aria-label="Filter by genre">
+<option value="all">All Genres</option>
+<option value="Shooter">Shooter</option>
+<option value="Sandbox">Sandbox</option>
+<option value="RPG">RPG</option>
+<option value="MOBA">MOBA</option>
+<option value="Sports">Sports</option>
+<option value="Adventure">Adventure</option>
+<option value="Strategy">Strategy</option>
+</select>
+<select id="platform" aria-label="Filter by platform">
+<option value="all">All Platforms</option>
+<option value="PC">PC</option>
+<option value="Mobile">Mobile</option>
+<option value="Console">Console</option>
+</select>
+</div>
+<p class="count" id="count" role="status"></p>
+<div class="game-grid" id="gameGrid"></div>
+<div class="empty" id="empty">No games match your search. Try another keyword or filter.</div>
+</section>
+
+<section class="feature">
+<div>
+<div class="section-kicker">More Than Downloads</div>
+<h2>Play Smarter with PlayVanta</h2>
+<p>Found a new game? Explore calculators and guides designed to help you understand its mechanics, improve performance and plan your progress.</p>
+</div>
+<a class="btn primary" href="index.html#tools">Browse All Tools →</a>
+</section>
+
+<section class="faq">
+<div class="section-kicker">Frequently Asked Questions</div>
+<h2 class="section-heading">About Downloading Games</h2>
+<details><summary>Does PlayVanta host game downloads?</summary><p>No. PlayVanta is a game discovery directory. Download links lead to official game, publisher or platform websites.</p></details>
+<details><summary>Are all the games free?</summary><p>No. Games are labeled Free-to-Play or Paid. Pricing and availability can vary by region, platform and edition.</p></details>
+<details><summary>Are the download links safe?</summary><p>We aim to link only to official websites and authorized storefronts. Always verify the destination and follow the publisher's installation instructions.</p></details>
+<details><summary>Will more games be added?</summary><p>Yes. The directory is designed to expand as PlayVanta adds more games, calculators and guides.</p></details>
+</section>
+</main>
+
+<footer>
+<strong>PLAY<span>VANTA</span></strong>
+<p>Every Game. One Hub.</p>
+<p>Game trademarks and artwork belong to their respective owners. PlayVanta is an independent discovery website and is not affiliated with the listed publishers.</p>
+<p>© <span id="year"></span> PlayVanta</p>
+</footer>
+
+<script>
+/*
+ ADD NEW GAMES HERE.
+ Each object creates one game card automatically.
+
+ Official URLs should be checked periodically.
+ Images use official publisher/CDN artwork where available.
+*/
+
+const games=[
+{
+ name:"Valorant",
+ genre:"Shooter",
+ platforms:["PC","Console"],
+ price:"Free-to-Play",
+ description:"A tactical 5v5 shooter combining precise gunplay with unique agent abilities.",
+ url:"https://playvalorant.com/",
+ image:"https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png",
+ color:"#e24a65",
+ tool:"valorant-crosshair-generator.html",
+ toolName:"Crosshair Generator"
+},
+{
+ name:"Fortnite",
+ genre:"Shooter",
+ platforms:["PC","Mobile","Console"],
+ price:"Free-to-Play",
+ description:"Explore a constantly evolving world of Battle Royale, creative experiences and multiplayer action.",
+ url:"https://www.fortnite.com/download",
+ image:"https://cdn2.unrealengine.com/fortnite-chapter-5-season-1-key-art-1920x1080-1920x1080-8d7b0c0a1c2b.jpg",
+ color:"#6855d9",
+ tool:"fortnite-xp-calculator.html",
+ toolName:"XP Calculator"
+},
+{
+ name:"Minecraft",
+ genre:"Sandbox",
+ platforms:["PC","Mobile","Console"],
+ price:"Paid",
+ description:"Build, explore and survive in an open-ended block world full of creativity and adventure.",
+ url:"https://www.minecraft.net/en-us/download",
+ image:"https://static.actugaming.net/media/2024/09/minecraft-key-art-ps5.webp",
+ color:"#33895d",
+ tool:"minecraft-nether-calculator.html",
+ toolName:"Nether Calculator"
+},
+{
+ name:"Roblox",
+ genre:"Sandbox",
+ platforms:["PC","Mobile","Console"],
+ price:"Free-to-Play",
+ description:"Discover millions of user-created experiences, from roleplaying worlds to competitive games.",
+ url:"https://www.roblox.com/download",
+ image:"https://prod.assets.earlygamecdn.com/images/RobloxActiveCodes_2023-04-03-130932_hzxi.jpg?transform=Article+Webp",
+ color:"#54789a",
+ tool:"roblox-robux-tax-calculator.html",
+ toolName:"Robux Calculator"
+},
+{
+ name:"Counter-Strike 2",
+ genre:"Shooter",
+ platforms:["PC"],
+ price:"Free-to-Play",
+ description:"A competitive tactical shooter built around teamwork, economy management and precision.",
+ url:"https://store.steampowered.com/app/730/CounterStrike_2/",
+ image:"https://shadow.tech/app/uploads/2024/12/COUNTERSTRIKE2_KEYART-min.jpg",
+ color:"#c48a38",
+ tool:"cs2-economy-calculator.html",
+ toolName:"Economy Calculator"
+},
+{
+ name:"Genshin Impact",
+ genre:"RPG",
+ platforms:["PC","Mobile","Console"],
+ price:"Free-to-Play",
+ description:"Explore the fantasy world of Teyvat in an open-world action RPG with elemental combat.",
+ url:"https://genshin.hoyoverse.com/",
+ image:"https://static.animecorner.me/2021/07/genshin-impact-packshot-01-en-18jun21.jpg",
+ color:"#9473c9",
+ tool:"genshin-wish-calculator.html",
+ toolName:"Wish Calculator"
+},
+{
+ name:"Rocket League",
+ genre:"Sports",
+ platforms:["PC","Console"],
+ price:"Free-to-Play",
+ description:"High-speed vehicular soccer with competitive matches and spectacular aerial plays.",
+ url:"https://www.rocketleague.com/",
+ image:"https://www.target-experience.fr/images/2025/09/10/rl_evergreen-bufux3ml2.jpg",
+ color:"#247ad2",
+ tool:"rocket-league-rank-tracker.html",
+ toolName:"MMR Goal Tracker"
+},
+{
+ name:"League of Legends",
+ genre:"MOBA",
+ platforms:["PC"],
+ price:"Free-to-Play",
+ description:"A team-based strategy game where champions compete to destroy the opposing Nexus.",
+ url:"https://www.leagueoflegends.com/",
+ image:"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
+ color:"#ac8748",
+ tool:"lol-lp-calculator.html",
+ toolName:"LP Calculator"
+},
+{
+ name:"Apex Legends",
+ genre:"Shooter",
+ platforms:["PC","Console"],
+ price:"Free-to-Play",
+ description:"A fast-paced squad-based battle royale featuring Legends with distinct abilities.",
+ url:"https://www.ea.com/games/apex-legends",
+ image:"",
+ color:"#c64c4d",
+ tool:"valorant-sensitivity-converter.html",
+ toolName:"Sensitivity Converter"
+},
+{
+ name:"Overwatch 2",
+ genre:"Shooter",
+ platforms:["PC","Console"],
+ price:"Free-to-Play",
+ description:"A team-based hero shooter with a diverse cast of characters and objective-driven matches.",
+ url:"https://overwatch.blizzard.com/",
+ image:"",
+ color:"#dc8b36",
+ tool:"valorant-sensitivity-converter.html",
+ toolName:"Sensitivity Converter"
+},
+{
+ name:"Dota 2",
+ genre:"MOBA",
+ platforms:["PC"],
+ price:"Free-to-Play",
+ description:"A deep multiplayer strategy game featuring powerful heroes and competitive team battles.",
+ url:"https://store.steampowered.com/app/570/Dota_2/",
+ image:"",
+ color:"#9b3939",
+ tool:"",
+ toolName:""
+},
+{
+ name:"Warframe",
+ genre:"Shooter",
+ platforms:["PC","Mobile","Console"],
+ price:"Free-to-Play",
+ description:"A cooperative sci-fi action game featuring fast movement, missions and customizable Warframes.",
+ url:"https://www.warframe.com/",
+ image:"",
+ color:"#477b9e",
+ tool:"",
+ toolName:""
+},
+{
+ name:"The Sims 4",
+ genre:"Sandbox",
+ platforms:["PC","Console"],
+ price:"Free-to-Play",
+ description:"Create characters, build homes and explore everyday life in a simulation sandbox.",
+ url:"https://www.ea.com/games/the-sims/the-sims-4",
+ image:"",
+ color:"#3d9e7b",
+ tool:"",
+ toolName:""
+},
+{
+ name:"Stardew Valley",
+ genre:"Adventure",
+ platforms:["PC","Mobile","Console"],
+ price:"Paid",
+ description:"Build a farm, explore caves, make friends and enjoy a relaxed countryside adventure.",
+ url:"https://www.stardewvalley.net/",
+ image:"",
+ color:"#4e9c62",
+ tool:"",
+ toolName:""
+},
+{
+ name:"Honkai: Star Rail",
+ genre:"RPG",
+ platforms:["PC","Mobile","Console"],
+ price:"Free-to-Play",
+ description:"A space-fantasy role-playing game featuring turn-based combat and story-driven exploration.",
+ url:"https://hsr.hoyoverse.com/",
+ image:"",
+ color:"#6750b3",
+ tool:"",
+ toolName:""
+},
+{
+ name:"Teamfight Tactics",
+ genre:"Strategy",
+ platforms:["PC","Mobile"],
+ price:"Free-to-Play",
+ description:"Build a team of champions and compete in strategic auto-battler matches.",
+ url:"https://teamfighttactics.leagueoflegends.com/",
+ image:"",
+ color:"#8b67d0",
+ tool:"",
+ toolName:""
+}
+];
+
+const $=id=>document.getElementById(id);
+
+function createCard(game){
+ const card=document.createElement("article");
+ card.className="game-card";
+ card.style.setProperty("--game-color",game.color);
+
+ const art=document.createElement("div");
+ art.className="game-art";
+
+ if(game.image){
+  const img=document.createElement("img");
+  img.src=game.image;
+  img.alt=game.name+" game artwork";
+  img.loading="lazy";
+  img.onerror=()=>{img.remove();art.classList.add("fallback")};
+  art.append(img);
+ }
+
+ const badge=document.createElement("span");
+ badge.className="game-badge";
+ badge.textContent=game.price;
+ art.append(badge);
+
+ const body=document.createElement("div");
+ body.className="game-body";
+
+ const category=document.createElement("div");
+ category.className="game-category";
+ category.textContent=game.genre;
+
+ const title=document.createElement("h3");
+ title.textContent=game.name;
+
+ const description=document.createElement("p");
+ description.textContent=game.description;
+
+ const meta=document.createElement("div");
+ meta.className="game-meta";
+ game.platforms.forEach(platform=>{
+  const span=document.createElement("span");
+  span.textContent=platform;
+  meta.append(span);
+ });
+
+ const actions=document.createElement("div");
+ actions.className="game-actions";
+
+ const download=document.createElement("a");
+ download.className="download-link";
+ download.href=game.url;
+ download.target="_blank";
+ download.rel="noopener noreferrer";
+ download.textContent=game.price==="Paid"?
+  "Official Website / Store ↗":"Official Download Website ↗";
+ download.setAttribute("aria-label","Visit official website for "+game.name);
+ actions.append(download);
+
+ if(game.tool){
+  const tool=document.createElement("a");
+  tool.className="tool-link";
+  tool.href=game.tool;
+  tool.textContent="PlayVanta: "+game.toolName+" →";
+  actions.append(tool);
+ }
+
+ body.append(category,title,description,meta,actions);
+ card.append(art,body);
+ return card;
+}
+
+function render(){
+ const query=$("search").value.trim().toLowerCase();
+ const genre=$("genre").value;
+ const platform=$("platform").value;
+
+ const filtered=games.filter(game=>{
+  const matchesSearch=(
+   game.name+" "+game.genre+" "+game.description+" "+game.platforms.join(" ")
+  ).toLowerCase().includes(query);
+  return matchesSearch&&
+   (genre==="all"||game.genre===genre)&&
+   (platform==="all"||game.platforms.includes(platform));
+ });
+
+ $("gameGrid").replaceChildren(...filtered.map(createCard));
+ $("count").textContent=filtered.length+" of "+games.length+" games";
+ $("empty").style.display=filtered.length?"none":"block";
+}
+
+["search","genre","platform"].forEach(id=>{
+ $(id).addEventListener("input",render);
+});
+
+$("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
