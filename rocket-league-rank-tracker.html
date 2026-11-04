@@ -2,79 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rocket League Rank Tracker – MMR Goal Calculator | PlayVanta</title>
-<meta name="description" content="Free Rocket League rank progress tracker. Estimate MMR needed for your next goal, wins required and progress using custom rating targets and win/loss assumptions.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/rocket-league-rank-tracker.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-<style>
-body{--accent:#61c9ff;--hero-art:url('https://www.target-experience.fr/images/2025/09/10/rl_evergreen-bufux3ml2.jpg')}
-.pv-guide p{line-height:1.8}.pv-faq{border-bottom:1px solid #ffffff20;padding:15px 0}.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-btn{margin-top:18px;border:1px solid #61c9ff70;border-radius:10px;background:#214d70;color:white;font-weight:800;padding:12px 18px;cursor:pointer}
-.pv-progress{height:13px;border-radius:20px;background:#1b2941;overflow:hidden;margin-top:14px}.pv-fill{height:100%;width:0;background:linear-gradient(90deg,#347cff,#61e1ff);transition:width .2s}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Rocket League MMR Goal Tracker","url":"https://playvanta.github.io/rocket-league-rank-tracker.html","applicationCategory":"GameApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rocket League Rank Tracker | PlayVanta</title>
+<meta name="description" content="Estimate your Rocket League rank progress and track the tiers between your current and target ranks.">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">Rocket League / Competitive Progress</div><h1>Rocket League Rank <span>Tracker</span></h1><p>Set an MMR goal, estimate how many wins you need and plan your climb through competitive Rocket League.</p><div class="hero-tags"><span>MMR Goals</span><span>Win Estimates</span><span>Manual Tracking</span></div></div></section>
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel"><div class="panel-kicker">Competitive Goal Planner</div><h2>Rocket League MMR Calculator</h2><p>Enter your rating and a target MMR. These are user-provided numbers, not automatically retrieved rankings.</p>
-<div class="field-grid">
-<div class="field"><label for="playlist">Playlist</label><select id="playlist"><option>1v1 Duel</option><option selected>2v2 Doubles</option><option>3v3 Standard</option><option>Other Playlist</option></select></div>
-<div class="field"><label for="current">Current MMR</label><input id="current" type="number" min="0" step="1" value="900"></div>
-<div class="field"><label for="target">Target MMR</label><input id="target" type="number" min="0" step="1" value="1100"></div>
-<div class="field"><label for="gain">Estimated MMR Gained per Win</label><input id="gain" type="number" min="0.1" step="any" value="9"></div>
-<div class="field"><label for="loss">Estimated MMR Lost per Loss</label><input id="loss" type="number" min="0.1" step="any" value="9"></div>
-<div class="field"><label for="rate">Expected Win Rate (%)</label><input id="rate" type="number" min="0" max="100" step="any" value="60"></div>
+<body data-tool="rocket" style="--accent:#38baff">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 </div>
-<div class="results">
-<div class="metric"><span>MMR to Goal</span><strong id="remaining">—</strong></div>
-<div class="metric"><span>Wins If Unbeaten</span><strong id="wins">—</strong></div>
-<div class="metric"><span>Expected MMR per Match</span><strong id="net">—</strong></div>
-<div class="metric"><span>Estimated Matches to Goal</span><strong id="matches">—</strong></div>
+</nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Compare your current Rocket League rank with your target and estimate how much progress remains.</p>
 </div>
-<div class="pv-progress"><div class="pv-fill" id="bar"></div></div>
-<p class="note" id="status">Estimates assume constant MMR changes per result. Real MMR gains, losses and rank thresholds vary.</p>
-<button type="button" class="pv-btn" id="reset">Reset Tracker</button>
-</section>
-<section class="panel pv-guide"><h2>How Rocket League MMR Works</h2>
-<p>Matchmaking Rating, or MMR, is a numerical rating used by Rocket League's matchmaking system. Visible competitive ranks relate to rating, but thresholds can vary by playlist and season.</p>
-<h3>MMR Needed for Your Goal</h3><p><strong>MMR Remaining = Target MMR − Current MMR.</strong></p>
-<h3>Wins Needed Without Losses</h3><p>Divide the remaining MMR by your assumed gain per win and round up. This gives a simple best-case estimate if you win every match.</p>
-<h3>Estimating Progress with a Win Rate</h3><p><strong>Expected MMR per Match = (Win Rate × MMR per Win) − (Loss Rate × MMR per Loss).</strong></p>
-<p>If the result is positive, the calculator estimates the number of matches required. If it is zero or negative, your assumptions do not produce an upward trend.</p>
-<h3>Important Limitations</h3><p>This calculator is not an official rank lookup. It does not retrieve your Epic Games account, verify live rank thresholds or predict matchmaking outcomes.</p>
-</section>
-<section class="panel pv-guide"><h2>Rocket League Rank Tracker FAQ</h2>
-<details class="pv-faq"><summary>Does this show my live Rocket League rank?</summary><p>No. You manually enter your MMR and goal.</p></details>
-<details class="pv-faq"><summary>How much MMR do I gain per win?</summary><p>It varies. The default value is an editable assumption, not a guaranteed gain.</p></details>
-<details class="pv-faq"><summary>Are rank thresholds the same every season?</summary><p>Not necessarily. Rank distributions and thresholds can change by season and playlist.</p></details>
-<details class="pv-faq"><summary>Can I use this for 1v1, 2v2 and 3v3?</summary><p>Yes. Enter the appropriate rating and target for the selected playlist.</p></details>
-</section></div>
-<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">Competitive Rocket League</div><h2>Plan Your Climb</h2><p>Set a rating goal and understand the effect of your assumed win rate.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="lol-lp-calculator.html">LoL LP Calculator →</a><a href="fortnite-xp-calculator.html">Fortnite XP Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside></div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made website. Not affiliated with Psyonix or Epic Games.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-function update(){
- const ids=["current","target","gain","loss","rate"];
- const v=Object.fromEntries(ids.map(id=>[id,Number($(id).value)]));
- const valid=ids.every(id=>$(id).value.trim()!==""&&Number.isFinite(v[id]))&&v.current>=0&&v.target>0&&v.gain>0&&v.loss>0&&v.rate>=0&&v.rate<=100;
- if(!valid){["remaining","wins","net","matches"].forEach(id=>$(id).textContent="—");$("bar").style.width="0%";return}
- const remaining=Math.max(0,v.target-v.current);
- const net=v.rate/100*v.gain-(1-v.rate/100)*v.loss;
- $("remaining").textContent=remaining.toFixed(0);
- $("wins").textContent=Math.ceil(remaining/v.gain).toLocaleString();
- $("net").textContent=net.toFixed(2);
- $("matches").textContent=remaining===0?"Goal reached":net>0?Math.ceil(remaining/net).toLocaleString():"No upward trend";
- $("bar").style.width=Math.min(100,v.current/v.target*100)+"%";
- $("status").textContent=remaining===0?"Your entered MMR meets or exceeds the goal.":"Manual projection only. Actual rating changes and win rates may differ.";
-}
-["playlist","current","target","gain","loss","rate"].forEach(id=>$(id).addEventListener("input",update));
-$("reset").onclick=()=>{$("playlist").selectedIndex=1;$("current").value=900;$("target").value=1100;$("gain").value=9;$("loss").value=9;$("rate").value=60;update()};
-update();
-</script></body></html>
+</header>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>🏆 Rank Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ Rank Progress</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Ranking Guide</h2><div class="tool-note" id="toolTips"></div></aside>
+</div>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+<script src="playvanta-tools.js?v=1" defer></script>
+</body>
+</html>
