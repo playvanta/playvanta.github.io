@@ -6,10 +6,16 @@
     <loc>https://playvanta.github.io/</loc>
   </url>
 
-  <!-- Valorant -->
+  <!-- Game Discovery -->
+  <url>
+    <loc>https://playvanta.github.io/download-games.html</loc>
+  </url>
+
+  <!-- Valorant Tools -->
   <url>
     <loc>https://playvanta.github.io/valorant-crosshair-generator.html</loc>
   </url>
+
   <url>
     <loc>https://playvanta.github.io/valorant-sensitivity-converter.html</loc>
   </url>
@@ -17,6 +23,11 @@
   <!-- Minecraft -->
   <url>
     <loc>https://playvanta.github.io/minecraft-nether-calculator.html</loc>
+  </url>
+
+  <!-- PC Gaming -->
+  <url>
+    <loc>https://playvanta.github.io/fps-frame-time-calculator.html</loc>
   </url>
 
   <!-- Fortnite -->
@@ -47,11 +58,6 @@
   <!-- League of Legends -->
   <url>
     <loc>https://playvanta.github.io/lol-lp-calculator.html</loc>
-  </url>
-
-  <!-- PC Gaming -->
-  <url>
-    <loc>https://playvanta.github.io/fps-frame-time-calculator.html</loc>
   </url>
 
 </urlset>
