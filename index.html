@@ -5,316 +5,273 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PlayVanta | Every Game. One Hub.</title>
-<meta name="description" content="Explore free gaming calculators, featured games and official game download links. Valorant, Fortnite, Minecraft, Roblox and more at PlayVanta.">
-<meta name="theme-color" content="#070b20">
-<meta name="robots" content="index,follow">
+<meta name="description" content="PlayVanta is your hub for gaming calculators, game discovery, and official game download links.">
 <link rel="canonical" href="https://playvanta.github.io/">
 <link rel="icon" href="playvanta-logo.jpg">
+<meta name="theme-color" content="#080b23">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#060b21;--ink:#f6f3ff;--muted:#bdc8ed;
- --pink:#f36aff;--purple:#a345ff;--cyan:#29ddff;
- --border:#9859ec80;
+ --bg:#070b22;--pink:#f579ff;--purple:#a943ff;
+ --cyan:#27e5ff;--text:#fff;--muted:#c8d2f2;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;color:var(--ink);
- font-family:Inter,Arial,sans-serif;
- background:
- radial-gradient(ellipse at 10% 28%,#073e8a88,transparent 38%),
- radial-gradient(ellipse at 88% 10%,#59139a55,transparent 40%),
- linear-gradient(130deg,#060a1c,#0a1539 55%,#09071d);
+ margin:0;color:var(--text);font-family:Inter,Arial,sans-serif;
+ background:#05081b;
 }
-a{color:inherit;text-decoration:none}
+a{text-decoration:none;color:inherit}
 button,input{font:inherit}
 button{cursor:pointer}
 .site{
  max-width:1500px;margin:auto;overflow:hidden;
- border-left:1px solid #b46aff88;
- border-right:1px solid #b46aff88;
- box-shadow:0 0 60px #5612b844;
+ border-left:1px solid #b56dff;
+ border-right:1px solid #b56dff;
+ background:
+ radial-gradient(ellipse at 15% 36%,#0a4f9c77,transparent 38%),
+ radial-gradient(ellipse at 90% 15%,#5e1baf66,transparent 40%),
+ linear-gradient(#080d28,#071431 65%,#0b0b29);
 }
 nav{
- position:sticky;top:0;z-index:30;
+ position:sticky;top:0;z-index:50;
  display:flex;align-items:center;justify-content:space-between;
- gap:12px;padding:11px 4%;
- background:#080b20ed;backdrop-filter:blur(18px);
- border-bottom:1px solid #955aff99;
+ gap:12px;padding:10px 4%;
+ background:#080a20ed;backdrop-filter:blur(18px);
+ border-bottom:1px solid #9e5ce8;
 }
-.logo{
- display:flex;align-items:center;gap:9px;
- font:italic 900 25px Inter,sans-serif;white-space:nowrap;
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}
+.brand img{width:38px;height:38px;border-radius:9px;object-fit:cover}
+.brand em{color:var(--pink);font-style:inherit}
+nav .links{display:flex;gap:5px;align-items:center}
+nav .links a{
+ font-size:11px;font-weight:800;padding:10px 12px;
+ border-radius:9px;white-space:nowrap;transition:.2s
 }
-.logo img{width:38px;height:38px;object-fit:cover;border-radius:9px}
-.logo em{color:#f279ff;font-style:inherit}
-.navlinks{display:flex;align-items:center;flex-wrap:wrap;gap:5px}
-.navlinks a{
- font-size:12px;font-weight:800;padding:10px 12px;
- border-radius:9px;transition:.2s
-}
-.navlinks a:hover,.navlinks a.active{
- background:linear-gradient(125deg,#aa32e8,#6224d6);
- box-shadow:0 0 15px #e15affaa;
-}
-.navlinks .download{
- background:#511b9577;border:1px solid #a76eff88
+nav .links a:hover,nav .links a.active{
+ background:linear-gradient(120deg,#b72deb,#6025c7);
+ box-shadow:0 0 15px #e24cffbb
 }
 .hero{
- position:relative;min-height:440px;
- display:flex;align-items:center;isolation:isolate;
- overflow:hidden;
+ min-height:510px;position:relative;isolation:isolate;
+ overflow:hidden;display:flex;align-items:center;
  background:
- radial-gradient(circle at 80% 30%,#a132ec55,transparent 34%),
- radial-gradient(circle at 48% 70%,#0d8cfa33,transparent 42%),
- linear-gradient(115deg,#060b25,#0b2353 60%,#160b35);
-}
-.hero:before{
- content:"";position:absolute;inset:0;z-index:-3;
- background-image:url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=85");
- background-size:cover;background-position:center;
- opacity:.34;
+ linear-gradient(90deg,#060a1df2 0%,#06132ad1 45%,#070e2670 100%),
+ url("images/home-background.jpg") center/cover no-repeat,
+ linear-gradient(125deg,#080b24,#122e69,#42126d);
 }
 .hero:after{
  content:"";position:absolute;inset:0;z-index:-1;
- background:linear-gradient(90deg,#050a1bf5 0%,#07102adf 42%,#08142c55 80%),
- linear-gradient(0deg,#07112d,transparent 30%);
+ background:linear-gradient(0deg,#07142f 0%,transparent 35%)
 }
-.orbit{
- position:absolute;right:8%;top:8%;
- width:330px;aspect-ratio:1;border-radius:50%;
- border:2px solid #b04dff77;
- box-shadow:0 0 65px #852cff66,inset 0 0 55px #27bfff44;
- animation:pulse 6s ease-in-out infinite;z-index:-2;
+.hero-art{
+ position:absolute;right:0;bottom:0;width:56%;height:100%;
+ background:url("images/home-character.png") center bottom/contain no-repeat;
+ filter:drop-shadow(0 0 30px #a32aff77);
+ pointer-events:none;z-index:0
 }
-.orbit:before{
- content:"";position:absolute;inset:30px;border-radius:50%;
- border:2px dashed #50eaff88;animation:spin 22s linear infinite
-}
-@keyframes pulse{50%{transform:scale(1.09);opacity:.6}}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hero-inner{
- position:relative;width:100%;max-width:1400px;
- margin:auto;padding:54px 5%;
-}
-.hero-content{max-width:690px}
+.hero-inner{position:relative;z-index:1;width:100%;padding:55px 5%}
+.hero-copy{max-width:650px}
 .eyebrow{
- color:#49e9ff;font-size:12px;font-weight:900;
- letter-spacing:3px;text-transform:uppercase
+ color:#37ebff;font-size:12px;letter-spacing:3px;
+ font-weight:900;margin-bottom:16px
 }
-h1,h2,h3,p{margin-top:0}
 h1{
- font-size:clamp(48px,6vw,87px);font-weight:900;
- font-style:italic;letter-spacing:-3px;line-height:1.02;
- margin:15px 0 20px;text-shadow:0 5px 20px #000b
+ font-size:clamp(50px,6vw,91px);line-height:1;
+ font-weight:900;font-style:italic;letter-spacing:-3px;
+ margin:0 0 22px;text-shadow:0 5px 18px #000d
 }
 .gradient{
- background:linear-gradient(100deg,#ff8af7,#b767ff,#54caff);
- -webkit-background-clip:text;background-clip:text;color:transparent
+ background:linear-gradient(100deg,#ff8bf9,#b56cff,#4cd6ff);
+ color:transparent;background-clip:text;-webkit-background-clip:text
 }
-.hero p{max-width:560px;color:#d6e3ff;line-height:1.8;font-size:14px}
-.ctas{display:flex;gap:13px;flex-wrap:wrap;margin-top:24px}
+.hero p{
+ max-width:490px;color:#f0f3ff;font-size:14px;
+ line-height:1.8;text-shadow:0 2px 8px #000
+}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:25px}
 .btn{
- display:inline-flex;justify-content:center;align-items:center;
- gap:8px;padding:12px 18px;border-radius:10px;
- font-size:12px;font-weight:900;border:1px solid #b36eff;
- transition:transform .2s,box-shadow .2s,filter .2s
-}
-.btn:hover{transform:translateY(-3px);filter:brightness(1.15)}
-.btn.purple{
- background:linear-gradient(110deg,#a11de3,#622de1);
- box-shadow:0 0 16px #d341ff99,inset 0 0 12px #ffffff22
-}
-.btn.cyan{
- background:linear-gradient(110deg,#034b8e,#0473b2);
- border-color:#32e7ff;box-shadow:0 0 16px #09d7ff77
-}
-.btn.small{padding:10px 13px}
-main{padding:0 4% 30px}
-.quick{
- display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
- gap:13px;position:relative;z-index:2;margin:-25px 0 28px
-}
-.quick a{
- min-height:125px;display:flex;flex-direction:column;
- align-items:center;justify-content:center;text-align:center;
- padding:16px 10px;border-radius:13px;
- border:1px solid #ed7cff;
- background:linear-gradient(145deg,#4d145dcb,#181a45f5 65%);
- box-shadow:0 0 20px #b526e744,inset 0 0 22px #df57ff16;
+ display:inline-flex;align-items:center;justify-content:center;
+ gap:8px;padding:13px 20px;border-radius:10px;
+ border:1px solid #ff9aff;font-size:12px;font-weight:900;
+ background:linear-gradient(115deg,#c026e9,#7227d5);
+ box-shadow:0 0 17px #ed4bff99,inset 0 0 10px #ffffff22;
  transition:.25s
 }
-.quick a:hover{
- transform:translateY(-7px);border-color:#ffb2ff;
- box-shadow:0 0 29px #ed58ff99
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 27px #f56aff}
+.btn.cyan{
+ background:linear-gradient(110deg,#075184,#066aa4);
+ border-color:#35eaff;box-shadow:0 0 16px #23dfff99
 }
-.quick .ico{font-size:31px;color:#ff86f9;line-height:1.2;margin-bottom:8px}
-.quick strong{font-size:13px}
-.quick small{font-size:10px;color:#e3c8f5;margin-top:5px}
-.section{margin:26px 0 36px}
-.section-head{
+main{padding:0 4% 35px}
+.quick{
+ position:relative;z-index:3;
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:13px;margin:-38px 0 32px
+}
+.quick-card{
+ display:flex;flex-direction:column;align-items:center;
+ justify-content:center;text-align:center;min-height:145px;
+ padding:16px 12px;border-radius:14px;
+ border:1px solid #e97dff;
+ background:linear-gradient(145deg,#52216d,#171c43 70%);
+ box-shadow:0 0 18px #bb36ff66,inset 0 0 20px #f96aff15;
+ transition:.25s
+}
+.quick-card:hover{transform:translateY(-7px);box-shadow:0 0 28px #ef60ff}
+.quick-card .icon{font-size:30px;color:#ff86fa;margin-bottom:7px}
+.quick-card strong{font-size:13px}
+.quick-card small{font-size:10px;color:#e6d5f8;margin:5px 0 12px}
+.quick-card .mini{
+ display:block;width:100%;max-width:180px;padding:8px 10px;
+ border-radius:8px;background:linear-gradient(100deg,#b02bdc,#652bc9);
+ border:1px solid #ff8cff;font-size:10px;font-weight:900;
+ box-shadow:0 0 12px #d54bff88
+}
+section{margin:30px 0 38px}
+.heading{
  display:flex;justify-content:space-between;
- align-items:end;gap:15px;margin-bottom:17px
+ align-items:end;gap:12px;margin-bottom:17px
 }
-.section h2{
- font-size:clamp(24px,3vw,34px);font-weight:900;
- font-style:italic;margin:0 0 5px
+.heading h2{
+ font-size:clamp(25px,3vw,35px);font-style:italic;
+ font-weight:900;margin:0 0 5px
 }
-.section p{color:#b9c9ec;font-size:12px;margin:0}
-.section-head>a{font-size:12px;font-weight:900;color:#fa89ff}
-.feature-wrap{position:relative}
+.heading p{color:var(--muted);font-size:12px;margin:0}
+.heading>a{color:#f88aff;font-size:12px;font-weight:900}
 .featured{
- display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
- gap:12px
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px
 }
-.game{
- position:relative;overflow:hidden;border-radius:13px;
- border:1px solid #ad67f2aa;
- background:#151c40;min-height:175px;
- box-shadow:0 7px 22px #0006;transition:.25s
+.feature-card{
+ position:relative;height:190px;overflow:hidden;border-radius:12px;
+ border:1px solid #aa6eff;background:#211946;
+ box-shadow:0 7px 18px #0007;transition:.25s
 }
-.game:hover{
- transform:translateY(-5px);
- box-shadow:0 0 22px #b347ff88
-}
-.game img{
- width:100%;height:175px;object-fit:cover;display:block;
- transition:transform .3s
-}
-.game:hover img{transform:scale(1.08)}
-.game:after{
+.feature-card:hover{transform:translateY(-5px);box-shadow:0 0 23px #cb50ff88}
+.feature-card img{width:100%;height:100%;object-fit:cover;display:block}
+.feature-card:after{
  content:"";position:absolute;inset:0;
- background:linear-gradient(0deg,#0b0c27 0%,#0b0c2744 50%,transparent 80%);
- pointer-events:none
+ background:linear-gradient(0deg,#080b23f5,transparent 65%)
 }
-.game-info{
- position:absolute;bottom:0;left:0;right:0;z-index:1;
- text-align:center;padding:15px 7px 12px
+.feature-card .name{
+ position:absolute;z-index:2;bottom:13px;left:5px;right:5px;
+ text-align:center;font-size:16px;font-weight:900;text-shadow:0 2px 8px #000
 }
-.game-info strong{
- display:block;font-size:16px;text-shadow:0 2px 8px #000;
+.feature-card small{display:block;font-size:10px;font-weight:600;margin-top:5px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:15px}
+.dots button{
+ width:11px;height:11px;border:0;border-radius:50%;padding:0;
+ background:#4c4d9c
 }
-.game-info small{font-size:10px;color:#e5e6ff}
-.carousel-controls{
- display:flex;justify-content:center;gap:8px;margin:15px 0
-}
-.carousel-controls button{
- width:12px;height:12px;border:0;border-radius:50%;
- background:#4a51a5;padding:0
-}
-.carousel-controls button.active{
- background:#f36aff;box-shadow:0 0 13px #f36aff
-}
-.tools{
- display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
- gap:11px;margin-top:16px
-}
-.tool{
- display:flex;align-items:center;gap:11px;min-height:70px;
- padding:13px;border:1px solid #a25fea;
- border-radius:12px;
- background:linear-gradient(140deg,#302056,#101c43);
- box-shadow:inset 0 0 18px #ad51ff22;
- transition:.2s
-}
-.tool:hover{
- transform:translateY(-4px);
- background:linear-gradient(140deg,#7429a8,#1b3a7c);
- box-shadow:0 0 19px #c05bff77
-}
-.tool .symbol{font-size:25px;color:#f180ff}
-.tool strong{display:block;font-size:11px}
-.tool small{display:block;font-size:10px;color:#c6d2ee;margin-top:3px}
+.dots button.active{background:#f47aff;box-shadow:0 0 10px #f47aff}
 .search{
- width:100%;padding:13px 16px;
- border:1px solid #8159c9;border-radius:10px;
- background:#0d1735;color:white;outline:none;
- margin-top:12px
+ width:100%;padding:13px 16px;margin:12px 0 15px;
+ background:#0e1534;border:1px solid #8155d3;
+ border-radius:10px;color:white;outline:none
 }
-.search:focus{border-color:#f18aff}
+.search:focus{border-color:#fa8cff}
+.calculators{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px
+}
+.calc-card{
+ display:block;position:relative;overflow:hidden;
+ border-radius:12px;border:1px solid #b46cff;
+ background:#191b43;transition:.25s
+}
+.calc-card:hover{
+ transform:translateY(-5px);
+ box-shadow:0 0 22px #c74cff99
+}
+.calc-photo{
+ height:125px;position:relative;overflow:hidden;
+ background:linear-gradient(120deg,#4d1d81,#142d60)
+}
+.calc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.calc-photo:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(0deg,#111633,transparent 65%)
+}
+.calc-info{padding:12px 11px 14px}
+.calc-info strong{display:block;font-size:12px}
+.calc-info small{
+ display:block;color:#c9d3ed;font-size:10px;margin:5px 0 11px
+}
+.open-tool{
+ display:block;text-align:center;padding:9px 6px;
+ border-radius:8px;border:1px solid #e88bff;
+ background:linear-gradient(100deg,#a52bda,#5935c3);
+ font-size:10px;font-weight:900;box-shadow:0 0 10px #a83cff55
+}
+.calc-card:hover .open-tool{filter:brightness(1.2)}
 .landscape{
- height:145px;position:relative;margin-top:32px;
+ height:160px;margin-top:30px;
  background:
- radial-gradient(ellipse at 50% 100%,#0bd6ff99,transparent 43%),
- linear-gradient(0deg,#08122d,#152055 70%,transparent);
- overflow:hidden
+ linear-gradient(0deg,#080d26,#080d2600),
+ url("images/mountain-footer.jpg") center/cover no-repeat,
+ radial-gradient(ellipse at 50% 100%,#15b8f9,#172458 55%,#0b0e2b)
 }
-.landscape:before,.landscape:after{
- content:"";position:absolute;bottom:-25px;width:65%;height:135px;
- background:#070e2a;
- clip-path:polygon(0 100%,0 48%,15% 75%,29% 22%,42% 67%,59% 12%,75% 69%,89% 35%,100% 100%);
-}
-.landscape:before{left:-15%;filter:drop-shadow(0 0 10px #c037ff)}
-.landscape:after{right:-15%;transform:scaleX(-1)}
-.bottom-cta{
+.final-cta{
  display:flex;align-items:center;justify-content:space-between;
- gap:20px;padding:24px 5% 36px;
- background:linear-gradient(110deg,#131137,#111d4a,#221042);
- border-top:1px solid #a15afa88
+ gap:20px;padding:30px 5%;
+ background:linear-gradient(115deg,#181043,#0a1c48,#301044);
+ border-top:1px solid #9d5aff
 }
-.bottom-cta h2{font-size:clamp(25px,3.5vw,40px);font-style:italic;margin:0}
-.bottom-cta p{color:#cbd5ef;font-size:12px;margin:8px 0 0}
+.final-cta h2{font-size:clamp(26px,4vw,42px);font-style:italic;margin:0}
+.final-cta p{font-size:12px;color:#d2dcf5;line-height:1.7}
 footer{
- padding:25px;text-align:center;color:#a9b8df;
- font-size:11px;border-top:1px solid #8653c366
+ padding:25px;text-align:center;color:#aebce0;
+ font-size:11px;border-top:1px solid #9055d877
 }
-@media(max-width:1000px){
- .featured,.tools{grid-template-columns:repeat(3,1fr)}
- .navlinks a{padding:8px;font-size:10px}
+@media(max-width:1050px){
+ .featured,.calculators{grid-template-columns:repeat(3,1fr)}
+ nav .links a{padding:8px;font-size:10px}
 }
-@media(max-width:680px){
- nav{flex-wrap:wrap;padding:10px 4%}
- .logo{font-size:20px}
- .navlinks{width:100%;overflow-x:auto;flex-wrap:nowrap}
- .navlinks a{white-space:nowrap}
- .hero{min-height:390px}
- .hero-inner{padding:45px 5% 65px}
- h1{letter-spacing:-2px}
- .orbit{width:190px;right:-65px;opacity:.55}
- .quick{grid-template-columns:repeat(2,1fr);margin-top:-18px}
- .featured{grid-template-columns:repeat(2,1fr)}
- .tools{grid-template-columns:repeat(2,1fr)}
- .game img{height:160px}
- .bottom-cta{flex-direction:column;align-items:flex-start}
+@media(max-width:700px){
+ nav{flex-wrap:wrap}
+ .brand{font-size:20px}
+ nav .links{width:100%;overflow-x:auto}
+ .hero{min-height:460px}
+ .hero-inner{padding:45px 5% 80px}
+ .hero-art{width:75%;opacity:.38}
+ .hero h1{font-size:clamp(46px,11vw,70px)}
+ .quick{grid-template-columns:repeat(2,1fr);margin-top:-25px}
+ .featured,.calculators{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .calc-photo{height:110px}
+ .final-cta{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){
- *,*:before,*:after{animation:none!important;transition:none!important}
+ *,*:before,*:after{transition:none!important}
 }
 </style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"PlayVanta","url":"https://playvanta.github.io/"}
-</script>
 </head>
 <body>
 <div class="site">
-
-<nav aria-label="Main navigation">
-<a class="logo" href="index.html">
-<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+<nav>
+<a class="brand" href="index.html">
+<img src="playvanta-logo.jpg" alt="PlayVanta">
 <span>Play<em>Vanta</em></span>
 </a>
-<div class="navlinks">
+<div class="links">
 <a class="active" href="index.html">⌂ Home</a>
 <a href="#calculators">⊞ Calculators</a>
-<a class="download" href="download-games.html">↓ Download Games</a>
-<a href="#featured">♧ Game Discovery</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 <a href="#calculators">⚙ Tools</a>
 <a href="sitemap.xml">☷ Sitemap</a>
 </div>
 </nav>
 
 <header class="hero">
-<div class="orbit"></div>
+<div class="hero-art" aria-hidden="true"></div>
 <div class="hero-inner">
-<div class="hero-content">
+<div class="hero-copy">
 <div class="eyebrow">WELCOME TO PLAYVANTA ///</div>
 <h1>EVERY GAME.<br><span class="gradient">ONE HUB.</span></h1>
 <p>Explore gaming calculators, discover new games, and access powerful tools — all in one place.</p>
-<div class="ctas">
-<a class="btn purple" href="#calculators">🎮 Explore Calculators →</a>
+<div class="actions">
+<a class="btn" href="#calculators">🎮 Explore Calculators →</a>
 <a class="btn cyan" href="download-games.html">↓ Download Games →</a>
 </div>
 </div>
@@ -322,206 +279,161 @@ footer{
 </header>
 
 <main>
-
-<section class="quick" aria-label="Explore PlayVanta">
-<a href="#calculators">
-<span class="ico">▦</span>
+<div class="quick">
+<a class="quick-card" href="#calculators">
+<span class="icon">▦</span>
 <strong>10 Game Calculators</strong>
-<small>Stats, XP, sensitivity and more</small>
+<small>Stats, XP, damage, and more</small>
+<span class="mini">Explore Tools →</span>
 </a>
-<a href="download-games.html">
-<span class="ico">⇩</span>
+<a class="quick-card" href="download-games.html">
+<span class="icon">⇩</span>
 <strong>Download Games</strong>
 <small>Get games from official sources</small>
+<span class="mini">Explore Games →</span>
 </a>
-<a href="download-games.html">
-<span class="ico">🎮</span>
+<a class="quick-card" href="download-games.html">
+<span class="icon">🎮</span>
 <strong>Game Discovery</strong>
 <small>Find your next favorite game</small>
+<span class="mini">Discover Games →</span>
 </a>
-<a href="#calculators">
-<span class="ico">⚒</span>
+<a class="quick-card" href="#calculators">
+<span class="icon">⚒</span>
 <strong>Gaming Tools</strong>
 <small>Useful tools for every gamer</small>
+<span class="mini">Open Tools →</span>
 </a>
-</section>
+</div>
 
-<section class="section" id="featured">
-<div class="section-head">
+<section id="featured">
+<div class="heading">
 <div>
 <h2>🎮 Featured Games</h2>
 <p>Popular games, handpicked for you.</p>
 </div>
 <a href="download-games.html">View All Games →</a>
 </div>
-<div class="feature-wrap">
 <div class="featured" id="featuredGrid"></div>
-</div>
-<div class="carousel-controls" id="carouselDots" aria-label="Featured games pages"></div>
+<div class="dots" id="dots"></div>
 </section>
 
-<section class="section" id="calculators">
-<div class="section-head">
+<section id="calculators">
+<div class="heading">
 <div>
 <h2>▦ Game Calculators</h2>
 <p>Quick and easy calculators for your favorite games.</p>
 </div>
-<a href="#toolGrid">View All Calculators →</a>
+<a href="#calculatorGrid">View All Calculators →</a>
 </div>
-<input class="search" id="toolSearch" type="search" placeholder="Search calculators, games or tools..." aria-label="Search calculators">
-<div class="tools" id="toolGrid"></div>
-<p id="emptyTools" style="display:none;padding:20px">No matching calculators found.</p>
+<input id="search" class="search" type="search"
+placeholder="Search calculators, games or tools..."
+aria-label="Search gaming calculators">
+<div class="calculators" id="calculatorGrid"></div>
+<p id="noResults" hidden>No matching calculators found.</p>
 </section>
-
 </main>
 
 <div class="landscape" aria-hidden="true"></div>
-<section class="bottom-cta">
+<div class="final-cta">
 <div>
 <h2>READY FOR A NEW GAME?</h2>
-<p>Discover 16 popular games, find official download links, and start your next gaming adventure today.</p>
+<p>Discover 16+ popular games, find official download links,<br>and start your next gaming adventure.</p>
 </div>
-<a class="btn purple" href="download-games.html">↓ Download Games →</a>
-</section>
-
-<footer>
-PlayVanta · Every Game. One Hub. · © <span id="year"></span>
-</footer>
+<a class="btn" href="download-games.html">↓ Download Games →</a>
+</div>
+<footer>PlayVanta · Every Game. One Hub. · © <span id="year"></span></footer>
 </div>
 
 <script>
-const art={
- fortnite:[
- "https://m-cdn.phonearena.com/images/article/103090-wide-two_1200/Ultra-popular-battle-royale-Fortnite-coming-to-iOS-and-Android-soon-with-cross-platform-support.jpg"
- ],
- minecraft:[
- "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/MC-Homepage_Key-Art-1200x720.jpg",
- "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1672970/header.jpg"
- ],
- valorant:[
- "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png"
- ],
- genshin:[
- "https://static.animecorner.me/2021/07/genshin-impact-packshot-01-en-18jun21.jpg"
- ],
- roblox:[
- "https://cdn.buttercms.com/GnaqqRBTcCuoRELL938w"
- ],
- cs2:[
- "https://shared.fastly.steamstatic.com/steam/apps/730/header.jpg"
- ],
- rocket:[
- "https://shared.fastly.steamstatic.com/steam/apps/252950/header.jpg"
- ],
- lol:[
- "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
- ],
- apex:[
- "https://shared.fastly.steamstatic.com/steam/apps/1172470/header.jpg"
- ],
- overwatch:[
- "https://shared.fastly.steamstatic.com/steam/apps/2357570/header.jpg"
- ]
-};
-
-const featured=[
- ["Fortnite","Fortnite","fortnite","fortnite-xp-calculator.html"],
- ["Minecraft","Minecraft","minecraft","minecraft-nether-calculator.html"],
- ["Valorant","Valorant","valorant","valorant-crosshair-generator.html"],
- ["Genshin Impact","Genshin Impact","genshin","genshin-wish-calculator.html"],
- ["Roblox","Roblox","roblox","roblox-robux-tax-calculator.html"],
- ["Counter-Strike 2","Counter-Strike 2","cs2","cs2-economy-calculator.html"],
- ["Rocket League","Rocket League","rocket","rocket-league-rank-tracker.html"],
- ["League of Legends","League of Legends","lol","lol-lp-calculator.html"],
- ["Apex Legends","Apex Legends","apex","valorant-sensitivity-converter.html"],
- ["Overwatch 2","Overwatch 2","overwatch","valorant-sensitivity-converter.html"]
+const games=[
+ {name:"Fortnite",image:"fortnite.jpg",tool:"fortnite-xp-calculator.html"},
+ {name:"Minecraft",image:"minecraft.jpg",tool:"minecraft-nether-calculator.html"},
+ {name:"Valorant",image:"valorant.jpg",tool:"valorant-crosshair-generator.html"},
+ {name:"Genshin Impact",image:"genshin-impact.jpg",tool:"genshin-wish-calculator.html"},
+ {name:"Roblox",image:"roblox.jpg",tool:"roblox-robux-tax-calculator.html"},
+ {name:"Counter-Strike 2",image:"cs2.jpg",tool:"cs2-economy-calculator.html"},
+ {name:"Rocket League",image:"rocket-league.jpg",tool:"rocket-league-rank-tracker.html"},
+ {name:"League of Legends",image:"league-of-legends.jpg",tool:"lol-lp-calculator.html"},
+ {name:"Apex Legends",image:"apex-legends.jpg",tool:"valorant-sensitivity-converter.html"},
+ {name:"Overwatch 2",image:"overwatch-2.jpg",tool:"valorant-sensitivity-converter.html"}
+];
+const calculators=[
+ {game:"Valorant",name:"Crosshair Generator",image:"valorant.jpg",url:"valorant-crosshair-generator.html"},
+ {game:"Valorant / FPS",name:"Sensitivity Converter",image:"valorant.jpg",url:"valorant-sensitivity-converter.html"},
+ {game:"Minecraft",name:"Nether Portal Calculator",image:"minecraft.jpg",url:"minecraft-nether-calculator.html"},
+ {game:"PC Gaming",name:"FPS Frame Time Calculator",image:"pc-gaming.jpg",url:"fps-frame-time-calculator.html"},
+ {game:"Fortnite",name:"XP Calculator",image:"fortnite.jpg",url:"fortnite-xp-calculator.html"},
+ {game:"Roblox",name:"Robux Tax Calculator",image:"roblox.jpg",url:"roblox-robux-tax-calculator.html"},
+ {game:"Counter-Strike 2",name:"Economy Calculator",image:"cs2.jpg",url:"cs2-economy-calculator.html"},
+ {game:"Genshin Impact",name:"Wish Calculator",image:"genshin-impact.jpg",url:"genshin-wish-calculator.html"},
+ {game:"Rocket League",name:"Rank Tracker",image:"rocket-league.jpg",url:"rocket-league-rank-tracker.html"},
+ {game:"League of Legends",name:"LP Calculator",image:"league-of-legends.jpg",url:"lol-lp-calculator.html"}
 ];
 
-const tools=[
- ["Valorant","Crosshair Generator","valorant-crosshair-generator.html","✚"],
- ["Valorant / FPS","Sensitivity Converter","valorant-sensitivity-converter.html","◎"],
- ["Minecraft","Nether Calculator","minecraft-nether-calculator.html","⬡"],
- ["PC Gaming","Frame Time Calculator","fps-frame-time-calculator.html","▥"],
- ["Fortnite","XP Calculator","fortnite-xp-calculator.html","★"],
- ["Roblox","Robux Tax Calculator","roblox-robux-tax-calculator.html","◇"],
- ["CS2","Economy Calculator","cs2-economy-calculator.html","⚒"],
- ["Genshin Impact","Wish Calculator","genshin-wish-calculator.html","✦"],
- ["Rocket League","Rank Tracker","rocket-league-rank-tracker.html","◈"],
- ["League of Legends","LP Calculator","lol-lp-calculator.html","♜"]
-];
-
-function imageWithFallback(sources,alt){
+function safeImage(file,alt){
  const img=document.createElement("img");
- img.alt=alt;
- img.loading="lazy";
- img.decoding="async";
- let i=0;
+ img.src="images/"+file;img.alt=alt;img.loading="lazy";
  img.onerror=()=>{
-  i++;
-  if(i<sources.length)img.src=sources[i];
-  else{
-   img.removeAttribute("src");
-   img.alt=alt+" — image unavailable";
-   img.style.background="linear-gradient(130deg,#6b279e,#0a4781)";
-  }
+  img.onerror=null;
+  img.src="https://placehold.co/800x500/241347/f0b1ff?text="+encodeURIComponent(alt);
  };
- if(sources.length)img.src=sources[0];
  return img;
 }
 
-let slide=0;
+let page=0;
 function renderFeatured(){
  const grid=document.getElementById("featuredGrid");
  grid.replaceChildren();
- const start=slide*5;
- featured.slice(start,start+5).forEach(([name,alt,key,link])=>{
+ games.slice(page*5,page*5+5).forEach(g=>{
   const a=document.createElement("a");
-  a.className="game";a.href=link;
-  a.append(imageWithFallback(art[key]||[],alt+" game artwork"));
-  const info=document.createElement("div");
-  info.className="game-info";
-  const strong=document.createElement("strong");
-  strong.textContent=name;
+  a.href=g.tool;a.className="feature-card";
+  a.append(safeImage(g.image,g.name));
+  const label=document.createElement("div");
+  label.className="name";label.textContent=g.name;
   const small=document.createElement("small");
   small.textContent="Explore Tool →";
-  info.append(strong,small);
-  a.append(info);
-  grid.append(a);
+  label.append(small);a.append(label);grid.append(a);
  });
- const dots=document.getElementById("carouselDots");
- dots.replaceChildren();
- for(let n=0;n<Math.ceil(featured.length/5);n++){
+ const dots=document.getElementById("dots");dots.replaceChildren();
+ for(let i=0;i<2;i++){
   const b=document.createElement("button");
-  b.type="button";b.className=n===slide?"active":"";
-  b.setAttribute("aria-label","Show featured games page "+(n+1));
-  b.onclick=()=>{slide=n;renderFeatured()};
+  b.className=i===page?"active":"";
+  b.setAttribute("aria-label","Featured games page "+(i+1));
+  b.onclick=()=>{page=i;renderFeatured()};
   dots.append(b);
  }
 }
 renderFeatured();
 
-const toolGrid=document.getElementById("toolGrid");
-tools.forEach(([game,title,link,symbol])=>{
+const calcGrid=document.getElementById("calculatorGrid");
+calculators.forEach(c=>{
  const a=document.createElement("a");
- a.className="tool";a.href=link;
- const ico=document.createElement("span");
- ico.className="symbol";ico.textContent=symbol;
- const wrap=document.createElement("div");
- const name=document.createElement("strong");
- name.textContent=game;
- const sub=document.createElement("small");
- sub.textContent=title;
- wrap.append(name,sub);a.append(ico,wrap);toolGrid.append(a);
+ a.className="calc-card";a.href=c.url;
+ const photo=document.createElement("div");
+ photo.className="calc-photo";
+ photo.append(safeImage(c.image,c.game+" artwork"));
+ const info=document.createElement("div");
+ info.className="calc-info";
+ const strong=document.createElement("strong");
+ strong.textContent=c.game;
+ const small=document.createElement("small");
+ small.textContent=c.name;
+ const button=document.createElement("span");
+ button.className="open-tool";button.textContent="Explore Tool →";
+ info.append(strong,small,button);a.append(photo,info);calcGrid.append(a);
 });
-document.getElementById("toolSearch").addEventListener("input",e=>{
+
+document.getElementById("search").addEventListener("input",e=>{
  const q=e.target.value.toLowerCase().trim();
- let count=0;
- [...toolGrid.children].forEach(card=>{
-  const show=card.textContent.toLowerCase().includes(q);
-  card.style.display=show?"":"none";
-  if(show)count++;
+ let visible=0;
+ [...calcGrid.children].forEach((el,i)=>{
+  const c=calculators[i];
+  const show=(c.game+" "+c.name).toLowerCase().includes(q);
+  el.hidden=!show;
+  if(show)visible++;
  });
- document.getElementById("emptyTools").style.display=count?"none":"block";
+ document.getElementById("noResults").hidden=visible!==0;
 });
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
