@@ -2,49 +2,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Valorant Sensitivity Converter | PlayVanta</title>
-<meta name="description" content="Convert mouse sensitivity between Valorant, CS2, Apex Legends, Overwatch and Fortnite.">
-<link rel="icon" href="playvanta-logo.jpg">
-<link rel="stylesheet" href="playvanta-tools.css?v=1">
+<meta name="description" content="Convert mouse sensitivity between Valorant, CS2, Apex Legends and Overwatch.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#20205a,#05091e 65%);color:#fff;font-family:Arial,sans-serif}a{color:inherit;text-decoration:none}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;padding:12px 5%;background:#080d29;border-bottom:1px solid #b052f5}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}.brand img{width:38px;height:38px;object-fit:cover;border-radius:8px}.brand b{color:#e87bff}
+.menu{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;font-weight:bold}.menu a:hover{color:#f18bff}
+.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ef,#1014419c),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #9348e9}
+.hero small{color:#ff6375;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(34px,5vw,60px);font-style:italic;margin:12px 0}.hero h1 span{color:#ee7dff}.hero p{color:#d4ddf6;line-height:1.7}
+main{max-width:1250px;margin:auto;padding:25px 4%}.layout{display:grid;grid-template-columns:1fr 1fr .75fr;gap:16px}
+.card{background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a24fe9;border-radius:14px;padding:22px;box-shadow:0 0 15px #8b3cff35}
+h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+input,select{width:100%;padding:12px;border:1px solid #7466ba;border-radius:9px;background:#0b1537;color:white}
+.result{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #6648a7;border-radius:12px;background:#0b1031;padding:15px}
+.result strong{font-size:clamp(30px,4vw,48px);color:#4deaff;margin:16px 0;text-shadow:0 0 15px #1cbfff88}.result p,.note{color:#c6d3f2;font-size:13px;line-height:1.8}
+.tools{margin-top:35px}.links{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.links a{padding:13px;border:1px solid #884dd7;border-radius:9px;background:#141b43;text-align:center;font-size:12px}.links a:hover{border-color:#ef7aff}
+footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
+@media(max-width:950px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
-<body data-tool="sensitivity" style="--accent:#ff4655">
-<div class="tool-shell">
-<nav class="tool-nav">
-<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
-<div class="tool-nav-links">
-<a href="index.html">⌂ Home</a>
-<a class="active" href="index.html#calculators">⚙ Calculators</a>
-<a href="download-games.html">↓ Download Games</a>
-<a href="download-games.html">🎮 Game Discovery</a>
+<body>
+<nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
+<header class="hero"><small>VALORANT GAMING TOOLS</small><h1>SENSITIVITY <span>CONVERTER</span></h1><p>Convert sensitivity between popular FPS games and maintain a similar mouse turning distance.</p></header>
+<main>
+<div class="layout">
+<section class="card"><h2>🎯 Sensitivity Settings</h2>
+<div class="field"><label for="from">Convert From</label><select id="from"><option value="valorant">Valorant</option><option value="cs2">Counter-Strike 2</option><option value="apex">Apex Legends</option><option value="overwatch">Overwatch 2</option></select></div>
+<div class="field"><label for="to">Convert To</label><select id="to"><option value="cs2">Counter-Strike 2</option><option value="valorant">Valorant</option><option value="apex">Apex Legends</option><option value="overwatch">Overwatch 2</option></select></div>
+<div class="field"><label for="sens">Current Sensitivity</label><input type="number" id="sens" value="0.35" min="0" step="0.001"></div>
+<div class="field"><label for="dpi">Mouse DPI</label><input type="number" id="dpi" value="800" min="1"></div>
+</section>
+<section class="card"><h2>✦ Conversion Result</h2><div class="result"><span>Converted Sensitivity</span><strong id="result">—</strong><p id="detail"></p></div></section>
+<aside class="card"><h2>⚡ How It Works</h2><p class="note">Sensitivity conversion uses approximate game yaw values to maintain the same physical mouse distance for a 360° turn.</p><p class="note">Mouse DPI is kept unchanged. Different field-of-view settings can still make aiming feel different.</p></aside>
 </div>
-</nav>
-<header class="tool-hero">
-<div class="tool-hero-content">
-<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
-<div class="tool-eyebrow" id="toolGame"></div>
-<h1 id="toolTitle"></h1>
-<p>Convert your mouse sensitivity between popular FPS games while maintaining a similar turning distance.</p>
-</div>
-</header>
-<main class="tool-main">
-<div class="tool-layout">
-<section class="tool-card"><h2>🎯 Sensitivity Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
-<section class="tool-card"><h2>✦ Conversion Result</h2><div id="toolPreview"></div><div id="toolResult"></div></section>
-<aside class="tool-card"><h2>⚡ How It Works</h2><div class="tool-note" id="toolTips"></div></aside>
-</div>
-<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
-<div class="tool-directory" id="toolDirectory"></div>
-</main>
-<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
-</div>
-<script src="playvanta-tools.js?v=1" defer></script>
+<section class="tools"><h2>🎮 More PlayVanta Tools</h2><div class="links">
+<a href="valorant-crosshair-generator.html">Crosshair Generator</a><a href="minecraft-nether-calculator.html">Minecraft Nether</a><a href="fps-frame-time-calculator.html">FPS Frame Time</a><a href="fortnite-xp-calculator.html">Fortnite XP</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="cs2-economy-calculator.html">CS2 Economy</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="rocket-league-rank-tracker.html">Rocket League</a><a href="lol-lp-calculator.html">LoL LP</a>
+</div></section>
+</main><footer>© PlayVanta · Every Game. One Hub.</footer>
 <script>
-document.addEventListener("DOMContentLoaded",()=>{
-document.getElementById("toolResult").innerHTML=
-'<div class="tool-result" aria-live="polite"><span class="result-label" id="resultLabel">Converted sensitivity</span><strong class="result-number" id="resultNumber">—</strong><span class="result-sub" id="resultSub"></span></div>';
-});
+const $=id=>document.getElementById(id);
+const yaw={valorant:0.07,cs2:0.022,apex:0.022,overwatch:0.0066};
+function calculate(){
+const sens=+$("sens").value,dpi=+$("dpi").value;
+if(!Number.isFinite(sens)||sens<0||!Number.isFinite(dpi)||dpi<=0){$("result").textContent="—";$("detail").textContent="Enter a valid sensitivity and DPI.";return}
+const output=sens*yaw[$("from").value]/yaw[$("to").value];
+$("result").textContent=output.toFixed(4);
+$("detail").textContent="Source eDPI: "+(sens*dpi).toLocaleString("en-US",{maximumFractionDigits:2})+" · Same DPI: "+dpi;
+}
+document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",calculate));
+calculate();
 </script>
-</body>
-</html>
+</body></html>
