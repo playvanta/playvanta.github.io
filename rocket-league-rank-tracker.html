@@ -1,146 +1,117 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  
-<script>
-(function () {
-  const title = document.title;
-  const description =
-    document.querySelector('meta[name="description"]')
-      ?.content || "Free gaming tools and calculators on PlayVanta.";
-
-  const url = new URL(location.pathname, "https://playvanta.github.io").href;
-
-  function addMeta(attribute, name, content) {
-    const tag = document.createElement("meta");
-    tag.setAttribute(attribute, name);
-    tag.content = content;
-    document.head.appendChild(tag);
-  }
-
-  const canonical = document.createElement("link");
-  canonical.rel = "canonical";
-  canonical.href = url;
-  document.head.appendChild(canonical);
-
-  addMeta("name", "robots", "index,follow");
-  addMeta("property", "og:type", "website");
-  addMeta("property", "og:site_name", "PlayVanta");
-  addMeta("property", "og:title", title);
-  addMeta("property", "og:description", description);
-  addMeta("property", "og:url", url);
-  addMeta("name", "twitter:card", "summary");
-  addMeta("name", "twitter:title", title);
-  addMeta("name", "twitter:description", description);
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": title.replace(" | PlayVanta", ""),
-        "url": url,
-        "description": description,
-        "applicationCategory": "GameApplication",
-        "operatingSystem": "Web",
-        "isAccessibleForFree": true,
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://playvanta.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Gaming Calculators",
-            "item": "https://playvanta.github.io/#calculators"
-          },
-         {
-  "@type": "ListItem",
-  "position": 3,
-  "name": "Rocket League Rank Tracker",
-  "item": {
-    "@type": "Thing",
-    "@id": url,
-    "name": "Rocket League Rank Tracker"
-  }
-}
-        ]
-      }
-    ]
-  };
-
-  const json = document.createElement("script");
-  json.type = "application/ld+json";
-  json.textContent = JSON.stringify(schema);
-  document.head.appendChild(json);
-})();
-</script>
-
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rocket League Rank Tracker | PlayVanta</title>
-<meta name="description" content="Plan your Rocket League rank progression and compare target ranks.">
+<meta name="description" content="Compare Rocket League ranks and plan your climb from Bronze to Supersonic Legend. Calculate rank divisions remaining and estimate sessions needed.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://playvanta.github.io/rocket-league-rank-tracker.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PlayVanta">
+<meta property="og:title" content="Rocket League Rank Tracker | PlayVanta">
+<meta property="og:description" content="Plan your Rocket League rank progression and compare target ranks.">
+<meta property="og:url" content="https://playvanta.github.io/rocket-league-rank-tracker.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rocket League Rank Tracker | PlayVanta">
+<meta name="twitter:description" content="Free Rocket League rank progression planning tool.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://playvanta.github.io/"},
+{"@type":"ListItem","position":2,"name":"Rocket League Rank Tracker","item":"https://playvanta.github.io/rocket-league-rank-tracker.html"}
+]}
+</script>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#05091e;color:white;font-family:Arial,sans-serif}a{color:inherit;text-decoration:none}
-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;padding:12px 5%;background:#080d29;border-bottom:1px solid #a44bef}
-.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}.brand img{width:38px;height:38px;object-fit:cover;border-radius:8px}.brand b{color:#ed7cff}
-.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
-.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ed,#1014419c),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #a44bef}
-.hero small{color:#5bd9ff;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(34px,5vw,60px);font-style:italic;margin:12px 0}.hero h1 span{color:#4dd5ff}.hero p{color:#d4def5;line-height:1.7}
-main{max-width:1250px;margin:auto;padding:25px 4%}.layout{display:grid;grid-template-columns:1fr 1fr .75fr;gap:16px}
-.card{background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a14ee8;border-radius:14px;padding:22px;box-shadow:0 0 15px #8b3cff35}
-h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
-input,select{width:100%;padding:12px;border:1px solid #7565b6;border-radius:9px;background:#0b1537;color:white}
-.result{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #6b4ca9;border-radius:12px;background:#0b1031;padding:15px}
-.result strong{font-size:clamp(28px,4vw,44px);color:#4deaff;margin:16px 0}.result p,.note{color:#cbd6f3;font-size:13px;line-height:1.8}
-.links{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.links a{padding:13px;border:1px solid #884dd7;border-radius:9px;background:#141b43;text-align:center;font-size:12px}
+:root{--accent:#58dfff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#17395b,#05091e 70%);color:#eef2ff;font:15px/1.6 Arial,sans-serif}
+a{color:inherit;text-decoration:none}a:hover{color:#6fe9ff}
+nav{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:12px 5%;background:#080d29;border-bottom:1px solid #8d49e5}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}
+.brand img{width:38px!important;height:38px!important;max-width:38px!important;max-height:38px!important;object-fit:cover;border-radius:8px}
+.brand b{color:#ed7cff}.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ef,#101441a9),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #9348e9}
+.hero small{color:var(--accent);letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.15;font-style:italic;margin:12px 0}h1 span{color:var(--accent)}
+.hero p{color:#d4ddf6;max-width:680px}
+main{max-width:1400px;margin:auto;padding:25px 4%}
+.layout{display:grid;grid-template-columns:1fr 1.1fr .75fr;gap:16px}
+.card{min-width:0;background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a24fe9;border-radius:14px;padding:20px;box-shadow:0 0 15px #8b3cff35}
+h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+.field input,.field select{width:100%;padding:12px;border:1px solid #7466ba;border-radius:9px;background:#0b1537;color:white;font:inherit}
+.result{min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#0b1030;border:1px solid #604aa0;border-radius:12px;padding:20px}
+.result strong{font-size:clamp(27px,4vw,43px);color:#5deaff;margin:15px 0;overflow-wrap:anywhere}
+.note,.result p{color:#c7d3f0;font-size:13px;line-height:1.8}
+.links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.links a{padding:13px;background:#141b43;border:1px solid #8450ce;border-radius:9px;text-align:center;font-size:12px}
+.links a:hover{border-color:#e97aff}
+.info{margin-top:30px;color:#cbd6f2}.info h2{color:white}
+details{background:#11183c;border:1px solid #544286;border-radius:9px;padding:13px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:bold}
 footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
-@media(max-width:950px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
-</style></head>
+@media(max-width:1000px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
 <body>
-<nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
-<header class="hero"><small>ROCKET LEAGUE GAMING TOOLS</small><h1>ROCKET LEAGUE <span>RANK TRACKER</span></h1><p>Compare your current and target ranks and plan your progression.</p></header>
-<main><div class="layout">
-<section class="card"><h2>🏆 Rank Settings</h2>
+<nav><a href="index.html" class="brand"><img src="playvanta-logo.jpg" alt="PlayVanta logo"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
+<header class="hero"><small>ROCKET LEAGUE GAMING TOOLS</small><h1>ROCKET LEAGUE <span>RANK TRACKER</span></h1><p>Compare your current rank and target rank to plan your Rocket League climb.</p></header>
+<main>
+<div class="layout">
+<section class="card">
+<h2>🏆 Rank Settings</h2>
 <div class="field"><label for="current">Current Rank</label><select id="current"></select></div>
 <div class="field"><label for="target">Target Rank</label><select id="target"></select></div>
-<div class="field"><label for="pace">Estimated Rank Divisions Gained Per Session</label><input id="pace" type="number" min="0.1" step="0.1" value="1"></div>
+<div class="field"><label for="pace">Estimated Divisions Gained Per Session</label><input id="pace" type="number" min="0.1" step="0.1" value="1"></div>
 </section>
-<section class="card"><h2>✦ Rank Progress</h2><div class="result"><span>Rank Divisions Remaining</span><strong id="result">—</strong><p id="detail"></p></div></section>
-<aside class="card"><h2>⚡ Ranking Guide</h2><p class="note">Rocket League ranks are based on matchmaking rating, not a fixed number of wins per division.</p><p class="note">This tracker measures rank divisions between your selected ranks and provides a planning estimate, not a prediction of MMR gains.</p></aside>
+<section class="card"><h2>✦ Rank Progress</h2><div class="result"><span>Rank Divisions Remaining</span><strong id="result">—</strong><p id="detail" aria-live="polite"></p></div></section>
+<aside class="card"><h2>⚡ Ranking Guide</h2><p class="note">Rocket League ranks depend on matchmaking rating (MMR), not a fixed number of wins per division.</p><p class="note">This is a manual rank-planning calculator, not a live account tracker or MMR predictor.</p></aside>
 </div>
-<section style="margin-top:35px"><h2>🎮 More PlayVanta Tools</h2><div class="links">
-<a href="valorant-crosshair-generator.html">Valorant Crosshair</a><a href="valorant-sensitivity-converter.html">Sensitivity Converter</a><a href="minecraft-nether-calculator.html">Minecraft Nether</a><a href="fps-frame-time-calculator.html">FPS Frame Time</a><a href="fortnite-xp-calculator.html">Fortnite XP</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="cs2-economy-calculator.html">CS2 Economy</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="lol-lp-calculator.html">LoL LP</a>
-</div></section></main><footer>© PlayVanta · Every Game. One Hub.</footer>
+<section class="info"><h2>How to Track Rocket League Rank Progress</h2><p>Select your current rank and target rank, then enter how many divisions you expect to gain per session. The calculator counts the rank divisions between your selections and estimates the number of sessions required.</p><p>Your actual progress will depend on wins, losses, matchmaking rating and rank thresholds.</p></section>
+<section class="info"><h2>Frequently Asked Questions</h2>
+<details><summary>Does this tracker read my Rocket League account?</summary><p>No. It uses the ranks you enter manually.</p></details>
+<details><summary>How many wins are needed to rank up?</summary><p>There is no universal fixed number of wins. Rank progression depends on matchmaking rating and the opponents you face.</p></details>
+</section>
+<section class="info"><h2>🎮 More PlayVanta Tools</h2><div class="links">
+<a href="valorant-crosshair-generator.html">Valorant Crosshair</a><a href="valorant-sensitivity-converter.html">Sensitivity Converter</a><a href="minecraft-nether-calculator.html">Minecraft Nether</a><a href="fps-frame-time-calculator.html">FPS Frame-Time</a><a href="fortnite-xp-calculator.html">Fortnite XP</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="cs2-economy-calculator.html">CS2 Economy</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="lol-lp-calculator.html">LoL LP</a>
+</div></section>
+</main>
+<footer>© PlayVanta · Every Game. One Hub.</footer>
 <script>
 const $=id=>document.getElementById(id);
 const ranks=["Bronze","Silver","Gold","Platinum","Diamond","Champion","Grand Champion"];
 const divisions=[];
-for(const rank of ranks)for(let tier=1;tier<=3;tier++)for(let div=1;div<=4;div++)divisions.push(rank+" "+["","I","II","III"][tier]+" · Division "+div);
+for(const rank of ranks){
+for(let tier=1;tier<=3;tier++){
+for(let div=1;div<=4;div++){
+divisions.push(rank+" "+["","I","II","III"][tier]+" · Division "+div);
+}
+}
+}
 divisions.push("Supersonic Legend");
 divisions.forEach((name,i)=>{
 for(const id of ["current","target"]){
-const o=document.createElement("option");o.value=i;o.textContent=name;$(id).append(o);
+const option=document.createElement("option");
+option.value=i;
+option.textContent=name;
+$(id).appendChild(option);
 }
 });
-$("current").value=52;$("target").value=64;
+$("current").value=52;
+$("target").value=64;
 function calculate(){
-const current=+$("current").value,target=+$("target").value,pace=+$("pace").value;
-if(!Number.isFinite(pace)||pace<=0){$("result").textContent="—";$("detail").textContent="Enter a positive progress rate.";return}
+const current=Number($("current").value),target=Number($("target").value),pace=Number($("pace").value);
+if($("pace").value===""||!Number.isFinite(pace)||pace<=0){
+$("result").textContent="—";$("detail").textContent="Enter a positive progress rate.";return;
+}
 const remaining=Math.max(0,target-current);
 $("result").textContent=remaining+" Divisions";
 $("detail").textContent=target<=current?"Target rank already reached or exceeded.":"Illustrative sessions needed: "+Math.ceil(remaining/pace);
 }
-document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",calculate));calculate();
-</script></body></html>
+document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",calculate));
+calculate();
+</script>
+</body>
+</html>
