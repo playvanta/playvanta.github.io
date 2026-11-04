@@ -4,18 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Valorant Crosshair Generator | PlayVanta</title>
-<meta name="description" content="Create custom Valorant crosshairs with adjustable sliders, colors, four presets and a live crosshair preview. Free PlayVanta gaming tool.">
+
+<title>Valorant Crosshair Generator & Import Codes | PlayVanta</title>
+<meta name="description" content="Free Valorant crosshair generator with live preview, adjustable sliders, custom colors and presets. Create and copy Valorant crosshair import codes instantly.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://playvanta.github.io/valorant-crosshair-generator.html">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PlayVanta">
-<meta property="og:title" content="Valorant Crosshair Generator | PlayVanta">
-<meta property="og:description" content="Create custom Valorant crosshairs with sliders, colors, presets and a live preview.">
+<meta property="og:title" content="Valorant Crosshair Generator & Import Codes | PlayVanta">
+<meta property="og:description" content="Build your own Valorant crosshair, preview it instantly and copy a profile code to import into Valorant.">
 <meta property="og:url" content="https://playvanta.github.io/valorant-crosshair-generator.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valorant Crosshair Generator | PlayVanta">
-<meta name="twitter:description" content="Free Valorant crosshair generator with a live preview.">
+<meta name="twitter:title" content="Valorant Crosshair Generator & Import Codes | PlayVanta">
+<meta name="twitter:description" content="Customize your Valorant crosshair and generate an importable profile code.">
+
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -36,112 +39,383 @@
   ]
 }
 </script>
+
 <style>
-:root{--accent:#ff6385}
+:root{
+  --accent:#ff6385;
+  --cyan:#5deaff;
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#202056,#05091e 70%);color:#eef2ff;font:15px/1.6 Arial,sans-serif}
+body{
+  margin:0;
+  background:radial-gradient(ellipse at top,#202056,#05091e 70%);
+  color:#eef2ff;
+  font:15px/1.6 Arial,sans-serif;
+}
 a{color:inherit;text-decoration:none}
 a:hover{color:#69e7ff}
-nav{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:12px 5%;background:#080d29;border-bottom:1px solid #8d49e5}
-.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}
-.brand img{width:38px!important;height:38px!important;max-width:38px!important;max-height:38px!important;object-fit:cover;border-radius:8px}
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  padding:12px 5%;
+  background:#080d29;
+  border-bottom:1px solid #8d49e5;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:24px;
+  font-weight:900;
+  font-style:italic;
+}
+.brand img{
+  width:38px!important;
+  height:38px!important;
+  max-width:38px!important;
+  max-height:38px!important;
+  object-fit:cover;
+  border-radius:8px;
+}
 .brand b{color:#ed7cff}
-.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
-.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ef,#101441a9),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #9348e9}
-.hero small{color:var(--accent);letter-spacing:2px;font-weight:bold}
-h1{font-size:clamp(34px,5vw,60px);line-height:1.15;font-style:italic;margin:12px 0}
+.menu{
+  display:flex;
+  gap:17px;
+  flex-wrap:wrap;
+  font-size:13px;
+  font-weight:bold;
+}
+.hero{
+  padding:45px 5%;
+  background:linear-gradient(90deg,#080b28ef,#101441a9),
+  url("playvanta-hero.jpg") center/cover;
+  border-bottom:1px solid #9348e9;
+}
+.hero small{
+  color:var(--accent);
+  letter-spacing:2px;
+  font-weight:bold;
+}
+h1{
+  font-size:clamp(34px,5vw,60px);
+  line-height:1.15;
+  font-style:italic;
+  margin:12px 0;
+}
 h1 span{color:var(--accent)}
-.hero p{color:#d4ddf6;max-width:680px}
+.hero p{color:#d4ddf6;max-width:720px}
 main{max-width:1400px;margin:auto;padding:25px 4%}
-.layout{display:grid;grid-template-columns:1fr 1.1fr .75fr;gap:16px}
-.card{min-width:0;background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a24fe9;border-radius:14px;padding:20px;box-shadow:0 0 15px #8b3cff35}
+.layout{
+  display:grid;
+  grid-template-columns:1fr 1.1fr .75fr;
+  gap:16px;
+}
+.card{
+  min-width:0;
+  background:linear-gradient(140deg,#151d49,#090e2b);
+  border:1px solid #a24fe9;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 0 15px #8b3cff35;
+}
 h2{font-size:19px;margin:0 0 20px}
 .field{margin-bottom:16px}
-.field label{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:bold;margin-bottom:8px}
-input[type=range]{width:100%;accent-color:#e56bff}
-input[type=color]{width:100%;height:42px;background:#101632;border:1px solid #9160da;border-radius:7px}
+.field label{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+input[type=range]{
+  width:100%;
+  accent-color:#e56bff;
+}
+input[type=color]{
+  width:100%;
+  height:42px;
+  background:#101632;
+  border:1px solid #9160da;
+  border-radius:7px;
+  cursor:pointer;
+}
 input[type=checkbox]{accent-color:#e56bff}
-.preview{height:290px;background:radial-gradient(circle,#2a4565,#0b112a 75%);border:1px solid #6554a5;border-radius:12px;overflow:hidden}
+.preview{
+  height:290px;
+  background:radial-gradient(circle,#2a4565,#0b112a 75%);
+  border:1px solid #6554a5;
+  border-radius:12px;
+  overflow:hidden;
+}
 .preview svg{width:100%;height:100%}
-button{cursor:pointer;background:linear-gradient(110deg,#b332e8,#612ac4);border:1px solid #e5a2ff;border-radius:9px;color:white;padding:11px 14px;font-weight:bold}
+button{
+  cursor:pointer;
+  background:linear-gradient(110deg,#b332e8,#612ac4);
+  border:1px solid #e5a2ff;
+  border-radius:9px;
+  color:white;
+  padding:11px 14px;
+  font-weight:bold;
+}
 button:hover{filter:brightness(1.15)}
-.buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.result{margin-top:16px;background:#0b1030;border:1px solid #604aa0;border-radius:10px;padding:16px;text-align:center}
-.result strong{display:block;color:#5deaff;font-size:22px;margin:8px}
-.note{color:#c7d3f0;font-size:13px;line-height:1.8}
+.buttons{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.primary{
+  background:linear-gradient(110deg,#067eaa,#6335e5);
+  border-color:#62eaff;
+}
+.codebox{
+  margin-top:18px;
+  background:#080d26;
+  border:1px solid #604aa0;
+  border-radius:12px;
+  padding:15px;
+}
+.codebox label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:9px;
+  color:#a5dfff;
+}
+.codebox textarea{
+  display:block;
+  width:100%;
+  min-height:100px;
+  resize:vertical;
+  background:#0d1535;
+  border:1px solid #5365a8;
+  border-radius:8px;
+  color:#d9faff;
+  padding:12px;
+  font:13px/1.7 monospace;
+  overflow-wrap:anywhere;
+}
+.result{
+  margin-top:16px;
+  background:#0b1030;
+  border:1px solid #604aa0;
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.result strong{
+  display:block;
+  color:#5deaff;
+  font-size:22px;
+  margin:8px;
+}
+.note{
+  color:#c7d3f0;
+  font-size:13px;
+  line-height:1.8;
+}
 .tools{margin-top:30px}
-.links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.links a{padding:13px;background:#141b43;border:1px solid #8450ce;border-radius:9px;text-align:center;font-size:12px}
+.links{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+.links a{
+  padding:13px;
+  background:#141b43;
+  border:1px solid #8450ce;
+  border-radius:9px;
+  text-align:center;
+  font-size:12px;
+}
 .links a:hover{border-color:#e97aff}
 .info{margin-top:30px;color:#cbd6f2}
 .info h2{color:white}
-details{background:#11183c;border:1px solid #544286;border-radius:9px;padding:13px 16px;margin:10px 0}
+.info ol{padding-left:22px;line-height:2}
+details{
+  background:#11183c;
+  border:1px solid #544286;
+  border-radius:9px;
+  padding:13px 16px;
+  margin:10px 0;
+}
 summary{cursor:pointer;font-weight:bold}
-footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
-@media(max-width:1000px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+footer{
+  text-align:center;
+  padding:25px;
+  color:#aab9db;
+  font-size:12px;
+}
+@media(max-width:1000px){
+  .layout{grid-template-columns:1fr 1fr}
+  .layout aside{grid-column:1/-1}
+  .links{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:650px){
+  .layout{grid-template-columns:1fr}
+  .layout aside{grid-column:auto}
+  .links{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
+
 <body>
 <nav>
-<a href="index.html" class="brand"><img src="playvanta-logo.jpg" alt="PlayVanta logo"><span>Play<b>Vanta</b></span></a>
+<a href="index.html" class="brand">
+<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+<span>Play<b>Vanta</b></span>
+</a>
 <div class="menu">
 <a href="index.html">Home</a>
 <a href="index.html#calculators">Calculators</a>
 <a href="download-games.html">Download Games</a>
 </div>
 </nav>
+
 <header class="hero">
 <small>VALORANT GAMING TOOLS</small>
 <h1>CROSSHAIR <span>GENERATOR</span></h1>
-<p>Customize your Valorant crosshair with adjustable sliders, colors, presets and a live preview.</p>
+<p>Create your own Valorant crosshair with adjustable sliders, live preview, presets and a copyable import profile code.</p>
 </header>
+
 <main>
 <div class="layout">
+
 <section class="card">
 <h2>🎯 Customize Crosshair</h2>
-<div class="field"><label for="length">Inner Line Length <output id="lengthValue">6</output></label><input type="range" id="length" min="0" max="20" value="6"></div>
-<div class="field"><label for="thick">Line Thickness <output id="thickValue">2</output></label><input type="range" id="thick" min="1" max="10" value="2"></div>
-<div class="field"><label for="gap">Center Gap <output id="gapValue">3</output></label><input type="range" id="gap" min="0" max="20" value="3"></div>
-<div class="field"><label for="outer">Outer Line Length <output id="outerValue">0</output></label><input type="range" id="outer" min="0" max="20" value="0"></div>
-<div class="field"><label for="outline">Outline Thickness <output id="outlineValue">1</output></label><input type="range" id="outline" min="0" max="5" value="1"></div>
-<div class="field"><label for="color">Crosshair Color</label><input type="color" id="color" value="#00ff99"></div>
-<div class="field"><label><span>Center Dot</span><input type="checkbox" id="dot"></label></div>
-<div class="field"><label><span>Show Outline</span><input type="checkbox" id="showOutline" checked></label></div>
+
+<div class="field">
+<label for="length">Inner Line Length <output id="lengthValue">6</output></label>
+<input type="range" id="length" min="0" max="20" value="6">
+</div>
+
+<div class="field">
+<label for="thick">Line Thickness <output id="thickValue">2</output></label>
+<input type="range" id="thick" min="1" max="10" value="2">
+</div>
+
+<div class="field">
+<label for="gap">Center Gap <output id="gapValue">3</output></label>
+<input type="range" id="gap" min="0" max="20" value="3">
+</div>
+
+<div class="field">
+<label for="outer">Outer Line Length <output id="outerValue">0</output></label>
+<input type="range" id="outer" min="0" max="20" value="0">
+</div>
+
+<div class="field">
+<label for="outline">Outline Thickness <output id="outlineValue">1</output></label>
+<input type="range" id="outline" min="0" max="5" value="1">
+</div>
+
+<div class="field">
+<label for="color">Crosshair Color</label>
+<input type="color" id="color" value="#00ff99">
+</div>
+
+<div class="field">
+<label for="dot"><span>Center Dot</span><input type="checkbox" id="dot"></label>
+</div>
+
+<div class="field">
+<label for="showOutline"><span>Show Outline</span><input type="checkbox" id="showOutline" checked></label>
+</div>
 </section>
+
 <section class="card">
 <h2>✦ Live Crosshair Preview</h2>
+
 <div class="preview">
-<svg viewBox="0 0 400 300" role="img" aria-label="Valorant crosshair preview"><g id="crosshair"></g></svg>
+<svg viewBox="0 0 400 300" role="img" aria-label="Custom Valorant crosshair preview">
+<g id="crosshair"></g>
+</svg>
 </div>
+
+<div class="codebox">
+<label for="importCode">Valorant Crosshair Import Code</label>
+<textarea id="importCode" readonly spellcheck="false" aria-label="Generated Valorant crosshair import code"></textarea>
+</div>
+
 <div class="buttons">
-<button type="button" onclick="copySettings()">Copy Settings</button>
+<button class="primary" type="button" onclick="copyImportCode()">Copy Import Code</button>
 <button type="button" onclick="resetCrosshair()">Reset</button>
 </div>
-<div class="result"><strong id="result">Live Preview</strong><p id="detail" class="note" aria-live="polite">Adjust the sliders to customize your crosshair.</p></div>
+
+<div class="result">
+<strong id="result">Import Code Ready</strong>
+<p id="detail" class="note" aria-live="polite">Customize your crosshair, then copy the generated code.</p>
+</div>
 </section>
+
 <aside class="card">
 <h2>⚡ Quick Presets</h2>
+
 <div class="buttons">
 <button type="button" onclick="preset(6,2,3,0,false)">Classic</button>
 <button type="button" onclick="preset(4,2,2,0,false)">Pro</button>
 <button type="button" onclick="preset(0,2,0,0,true)">Dot</button>
 <button type="button" onclick="preset(3,1,4,0,false)">Minimal</button>
 </div>
-<p class="note">Use the sliders to fine-tune your crosshair. Copy your settings to recreate them manually inside Valorant.</p>
-<p class="note">Copied settings are not an official Valorant import code.</p>
+
+<h2 style="margin-top:30px">🎮 How to Import</h2>
+<p class="note">1. Customize your crosshair.</p>
+<p class="note">2. Click Copy Import Code.</p>
+<p class="note">3. Open Valorant → Settings → Crosshair.</p>
+<p class="note">4. Select Import Profile Code.</p>
+<p class="note">5. Paste the code and select Import.</p>
+<p class="note">Test the imported profile in the Practice Range and adjust it if needed.</p>
 </aside>
+
 </div>
+
 <section class="info">
-<h2>How to Use the Valorant Crosshair Generator</h2>
-<p>Adjust line length, thickness, gap and color to build a crosshair that suits your preferences. The preview updates instantly, so you can compare different combinations without launching the game.</p>
-<p>Try the presets for a starting point, then copy your chosen settings and enter them manually in Valorant's crosshair settings menu.</p>
+<h2>How to Generate a Valorant Crosshair Code</h2>
+<p>PlayVanta's Valorant Crosshair Generator lets you customize your crosshair using sliders for inner line length, thickness, center gap, outer line length and outline thickness. You can also choose a custom color and enable a center dot.</p>
+<p>The crosshair preview and profile code update automatically when you change the settings. Once you're satisfied, copy the code and use Valorant's Import Profile Code feature to create a crosshair profile without entering every setting manually.</p>
+<p>The preview is an approximation of how the crosshair will look in-game. Valorant's rendering, screen resolution and in-game settings may affect the final appearance.</p>
 </section>
+
+<section class="info">
+<h2>How to Import a Crosshair Code into Valorant</h2>
+<ol>
+<li>Open Valorant on your PC.</li>
+<li>Go to Settings and select the Crosshair tab.</li>
+<li>Find the Import Profile Code button beside the crosshair profile controls.</li>
+<li>Paste the full code copied from PlayVanta.</li>
+<li>Click Import and select your new crosshair profile.</li>
+<li>Check the result in Valorant's Practice Range.</li>
+</ol>
+</section>
+
 <section class="info">
 <h2>Frequently Asked Questions</h2>
-<details><summary>Is the Valorant Crosshair Generator free?</summary><p>Yes. You can customize and preview crosshairs for free in your browser.</p></details>
-<details><summary>Can I import the copied settings directly into Valorant?</summary><p>No. The copied values are intended for manual entry. They are not a Valorant crosshair import code.</p></details>
+
+<details>
+<summary>Can I import PlayVanta crosshair codes directly into Valorant?</summary>
+<p>The generator creates codes using Valorant's profile-code format for use with the Import Profile Code feature. Import compatibility should be confirmed in the game, especially after updates.</p>
+</details>
+
+<details>
+<summary>Is the Valorant Crosshair Generator free?</summary>
+<p>Yes. You can create, preview and copy crosshair profile codes without paying or creating an account.</p>
+</details>
+
+<details>
+<summary>Can I change the color of my Valorant crosshair?</summary>
+<p>Yes. Use the color picker to select a custom crosshair color. The generated code includes the selected color.</p>
+</details>
+
+<details>
+<summary>Can I use professional Valorant crosshair styles?</summary>
+<p>PlayVanta includes Classic, Pro, Dot and Minimal starting presets. These are generic styles rather than verified profiles of specific professional players.</p>
+</details>
 </section>
+
 <section class="tools">
 <h2>🎮 More PlayVanta Gaming Tools</h2>
 <div class="links">
@@ -157,73 +431,169 @@ footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
 </div>
 </section>
 </main>
+
 <footer>© PlayVanta · Every Game. One Hub.</footer>
+
 <script>
 const $=id=>document.getElementById(id);
+
 const sliders=["length","thick","gap","outer","outline"];
-function draw(){
-sliders.forEach(id=>$(id+"Value").textContent=$(id).value);
-const len=+$("length").value*2.5;
-const thick=+$("thick").value*1.5;
-const gap=+$("gap").value*2.2;
-const outer=+$("outer").value*2.5;
-const color=$("color").value;
-const stroke=$("showOutline").checked?+$("outline").value:0;
-const shapes=[];
-function rect(x,y,w,h){
-shapes.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color}" stroke="#000" stroke-width="${stroke}"/>`);
+
+function settings(){
+return {
+  length:Number($("length").value),
+  thick:Number($("thick").value),
+  gap:Number($("gap").value),
+  outer:Number($("outer").value),
+  outline:Number($("outline").value),
+  color:$("color").value,
+  dot:$("dot").checked,
+  showOutline:$("showOutline").checked
+};
 }
-const x=200,y=150;
+
+function generateCode(){
+const s=settings();
+
+const hex=s.color.replace("#","").toUpperCase();
+
+const parts=[
+  "0","P",
+  "c","8",
+  "u",hex+"FF",
+  "b","1",
+  "h",s.showOutline?"1":"0",
+  "t",String(Math.max(1,s.outline)),
+  "o","1",
+  "d",s.dot?"1":"0",
+  "z","3",
+  "a","1",
+  "f","0",
+  "0b",s.length>0?"1":"0",
+  "0t",String(s.thick),
+  "0l",String(s.length),
+  "0o",String(s.gap),
+  "0a","1",
+  "0m","0",
+  "0f","0",
+  "1b",s.outer>0?"1":"0",
+  "1t",String(s.thick),
+  "1l",String(s.outer),
+  "1o",String(s.gap+s.length+3),
+  "1a","1",
+  "1m","0",
+  "1f","0"
+];
+
+return parts.join(";");
+}
+
+function draw(){
+sliders.forEach(id=>{
+$(id+"Value").textContent=$(id).value;
+});
+
+const s=settings();
+
+const len=s.length*2.5;
+const thick=s.thick*1.5;
+const gap=s.gap*2.2;
+const outer=s.outer*2.5;
+const color=s.color;
+const stroke=s.showOutline?s.outline:0;
+
+const shapes=[];
+
+function rect(x,y,w,h){
+shapes.push(
+`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color}" stroke="#000000" stroke-width="${stroke}"/>`
+);
+}
+
+const x=200;
+const y=150;
+
 if(len>0){
 rect(x-gap-len,y-thick/2,len,thick);
 rect(x+gap,y-thick/2,len,thick);
 rect(x-thick/2,y-gap-len,thick,len);
 rect(x-thick/2,y+gap,thick,len);
 }
+
 if(outer>0){
-const d=gap+len+8;
-rect(x-d-outer,y-thick/2,outer,thick);
-rect(x+d,y-thick/2,outer,thick);
-rect(x-thick/2,y-d-outer,thick,outer);
-rect(x-thick/2,y+d,thick,outer);
+const distance=gap+len+8;
+
+rect(x-distance-outer,y-thick/2,outer,thick);
+rect(x+distance,y-thick/2,outer,thick);
+rect(x-thick/2,y-distance-outer,thick,outer);
+rect(x-thick/2,y+distance,thick,outer);
 }
-if($("dot").checked){
-shapes.push(`<circle cx="${x}" cy="${y}" r="3" fill="${color}"/>`);
+
+if(s.dot){
+shapes.push(
+`<circle cx="${x}" cy="${y}" r="3" fill="${color}"/>`
+);
 }
+
 $("crosshair").innerHTML=shapes.join("");
-$("result").textContent="Live Preview";
-$("detail").textContent="Your crosshair preview is up to date.";
+$("importCode").value=generateCode();
+
+$("result").textContent="Import Code Ready";
+$("detail").textContent="Copy the code and import it into Valorant.";
 }
-function preset(l,t,g,o,d){
-$("length").value=l;
-$("thick").value=t;
-$("gap").value=g;
-$("outer").value=o;
-$("dot").checked=d;
+
+function preset(length,thick,gap,outer,dot){
+$("length").value=length;
+$("thick").value=thick;
+$("gap").value=gap;
+$("outer").value=outer;
+$("dot").checked=dot;
 draw();
 }
+
 function resetCrosshair(){
-preset(6,2,3,0,false);
+$("length").value=6;
+$("thick").value=2;
+$("gap").value=3;
+$("outer").value=0;
 $("outline").value=1;
 $("color").value="#00ff99";
+$("dot").checked=false;
 $("showOutline").checked=true;
 draw();
 }
-async function copySettings(){
-const text=sliders.map(id=>id+": "+$(id).value).join("\n")
-+"\nColor: "+$("color").value
-+"\nCenter dot: "+$("dot").checked
-+"\nShow outline: "+$("showOutline").checked;
+
+async function copyImportCode(){
+const code=generateCode();
+
 try{
-await navigator.clipboard.writeText(text);
-$("result").textContent="Copied!";
-$("detail").textContent="Settings copied for manual entry.";
+await navigator.clipboard.writeText(code);
+
+$("result").textContent="Code Copied!";
+$("detail").textContent="Open Valorant → Settings → Crosshair → Import Profile Code.";
+}catch(error){
+$("importCode").focus();
+$("importCode").select();
+
+try{
+const copied=document.execCommand("copy");
+
+if(!copied)throw new Error("Copy failed");
+
+$("result").textContent="Code Copied!";
+$("detail").textContent="Paste the code into Valorant's crosshair import box.";
 }catch{
-$("result").textContent="Copy Unavailable";
-$("detail").textContent="Please copy the displayed settings manually.";
+$("result").textContent="Select and Copy";
+$("detail").textContent="Copy the selected code manually with Ctrl + C.";
 }
 }
-document.querySelectorAll("input").forEach(el=>el.addEventListener("input",draw));
+}
+
+document.querySelectorAll("input").forEach(el=>{
+el.addEventListener("input",draw);
+el.addEventListener("change",draw);
+});
+
 draw();
 </script>
 </body>
