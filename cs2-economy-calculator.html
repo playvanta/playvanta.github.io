@@ -2,97 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CS2 Economy Calculator – Buy Round & Loadout Planner | PlayVanta</title>
-<meta name="description" content="Free CS2 economy calculator. Plan Counter-Strike 2 buy rounds, choose weapons, armor and grenades, and calculate remaining money for T or CT side.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/cs2-economy-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-<style>
-body{--accent:#f1c46b;--hero-art:url('https://shadow.tech/app/uploads/2024/12/COUNTERSTRIKE2_KEYART-min.jpg')}
-.pv-guide p,.pv-guide li{line-height:1.8}.pv-guide ul{padding-left:22px}
-.pv-faq{border-bottom:1px solid #ffffff20;padding:15px 0}.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-btn{margin-top:18px;border:1px solid #f1c46b80;border-radius:10px;background:#594729;color:white;font-weight:800;padding:12px 18px;cursor:pointer}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"CS2 Economy Calculator","url":"https://playvanta.github.io/cs2-economy-calculator.html","applicationCategory":"GameApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CS2 Economy Calculator | PlayVanta</title>
+<meta name="description" content="Estimate Counter-Strike 2 team money and purchasing power for your next round.">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">Counter-Strike 2 / Economy</div><h1>CS2 Economy <span>Calculator</span></h1><p>Build a buy-round loadout, calculate your equipment cost and see how much money you'll have remaining.</p><div class="hero-tags"><span>T & CT</span><span>Weapons</span><span>Armor</span><span>Utility</span></div></div></section>
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel"><div class="panel-kicker">Buy Round Planner</div><h2>Calculate Your CS2 Loadout Cost</h2>
-<div class="field-grid">
-<div class="field"><label for="side">Team Side</label><select id="side"><option value="ct">Counter-Terrorists</option><option value="t">Terrorists</option></select></div>
-<div class="field"><label for="money">Available Money ($)</label><input id="money" type="number" min="0" max="16000" step="50" value="4750"></div>
-<div class="field"><label for="weapon">Primary Weapon</label><select id="weapon"></select></div>
-<div class="field"><label for="armor">Armor</label><select id="armor"><option value="0">None – $0</option><option value="650">Kevlar – $650</option><option value="1000" selected>Kevlar + Helmet – $1000</option></select></div>
-<div class="field"><label for="flash">Flashbangs</label><select id="flash"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></div>
-<div class="field"><label for="smoke">Smoke Grenades</label><select id="smoke"><option value="0">0</option><option value="1" selected>1</option></select></div>
-<div class="field"><label for="he">HE Grenade</label><select id="he"><option value="0">No</option><option value="1">Yes</option></select></div>
-<div class="field"><label for="fire">Fire Grenade</label><select id="fire"><option value="0">No</option><option value="1">Yes</option></select></div>
-<div class="field"><label for="kit">Defuse Kit (CT)</label><select id="kit"><option value="0">No</option><option value="1">Yes</option></select></div>
+<body data-tool="cs2" style="--accent:#ffad43">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 </div>
-<div class="results">
-<div class="metric"><span>Total Buy Cost</span><strong id="cost">—</strong></div>
-<div class="metric"><span>Money Remaining</span><strong id="remaining">—</strong></div>
-<div class="metric"><span>Shortfall</span><strong id="shortfall">—</strong></div>
-<div class="metric"><span>Buy Status</span><strong id="status">—</strong></div>
+</nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Plan your Counter-Strike 2 team's purchases and calculate estimated money remaining after a buy round.</p>
 </div>
-<div class="note">Prices are illustrative CS2 buy-menu values and may change with game updates. This tool assumes you're buying all selected equipment from scratch, without accounting for equipment you already own. Loadout availability can depend on your configured weapon slots.</div>
-<button type="button" class="pv-btn" id="reset">Reset Buy</button>
-</section>
-<section class="panel pv-guide"><h2>How to Plan a CS2 Buy Round</h2>
-<p>Counter-Strike 2's economy rewards careful spending and coordination. Choosing a weapon, armor and utility without exceeding your team's budget is an important part of competitive play.</p>
-<h3>Full Buy</h3><p>A full buy typically includes a strong primary weapon, appropriate armor and useful grenades. On CT side, a defuse kit may also be valuable.</p>
-<h3>Force Buy</h3><p>A force buy spends limited resources to contest a round. It can involve lower-cost weapons and reduced utility.</p>
-<h3>Eco Round</h3><p>An eco round limits spending to preserve money for a future purchase. Teams may choose pistols or save most of their money.</p>
-<h3>Why Utility Matters</h3><p>Smoke grenades, flashbangs, HE grenades and incendiaries or Molotovs can create tactical opportunities. A strong weapon without supporting utility is not always the best purchase.</p>
-</section>
-<section class="panel pv-guide"><h2>CS2 Economy FAQ</h2>
-<details class="pv-faq"><summary>What is a full buy in CS2?</summary><p>A full buy generally means purchasing a competitive weapon, armor and useful utility while considering team economy.</p></details>
-<details class="pv-faq"><summary>Does this calculator track my CS2 inventory?</summary><p>No. It is a manual buy-round planning tool.</p></details>
-<details class="pv-faq"><summary>Are weapon prices always current?</summary><p>Not necessarily. Game updates can change prices or availability. Confirm prices in the current CS2 buy menu.</p></details>
-<details class="pv-faq"><summary>Can I use it for both T and CT?</summary><p>Yes. The weapon list and fire grenade price change according to the selected side.</p></details>
-</section></div>
-<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">CS2 Strategy</div><h2>Buy Smarter</h2><p>Plan your round purchases before committing your team's economy.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="valorant-sensitivity-converter.html">Valorant Sensitivity Converter →</a><a href="fps-frame-time-calculator.html">FPS Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside></div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made website. Not affiliated with Valve.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-const weapons={
- ct:[["None",0],["MP9",1250],["FAMAS",1950],["M4A4",3000],["M4A1-S",2900],["AWP",4750],["SSG 08",1700],["MAG-7",1300]],
- t:[["None",0],["MAC-10",1050],["Galil AR",1800],["AK-47",2700],["AWP",4750],["SSG 08",1700],["Sawed-Off",1100]]
-};
-function buildWeapons(){
- const old=$("weapon").value;
- $("weapon").innerHTML="";
- weapons[$("side").value].forEach(([name,price])=>{
-  const option=document.createElement("option");option.value=price;option.textContent=name+" – $"+price;option.dataset.name=name;$("weapon").append(option);
- });
- const preferred=$("side").value==="ct"?"M4A4":"AK-47";
- const match=[...$("weapon").options].find(o=>o.dataset.name===preferred);
- if(match)match.selected=true;
- $("kit").disabled=$("side").value==="t";
- if($("side").value==="t")$("kit").value="0";
- update();
-}
-function update(){
- const money=Number($("money").value);
- if($("money").value.trim()===""||!Number.isFinite(money)||money<0||money>16000){
-  ["cost","remaining","shortfall","status"].forEach(id=>$(id).textContent="—");return;
- }
- const side=$("side").value;
- const utility=Number($("flash").value)*200+Number($("smoke").value)*300+Number($("he").value)*300+Number($("fire").value)*(side==="ct"?600:400)+Number($("kit").value)*400;
- const total=Number($("weapon").value)+Number($("armor").value)+utility;
- $("cost").textContent="$"+total.toLocaleString();
- $("remaining").textContent="$"+Math.max(0,money-total).toLocaleString();
- $("shortfall").textContent="$"+Math.max(0,total-money).toLocaleString();
- $("status").textContent=total<=money?"Affordable":"Over Budget";
-}
-$("side").addEventListener("change",buildWeapons);
-["money","weapon","armor","flash","smoke","he","fire","kit"].forEach(id=>$(id).addEventListener("input",update));
-$("reset").onclick=()=>{$("side").value="ct";$("money").value=4750;$("armor").value=1000;$("flash").value=0;$("smoke").value=1;$("he").value=0;$("fire").value=0;$("kit").value=0;buildWeapons()};
-buildWeapons();
-</script></body></html>
+</header>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>💰 Team Economy Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ Economy Result</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Buy Round Tips</h2><div class="tool-note" id="toolTips"></div></aside>
+</div>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+<script src="playvanta-tools.js?v=1" defer></script>
+</body>
+</html>
