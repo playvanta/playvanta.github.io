@@ -2,43 +2,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Minecraft Nether Portal Calculator | PlayVanta</title>
-<meta name="description" content="Convert Minecraft Overworld and Nether coordinates with an easy portal calculator.">
-<link rel="icon" href="playvanta-logo.jpg">
-<link rel="stylesheet" href="playvanta-tools.css?v=1">
-</head>
-<body data-tool="nether" style="--accent:#59e476">
-<div class="tool-shell">
-<nav class="tool-nav">
-<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
-<div class="tool-nav-links">
-<a href="index.html">⌂ Home</a>
-<a class="active" href="index.html#calculators">⚙ Calculators</a>
-<a href="download-games.html">↓ Download Games</a>
-<a href="download-games.html">🎮 Game Discovery</a>
+<meta name="description" content="Convert Minecraft Overworld and Nether portal coordinates.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#193d45,#05091e 65%);color:white;font-family:Arial,sans-serif}a{color:inherit;text-decoration:none}
+nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;padding:12px 5%;background:#080d29;border-bottom:1px solid #9d49ed}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}.brand img{width:38px;height:38px;object-fit:cover;border-radius:8px}.brand b{color:#eb79ff}
+.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ee,#101441a0),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #9b4cec}
+.hero small{color:#6df586;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(34px,5vw,60px);font-style:italic;margin:12px 0}.hero h1 span{color:#77f68e}.hero p{color:#d8e2f7;line-height:1.7}
+main{max-width:1250px;margin:auto;padding:25px 4%}.layout{display:grid;grid-template-columns:1fr 1fr .75fr;gap:16px}
+.card{background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #9f52eb;border-radius:14px;padding:22px;box-shadow:0 0 15px #8b3cff35}
+h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+input,select{width:100%;padding:12px;border:1px solid #7065b4;border-radius:9px;background:#0b1537;color:white}
+.result{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #6d4aaa;border-radius:12px;background:#0b1031;padding:15px}
+.result strong{font-size:clamp(28px,4vw,45px);color:#6fffa0;margin:14px 0;text-shadow:0 0 15px #39ef7c55}.result p,.note{color:#cbd6f3;font-size:13px;line-height:1.8}
+.links{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.links a{padding:13px;border:1px solid #884dd7;border-radius:9px;background:#141b43;text-align:center;font-size:12px}
+footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
+@media(max-width:950px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+</style></head>
+<body>
+<nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
+<header class="hero"><small>MINECRAFT GAMING TOOLS</small><h1>NETHER PORTAL <span>CALCULATOR</span></h1><p>Convert coordinates between the Overworld and Nether using Minecraft's 8:1 scale.</p></header>
+<main><div class="layout">
+<section class="card"><h2>🟩 Portal Coordinates</h2>
+<div class="field"><label for="direction">Conversion Direction</label><select id="direction"><option value="nether">Overworld → Nether</option><option value="overworld">Nether → Overworld</option></select></div>
+<div class="field"><label for="x">X Coordinate</label><input id="x" type="number" value="1000"></div>
+<div class="field"><label for="z">Z Coordinate</label><input id="z" type="number" value="-500"></div>
+</section>
+<section class="card"><h2>✦ Destination Coordinates</h2><div class="result"><span>Converted Position</span><strong id="result">—</strong><p id="detail"></p></div></section>
+<aside class="card"><h2>⚡ Portal Guide</h2><p class="note">Overworld to Nether: divide X and Z by 8.</p><p class="note">Nether to Overworld: multiply X and Z by 8.</p><p class="note">Y coordinates do not use this conversion. Nearby portals can affect linking.</p></aside>
 </div>
-</nav>
-<header class="tool-hero">
-<div class="tool-hero-content">
-<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
-<div class="tool-eyebrow" id="toolGame"></div>
-<h1 id="toolTitle"></h1>
-<p>Find matching Nether and Overworld coordinates using Minecraft's 8:1 horizontal coordinate scale.</p>
-</div>
-</header>
-<main class="tool-main">
-<div class="tool-layout">
-<section class="tool-card"><h2>🟩 Portal Coordinates</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
-<section class="tool-card"><h2>✦ Destination Coordinates</h2><div id="toolPreview"></div></section>
-<aside class="tool-card"><h2>⚡ Portal Guide</h2><div class="tool-note" id="toolTips"></div></aside>
-</div>
-<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
-<div class="tool-directory" id="toolDirectory"></div>
-</main>
-<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
-</div>
-<script src="playvanta-tools.js?v=1" defer></script>
-</body>
-</html>
+<section style="margin-top:35px"><h2>🎮 More PlayVanta Tools</h2><div class="links">
+<a href="valorant-crosshair-generator.html">Valorant Crosshair</a><a href="valorant-sensitivity-converter.html">Sensitivity Converter</a><a href="fps-frame-time-calculator.html">FPS Frame Time</a><a href="fortnite-xp-calculator.html">Fortnite XP</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="cs2-economy-calculator.html">CS2 Economy</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="rocket-league-rank-tracker.html">Rocket League</a><a href="lol-lp-calculator.html">LoL LP</a>
+</div></section>
+</main><footer>© PlayVanta · Every Game. One Hub.</footer>
+<script>
+const $=id=>document.getElementById(id);
+function calculate(){
+const x=+$("x").value,z=+$("z").value,factor=$("direction").value==="nether"?1/8:8;
+if(!Number.isFinite(x)||!Number.isFinite(z)){$("result").textContent="—";return}
+const fmt=n=>n.toLocaleString("en-US",{maximumFractionDigits:3});
+$("result").textContent="X: "+fmt(x*factor);
+$("detail").textContent="Z: "+fmt(z*factor)+" · "+(factor===8?"Multiply by 8":"Divide by 8");
+}
+document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",calculate));
+calculate();
+</script></body></html>
