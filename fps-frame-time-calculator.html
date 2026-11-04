@@ -4,94 +4,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FPS to Frame Time Calculator – ms, 1% Low & Refresh Rate | PlayVanta</title>
-<meta name="description" content="Free FPS to frame time calculator. Convert FPS to milliseconds per frame, compare 1% low FPS and understand monitor refresh rates for smoother gaming.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/fps-frame-time-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-<style>
-body{--accent:#69b8ff;--hero-art:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=85')}
-.pv-guide p,.pv-guide li{line-height:1.8}.pv-guide ul{padding-left:22px}
-.pv-faq{border-bottom:1px solid #ffffff20;padding:15px 0}.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}
-.pv-table th,.pv-table td{padding:12px;border-bottom:1px solid #ffffff20;text-align:left}
-.pv-table th{color:#91caff}
-.pv-action{margin-top:15px;padding:12px 18px;border-radius:10px;border:1px solid #69b8ff70;background:#193c60;color:white;font-weight:800;cursor:pointer}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"FPS to Frame Time Calculator","url":"https://playvanta.github.io/fps-frame-time-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<title>FPS Frame-Time Calculator | PlayVanta</title>
+<meta name="description" content="Calculate average frame time in milliseconds from your FPS and compare it with monitor refresh intervals.">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">PC Gaming / Performance</div><h1>FPS & Frame Time <span>Calculator</span></h1><p>Convert frames per second into milliseconds, compare frame pacing and understand what average FPS and 1% lows mean for gaming.</p><div class="hero-tags"><span>FPS ↔ ms</span><span>1% Low</span><span>Refresh Rate</span></div></div></section>
-
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel">
-<div class="panel-kicker">Performance Calculator</div><h2>FPS to Frame Time Converter</h2>
-<p>Choose a conversion mode and enter your measured FPS or frame time.</p>
-<div class="field-grid">
-<div class="field"><label for="mode">Conversion Mode</label><select id="mode"><option value="fps">FPS → Frame Time</option><option value="ms">Frame Time → FPS</option></select></div>
-<div class="field"><label for="value" id="valueLabel">Average FPS</label><input id="value" type="number" min="0.001" step="any" value="144"></div>
-<div class="field"><label for="low">Measured 1% Low FPS (optional)</label><input id="low" type="number" min="0.001" step="any" placeholder="e.g. 95"></div>
-<div class="field"><label for="hz">Monitor Refresh Rate</label><select id="hz"><option>60</option><option>75</option><option>120</option><option selected>144</option><option>165</option><option>240</option><option>360</option><option>500</option></select></div>
+<body data-tool="fps" style="--accent:#3adfff">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 </div>
-<div class="results">
-<div class="metric"><span>Average FPS</span><strong id="fpsOut">—</strong></div>
-<div class="metric"><span>Average Frame Time</span><strong id="msOut">—</strong></div>
-<div class="metric"><span>1% Low Frame Time</span><strong id="lowOut">—</strong></div>
-<div class="metric"><span>Monitor Refresh Interval</span><strong id="refreshOut">—</strong></div>
+</nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Convert frames per second into milliseconds per frame and compare your performance with your monitor refresh rate.</p>
 </div>
-<div class="note" id="assessment">Enter values to calculate.</div>
-<button type="button" class="pv-action" id="reset">Reset Calculator</button>
-</section>
-
-<section class="panel pv-guide">
-<h2>What Is Frame Time in Gaming?</h2>
-<p>Frame time measures how long a frame takes to render, usually in milliseconds. FPS tells you how many frames are produced per second, while frame time expresses the duration of each frame.</p>
-<p><strong>Frame Time (ms) = 1000 ÷ FPS</strong></p>
-<p><strong>FPS = 1000 ÷ Frame Time (ms)</strong></p>
-<h3>Common FPS and Frame Time Values</h3>
-<table class="pv-table"><thead><tr><th>FPS</th><th>Frame Time</th></tr></thead><tbody>
-<tr><td>30</td><td>33.33 ms</td></tr><tr><td>60</td><td>16.67 ms</td></tr><tr><td>120</td><td>8.33 ms</td></tr><tr><td>144</td><td>6.94 ms</td></tr><tr><td>240</td><td>4.17 ms</td></tr><tr><td>360</td><td>2.78 ms</td></tr>
-</tbody></table>
-<h3>What Is 1% Low FPS?</h3>
-<p>1% low FPS is a performance statistic intended to describe slower frames. It is typically derived from the slowest portion of a frame-time sample, but exact calculation methods vary between benchmarking tools. A large difference between average FPS and 1% low FPS may indicate inconsistent performance.</p>
-<h3>Does More FPS Always Mean Smoother Gaming?</h3>
-<p>Higher FPS reduces the average time between frames, but smoothness also depends on frame-time consistency, synchronization, display behavior and input latency. Average FPS alone cannot fully describe stuttering.</p>
-</section>
-
-<section class="panel pv-guide"><h2>FPS Calculator FAQ</h2>
-<details class="pv-faq"><summary>How many milliseconds is 144 FPS?</summary><p>144 FPS corresponds to approximately 6.94 milliseconds per frame.</p></details>
-<details class="pv-faq"><summary>How many milliseconds is 240 FPS?</summary><p>240 FPS corresponds to approximately 4.17 milliseconds per frame.</p></details>
-<details class="pv-faq"><summary>Is frame time the same as input lag?</summary><p>No. Frame time is one component of the rendering process. Total input-to-display latency also includes input processing, buffering, display processing and other delays.</p></details>
-<details class="pv-faq"><summary>Can this tool measure my PC's FPS?</summary><p>No. Enter measurements from your game or benchmarking software. This calculator converts and explains the numbers; it does not benchmark your computer.</p></details>
-</section>
+</header>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>🖥️ Performance Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ Frame-Time Result</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Understanding Frame Time</h2><div class="tool-note" id="toolTips"></div></aside>
 </div>
-<aside>
-<section class="panel"><div class="art-tile"></div><div class="panel-kicker">PC Performance</div><h2>Understand Your Frames</h2><p>Compare frame rates and refresh intervals to better understand your gaming setup.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="valorant-sensitivity-converter.html">Valorant Sensitivity Converter →</a><a href="valorant-crosshair-generator.html">Valorant Crosshair Generator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section>
-</aside></div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent gaming utility.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-function fmt(n){return Number(n.toFixed(2)).toString()}
-function update(){
- const mode=$("mode").value,v=Number($("value").value),low=Number($("low").value),hz=Number($("hz").value);
- $("valueLabel").textContent=mode==="fps"?"Average FPS":"Frame Time (ms)";
- const valid=$("value").value.trim()!==""&&Number.isFinite(v)&&v>0;
- if(!valid){["fpsOut","msOut","lowOut"].forEach(id=>$(id).textContent="—");$("assessment").textContent="Enter a positive value.";return}
- const fps=mode==="fps"?v:1000/v,ms=1000/fps;
- $("fpsOut").textContent=fmt(fps);
- $("msOut").textContent=fmt(ms)+" ms";
- $("refreshOut").textContent=fmt(1000/hz)+" ms";
- $("lowOut").textContent=$("low").value.trim()!==""&&low>0&&Number.isFinite(low)?fmt(1000/low)+" ms":"Not entered";
- $("assessment").textContent=fps>=hz?
- "Average FPS meets or exceeds the selected refresh rate numerically. Actual display smoothness also depends on frame pacing and synchronization.":
- "Average FPS is below the selected refresh rate. Your monitor may not receive a newly rendered frame for every refresh.";
-}
-["mode","value","low","hz"].forEach(id=>$(id).addEventListener("input",update));
-$("reset").onclick=()=>{$("mode").value="fps";$("value").value=144;$("low").value="";$("hz").value="144";update()};
-update();
-</script>
-</body></html>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+<script src="playvanta-tools.js?v=1" defer></script>
+</body>
+</html>
