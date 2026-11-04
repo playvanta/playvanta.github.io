@@ -5,201 +5,509 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Download Games | PlayVanta</title>
-<meta name="description" content="Explore 16 games and official download websites with PlayVanta.">
+<meta name="description" content="Discover 16 popular games and visit their official download websites at PlayVanta.">
 <link rel="canonical" href="https://playvanta.github.io/download-games.html">
 <link rel="icon" href="playvanta-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{
+ --pink:#f478ff;--purple:#a437ff;
+ --cyan:#23eaff;--border:#a667ed;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#050719;color:#fff;font-family:Inter,Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{margin:0;background:#030514;color:white;font-family:Inter,Arial,sans-serif}
 a{text-decoration:none;color:inherit}
-input,select{font:inherit}
-.site{max-width:1450px;margin:auto;overflow:hidden;border:1px solid #aa65f3;background:radial-gradient(ellipse at 18% 35%,#093e85aa,transparent 40%),linear-gradient(#080b27,#0a1536,#0c0b29)}
-nav{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 4%;background:#080b20f2;border-bottom:1px solid #ad66ff;backdrop-filter:blur(15px)}
-.logo{display:flex;align-items:center;gap:9px;font-size:24px;font-style:italic;font-weight:900;white-space:nowrap}
-.logo img{width:35px;height:35px;border-radius:8px;object-fit:cover}
-.logo em{color:#f47aff;font-style:inherit}
-.links{display:flex;align-items:center;gap:5px}
-.links a{font-size:11px;font-weight:800;padding:10px;border-radius:8px;white-space:nowrap}
-.links a:hover,.links .active{background:linear-gradient(110deg,#b12ae2,#602cd1);box-shadow:0 0 15px #e64aff}
-.hero{min-height:350px;position:relative;display:flex;align-items:center;padding:45px 5%;background:linear-gradient(90deg,#070b22f5,#0b1740a6),url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1800&q=85") center/cover,linear-gradient(115deg,#090b26,#1d286b,#3b1268);overflow:hidden}
-.hero:after{content:"";position:absolute;right:8%;top:-80px;width:340px;height:340px;border:3px solid #bb64ff88;border-radius:50%;box-shadow:0 0 80px #9b3fff88,inset 0 0 80px #39bbff55;pointer-events:none}
-.hero-copy{position:relative;z-index:1}
-.eyebrow{font-size:11px;font-weight:900;letter-spacing:3px;color:#42ecff}
-h1{font-size:clamp(50px,6vw,85px);font-weight:900;font-style:italic;line-height:1;letter-spacing:-3px;margin:18px 0;text-shadow:0 4px 16px #000b}
-.gradient{background:linear-gradient(100deg,#ff8bf6,#b875ff,#4bd5ff);background-clip:text;color:transparent}
-.hero p{max-width:530px;font-size:14px;line-height:1.8;color:#e5eaff}
-main{padding:26px 4% 45px}
-.filters{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px}
-.filters input,.filters select{min-width:0;width:100%;padding:13px;border:1px solid #7e69ce;border-radius:9px;background:#10183a;color:white;outline:none}
-.filters input:focus,.filters select:focus{border-color:#f18aff}
-.filters option{background:#10183a}
-.summary{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
-.summary h2{font-size:25px;font-style:italic;margin:0}
-.summary span{color:#58e4ff;font-size:12px;font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.card{overflow:hidden;border:1px solid #b16cff;border-radius:13px;background:#14193c;box-shadow:0 8px 20px #0008;transition:.2s}
-.card:hover{transform:translateY(-5px);box-shadow:0 0 25px #c54aff88}
-.photo{height:165px;overflow:hidden;background:linear-gradient(120deg,#5e288a,#133e7e)}
-.photo img{display:block;width:100%;height:100%;object-fit:cover}
-.info{text-align:center;padding:11px 12px 13px}
-.info h3{font-size:15px;margin:0 0 5px;font-weight:900}
-.genre{display:block;font-size:11px;color:#d2dcf4}
-.price{display:inline-block;font-size:10px;font-weight:800;margin:10px 0;padding:4px 11px;border:1px solid #db87ff;border-radius:20px;background:#632b9688}
-.official{display:block;padding:11px 7px;border:1px solid #ef93ff;border-radius:8px;background:linear-gradient(110deg,#b12bdf,#573bd0);font-size:11px;font-weight:900;box-shadow:0 0 12px #b844ff88;transition:.2s}
-.official:hover{filter:brightness(1.2);box-shadow:0 0 22px #ed66ff}
-.tool{display:block;padding:9px 4px 0;font-size:10px;font-weight:800;color:#d7c9ff}
-.tool:hover{color:#fff}
-.cta{margin-top:35px;padding:30px;border:1px solid #b46aff;border-radius:15px;background:linear-gradient(110deg,#2b1454,#102654)}
-.cta h2{font-size:28px;font-style:italic;margin:0 0 10px}
-.cta p{font-size:12px;color:#cbd8f1;line-height:1.8}
-.cta a{display:inline-block;padding:12px 19px;margin-top:10px;border:1px solid #ef8dff;border-radius:9px;background:linear-gradient(110deg,#b02bdc,#6432cc);box-shadow:0 0 15px #d24bff88;font-size:12px;font-weight:900}
-footer{text-align:center;padding:25px;color:#aebce0;font-size:11px}
-@media(max-width:1050px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.links a{font-size:10px;padding:8px}}
-@media(max-width:700px){nav{flex-wrap:wrap}.links{width:100%;overflow-x:auto}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters input{grid-column:1/-1}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:310px}.photo{height:125px}.info{padding:10px 8px}.info h3{font-size:13px}.official{font-size:10px}}
+input,select,button{font:inherit}
+.site{
+ max-width:1500px;margin:7px auto;
+ border:1px solid #d08aff;border-radius:15px;
+ overflow:hidden;box-shadow:0 0 30px #7021cc55;
+ background:
+ radial-gradient(ellipse at 20% 50%,#073d8c77,transparent 43%),
+ linear-gradient(180deg,#070d27,#0b1739 55%,#0a0c2b);
+}
+nav{
+ height:53px;display:flex;align-items:center;
+ justify-content:space-between;gap:12px;
+ padding:0 4%;background:#070b21ef;
+ border-bottom:1px solid #7c4ac5;
+}
+.logo{
+ display:flex;align-items:center;gap:10px;
+ font-size:25px;font-weight:900;font-style:italic;
+ letter-spacing:-1px;white-space:nowrap;
+}
+.logo-mark{
+ font-size:31px;color:#f67aff;
+ filter:drop-shadow(0 0 7px #dc36ff);
+}
+.logo em{color:#f276ff;font-style:inherit}
+.nav-links{display:flex;align-items:center;gap:7px}
+.nav-links a{
+ font-size:11px;font-weight:800;
+ padding:10px 12px;border-radius:9px;
+ white-space:nowrap;transition:.2s;
+}
+.nav-links a:hover,.nav-links a.active{
+ background:linear-gradient(120deg,#b62cfa,#6321db);
+ border:1px solid #ed86ff;
+ padding:9px 11px;
+ box-shadow:0 0 13px #e044ff;
+}
+.hero{
+ min-height:193px;position:relative;overflow:hidden;
+ display:flex;align-items:center;
+ background:
+ linear-gradient(90deg,#05091ff5,#08102ed6 50%,#08133177),
+ url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=90")
+ center/cover;
+}
+.hero:before{
+ content:"";position:absolute;inset:0;
+ background:
+ radial-gradient(circle at 80% 40%,#49baff88,transparent 12%),
+ radial-gradient(circle at 85% 80%,#a52cff88,transparent 35%),
+ linear-gradient(0deg,#08122c,transparent 40%);
+}
+.hero:after{
+ content:"";position:absolute;
+ width:380px;height:380px;right:8%;top:-120px;
+ border:3px solid #b64fff77;border-radius:50%;
+ box-shadow:0 0 90px #a032ff88,inset 0 0 85px #0da7ff66;
+}
+.hero-copy{position:relative;z-index:2;padding:27px 4%;max-width:670px}
+.eyebrow{
+ font-size:12px;letter-spacing:4px;
+ color:#28eaff;font-weight:900;margin-bottom:12px;
+}
+h1{
+ font-size:clamp(48px,5.5vw,77px);
+ font-style:italic;font-weight:900;
+ letter-spacing:-3px;line-height:.98;
+ margin:0 0 14px;text-shadow:0 4px 15px #000b;
+}
+.gradient{
+ background:linear-gradient(100deg,#ff91f7,#c37bff,#51caff);
+ background-clip:text;-webkit-background-clip:text;color:transparent;
+}
+.hero p{
+ max-width:510px;font-size:12px;line-height:1.7;
+ color:#edf0ff;margin:0;
+}
+main{padding:13px 3% 25px}
+.filters{
+ display:grid;grid-template-columns:2fr 1fr 1fr .85fr;
+ gap:13px;margin-bottom:17px;
+}
+.filters input,.filters select{
+ min-width:0;width:100%;padding:12px 13px;
+ border:1px solid #4867b4;border-radius:9px;
+ background:#101936;color:white;
+ outline:none;font-size:11px;
+ box-shadow:inset 0 0 10px #185bc222;
+}
+.filters input:focus,.filters select:focus{
+ border-color:#f384ff;box-shadow:0 0 12px #d54aff66;
+}
+.filters option{background:#101936}
+.games{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:11px;
+}
+.card{
+ overflow:hidden;position:relative;
+ border:1px solid #ab68f2;border-radius:12px;
+ background:linear-gradient(180deg,#151b44,#131335);
+ box-shadow:0 5px 15px #0009;
+ transition:.2s;
+}
+.card:hover{
+ transform:translateY(-4px);
+ border-color:#fa91ff;
+ box-shadow:0 0 23px #d04aff99;
+}
+.photo{
+ position:relative;height:122px;overflow:hidden;
+ background:linear-gradient(125deg,#57219b,#113e86);
+}
+.photo img{
+ display:block;width:100%;height:100%;
+ object-fit:cover;transition:.3s;
+}
+.card:hover .photo img{transform:scale(1.05)}
+.photo:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(0deg,#111535f0,transparent 70%);
+ pointer-events:none;
+}
+.card-info{
+ position:relative;text-align:center;
+ padding:0 10px 9px;margin-top:-24px;z-index:2;
+}
+.card h2{
+ font-size:14px;font-weight:900;
+ margin:0 0 5px;text-shadow:0 2px 8px #000;
+}
+.genre{
+ font-size:10px;color:#f0edff;
+ display:block;min-height:14px;
+}
+.price{
+ display:inline-block;margin:7px auto 8px;
+ padding:3px 9px;border-radius:20px;
+ border:1px solid #b975fa;
+ background:#482078bb;
+ font-size:9px;font-weight:800;color:#f4e0ff;
+}
+.official{
+ display:block;padding:8px 7px;
+ border-radius:8px;border:1px solid #9b6dff;
+ background:linear-gradient(180deg,#24255b,#1c1d4b);
+ box-shadow:inset 0 0 10px #7545ff66,0 0 8px #8238ff44;
+ font-size:10px;font-weight:900;transition:.2s;
+}
+.official:hover{
+ border-color:#ff8cff;
+ background:linear-gradient(120deg,#a82bdc,#5429ca);
+ box-shadow:0 0 17px #d54aff;
+}
+.empty{
+ text-align:center;padding:40px;
+ color:#d9e0f6;border:1px dashed #a768ed;
+ border-radius:12px;
+}
+.mountains{
+ height:75px;margin-top:20px;
+ background:
+ linear-gradient(0deg,#080c28,#07133444),
+ url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85")
+ center 60%/cover;
+ position:relative;
+}
+.mountains:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,#8127c966,#0065ff55,#a32eff66);
+ mix-blend-mode:screen;
+}
+footer{
+ padding:14px;text-align:center;font-size:10px;
+ color:#a6b6d8;background:#070a21;
+}
+@media(max-width:1050px){
+ .nav-links a{font-size:10px;padding:8px}
+ .games{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ nav{height:auto;flex-wrap:wrap;padding:10px 4%}
+ .nav-links{width:100%;overflow-x:auto}
+ .hero{min-height:230px}
+ h1{font-size:clamp(45px,11vw,68px)}
+ .filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .filters input{grid-column:1/-1}
+ .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .photo{height:110px}
+ .card-info{padding:0 7px 8px}
+ .card h2{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{transition:none!important}
+}
 </style>
 </head>
 <body>
 <div class="site">
 <nav>
-<a class="logo" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<em>Vanta</em></span></a>
-<div class="links">
+<a class="logo" href="index.html">
+<span class="logo-mark">🎮</span>
+<span>Play<em>Vanta</em></span>
+</a>
+<div class="nav-links">
 <a href="index.html">⌂ Home</a>
-<a href="index.html#calculators">▦ Calculators</a>
+<a href="index.html#calculators">⚙ Calculators⌄</a>
 <a class="active" href="download-games.html">↓ Download Games</a>
 <a href="#games">🎮 Game Discovery</a>
 <a href="index.html#calculators">⚙ Tools</a>
-<a href="sitemap.xml">☷ Sitemap</a>
 </div>
 </nav>
+
 <header class="hero">
 <div class="hero-copy">
-<div class="eyebrow">GAME DISCOVERY ///</div>
+<div class="eyebrow">GAME DISCOVERY</div>
 <h1>DOWNLOAD<br><span class="gradient">GAMES.</span></h1>
-<p>Explore popular games, find official download links, and discover your next gaming adventure.</p>
+<p>Explore 16+ popular games, find official download links, and discover your next gaming adventure.</p>
 </div>
 </header>
+
 <main id="games">
 <div class="filters">
 <input id="search" type="search" placeholder="⌕ Search games..." aria-label="Search games">
-<select id="genre" aria-label="Genre"><option value="">All Genres</option></select>
-<select id="platform" aria-label="Platform">
+<select id="genre" aria-label="Filter by genre">
+<option value="">All Genres</option>
+</select>
+<select id="platform" aria-label="Filter by platform">
 <option value="">All Platforms</option>
-<option value="PC">PC</option><option value="Console">Console</option><option value="Mobile">Mobile</option>
+<option value="PC">PC</option>
+<option value="Console">Console</option>
+<option value="Mobile">Mobile</option>
 </select>
-<select id="price" aria-label="Price">
+<select id="price" aria-label="Filter by price">
 <option value="">Free &amp; Paid</option>
-<option value="Free-to-Play">Free-to-Play</option><option value="Paid">Paid</option>
+<option value="Free-to-Play">Free-to-Play</option>
+<option value="Paid">Paid</option>
 </select>
 </div>
-<div class="summary"><h2>Explore Games</h2><span id="count" role="status"></span></div>
-<div class="grid" id="grid"></div>
-<p id="empty" hidden>No games match your filters.</p>
-<div class="cta">
-<h2>LEVEL UP YOUR GAMING EXPERIENCE</h2>
-<p>Try PlayVanta's free gaming calculators for crosshairs, sensitivity, XP, ranks, in-game currency and more.</p>
-<a href="index.html#calculators">Explore PlayVanta Tools →</a>
-</div>
+
+<div class="games" id="gameGrid"></div>
+<p class="empty" id="empty" hidden>No games match your search.</p>
 </main>
-<footer>PlayVanta · Every Game. One Hub. · © <span id="year"></span></footer>
+
+<div class="mountains"></div>
+<footer>© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
 </div>
+
 <script>
 const games=[
- ["Valorant","Tactical FPS","Shooter","Free-to-Play","PC,Console","valorant","https://playvalorant.com/","valorant-crosshair-generator.html"],
- ["Fortnite","Battle Royale","Shooter","Free-to-Play","PC,Console,Mobile","fortnite","https://www.fortnite.com/download","fortnite-xp-calculator.html"],
- ["Minecraft","Sandbox","Sandbox","Paid","PC,Console,Mobile","minecraft","https://www.minecraft.net/en-us/download","minecraft-nether-calculator.html"],
- ["Roblox","Creative","Sandbox","Free-to-Play","PC,Console,Mobile","roblox","https://www.roblox.com/download","roblox-robux-tax-calculator.html"],
- ["Counter-Strike 2","Competitive FPS","Shooter","Free-to-Play","PC","cs2","https://store.steampowered.com/app/730/CounterStrike_2/","cs2-economy-calculator.html"],
- ["Genshin Impact","Action RPG","RPG","Free-to-Play","PC,Console,Mobile","genshin","https://genshin.hoyoverse.com/","genshin-wish-calculator.html"],
- ["Rocket League","Sports","Sports","Free-to-Play","PC,Console","rocket","https://www.rocketleague.com/","rocket-league-rank-tracker.html"],
- ["League of Legends","MOBA","MOBA","Free-to-Play","PC","lol","https://www.leagueoflegends.com/","lol-lp-calculator.html"],
- ["Apex Legends","Hero Shooter","Shooter","Free-to-Play","PC,Console","apex","https://www.ea.com/games/apex-legends",""],
- ["Overwatch 2","Team Shooter","Shooter","Free-to-Play","PC,Console","overwatch","https://overwatch.blizzard.com/",""],
- ["Dota 2","MOBA","MOBA","Free-to-Play","PC","dota","https://store.steampowered.com/app/570/Dota_2/",""],
- ["Warframe","Action MMO","Shooter","Free-to-Play","PC,Console,Mobile","warframe","https://www.warframe.com/",""],
- ["The Sims 4","Life Simulation","Sandbox","Free-to-Play","PC,Console","sims","https://www.ea.com/games/the-sims/the-sims-4",""],
- ["Stardew Valley","Farming RPG","Adventure","Paid","PC,Console,Mobile","stardew","https://www.stardewvalley.net/",""],
- ["Honkai: Star Rail","Turn-Based RPG","RPG","Free-to-Play","PC,Console,Mobile","honkai","https://hsr.hoyoverse.com/",""],
- ["Teamfight Tactics","Auto Battler","Strategy","Free-to-Play","PC,Mobile","tft","https://teamfighttactics.leagueoflegends.com/",""]
+ {
+ name:"Valorant",genre:"Tactical FPS",category:"Shooter",
+ price:"Free-to-Play",platforms:["PC","Console"],
+ image:"valorant",
+ url:"https://playvalorant.com/"
+ },
+ {
+ name:"Fortnite",genre:"Battle Royale",category:"Shooter",
+ price:"Free-to-Play",platforms:["PC","Console","Mobile"],
+ image:"fortnite",
+ url:"https://www.fortnite.com/download"
+ },
+ {
+ name:"Minecraft",genre:"Sandbox",category:"Sandbox",
+ price:"Paid",platforms:["PC","Console","Mobile"],
+ image:"minecraft",
+ url:"https://www.minecraft.net/en-us/download"
+ },
+ {
+ name:"Roblox",genre:"Creative",category:"Sandbox",
+ price:"Free-to-Play",platforms:["PC","Console","Mobile"],
+ image:"roblox",
+ url:"https://www.roblox.com/download"
+ },
+ {
+ name:"Counter-Strike 2",genre:"Competitive FPS",category:"Shooter",
+ price:"Free-to-Play",platforms:["PC"],
+ image:"cs2",
+ url:"https://store.steampowered.com/app/730/CounterStrike_2/"
+ },
+ {
+ name:"Genshin Impact",genre:"Action RPG",category:"RPG",
+ price:"Free-to-Play",platforms:["PC","Console","Mobile"],
+ image:"genshin",
+ url:"https://genshin.hoyoverse.com/"
+ },
+ {
+ name:"Rocket League",genre:"Sports",category:"Sports",
+ price:"Free-to-Play",platforms:["PC","Console"],
+ image:"rocket",
+ url:"https://www.rocketleague.com/"
+ },
+ {
+ name:"League of Legends",genre:"MOBA",category:"MOBA",
+ price:"Free-to-Play",platforms:["PC"],
+ image:"lol",
+ url:"https://www.leagueoflegends.com/"
+ },
+ {
+ name:"Apex Legends",genre:"Hero Shooter",category:"Shooter",
+ price:"Free-to-Play",platforms:["PC","Console"],
+ image:"apex",
+ url:"https://www.ea.com/games/apex-legends"
+ },
+ {
+ name:"Overwatch 2",genre:"Team Shooter",category:"Shooter",
+ price:"Free-to-Play",platforms:["PC","Console"],
+ image:"overwatch",
+ url:"https://overwatch.blizzard.com/"
+ },
+ {
+ name:"Dota 2",genre:"MOBA",category:"MOBA",
+ price:"Free-to-Play",platforms:["PC"],
+ image:"dota",
+ url:"https://store.steampowered.com/app/570/Dota_2/"
+ },
+ {
+ name:"Warframe",genre:"Action MMO",category:"Shooter",
+ price:"Free-to-Play",platforms:["PC","Console","Mobile"],
+ image:"warframe",
+ url:"https://www.warframe.com/"
+ },
+ {
+ name:"The Sims 4",genre:"Life Simulation",category:"Sandbox",
+ price:"Free-to-Play",platforms:["PC","Console"],
+ image:"sims",
+ url:"https://www.ea.com/games/the-sims/the-sims-4"
+ },
+ {
+ name:"Stardew Valley",genre:"Farming RPG",category:"Adventure",
+ price:"Paid",platforms:["PC","Console","Mobile"],
+ image:"stardew",
+ url:"https://www.stardewvalley.net/"
+ },
+ {
+ name:"Honkai: Star Rail",genre:"Turn-Based RPG",category:"RPG",
+ price:"Free-to-Play",platforms:["PC","Console","Mobile"],
+ image:"honkai",
+ url:"https://hsr.hoyoverse.com/"
+ },
+ {
+ name:"Teamfight Tactics",genre:"Auto Battler",category:"Strategy",
+ price:"Free-to-Play",platforms:["PC","Mobile"],
+ image:"tft",
+ url:"https://teamfighttactics.leagueoflegends.com/"
+ }
 ];
 
-const art={
- valorant:["https://images.igdb.com/igdb/image/upload/t_1080p/co2mvt.jpg"],
- fortnite:["https://images.igdb.com/igdb/image/upload/t_1080p/co2ekt.jpg"],
- minecraft:["https://images.igdb.com/igdb/image/upload/t_1080p/co8fu7.jpg"],
- roblox:["https://images.igdb.com/igdb/image/upload/t_1080p/co1wyy.jpg"],
- cs2:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg"],
- genshin:["https://images.igdb.com/igdb/image/upload/t_1080p/co5g3r.jpg"],
- rocket:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/252950/header.jpg"],
- lol:["https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"],
- apex:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg"],
- overwatch:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2357570/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/2357570/header.jpg"],
- dota:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg"],
- warframe:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/230410/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/230410/header.jpg"],
- sims:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1222670/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/1222670/header.jpg"],
- stardew:["https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg"],
- honkai:["https://images.igdb.com/igdb/image/upload/t_1080p/co6d7f.jpg"],
- tft:["https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg"]
+const artwork={
+ valorant:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co2mvt.jpg"
+ ],
+ fortnite:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co2ekt.jpg"
+ ],
+ minecraft:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co8fu7.jpg"
+ ],
+ roblox:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co1wyy.jpg"
+ ],
+ cs2:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg"
+ ],
+ genshin:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co5g3r.jpg",
+  "https://cdn2.steamgriddb.com/grid/0b9a7c1e69f7b5c7f86e064cf7f4fbae.jpg"
+ ],
+ rocket:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/252950/header.jpg"
+ ],
+ lol:[
+  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
+ ],
+ apex:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg"
+ ],
+ overwatch:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2357570/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/2357570/header.jpg"
+ ],
+ dota:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg"
+ ],
+ warframe:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/230410/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/230410/header.jpg"
+ ],
+ sims:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1222670/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/1222670/header.jpg"
+ ],
+ stardew:[
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg",
+  "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg"
+ ],
+ honkai:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co6d7f.jpg"
+ ],
+ tft:[
+  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg"
+ ]
 };
 
 function fallback(name){
  const safe=name.replace(/&/g,"&amp;").replace(/</g,"&lt;");
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><defs><linearGradient id="g"><stop stop-color="#862ac5"/><stop offset="1" stop-color="#123b83"/></linearGradient></defs><rect width="800" height="500" fill="url(#g)"/><circle cx="640" cy="110" r="160" fill="#f36aff" opacity=".2"/><path d="M0 430L190 220L340 410L520 170L800 420V500H0Z" fill="#090d2c" opacity=".65"/><text x="400" y="280" fill="white" font-family="Arial" font-size="47" font-weight="bold" text-anchor="middle">${safe}</text></svg>`;
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><defs><linearGradient id="g"><stop stop-color="#7523b5"/><stop offset="1" stop-color="#123f8e"/></linearGradient></defs><rect width="800" height="500" fill="url(#g)"/><circle cx="620" cy="120" r="160" fill="#e86bff" opacity=".25"/><path d="M0 410L190 180L340 420L520 160L800 410V500H0Z" fill="#0a1030" opacity=".65"/><text x="400" y="280" text-anchor="middle" fill="white" font-family="Arial" font-size="47" font-weight="bold">${safe}</text></svg>`;
  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
 }
-function image(key,name){
+function imageFor(key,name){
  const img=document.createElement("img");
- img.alt=name+" artwork";img.loading="lazy";img.decoding="async";
- const urls=art[key]||[];let index=0;
+ img.alt=name+" game artwork";
+ img.loading="lazy";img.decoding="async";
+ const urls=artwork[key]||[];
+ let i=0;
  img.onerror=()=>{
-  index++;
-  if(index<urls.length)img.src=urls[index];
+  i++;
+  if(i<urls.length)img.src=urls[i];
   else{img.onerror=null;img.src=fallback(name)}
  };
  img.src=urls[0]||fallback(name);
  return img;
 }
 const $=id=>document.getElementById(id);
-[...new Set(games.map(g=>g[2]))].sort().forEach(g=>{
+
+[...new Set(games.map(g=>g.category))].sort().forEach(g=>{
  const option=document.createElement("option");
- option.value=g;option.textContent=g;$("genre").append(option);
+ option.value=g;option.textContent=g;
+ $("genre").append(option);
 });
-function card(g){
- const [name,genre,category,price,platforms,key,url,tool]=g;
- const el=document.createElement("article");el.className="card";
- const photo=document.createElement("div");photo.className="photo";
- photo.append(image(key,name));
- const info=document.createElement("div");info.className="info";
- const h=document.createElement("h3");h.textContent=name;
- const sub=document.createElement("span");sub.className="genre";sub.textContent=genre;
- const badge=document.createElement("span");badge.className="price";badge.textContent=price;
+
+function makeCard(g){
+ const card=document.createElement("article");
+ card.className="card";
+ const photo=document.createElement("div");
+ photo.className="photo";
+ photo.append(imageFor(g.image,g.name));
+
+ const info=document.createElement("div");
+ info.className="card-info";
+
+ const title=document.createElement("h2");
+ title.textContent=g.name;
+
+ const genre=document.createElement("span");
+ genre.className="genre";
+ genre.textContent=g.genre;
+
+ const price=document.createElement("span");
+ price.className="price";
+ price.textContent=g.price;
+
  const official=document.createElement("a");
- official.className="official";official.href=url;official.target="_blank";
- official.rel="noopener noreferrer";official.textContent="Official Website ↗";
- info.append(h,sub,badge,official);
- if(tool){
-  const link=document.createElement("a");link.className="tool";
-  link.href=tool;link.textContent="Explore PlayVanta Tool →";
-  info.append(link);
- }
- el.append(photo,info);return el;
+ official.className="official";
+ official.href=g.url;
+ official.target="_blank";
+ official.rel="noopener noreferrer";
+ official.textContent="Official Website ↗";
+
+ info.append(title,genre,price,official);
+ card.append(photo,info);
+ return card;
 }
+
 function render(){
  const q=$("search").value.toLowerCase().trim();
  const genre=$("genre").value;
  const platform=$("platform").value;
  const price=$("price").value;
+
  const filtered=games.filter(g=>
-  (g[0]+" "+g[1]+" "+g[2]).toLowerCase().includes(q)
-  &&(!genre||g[2]===genre)
-  &&(!platform||g[4].split(",").includes(platform))
-  &&(!price||g[3]===price)
+  (g.name+" "+g.genre+" "+g.category).toLowerCase().includes(q)
+  &&(!genre||g.category===genre)
+  &&(!platform||g.platforms.includes(platform))
+  &&(!price||g.price===price)
  );
- $("grid").replaceChildren(...filtered.map(card));
- $("count").textContent=filtered.length+" of "+games.length+" games";
- $("empty").hidden=filtered.length>0;
+
+ $("gameGrid").replaceChildren(...filtered.map(makeCard));
+ $("empty").hidden=filtered.length!==0;
 }
-["search","genre","platform","price"].forEach(id=>$(id).addEventListener("input",render));
+
+["search","genre","platform","price"].forEach(id=>{
+ $(id).addEventListener("input",render);
+});
 $("year").textContent=new Date().getFullYear();
 render();
 </script>
