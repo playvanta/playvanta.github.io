@@ -5,609 +5,460 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Download Games | PlayVanta</title>
-<meta name="description" content="Discover 16 PC, console and mobile games with official game website links. Explore Valorant, Fortnite, Minecraft, Roblox, Genshin Impact and more.">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#080b20">
+<meta name="description" content="Discover popular games and visit their official download websites with PlayVanta.">
 <link rel="canonical" href="https://playvanta.github.io/download-games.html">
 <link rel="icon" href="playvanta-logo.jpg">
+<meta name="theme-color" content="#080b23">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
- --pink:#f278ff;--purple:#aa4bff;
- --cyan:#41dcff;--muted:#b8c8ec
+ --pink:#f578ff;--purple:#a746ff;--cyan:#31e5ff;
+ --muted:#c7d3ee
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;color:white;font-family:Inter,Arial,sans-serif;
- background:
- radial-gradient(ellipse at 5% 25%,#063c8b88,transparent 38%),
- radial-gradient(ellipse at 90% 8%,#57189c77,transparent 38%),
- linear-gradient(125deg,#06091b,#091739 55%,#0d0928)
+ margin:0;background:#05081a;color:white;
+ font-family:Inter,Arial,sans-serif
 }
-a{text-decoration:none;color:inherit}
+a{color:inherit;text-decoration:none}
 button,input,select{font:inherit}
-button{cursor:pointer}
 .site{
- max-width:1500px;margin:auto;
- border-left:1px solid #a45cff88;
- border-right:1px solid #a45cff88;
- box-shadow:0 0 60px #6412a844;
- overflow:hidden
+ max-width:1500px;margin:auto;overflow:hidden;
+ border-left:1px solid #aa63f7;
+ border-right:1px solid #aa63f7;
+ background:
+ radial-gradient(ellipse at 12% 45%,#0c468e88,transparent 40%),
+ radial-gradient(ellipse at 95% 12%,#63159c66,transparent 40%),
+ linear-gradient(#080b24,#0a1436,#090b24)
 }
 nav{
  position:sticky;top:0;z-index:30;
- display:flex;align-items:center;justify-content:space-between;
- gap:12px;padding:11px 4%;
- background:#080b20ed;
- border-bottom:1px solid #9658ecaa;
- backdrop-filter:blur(18px)
+ display:flex;justify-content:space-between;align-items:center;
+ gap:12px;padding:10px 4%;
+ background:#070a1fee;backdrop-filter:blur(18px);
+ border-bottom:1px solid #a767f5
 }
-.logo{
- display:flex;align-items:center;gap:9px;
- font-size:25px;font-weight:900;font-style:italic;white-space:nowrap
+.brand{
+ display:flex;align-items:center;gap:10px;
+ font-size:24px;font-weight:900;font-style:italic
 }
-.logo img{width:38px;height:38px;object-fit:cover;border-radius:9px}
-.logo em{color:#ef78ff;font-style:inherit}
-.navlinks{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
-.navlinks a{
- padding:10px 12px;font-size:12px;font-weight:800;
- border-radius:9px;transition:.2s
+.brand img{width:38px;height:38px;object-fit:cover;border-radius:9px}
+.brand em{font-style:inherit;color:var(--pink)}
+.links{display:flex;gap:5px;align-items:center}
+.links a{
+ padding:10px 12px;font-size:11px;font-weight:800;
+ border-radius:9px;white-space:nowrap;transition:.2s
 }
-.navlinks a:hover,.navlinks a.active{
- background:linear-gradient(110deg,#a32ae8,#6226d7);
- box-shadow:0 0 17px #df52ff99
+.links a:hover,.links a.active{
+ background:linear-gradient(110deg,#b02ce9,#6329d6);
+ box-shadow:0 0 15px #df4cffbb
 }
 .hero{
- position:relative;overflow:hidden;isolation:isolate;
- padding:65px 5% 75px;min-height:320px;
+ position:relative;isolation:isolate;overflow:hidden;
+ min-height:355px;display:flex;align-items:center;
+ padding:55px 5%;
  background:
- radial-gradient(circle at 80% 40%,#a339ff66,transparent 36%),
- linear-gradient(120deg,#070c25,#112454 60%,#210e44)
-}
-.hero:before{
- content:"";position:absolute;inset:0;z-index:-3;
- background-image:url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1800&q=85");
- background-size:cover;background-position:center;opacity:.38
+ linear-gradient(90deg,#060a1df2,#07102ad0 50%,#07102a66),
+ url("images/download-background.jpg") center/cover no-repeat,
+ linear-gradient(110deg,#090c2a,#17336c,#351267)
 }
 .hero:after{
  content:"";position:absolute;inset:0;z-index:-1;
- background:linear-gradient(90deg,#060a20f5,#08112ce5 48%,#10103555),
- linear-gradient(0deg,#080d23,transparent 50%)
+ background:linear-gradient(0deg,#09122e,transparent 35%)
 }
-.portal{
- position:absolute;right:9%;top:5%;width:300px;
- aspect-ratio:1;border-radius:50%;
- border:2px solid #b66cff88;
- box-shadow:0 0 60px #8e37f999,inset 0 0 70px #4fafff55;
- animation:glow 6s ease-in-out infinite;z-index:-2
+.hero-art{
+ position:absolute;right:0;bottom:0;width:55%;height:100%;
+ background:url("images/download-character.png") center bottom/contain no-repeat;
+ pointer-events:none;filter:drop-shadow(0 0 25px #a03fff88)
 }
-.portal:after{
- content:"";position:absolute;inset:25px;
- border-radius:50%;border:2px dashed #76dfff99;
- animation:spin 30s linear infinite
-}
-@keyframes glow{50%{transform:scale(1.07);opacity:.6}}
-@keyframes spin{to{transform:rotate(360deg)}}
+.hero-copy{position:relative;z-index:1;max-width:590px}
 .eyebrow{
- color:#46edff;font-size:11px;font-weight:900;
- letter-spacing:3px;text-transform:uppercase
+ font-size:12px;color:#35edff;letter-spacing:3px;
+ font-weight:900;margin-bottom:15px
 }
-.hero h1{
- font-size:clamp(48px,6vw,86px);
- font-style:italic;font-weight:900;letter-spacing:-3px;
- line-height:1.04;margin:16px 0 18px;
- text-shadow:0 4px 20px #000c
+h1{
+ font-size:clamp(49px,6vw,88px);font-weight:900;
+ font-style:italic;letter-spacing:-3px;line-height:1;
+ margin:0 0 20px;text-shadow:0 4px 18px #000d
 }
 .gradient{
- background:linear-gradient(100deg,#ff85f4,#b36bff,#5bd5ff);
+ background:linear-gradient(110deg,#ff8efb,#b56aff,#5bd7ff);
  background-clip:text;-webkit-background-clip:text;color:transparent
 }
-.hero p{max-width:570px;color:#d8e4ff;line-height:1.8;font-size:14px}
-.content{padding:30px 4% 55px}
-.section-head{
- display:flex;justify-content:space-between;
- align-items:end;gap:15px;margin:0 0 18px
+.hero p{
+ color:#e3eaff;font-size:14px;line-height:1.8;
+ max-width:490px;text-shadow:0 2px 8px #000
 }
-.section-head h2{font-size:30px;font-style:italic;margin:0 0 5px}
-.section-head p{color:var(--muted);font-size:12px;margin:0}
-.count{font-size:12px;color:#72dfff;font-weight:800}
+main{padding:25px 4% 45px}
 .filters{
  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;
- gap:12px;margin-bottom:22px
+ gap:12px;margin:0 0 22px
 }
 .filters input,.filters select{
- width:100%;min-width:0;padding:13px 14px;
- color:#fff;background:#0b1737;
- border:1px solid #6a6ed2;border-radius:10px;
- outline:none
+ min-width:0;width:100%;padding:13px 14px;
+ color:white;background:#0b1736;
+ border:1px solid #7467cb;border-radius:10px;outline:none
 }
-.filters input:focus,.filters select:focus{border-color:#e58bff}
-.filters option{background:#111936}
+.filters input:focus,.filters select:focus{border-color:#f38bff}
+.filters option{background:#111a38}
+.summary{
+ display:flex;justify-content:space-between;align-items:center;
+ margin-bottom:15px;gap:10px
+}
+.summary h2{font-size:23px;font-style:italic;margin:0}
+.summary span{font-size:12px;color:#6ee8ff;font-weight:800}
 .grid{
  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
- gap:15px
+ gap:13px
 }
 .card{
- position:relative;display:flex;flex-direction:column;
- overflow:hidden;border-radius:14px;
- border:1px solid #ac64f0;
- background:linear-gradient(150deg,#191943,#101b40);
- box-shadow:0 9px 26px #0008,inset 0 0 20px #c047ff16;
- transition:.25s
+ overflow:hidden;border:1px solid #ac6bf6;
+ border-radius:13px;background:#111739;
+ box-shadow:0 8px 20px #0008;
+ transition:.25s;display:flex;flex-direction:column
 }
 .card:hover{
- transform:translateY(-6px);
- border-color:#f48aff;
- box-shadow:0 0 27px #b93fff77
+ transform:translateY(-5px);
+ border-color:#f491ff;
+ box-shadow:0 0 24px #c34aff88
 }
-.card-image{
- position:relative;height:155px;overflow:hidden;
- background:linear-gradient(135deg,var(--accent,#50277e),#102450)
+.photo{
+ height:165px;position:relative;overflow:hidden;
+ background:linear-gradient(120deg,#642785,#123875)
 }
-.card-image img{
- width:100%;height:100%;object-fit:cover;display:block;
- transition:transform .3s
-}
-.card:hover .card-image img{transform:scale(1.07)}
-.card-image:after{
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo:after{
  content:"";position:absolute;inset:0;
- background:linear-gradient(0deg,#101432,transparent 75%);
+ background:linear-gradient(0deg,#111739,transparent 70%);
  pointer-events:none
 }
-.card-body{
- padding:12px 13px 14px;
- display:flex;flex-direction:column;flex:1;
- text-align:center
+.info{
+ padding:10px 12px 12px;text-align:center;
+ display:flex;flex-direction:column;flex:1
 }
-.card h3{
- font-size:17px;font-weight:900;margin:2px 0 5px
-}
-.card .genre{font-size:11px;color:#d3ddf4}
-.tag{
+.info h3{font-size:15px;font-weight:900;margin:0 0 5px}
+.genre{font-size:11px;color:#d6dff7}
+.price{
  display:inline-block;align-self:center;
- padding:4px 11px;margin:9px auto;
- border:1px solid #c479ff;border-radius:30px;
- background:#56238799;color:#f6d9ff;
+ padding:4px 10px;margin:9px auto 11px;
+ border:1px solid #d583ff;border-radius:20px;
+ background:#62279388;color:#f5ddff;
  font-size:10px;font-weight:800
 }
-.card .description{
- color:#bac9e7;font-size:11px;line-height:1.6;
- margin:6px 0 12px;flex:1
+.official{
+ display:block;margin-top:auto;padding:10px 8px;
+ border-radius:9px;border:1px solid #e68dff;
+ background:linear-gradient(110deg,#ae2dde,#533bc7);
+ box-shadow:0 0 12px #b547ff77;
+ font-size:11px;font-weight:900;transition:.2s
 }
-.platforms{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin:0 0 10px}
-.platforms span{
- font-size:9px;padding:4px 7px;border:1px solid #ffffff33;
- border-radius:5px;color:#cdd7ed
+.official:hover{filter:brightness(1.2);box-shadow:0 0 20px #ed6aff}
+.tool-link{
+ display:block;margin-top:7px;padding:7px 5px;
+ color:#d5c8ff;font-size:10px;font-weight:700
 }
-.card-actions{display:grid;gap:7px;margin-top:auto}
-.btn{
- display:flex;align-items:center;justify-content:center;
- padding:10px 9px;border-radius:9px;
- font-size:11px;font-weight:900;
- border:1px solid #ba78ff;
- transition:.2s
-}
-.btn:hover{filter:brightness(1.2);transform:translateY(-2px)}
-.btn.primary{
- background:linear-gradient(115deg,#a42dd9,#4e45c9);
- box-shadow:0 0 12px #bd42ff77
-}
-.btn.secondary{
- background:linear-gradient(115deg,#163f80,#3a2389);
- border-color:#648cff
-}
+.tool-link:hover{color:white}
 .empty{
- text-align:center;padding:35px;border:1px dashed #865aca;
- border-radius:12px;color:#c8d4ed;margin-top:20px
+ padding:35px;text-align:center;color:#c9d5ef;
+ border:1px dashed #a36de2;border-radius:12px
 }
-.feature{
- margin:45px 0 0;padding:30px;border-radius:18px;
- border:1px solid #c278ff;
- background:
- radial-gradient(circle at 90% 30%,#9431dd88,transparent 42%),
- linear-gradient(120deg,#101e47,#241342);
- box-shadow:0 0 25px #8d34ef44
+.cta{
+ margin-top:35px;padding:28px;border-radius:15px;
+ border:1px solid #b36cff;
+ background:linear-gradient(110deg,#27134f,#0c2454);
+ box-shadow:0 0 20px #9739ed44
 }
-.feature h2{font-size:clamp(25px,4vw,38px);font-style:italic;margin:10px 0}
-.feature p{color:#c8d4ef;font-size:13px;line-height:1.8;max-width:700px}
-.feature .btn{display:inline-flex;padding:13px 22px}
-.faq{max-width:850px;margin:40px 0}
-.faq h2{font-size:28px}
-.faq details{padding:16px 0;border-bottom:1px solid #ffffff22}
-.faq summary{font-size:13px;font-weight:800;cursor:pointer}
-.faq p{color:#b7c8e5;font-size:12px;line-height:1.8}
+.cta h2{font-size:28px;font-style:italic;margin:0 0 9px}
+.cta p{color:#cdd9f3;font-size:12px;line-height:1.8}
+.cta a{
+ display:inline-block;margin-top:10px;padding:12px 19px;
+ border:1px solid #ff95ff;border-radius:9px;
+ background:linear-gradient(110deg,#b12bdd,#6630ce);
+ font-size:12px;font-weight:900;box-shadow:0 0 15px #d744ff88
+}
 .landscape{
- height:110px;position:relative;overflow:hidden;
- background:radial-gradient(ellipse at 50% 100%,#0fd7ff99,transparent 45%)
+ height:130px;
+ background:
+ url("images/mountain-footer.jpg") center/cover no-repeat,
+ radial-gradient(ellipse at 50% 100%,#13c7ff,#14285d 55%,#080d27)
 }
-.landscape:before,.landscape:after{
- content:"";position:absolute;bottom:-20px;width:70%;height:130px;
- background:#070c26;
- clip-path:polygon(0 100%,0 65%,15% 35%,30% 70%,45% 15%,60% 65%,80% 30%,100% 100%)
-}
-.landscape:before{left:-15%}
-.landscape:after{right:-15%;transform:scaleX(-1)}
 footer{
- border-top:1px solid #9e5aff77;
- text-align:center;padding:24px;color:#afbee1;font-size:11px
+ padding:24px;text-align:center;color:#b5c2e0;
+ font-size:11px;border-top:1px solid #9256dd88
 }
-@media(max-width:1000px){
- .grid{grid-template-columns:repeat(3,1fr)}
- .navlinks a{font-size:10px;padding:8px}
+@media(max-width:1050px){
+ .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .links a{font-size:10px;padding:8px}
 }
-@media(max-width:750px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .filters{grid-template-columns:repeat(2,1fr)}
- .filters input{grid-column:1/-1}
-}
-@media(max-width:550px){
+@media(max-width:720px){
  nav{flex-wrap:wrap}
- .logo{font-size:20px}
- .navlinks{width:100%;overflow-x:auto;flex-wrap:nowrap}
- .navlinks a{white-space:nowrap}
- .hero{padding:55px 5%;min-height:310px}
- .portal{width:190px;right:-60px;opacity:.6}
- .hero h1{letter-spacing:-2px}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .card-image{height:125px}
- .card-body{padding:10px 8px}
- .card h3{font-size:14px}
- .card .description{font-size:10px}
- .filters{gap:8px}
- .feature{padding:22px}
+ .brand{font-size:20px}
+ .links{width:100%;overflow-x:auto}
+ .hero{min-height:330px}
+ .hero-art{width:75%;opacity:.4}
+ .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .filters input{grid-column:1/-1}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .photo{height:135px}
+ .info{padding:9px 8px}
+ .info h3{font-size:13px}
+}
+@media(max-width:400px){
+ .grid{gap:9px}
+ .photo{height:110px}
+ .official{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){
- *,*:before,*:after{animation:none!important;transition:none!important}
+ *,*:before,*:after{transition:none!important}
 }
 </style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CollectionPage","name":"Download Games | PlayVanta","url":"https://playvanta.github.io/download-games.html","isPartOf":{"@type":"WebSite","name":"PlayVanta","url":"https://playvanta.github.io/"}}
-</script>
 </head>
 <body>
 <div class="site">
-
-<nav aria-label="Main navigation">
-<a class="logo" href="index.html">
-<img src="playvanta-logo.jpg" alt="PlayVanta logo">
+<nav>
+<a class="brand" href="index.html">
+<img src="playvanta-logo.jpg" alt="PlayVanta">
 <span>Play<em>Vanta</em></span>
 </a>
-<div class="navlinks">
+<div class="links">
 <a href="index.html">⌂ Home</a>
 <a href="index.html#calculators">⊞ Calculators</a>
 <a class="active" href="download-games.html">↓ Download Games</a>
-<a href="#games">♧ Game Discovery</a>
+<a href="#games">🎮 Game Discovery</a>
 <a href="index.html#calculators">⚙ Tools</a>
 <a href="sitemap.xml">☷ Sitemap</a>
 </div>
 </nav>
 
 <header class="hero">
-<div class="portal"></div>
+<div class="hero-art" aria-hidden="true"></div>
+<div class="hero-copy">
 <div class="eyebrow">GAME DISCOVERY ///</div>
 <h1>DOWNLOAD<br><span class="gradient">GAMES.</span></h1>
 <p>Explore popular games, find official download links, and discover your next gaming adventure.</p>
+</div>
 </header>
 
-<main class="content" id="games">
-<div class="section-head">
-<div>
-<h2>Discover Your Next Game</h2>
-<p>Search, filter and explore the PlayVanta game library.</p>
-</div>
-<div class="count" id="count" role="status"></div>
-</div>
-
+<main id="games">
 <div class="filters">
 <input id="search" type="search" placeholder="⌕ Search games..." aria-label="Search games">
-<select id="genre" aria-label="Genre">
+<select id="genre" aria-label="Filter genre">
 <option value="">All Genres</option>
 </select>
-<select id="platform" aria-label="Platform">
+<select id="platform" aria-label="Filter platform">
 <option value="">All Platforms</option>
 <option value="PC">PC</option>
 <option value="Console">Console</option>
 <option value="Mobile">Mobile</option>
 </select>
-<select id="price" aria-label="Price">
-<option value="">Free & Paid</option>
+<select id="price" aria-label="Filter price">
+<option value="">Free &amp; Paid</option>
 <option value="Free-to-Play">Free-to-Play</option>
 <option value="Paid">Paid</option>
 </select>
 </div>
 
+<div class="summary">
+<h2>Explore Games</h2>
+<span id="count" role="status"></span>
+</div>
+
 <div class="grid" id="grid"></div>
-<p class="empty" id="empty" hidden>No games found. Try another search or filter.</p>
+<p class="empty" id="empty" hidden>No games match your filters.</p>
 
-<section class="feature">
-<div class="eyebrow">LEVEL UP YOUR EXPERIENCE</div>
-<h2>DISCOVER. DOWNLOAD. DOMINATE.</h2>
-<p>After finding your next game, explore our free calculators for crosshairs, sensitivity, XP, in-game currencies and more.</p>
-<a class="btn primary" href="index.html#calculators">Explore Gaming Tools →</a>
-</section>
-
-<section class="faq">
-<h2>Frequently Asked Questions</h2>
-<details>
-<summary>Does PlayVanta host game installers?</summary>
-<p>No. PlayVanta links to publisher websites and authorized storefronts rather than hosting game files.</p>
-</details>
-<details>
-<summary>Are all these games free?</summary>
-<p>No. Some are free-to-play, while others require a purchase. Availability and pricing can vary by region and platform.</p>
-</details>
-<details>
-<summary>Can I use PlayVanta tools with these games?</summary>
-<p>Yes. Games with matching calculators have an additional tool link. More calculators can be added over time.</p>
-</details>
-</section>
+<div class="cta">
+<h2>LEVEL UP YOUR GAMING EXPERIENCE</h2>
+<p>Use free gaming calculators for sensitivity, crosshairs, XP, currency, rankings and more.</p>
+<a href="index.html#calculators">Explore PlayVanta Tools →</a>
+</div>
 </main>
 
 <div class="landscape" aria-hidden="true"></div>
-<footer>
-PlayVanta · Every Game. One Hub. · © <span id="year"></span><br>
-Game titles and trademarks belong to their respective owners.
-</footer>
+<footer>PlayVanta · Every Game. One Hub. · © <span id="year"></span></footer>
 </div>
 
 <script>
 const games=[
-{
- name:"Valorant",genre:"Tactical FPS",filter:"Shooter",
- platforms:["PC","Console"],price:"Free-to-Play",
- accent:"#bc365d",
- images:["https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png"],
- description:"A tactical shooter combining precise gunplay and agent abilities.",
- url:"https://playvalorant.com/",
+ {
+ name:"Valorant",genre:"Tactical FPS",category:"Shooter",
+ image:"valorant.jpg",platforms:["PC","Console"],
+ price:"Free-to-Play",url:"https://playvalorant.com/",
  tool:"valorant-crosshair-generator.html"
-},
-{
- name:"Fortnite",genre:"Battle Royale",filter:"Shooter",
- platforms:["PC","Console","Mobile"],price:"Free-to-Play",
- accent:"#8c39c2",
- images:["https://m-cdn.phonearena.com/images/article/103090-wide-two_1200/Ultra-popular-battle-royale-Fortnite-coming-to-iOS-and-Android-soon-with-cross-platform-support.jpg"],
- description:"Battle Royale action and creative multiplayer experiences.",
- url:"https://www.fortnite.com/download",
+ },
+ {
+ name:"Fortnite",genre:"Battle Royale",category:"Shooter",
+ image:"fortnite.jpg",platforms:["PC","Console","Mobile"],
+ price:"Free-to-Play",url:"https://www.fortnite.com/download",
  tool:"fortnite-xp-calculator.html"
-},
-{
- name:"Minecraft",genre:"Sandbox",filter:"Sandbox",
- platforms:["PC","Console","Mobile"],price:"Paid",
- accent:"#29834b",
- images:[
- "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/MC-Homepage_Key-Art-1200x720.jpg",
- "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1672970/header.jpg"
- ],
- description:"Build, explore and survive in a world of endless possibilities.",
- url:"https://www.minecraft.net/en-us/download",
+ },
+ {
+ name:"Minecraft",genre:"Sandbox",category:"Sandbox",
+ image:"minecraft.jpg",platforms:["PC","Console","Mobile"],
+ price:"Paid",url:"https://www.minecraft.net/en-us/download",
  tool:"minecraft-nether-calculator.html"
-},
-{
- name:"Roblox",genre:"Creative",filter:"Sandbox",
- platforms:["PC","Console","Mobile"],price:"Free-to-Play",
- accent:"#4272a4",
- images:["https://cdn.buttercms.com/GnaqqRBTcCuoRELL938w"],
- description:"Discover millions of community-created experiences.",
- url:"https://www.roblox.com/download",
+ },
+ {
+ name:"Roblox",genre:"Creative",category:"Sandbox",
+ image:"roblox.jpg",platforms:["PC","Console","Mobile"],
+ price:"Free-to-Play",url:"https://www.roblox.com/download",
  tool:"roblox-robux-tax-calculator.html"
-},
-{
- name:"Counter-Strike 2",genre:"Competitive FPS",filter:"Shooter",
- platforms:["PC"],price:"Free-to-Play",
- accent:"#aa7129",
- images:["https://shared.fastly.steamstatic.com/steam/apps/730/header.jpg"],
- description:"Precision-focused tactical multiplayer combat.",
+ },
+ {
+ name:"Counter-Strike 2",genre:"Competitive FPS",category:"Shooter",
+ image:"cs2.jpg",platforms:["PC"],
+ price:"Free-to-Play",
  url:"https://store.steampowered.com/app/730/CounterStrike_2/",
  tool:"cs2-economy-calculator.html"
-},
-{
- name:"Genshin Impact",genre:"Action RPG",filter:"RPG",
- platforms:["PC","Console","Mobile"],price:"Free-to-Play",
- accent:"#8c6bc0",
- images:["https://static.animecorner.me/2021/07/genshin-impact-packshot-01-en-18jun21.jpg"],
- description:"Explore the fantasy world of Teyvat.",
- url:"https://genshin.hoyoverse.com/",
+ },
+ {
+ name:"Genshin Impact",genre:"Action RPG",category:"RPG",
+ image:"genshin-impact.jpg",platforms:["PC","Console","Mobile"],
+ price:"Free-to-Play",url:"https://genshin.hoyoverse.com/",
  tool:"genshin-wish-calculator.html"
-},
-{
- name:"Rocket League",genre:"Sports",filter:"Sports",
- platforms:["PC","Console"],price:"Free-to-Play",
- accent:"#2669bd",
- images:["https://shared.fastly.steamstatic.com/steam/apps/252950/header.jpg"],
- description:"High-speed vehicular soccer with aerial plays.",
- url:"https://www.rocketleague.com/",
+ },
+ {
+ name:"Rocket League",genre:"Sports",category:"Sports",
+ image:"rocket-league.jpg",platforms:["PC","Console"],
+ price:"Free-to-Play",url:"https://www.rocketleague.com/",
  tool:"rocket-league-rank-tracker.html"
-},
-{
- name:"League of Legends",genre:"MOBA",filter:"MOBA",
- platforms:["PC"],price:"Free-to-Play",
- accent:"#8a6e38",
- images:["https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"],
- description:"Competitive team strategy with iconic champions.",
- url:"https://www.leagueoflegends.com/",
+ },
+ {
+ name:"League of Legends",genre:"MOBA",category:"MOBA",
+ image:"league-of-legends.jpg",platforms:["PC"],
+ price:"Free-to-Play",url:"https://www.leagueoflegends.com/",
  tool:"lol-lp-calculator.html"
-},
-{
- name:"Apex Legends",genre:"Hero Shooter",filter:"Shooter",
- platforms:["PC","Console"],price:"Free-to-Play",
- accent:"#b23942",
- images:["https://shared.fastly.steamstatic.com/steam/apps/1172470/header.jpg"],
- description:"Squad-based battle royale with unique Legends.",
- url:"https://www.ea.com/games/apex-legends",
+ },
+ {
+ name:"Apex Legends",genre:"Hero Shooter",category:"Shooter",
+ image:"apex-legends.jpg",platforms:["PC","Console"],
+ price:"Free-to-Play",url:"https://www.ea.com/games/apex-legends",
  tool:"valorant-sensitivity-converter.html"
-},
-{
- name:"Overwatch 2",genre:"Team Shooter",filter:"Shooter",
- platforms:["PC","Console"],price:"Free-to-Play",
- accent:"#cb7e2c",
- images:["https://shared.fastly.steamstatic.com/steam/apps/2357570/header.jpg"],
- description:"Team-based hero shooter with objective combat.",
- url:"https://overwatch.blizzard.com/",
+ },
+ {
+ name:"Overwatch 2",genre:"Team Shooter",category:"Shooter",
+ image:"overwatch-2.jpg",platforms:["PC","Console"],
+ price:"Free-to-Play",url:"https://overwatch.blizzard.com/",
  tool:"valorant-sensitivity-converter.html"
-},
-{
- name:"Dota 2",genre:"MOBA",filter:"MOBA",
- platforms:["PC"],price:"Free-to-Play",
- accent:"#9b3c3c",
- images:["https://shared.fastly.steamstatic.com/steam/apps/570/header.jpg"],
- description:"Deep competitive strategy with powerful heroes.",
+ },
+ {
+ name:"Dota 2",genre:"MOBA",category:"MOBA",
+ image:"dota-2.jpg",platforms:["PC"],
+ price:"Free-to-Play",
  url:"https://store.steampowered.com/app/570/Dota_2/",
  tool:""
-},
-{
- name:"Warframe",genre:"Action MMO",filter:"Shooter",
- platforms:["PC","Console","Mobile"],price:"Free-to-Play",
- accent:"#367f9b",
- images:["https://shared.fastly.steamstatic.com/steam/apps/230410/header.jpg"],
- description:"Cooperative sci-fi combat and customization.",
- url:"https://www.warframe.com/",
+ },
+ {
+ name:"Warframe",genre:"Action MMO",category:"Shooter",
+ image:"warframe.jpg",platforms:["PC","Console","Mobile"],
+ price:"Free-to-Play",url:"https://www.warframe.com/",
  tool:""
-},
-{
- name:"The Sims 4",genre:"Life Simulation",filter:"Sandbox",
- platforms:["PC","Console"],price:"Free-to-Play",
- accent:"#348b70",
- images:["https://shared.fastly.steamstatic.com/steam/apps/1222670/header.jpg"],
- description:"Create Sims, build homes and tell stories.",
+ },
+ {
+ name:"The Sims 4",genre:"Life Simulation",category:"Sandbox",
+ image:"sims-4.jpg",platforms:["PC","Console"],
+ price:"Free-to-Play",
  url:"https://www.ea.com/games/the-sims/the-sims-4",
  tool:""
-},
-{
- name:"Stardew Valley",genre:"Farming RPG",filter:"Adventure",
- platforms:["PC","Console","Mobile"],price:"Paid",
- accent:"#568d56",
- images:["https://shared.fastly.steamstatic.com/steam/apps/413150/header.jpg"],
- description:"Build a farm and explore a charming countryside.",
- url:"https://www.stardewvalley.net/",
+ },
+ {
+ name:"Stardew Valley",genre:"Farming RPG",category:"Adventure",
+ image:"stardew-valley.jpg",platforms:["PC","Console","Mobile"],
+ price:"Paid",url:"https://www.stardewvalley.net/",
  tool:""
-},
-{
- name:"Honkai: Star Rail",genre:"Turn-Based RPG",filter:"RPG",
- platforms:["PC","Console","Mobile"],price:"Free-to-Play",
- accent:"#6e58bb",
- images:[
- "https://fastcdn.hoyoverse.com/content-v2/hkrpg/113339/61cbf6f5e0d45c3e9f9f3e4fb72a9f1a_3952102784789571085.jpg"
- ],
- description:"A story-driven space fantasy RPG.",
- url:"https://hsr.hoyoverse.com/",
+ },
+ {
+ name:"Honkai: Star Rail",genre:"Turn-Based RPG",category:"RPG",
+ image:"honkai-star-rail.jpg",platforms:["PC","Console","Mobile"],
+ price:"Free-to-Play",url:"https://hsr.hoyoverse.com/",
  tool:""
-},
-{
- name:"Teamfight Tactics",genre:"Auto Battler",filter:"Strategy",
- platforms:["PC","Mobile"],price:"Free-to-Play",
- accent:"#9554b5",
- images:[
- "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg"
- ],
- description:"Build champion teams in strategic auto-battles.",
+ },
+ {
+ name:"Teamfight Tactics",genre:"Auto Battler",category:"Strategy",
+ image:"teamfight-tactics.jpg",platforms:["PC","Mobile"],
+ price:"Free-to-Play",
  url:"https://teamfighttactics.leagueoflegends.com/",
  tool:""
-}
+ }
 ];
 
 const $=id=>document.getElementById(id);
-const genres=[...new Set(games.map(g=>g.filter))].sort();
-genres.forEach(g=>{
+
+[...new Set(games.map(g=>g.category))].sort().forEach(g=>{
  const option=document.createElement("option");
  option.value=g;option.textContent=g;
  $("genre").append(option);
 });
 
-function gameImage(g){
- const img=document.createElement("img");
- img.alt=g.name+" artwork";img.loading="lazy";
- img.decoding="async";
- let index=0;
- img.onerror=()=>{
-  index++;
-  if(index<g.images.length){
-   img.src=g.images[index];
-  }else{
-   img.removeAttribute("src");
-   img.alt=g.name+" image unavailable";
-   img.style.background="linear-gradient(135deg,"+g.accent+",#142653)";
-  }
- };
- if(g.images.length)img.src=g.images[0];
- return img;
-}
-
 function makeCard(g){
  const card=document.createElement("article");
  card.className="card";
- card.style.setProperty("--accent",g.accent);
 
- const imageBox=document.createElement("div");
- imageBox.className="card-image";
- imageBox.append(gameImage(g));
+ const photo=document.createElement("div");
+ photo.className="photo";
+ const img=document.createElement("img");
+ img.src="images/"+g.image;
+ img.alt=g.name+" artwork";
+ img.loading="lazy";
+ img.onerror=()=>{
+  img.onerror=null;
+  img.src="https://placehold.co/800x500/251344/f4b5ff?text="+encodeURIComponent(g.name);
+ };
+ photo.append(img);
 
- const body=document.createElement("div");
- body.className="card-body";
-
- const heading=document.createElement("h3");
- heading.textContent=g.name;
+ const info=document.createElement("div");
+ info.className="info";
+ const h=document.createElement("h3");
+ h.textContent=g.name;
  const genre=document.createElement("span");
  genre.className="genre";genre.textContent=g.genre;
- const tag=document.createElement("span");
- tag.className="tag";tag.textContent=g.price;
- const description=document.createElement("p");
- description.className="description";description.textContent=g.description;
-
- const platforms=document.createElement("div");
- platforms.className="platforms";
- g.platforms.forEach(p=>{
-  const s=document.createElement("span");s.textContent=p;
-  platforms.append(s);
- });
-
- const actions=document.createElement("div");
- actions.className="card-actions";
+ const price=document.createElement("span");
+ price.className="price";price.textContent=g.price;
 
  const official=document.createElement("a");
- official.className="btn primary";
+ official.className="official";
  official.href=g.url;
  official.target="_blank";
  official.rel="noopener noreferrer";
  official.textContent="Official Website ↗";
- actions.append(official);
+
+ info.append(h,genre,price,official);
 
  if(g.tool){
   const tool=document.createElement("a");
-  tool.className="btn secondary";
+  tool.className="tool-link";
   tool.href=g.tool;
-  tool.textContent="PlayVanta Tool →";
-  actions.append(tool);
+  tool.textContent="Explore PlayVanta Tool →";
+  info.append(tool);
  }
 
- body.append(heading,genre,tag,description,platforms,actions);
- card.append(imageBox,body);
+ card.append(photo,info);
  return card;
 }
 
 function render(){
- const query=$("search").value.trim().toLowerCase();
+ const q=$("search").value.toLowerCase().trim();
  const genre=$("genre").value;
  const platform=$("platform").value;
  const price=$("price").value;
 
  const filtered=games.filter(g=>
-  [g.name,g.genre,g.description,...g.platforms].join(" ").toLowerCase().includes(query)
-  &&(!genre||g.filter===genre)
+  (g.name+" "+g.genre+" "+g.category).toLowerCase().includes(q)
+  &&(!genre||g.category===genre)
   &&(!platform||g.platforms.includes(platform))
   &&(!price||g.price===price)
  );
 
  $("grid").replaceChildren(...filtered.map(makeCard));
  $("count").textContent=filtered.length+" of "+games.length+" games";
- $("empty").hidden=filtered.length>0;
+ $("empty").hidden=filtered.length!==0;
 }
 
-["search","genre","platform","price"].forEach(id=>
- $(id).addEventListener("input",render)
-);
+["search","genre","platform","price"].forEach(id=>{
+ $(id).addEventListener("input",render);
+});
 
 $("year").textContent=new Date().getFullYear();
 render();
