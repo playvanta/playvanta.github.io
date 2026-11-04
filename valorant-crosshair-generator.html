@@ -1,6 +1,89 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  
+<script>
+(function () {
+  const title = document.title;
+  const description =
+    document.querySelector('meta[name="description"]')
+      ?.content || "Free gaming tools and calculators on PlayVanta.";
+
+  const url = new URL(location.pathname, "https://playvanta.github.io").href;
+
+  function addMeta(attribute, name, content) {
+    const tag = document.createElement("meta");
+    tag.setAttribute(attribute, name);
+    tag.content = content;
+    document.head.appendChild(tag);
+  }
+
+  const canonical = document.createElement("link");
+  canonical.rel = "canonical";
+  canonical.href = url;
+  document.head.appendChild(canonical);
+
+  addMeta("name", "robots", "index,follow");
+  addMeta("property", "og:type", "website");
+  addMeta("property", "og:site_name", "PlayVanta");
+  addMeta("property", "og:title", title);
+  addMeta("property", "og:description", description);
+  addMeta("property", "og:url", url);
+  addMeta("name", "twitter:card", "summary");
+  addMeta("name", "twitter:title", title);
+  addMeta("name", "twitter:description", description);
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": title.replace(" | PlayVanta", ""),
+        "url": url,
+        "description": description,
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://playvanta.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Gaming Calculators",
+            "item": "https://playvanta.github.io/#calculators"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": title.replace(" | PlayVanta", ""),
+            "item": url
+          }
+        ]
+      }
+    ]
+  };
+
+  const json = document.createElement("script");
+  json.type = "application/ld+json";
+  json.textContent = JSON.stringify(schema);
+  document.head.appendChild(json);
+})();
+</script>
+
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
