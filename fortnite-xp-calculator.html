@@ -2,43 +2,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fortnite XP Calculator | PlayVanta</title>
-<meta name="description" content="Estimate how much Fortnite XP and how many matches you need to reach your target level.">
-<link rel="icon" href="playvanta-logo.jpg">
-<link rel="stylesheet" href="playvanta-tools.css?v=1">
-</head>
-<body data-tool="fortnite" style="--accent:#54baff">
-<div class="tool-shell">
-<nav class="tool-nav">
-<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
-<div class="tool-nav-links">
-<a href="index.html">⌂ Home</a>
-<a class="active" href="index.html#calculators">⚙ Calculators</a>
-<a href="download-games.html">↓ Download Games</a>
-<a href="download-games.html">🎮 Game Discovery</a>
+<meta name="description" content="Estimate Fortnite XP remaining to reach your target level.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#05091e;color:white;font-family:Arial,sans-serif}a{color:inherit;text-decoration:none}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;padding:12px 5%;background:#080d29;border-bottom:1px solid #a44bef}
+.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;font-style:italic}.brand img{width:38px;height:38px;object-fit:cover;border-radius:8px}.brand b{color:#ed7cff}
+.menu{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+.hero{padding:45px 5%;background:linear-gradient(90deg,#080b28ed,#1014419c),url("playvanta-hero.jpg") center/cover;border-bottom:1px solid #a44bef}
+.hero small{color:#4caaff;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(34px,5vw,60px);font-style:italic;margin:12px 0}.hero h1 span{color:#71c6ff}.hero p{color:#d4def5;line-height:1.7}
+main{max-width:1250px;margin:auto;padding:25px 4%}.layout{display:grid;grid-template-columns:1fr 1fr .75fr;gap:16px}
+.card{background:linear-gradient(140deg,#151d49,#090e2b);border:1px solid #a14ee8;border-radius:14px;padding:22px;box-shadow:0 0 15px #8b3cff35}
+h2{font-size:19px;margin:0 0 20px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+input{width:100%;padding:12px;border:1px solid #7565b6;border-radius:9px;background:#0b1537;color:white}
+.result{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #6b4ca9;border-radius:12px;background:#0b1031;padding:15px}
+.result strong{font-size:clamp(28px,4vw,44px);color:#4deaff;margin:16px 0}.result p,.note{color:#cbd6f3;font-size:13px;line-height:1.8}
+.links{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.links a{padding:13px;border:1px solid #884dd7;border-radius:9px;background:#141b43;text-align:center;font-size:12px}
+footer{text-align:center;padding:25px;color:#aab9db;font-size:12px}
+@media(max-width:950px){.layout{grid-template-columns:1fr 1fr}.layout aside{grid-column:1/-1}.links{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.layout{grid-template-columns:1fr}.layout aside{grid-column:auto}.links{grid-template-columns:repeat(2,1fr)}}
+</style></head>
+<body>
+<nav><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<b>Vanta</b></span></a><div class="menu"><a href="index.html">Home</a><a href="index.html#calculators">Calculators</a><a href="download-games.html">Download Games</a></div></nav>
+<header class="hero"><small>FORTNITE GAMING TOOLS</small><h1>FORTNITE <span>XP CALCULATOR</span></h1><p>Plan your leveling progress with an adjustable XP-per-level estimate.</p></header>
+<main><div class="layout">
+<section class="card"><h2>🎮 XP Settings</h2>
+<div class="field"><label for="current">Current Level</label><input id="current" type="number" min="1" value="50"></div>
+<div class="field"><label for="target">Target Level</label><input id="target" type="number" min="1" value="75"></div>
+<div class="field"><label for="earned">XP Already Earned Toward Next Level</label><input id="earned" type="number" min="0" value="0"></div>
+<div class="field"><label for="perLevel">Assumed XP Per Level</label><input id="perLevel" type="number" min="1" value="80000"></div>
+<div class="field"><label for="perMatch">Estimated XP Per Match</label><input id="perMatch" type="number" min="1" value="25000"></div>
+</section>
+<section class="card"><h2>✦ XP Estimate</h2><div class="result"><span>Estimated XP Remaining</span><strong id="result">—</strong><p id="detail"></p></div></section>
+<aside class="card"><h2>⚡ Leveling Guide</h2><p class="note">The default is an illustrative 80,000 XP per level.</p><p class="note">Fortnite's actual XP requirements and rewards can vary. Adjust the assumed XP per level to suit the progression system you are using.</p></aside>
 </div>
-</nav>
-<header class="tool-hero">
-<div class="tool-hero-content">
-<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
-<div class="tool-eyebrow" id="toolGame"></div>
-<h1 id="toolTitle"></h1>
-<p>Estimate the XP required to reach your target Fortnite level and plan how many matches it might take.</p>
-</div>
-</header>
-<main class="tool-main">
-<div class="tool-layout">
-<section class="tool-card"><h2>🎮 Level & XP Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
-<section class="tool-card"><h2>✦ XP Estimate</h2><div id="toolPreview"></div></section>
-<aside class="tool-card"><h2>⚡ Leveling Guide</h2><div class="tool-note" id="toolTips"></div></aside>
-</div>
-<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
-<div class="tool-directory" id="toolDirectory"></div>
-</main>
-<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
-</div>
-<script src="playvanta-tools.js?v=1" defer></script>
-</body>
-</html>
+<section style="margin-top:35px"><h2>🎮 More PlayVanta Tools</h2><div class="links">
+<a href="valorant-crosshair-generator.html">Valorant Crosshair</a><a href="valorant-sensitivity-converter.html">Sensitivity Converter</a><a href="minecraft-nether-calculator.html">Minecraft Nether</a><a href="fps-frame-time-calculator.html">FPS Frame Time</a><a href="roblox-robux-tax-calculator.html">Robux Tax</a><a href="cs2-economy-calculator.html">CS2 Economy</a><a href="genshin-wish-calculator.html">Genshin Wishes</a><a href="rocket-league-rank-tracker.html">Rocket League</a><a href="lol-lp-calculator.html">LoL LP</a>
+</div></section></main><footer>© PlayVanta · Every Game. One Hub.</footer>
+<script>
+const $=id=>document.getElementById(id);
+function calculate(){
+const current=+$("current").value,target=+$("target").value,earned=+$("earned").value,perLevel=+$("perLevel").value,perMatch=+$("perMatch").value;
+if([current,target,earned,perLevel,perMatch].some(v=>!Number.isFinite(v))||current<1||target<1||earned<0||perLevel<=0||perMatch<=0){$("result").textContent="—";$("detail").textContent="Enter valid positive values.";return}
+const needed=target<=current?0:Math.max(0,(Math.floor(target)-Math.floor(current))*perLevel-earned);
+$("result").textContent=Math.ceil(needed).toLocaleString()+" XP";
+$("detail").textContent="Estimated matches needed: "+Math.ceil(needed/perMatch).toLocaleString();
+}
+document.querySelectorAll("input").forEach(el=>el.addEventListener("input",calculate));calculate();
+</script></body></html>
