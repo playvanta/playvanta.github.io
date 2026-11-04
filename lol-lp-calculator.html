@@ -2,80 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LoL LP Calculator – Ranked Wins, Losses & Climb Estimate | PlayVanta</title>
-<meta name="description" content="Free League of Legends LP calculator. Estimate ranked LP progress, games needed to reach a target and the effect of win rate, LP gains and LP losses.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/lol-lp-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-<style>
-body{--accent:#d4ad65;--hero-art:url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg')}
-.pv-guide p{line-height:1.8}.pv-faq{border-bottom:1px solid #ffffff20;padding:15px 0}.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-btn{margin-top:18px;padding:12px 18px;border-radius:10px;border:1px solid #d4ad6570;background:#5b4527;color:white;font-weight:800;cursor:pointer}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"League of Legends LP Calculator","url":"https://playvanta.github.io/lol-lp-calculator.html","applicationCategory":"GameApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>League of Legends LP Calculator | PlayVanta</title>
+<meta name="description" content="Estimate League of Legends LP gains and losses based on win rate, LP per match, and projected games.">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">League of Legends / Ranked</div><h1>LoL LP <span>Calculator</span></h1><p>Estimate how many ranked games you need to reach your LP target based on your expected win rate and LP changes.</p><div class="hero-tags"><span>Ranked LP</span><span>Win Rate</span><span>Climb Estimates</span></div></div></section>
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel"><div class="panel-kicker">Ranked Progress Planner</div><h2>Calculate Your League of Legends LP Goal</h2>
-<div class="field-grid">
-<div class="field"><label for="current">Current LP (Within Division)</label><input id="current" type="number" min="0" max="99" step="1" value="40"></div>
-<div class="field"><label for="target">Additional LP Needed for Your Goal</label><input id="target" type="number" min="1" step="1" value="60"></div>
-<div class="field"><label for="gain">LP Gained per Win</label><input id="gain" type="number" min="0.1" step="any" value="25"></div>
-<div class="field"><label for="loss">LP Lost per Loss</label><input id="loss" type="number" min="0.1" step="any" value="23"></div>
-<div class="field"><label for="rate">Expected Win Rate (%)</label><input id="rate" type="number" min="0" max="100" step="any" value="55"></div>
-<div class="field"><label for="gamesDay">Ranked Games per Day</label><input id="gamesDay" type="number" min="1" step="1" value="4"></div>
+<body data-tool="lol" style="--accent:#e9bb5e">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 </div>
-<div class="results">
-<div class="metric"><span>LP Needed</span><strong id="needed">—</strong></div>
-<div class="metric"><span>Net LP per Game (Expected)</span><strong id="net">—</strong></div>
-<div class="metric"><span>Estimated Games</span><strong id="games">—</strong></div>
-<div class="metric"><span>Estimated Days</span><strong id="days">—</strong></div>
+</nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Estimate your expected League of Legends LP change based on win rate, LP gains, losses, and number of matches.</p>
 </div>
-<div class="note" id="status">This is a simplified LP projection. Promotions, demotions, LP caps, matchmaking rating and rank-specific rules are not modeled.</div>
-<button type="button" class="pv-btn" id="reset">Reset Calculator</button>
-</section>
-<section class="panel pv-guide"><h2>How to Calculate League of Legends LP Progress</h2>
-<p>League Points, or LP, are used to track ranked progress in League of Legends. Winning ranked games can award LP, while losing games can reduce it. The exact amounts depend on matchmaking and ranked-system rules.</p>
-<h3>Calculate Expected LP per Game</h3>
-<p><strong>Expected LP per Game = (Win Rate × LP per Win) − (Loss Rate × LP per Loss).</strong></p>
-<p>For example, at a 55% win rate, +25 LP per win and −23 LP per loss, the expected gain is 3.4 LP per game.</p>
-<h3>Calculate Games to Your Goal</h3>
-<p>Divide the additional LP needed by your expected net LP per game and round up. If your expected net LP is zero or negative, the assumptions do not predict consistent upward progress.</p>
-<h3>Why LP Gains and Losses Change</h3>
-<p>LP changes may be influenced by your matchmaking rating relative to your visible rank and by current ranked rules. The calculator treats your entered gains and losses as fixed averages.</p>
-<h3>Important Difference Between LP and Rank</h3>
-<p>This tool calculates a requested amount of additional LP. It does not automatically translate that amount into a particular rank or division. Rank boundaries and promotion behavior can affect real progression.</p>
-</section>
-<section class="panel pv-guide"><h2>League of Legends LP Calculator FAQ</h2>
-<details class="pv-faq"><summary>What win rate do I need to climb?</summary><p>Under fixed LP assumptions, your win rate must be high enough that expected LP gained from wins exceeds expected LP lost from defeats.</p></details>
-<details class="pv-faq"><summary>Why do I gain less LP than I lose?</summary><p>Your visible rank and underlying matchmaking rating may be misaligned, among other ranked-system factors.</p></details>
-<details class="pv-faq"><summary>Does this track my Riot account?</summary><p>No. All values are entered manually.</p></details>
-<details class="pv-faq"><summary>Can this predict my exact future rank?</summary><p>No. It provides a simplified statistical projection based on your assumptions, not a prediction of match outcomes.</p></details>
-</section></div>
-<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">League Ranked</div><h2>Plan Your Climb</h2><p>Understand how win rate and LP gains affect your long-term progress.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="rocket-league-rank-tracker.html">Rocket League Rank Tracker →</a><a href="genshin-wish-calculator.html">Genshin Wish Calculator →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside></div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made website. Not affiliated with Riot Games.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-function update(){
- const ids=["current","target","gain","loss","rate","gamesDay"];
- const v=Object.fromEntries(ids.map(id=>[id,Number($(id).value)]));
- const valid=ids.every(id=>$(id).value.trim()!==""&&Number.isFinite(v[id]))&&Number.isInteger(v.current)&&v.current>=0&&v.current<=99&&Number.isInteger(v.target)&&v.target>0&&v.gain>0&&v.loss>0&&v.rate>=0&&v.rate<=100&&Number.isInteger(v.gamesDay)&&v.gamesDay>0;
- if(!valid){["needed","net","games","days"].forEach(id=>$(id).textContent="—");$("status").textContent="Enter valid values. Current LP must be 0–99 and the additional LP goal must be positive.";return}
- const net=v.rate/100*v.gain-(1-v.rate/100)*v.loss;
- const games=net>0?Math.ceil(v.target/net):null;
- $("needed").textContent=v.target.toLocaleString();
- $("net").textContent=net.toFixed(2);
- $("games").textContent=games===null?"No upward trend":games.toLocaleString();
- $("days").textContent=games===null?"—":Math.ceil(games/v.gamesDay).toLocaleString();
- $("status").textContent="Expected-value projection only. Your actual LP changes, win rate and rank transitions can differ.";
-}
-["current","target","gain","loss","rate","gamesDay"].forEach(id=>$(id).addEventListener("input",update));
-$("reset").onclick=()=>{Object.entries({current:40,target:60,gain:25,loss:23,rate:55,gamesDay:4}).forEach(([k,v])=>$(k).value=v);update()};
-update();
-</script></body></html>
+</header>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>🏆 Ranked LP Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ LP Projection</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Ranked Climbing Guide</h2><div class="tool-note" id="toolTips"></div></aside>
+</div>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+<script src="playvanta-tools.js?v=1" defer></script>
+</body>
+</html>
