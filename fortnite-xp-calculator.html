@@ -2,83 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fortnite XP Calculator – Levels, Matches & Days | PlayVanta</title>
-<meta name="description" content="Calculate Fortnite XP needed for your target level. Estimate matches, sessions and days using customizable XP per level and XP earned per match.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/fortnite-xp-calculator.html">
-<link rel="icon" href="playvanta-logo.jpg"><link rel="stylesheet" href="playvanta-theme.css">
-<style>
-body{--accent:#9c8cff;--hero-art:url('https://butcherblockbuffet.com/images/uploads/post/c9707e3f-590b-4e25-9680-65ec4af20d69.jpg')}
-.pv-guide p,.pv-guide li{line-height:1.8}.pv-guide ul{padding-left:22px}
-.pv-faq{padding:15px 0;border-bottom:1px solid #ffffff20}.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-button{border:1px solid #9c8cff80;border-radius:10px;background:#443777;color:#fff;font-weight:800;padding:12px 18px;margin-top:18px;cursor:pointer}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Fortnite XP Calculator","url":"https://playvanta.github.io/fortnite-xp-calculator.html","applicationCategory":"GameApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortnite XP Calculator | PlayVanta</title>
+<meta name="description" content="Estimate how much Fortnite XP and how many matches you need to reach your target level.">
+<link rel="icon" href="playvanta-logo.jpg">
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>PLAY<b>VANTA</b></span></a><div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div></nav></header>
-<section class="page-hero"><div class="hero-inner"><div class="overline">Fortnite / Battle Pass Progress</div><h1>Fortnite XP <span>Calculator</span></h1><p>Estimate the XP, matches and days required to reach your target Fortnite level.</p><div class="hero-tags"><span>Level Progress</span><span>XP Goals</span><span>Match Estimates</span></div></div></section>
-<main class="page-container"><div class="content-grid"><div>
-<section class="panel"><div class="panel-kicker">XP Progress Planner</div><h2>Calculate Your Fortnite XP Goal</h2><p>Adjust the XP assumptions to match the current season and your own gameplay results.</p>
-<div class="field-grid">
-<div class="field"><label for="current">Current Level</label><input id="current" type="number" min="1" step="1" value="25"></div>
-<div class="field"><label for="target">Target Level</label><input id="target" type="number" min="1" step="1" value="100"></div>
-<div class="field"><label for="progress">XP Already Earned Toward Next Level</label><input id="progress" type="number" min="0" step="1" value="0"></div>
-<div class="field"><label for="xpLevel">Assumed XP per Level</label><input id="xpLevel" type="number" min="1" step="1" value="80000"></div>
-<div class="field"><label for="xpMatch">Average XP per Match</label><input id="xpMatch" type="number" min="1" step="1" value="12000"></div>
-<div class="field"><label for="matchesDay">Matches Played per Day</label><input id="matchesDay" type="number" min="1" step="1" value="5"></div>
+<body data-tool="fortnite" style="--accent:#54baff">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
 </div>
-<div class="results">
-<div class="metric"><span>Levels Remaining</span><strong id="levels">—</strong></div>
-<div class="metric"><span>XP Remaining</span><strong id="xp">—</strong></div>
-<div class="metric"><span>Estimated Matches</span><strong id="matches">—</strong></div>
-<div class="metric"><span>Estimated Days</span><strong id="days">—</strong></div>
+</nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Estimate the XP required to reach your target Fortnite level and plan how many matches it might take.</p>
 </div>
-<p id="status" class="note">Estimates update automatically.</p>
-<button type="button" class="pv-button" id="reset">Reset Calculator</button>
-</section>
-<section class="panel pv-guide"><h2>How to Calculate Fortnite XP</h2>
-<p>Fortnite offers XP through gameplay and other activities. Requirements and earning rates may change between seasons and modes, so this tool uses values you can edit.</p>
-<h3>XP Remaining Formula</h3>
-<p><strong>XP remaining = (Target Level − Current Level) × XP per Level − XP Already Earned Toward Next Level.</strong></p>
-<p>The result cannot fall below zero. This simplified model assumes the same XP requirement for each remaining level.</p>
-<h3>How to Estimate Matches</h3>
-<p>Divide the remaining XP by your average XP earned per match, then round up. To estimate days, divide required matches by your daily match count and round up again.</p>
-<h3>Example XP Goal</h3>
-<p>From level 25 to level 100 at an assumed 80,000 XP per level, you need 6,000,000 XP before subtracting existing progress. At 12,000 XP per match, that is about 500 matches. Playing five matches daily would take approximately 100 days.</p>
-<h3>How to Improve Your Estimate</h3>
-<ul><li>Check your current season's level requirements.</li><li>Measure your average XP across several actual matches.</li><li>Include quest rewards in your average only if you expect them to continue.</li><li>Update the inputs as your progression changes.</li></ul>
-</section>
-<section class="panel pv-guide"><h2>Fortnite XP Calculator FAQ</h2>
-<details class="pv-faq"><summary>Is 80,000 XP always required per level?</summary><p>No. It is an editable example value, not a guarantee for every season or progression system.</p></details>
-<details class="pv-faq"><summary>Does the calculator track my Epic Games account?</summary><p>No. It uses only the values you enter and does not connect to your account.</p></details>
-<details class="pv-faq"><summary>Are quests included?</summary><p>Only if you include expected quest XP in your average XP-per-match assumption or otherwise account for it in your inputs.</p></details>
-<details class="pv-faq"><summary>Why might the estimate be inaccurate?</summary><p>XP rates, bonuses, game modes, quests and level requirements can vary. Treat the result as a planning estimate.</p></details>
-</section></div>
-<aside><section class="panel"><div class="art-tile"></div><div class="panel-kicker">Fortnite Progress</div><h2>Plan Your Grind</h2><p>Set a realistic level goal and estimate the time required based on your usual matches.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related"><a href="fps-frame-time-calculator.html">FPS Calculator →</a><a href="rocket-league-rank-tracker.html">Rocket League Rank Tracker →</a><a href="index.html#tools">All Gaming Tools →</a></div></section></aside></div></main>
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made website. Not affiliated with Epic Games.</p></footer>
-<script>
-const $=id=>document.getElementById(id);
-const nf=new Intl.NumberFormat("en-US");
-function update(){
- const ids=["current","target","progress","xpLevel","xpMatch","matchesDay"];
- const v=Object.fromEntries(ids.map(id=>[id,Number($(id).value)]));
- const valid=ids.every(id=>$(id).value.trim()!==""&&Number.isFinite(v[id]))&&v.current>=1&&v.target>=v.current&&v.progress>=0&&v.xpLevel>0&&v.xpMatch>0&&v.matchesDay>0&&ids.every(id=>Number.isInteger(v[id]))&&v.progress<v.xpLevel;
- if(!valid){["levels","xp","matches","days"].forEach(id=>$(id).textContent="—");$("status").textContent="Enter valid whole-number inputs. Target level must not be below current level, and current progress must be less than XP per level.";return}
- const levels=v.target-v.current;
- const xp=Math.max(0,levels*v.xpLevel-(levels>0?v.progress:0));
- const matches=Math.ceil(xp/v.xpMatch),days=Math.ceil(matches/v.matchesDay);
- $("levels").textContent=nf.format(levels);
- $("xp").textContent=nf.format(xp);
- $("matches").textContent=nf.format(matches);
- $("days").textContent=nf.format(days);
- $("status").textContent="Planning estimate based on your inputs; actual seasonal XP requirements and rewards may differ.";
-}
-["current","target","progress","xpLevel","xpMatch","matchesDay"].forEach(id=>$(id).addEventListener("input",update));
-$("reset").onclick=()=>{Object.entries({current:25,target:100,progress:0,xpLevel:80000,xpMatch:12000,matchesDay:5}).forEach(([k,v])=>$(k).value=v);update()};
-update();
-</script></body></html>
+</header>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>🎮 Level & XP Settings</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ XP Estimate</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Leveling Guide</h2><div class="tool-note" id="toolTips"></div></aside>
+</div>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+<script src="playvanta-tools.js?v=1" defer></script>
+</body>
+</html>
