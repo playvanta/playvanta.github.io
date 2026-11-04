@@ -5,134 +5,396 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PlayVanta | Every Game. One Hub.</title>
-<meta name="description" content="Gaming calculators, game discovery and official game download links at PlayVanta.">
+<meta name="description" content="Discover games, free gaming calculators, crosshair tools, XP calculators and official game downloads at PlayVanta.">
 <link rel="canonical" href="https://playvanta.github.io/">
 <link rel="icon" href="playvanta-logo.jpg">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-:root{--pink:#f477ff;--purple:#a744ff;--cyan:#32eaff}
+:root{
+ --bg:#060a22;--panel:#111737;--pink:#f46cff;
+ --purple:#a538ff;--cyan:#23e7ff;--text:#fff;
+ --border:#9862ec;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#040719;color:#fff;font-family:Inter,Arial,sans-serif}
+body{margin:0;background:#030514;color:var(--text);font-family:Inter,Arial,sans-serif}
 a{text-decoration:none;color:inherit}
 button,input{font:inherit}
-.shell{max-width:1450px;margin:auto;overflow:hidden;border:1px solid #ab59ec;background:radial-gradient(ellipse at 20% 35%,#0a3c84aa,transparent 42%),linear-gradient(135deg,#080a24,#09183c 55%,#110b31)}
-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:11px 4%;background:#080b20f2;border-bottom:1px solid #a95aff;backdrop-filter:blur(14px)}
-.logo{display:flex;align-items:center;gap:9px;font-size:24px;font-weight:900;font-style:italic;white-space:nowrap}
-.logo img{width:35px;height:35px;border-radius:8px;object-fit:cover}
-.logo em{color:var(--pink);font-style:inherit}
-.links{display:flex;align-items:center;gap:5px}
-.links a{font-size:11px;font-weight:800;padding:10px;border-radius:8px;white-space:nowrap}
-.links a:hover,.links .active{background:linear-gradient(110deg,#a72cdb,#602bd6);box-shadow:0 0 14px #e64bff}
-.hero{position:relative;min-height:460px;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 75% 38%,#9b39edaa,transparent 28%),radial-gradient(circle at 65% 70%,#097ccf88,transparent 38%),linear-gradient(115deg,#060a23,#101d56,#30104f)}
-.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#070a20fa,#07112ee0 43%,#0b113755),url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=85") center/cover;opacity:.85}
-.hero:after{content:"";position:absolute;width:340px;height:340px;right:12%;top:5%;border:3px solid #b459ff77;border-radius:50%;box-shadow:0 0 100px #a02cff99,inset 0 0 90px #23bfff77;z-index:-1}
-.hero-inner{padding:55px 5%;max-width:730px}
-.eyebrow{color:#41efff;letter-spacing:3px;font-size:11px;font-weight:900}
-h1{font-size:clamp(50px,6vw,88px);font-style:italic;font-weight:900;line-height:1.02;letter-spacing:-3px;margin:15px 0 20px;text-shadow:0 5px 20px #000b}
-.gradient{background:linear-gradient(100deg,#ff8cf8,#b971ff,#49caff);background-clip:text;color:transparent}
-.hero p{color:#e6edff;font-size:14px;line-height:1.8;max-width:530px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.button{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:9px;border:1px solid #ff9aff;background:linear-gradient(115deg,#bc24e5,#6330d2);box-shadow:0 0 16px #e646ff99;font-size:12px;font-weight:900;transition:.2s}
-.button:hover{transform:translateY(-3px);box-shadow:0 0 25px #f16aff}
-.button.cyan{border-color:#43edff;background:linear-gradient(115deg,#07538d,#046fb3);box-shadow:0 0 15px #21d8ff88}
-main{padding:0 4% 40px}
-.quick{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:-24px 0 30px}
-.quick a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;min-height:145px;padding:15px 10px;border:1px solid #e17bff;border-radius:13px;background:linear-gradient(140deg,#54206b,#1a1d49);box-shadow:0 0 17px #b12cff66;transition:.2s}
-.quick a:hover{transform:translateY(-6px);box-shadow:0 0 27px #e65bff}
-.quick .icon{font-size:28px;color:#ff91ff}
+button{cursor:pointer}
+.site{
+ max-width:1500px;margin:7px auto;
+ overflow:hidden;border:1px solid #d08aff;
+ border-radius:15px;
+ box-shadow:0 0 30px #7021cc55;
+ background:
+ radial-gradient(ellipse at 25% 55%,#073a7c88,transparent 48%),
+ linear-gradient(180deg,#071029,#071637 65%,#080a24);
+}
+nav{
+ height:53px;display:flex;align-items:center;
+ justify-content:space-between;gap:12px;
+ padding:0 4%;position:relative;z-index:20;
+ background:#070b21ee;
+ border-bottom:1px solid #7c4ac5;
+}
+.logo{
+ display:flex;align-items:center;gap:10px;
+ font-size:25px;font-weight:900;font-style:italic;
+ letter-spacing:-1px;white-space:nowrap;
+}
+.logo-mark{font-size:31px;color:#f67aff;filter:drop-shadow(0 0 7px #dc36ff)}
+.logo em{color:#f276ff;font-style:inherit}
+.nav-links{display:flex;gap:7px;align-items:center}
+.nav-links a{
+ font-size:11px;font-weight:800;white-space:nowrap;
+ padding:10px 12px;border-radius:9px;
+ transition:.2s;
+}
+.nav-links a:hover,.nav-links a.active{
+ background:linear-gradient(120deg,#b62cfa,#6321db);
+ border:1px solid #ed86ff;
+ padding:9px 11px;
+ box-shadow:0 0 13px #e044ff;
+}
+.hero{
+ position:relative;min-height:370px;
+ overflow:hidden;isolation:isolate;
+ display:flex;align-items:center;
+ background:
+ linear-gradient(90deg,#05091ff9 0%,#07102cdd 40%,#06133277 100%),
+ url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=90")
+ center/cover no-repeat;
+}
+.hero:before{
+ content:"";position:absolute;inset:0;z-index:-1;
+ background:
+ radial-gradient(circle at 78% 24%,#4cbbff88 0 5%,transparent 13%),
+ radial-gradient(circle at 78% 40%,#bc27ff77,transparent 31%),
+ linear-gradient(0deg,#07112e 0%,transparent 40%);
+}
+.hero:after{
+ content:"";position:absolute;right:-80px;bottom:-200px;
+ width:610px;height:610px;border-radius:50%;
+ border:2px solid #ba49ff77;
+ box-shadow:0 0 100px #9426ff88,inset 0 0 100px #0879ff88;
+ pointer-events:none;
+}
+.hero-copy{position:relative;z-index:2;padding:42px 5%;max-width:730px}
+.eyebrow{
+ font-size:12px;letter-spacing:4px;
+ color:#23eaff;font-weight:900;margin-bottom:14px;
+}
+h1{
+ font-size:clamp(47px,5.5vw,80px);
+ font-weight:900;font-style:italic;
+ letter-spacing:-3px;line-height:.99;
+ margin:0 0 22px;
+ text-shadow:0 5px 17px #000b;
+}
+.gradient{
+ background:linear-gradient(100deg,#ff8ff6,#ce7bff 48%,#3ebdff);
+ background-clip:text;-webkit-background-clip:text;
+ color:transparent;
+}
+.hero-copy p{
+ font-size:13px;line-height:1.7;max-width:495px;
+ color:#f2f4ff;text-shadow:0 2px 8px #000;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ gap:8px;padding:12px 20px;
+ border-radius:9px;border:1px solid #ff8bff;
+ background:linear-gradient(120deg,#b71de8,#5b20d2);
+ box-shadow:0 0 13px #e633ff,inset 0 0 9px #fff3;
+ font-size:12px;font-weight:900;
+ transition:.2s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 24px #f65cff}
+.btn.cyan{
+ border-color:#29eaff;
+ background:linear-gradient(120deg,#06365e,#045b88);
+ box-shadow:0 0 14px #10d8ff;
+}
+main{padding:0 4%}
+.quick{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:12px;margin:13px 0 27px;
+}
+.quick a{
+ display:flex;flex-direction:column;align-items:center;
+ justify-content:center;text-align:center;
+ min-height:91px;padding:11px 8px;
+ border:1px solid #4c6bbd;border-radius:11px;
+ background:linear-gradient(140deg,#152653dd,#10162fe9);
+ box-shadow:inset 0 0 18px #265eff24;
+ transition:.2s;
+}
+.quick a:hover{
+ transform:translateY(-4px);
+ border-color:#e86aff;box-shadow:0 0 20px #b839ff88;
+}
+.quick-icon{
+ color:#fa83ff;font-size:26px;line-height:1.1;
+ filter:drop-shadow(0 0 8px #df42ff);
+ margin-bottom:7px;
+}
 .quick strong{font-size:13px}
-.quick small{font-size:10px;color:#e2cff4}
-.quick .mini{padding:8px 12px;border:1px solid #ff94ff;border-radius:7px;background:linear-gradient(110deg,#b32bdf,#672fc8);font-size:10px;font-weight:900;box-shadow:0 0 11px #ce42ff88}
-.section{margin:30px 0 38px}
-.heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
-.heading h2{font-size:clamp(24px,3vw,34px);font-weight:900;font-style:italic;margin:0 0 5px}
-.heading p{color:#c3d0ef;font-size:12px;margin:0}
-.heading>a{color:#f68bff;font-size:12px;font-weight:900}
-.featured{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.feature{position:relative;display:block;height:170px;overflow:hidden;border-radius:12px;border:1px solid #a86aff;background:#22204a;transition:.2s}
-.feature:hover,.calc:hover{transform:translateY(-5px);box-shadow:0 0 22px #c347ff99}
+.quick small{font-size:10px;color:#d5dcf4;margin-top:4px}
+section{margin:23px 0 28px}
+.heading{
+ display:flex;align-items:end;justify-content:space-between;
+ gap:12px;margin-bottom:13px;
+}
+.heading-left{display:flex;align-items:center;gap:11px}
+.heading-icon{
+ display:grid;place-items:center;
+ min-width:42px;height:42px;border-radius:10px;
+ background:#56208c;color:#f47aff;
+ box-shadow:0 0 15px #b92aff99;
+ font-size:27px;
+}
+.heading h2{
+ font-size:clamp(22px,2.6vw,31px);
+ font-weight:900;font-style:italic;
+ margin:0 0 3px;
+}
+.heading p{font-size:11px;color:#c7d4f1;margin:0}
+.heading>a{
+ color:#f67bff;font-size:12px;font-weight:800;
+ white-space:nowrap;
+}
+.carousel-wrap{position:relative;padding:0 22px}
+.featured{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:10px;
+}
+.feature{
+ position:relative;display:block;height:154px;
+ overflow:hidden;border-radius:12px;
+ border:1px solid #b86eff;background:#1b1641;
+ box-shadow:0 5px 15px #0009;transition:.2s;
+}
+.feature:hover{
+ transform:translateY(-4px);box-shadow:0 0 20px #d048ff99;
+}
 .feature img{width:100%;height:100%;object-fit:cover;display:block}
-.feature:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#080c28,transparent 75%)}
-.feature-label{position:absolute;z-index:1;bottom:10px;left:5px;right:5px;text-align:center;font-size:15px;font-weight:900;text-shadow:0 2px 8px #000}
-.feature-label small{display:block;font-size:10px;margin-top:5px}
-.dots{display:flex;justify-content:center;gap:9px;margin-top:15px}
-.dots button{width:12px;height:12px;border:0;border-radius:50%;background:#4b52a7;cursor:pointer}
-.dots button.active{background:#f77cff;box-shadow:0 0 10px #f77cff}
-.search{width:100%;padding:13px 16px;margin:12px 0 16px;border:1px solid #835bd1;border-radius:9px;background:#101739;color:#fff;outline:none}
-.calcs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.calc{display:block;overflow:hidden;border-radius:12px;border:1px solid #b46aff;background:#161c43;transition:.2s}
-.calc img{width:100%;height:120px;object-fit:cover;display:block}
-.calc-body{padding:12px}
-.calc strong{display:block;font-size:12px}
-.calc small{display:block;font-size:10px;color:#c8d4f2;margin:6px 0 12px}
-.calc-btn{display:block;text-align:center;padding:9px 5px;border-radius:7px;background:linear-gradient(110deg,#ad29df,#5835c8);border:1px solid #f18bff;font-size:10px;font-weight:900;box-shadow:0 0 12px #ae42ff66}
-.footer-banner{margin-top:30px;padding:65px 5% 35px;display:flex;justify-content:space-between;align-items:end;gap:15px;background:linear-gradient(0deg,#070d27,#0b1b4acc),url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85") center/cover}
-.footer-banner h2{font-size:clamp(25px,4vw,42px);font-style:italic;margin:0}
-.footer-banner p{color:#e2e9ff;font-size:12px;line-height:1.7}
-footer{text-align:center;padding:24px;color:#b6c4e6;font-size:11px}
-@media(max-width:1050px){.featured,.calcs{grid-template-columns:repeat(3,1fr)}.links a{font-size:10px;padding:8px}}
-@media(max-width:700px){nav{flex-wrap:wrap}.links{width:100%;overflow-x:auto}.quick{grid-template-columns:repeat(2,1fr)}.featured,.calcs{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:390px}.hero-inner{padding:45px 5% 70px}.footer-banner{flex-direction:column;align-items:flex-start}.feature{height:145px}}
+.feature:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(0deg,#090c2cf0,transparent 70%);
+}
+.feature-label{
+ position:absolute;z-index:1;left:5px;right:5px;
+ bottom:10px;text-align:center;
+ font-size:15px;font-weight:900;text-shadow:0 2px 6px #000;
+}
+.feature-label small{
+ display:block;font-size:10px;font-weight:600;margin-top:5px;
+}
+.arrow{
+ position:absolute;z-index:5;top:40%;width:28px;height:36px;
+ border-radius:9px;border:1px solid #ba66ff;
+ background:#22144ce8;color:#ef9aff;
+ font-size:24px;box-shadow:0 0 12px #9d37ff66;
+}
+.arrow.prev{left:-12px}
+.arrow.next{right:-12px}
+.dots{display:flex;justify-content:center;gap:9px;margin:12px 0}
+.dots button{
+ border:0;border-radius:50%;width:9px;height:9px;
+ padding:0;background:#485db5;
+}
+.dots button.active{background:#f379ff;box-shadow:0 0 9px #f379ff}
+.calculator-section{
+ border-top:1px solid #243e80;
+ padding-top:13px;margin-top:15px;
+}
+.calcs{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:11px;
+}
+.calc{
+ display:flex;align-items:center;gap:10px;
+ min-height:59px;padding:10px 11px;
+ border:1px solid #9d66ec;border-radius:11px;
+ background:linear-gradient(125deg,#252354,#151c43);
+ box-shadow:inset 0 0 15px #a542ff25;
+ transition:.2s;
+}
+.calc:hover{
+ transform:translateY(-3px);border-color:#ff85ff;
+ box-shadow:0 0 17px #bd4cff88;
+}
+.calc-icon{
+ font-size:26px;color:#ed6dff;
+ min-width:28px;text-align:center;
+ filter:drop-shadow(0 0 7px #bd32ff);
+}
+.calc-text strong{display:block;font-size:10px}
+.calc-text small{
+ display:block;font-size:9px;color:#d4d9f3;
+ margin-top:4px;line-height:1.4;
+}
+.mountains{
+ position:relative;height:110px;margin-top:27px;
+ background:
+ linear-gradient(0deg,#0a0e2c,#08143222),
+ url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85")
+ center 56%/cover;
+}
+.mountains:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,#5c0aa755,#007bff44,#7216a355);
+ mix-blend-mode:screen;
+}
+.bottom-cta{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:20px;padding:28px 7% 34px;
+ border-top:1px solid #7c4ad8;
+ background:
+ linear-gradient(90deg,#0c0c2bfa,#121547dc,#080d2be8),
+ url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85")
+ center/cover;
+}
+.bottom-cta h2{
+ font-size:clamp(26px,3.3vw,42px);
+ font-weight:900;font-style:italic;margin:0 0 9px;
+}
+.bottom-cta p{
+ color:#dbe4fa;font-size:12px;line-height:1.7;
+ margin:0;max-width:500px;
+}
+footer{
+ padding:16px;text-align:center;
+ font-size:10px;color:#9baed6;
+ background:#070a21;
+}
+@media(max-width:1000px){
+ .nav-links a{font-size:10px;padding:8px}
+ .featured{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .feature:nth-child(n+4){display:none}
+ .calcs{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:650px){
+ nav{height:auto;flex-wrap:wrap;padding:10px 4%}
+ .nav-links{width:100%;overflow-x:auto}
+ .hero{min-height:350px}
+ .hero-copy{padding:42px 5%}
+ h1{font-size:clamp(45px,11vw,70px)}
+ .quick{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .featured{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .feature:nth-child(n+3){display:none}
+ .calcs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .heading h2{font-size:21px}
+ .heading>a{font-size:10px}
+ .bottom-cta{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{transition:none!important}
+}
 </style>
 </head>
 <body>
-<div class="shell">
+<div class="site">
 <nav>
-<a class="logo" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<em>Vanta</em></span></a>
-<div class="links">
+<a class="logo" href="index.html">
+<span class="logo-mark">🎮</span>
+<span>Play<em>Vanta</em></span>
+</a>
+<div class="nav-links">
 <a class="active" href="index.html">⌂ Home</a>
-<a href="#calculators">▦ Calculators</a>
+<a href="#calculators">⚙ Calculators⌄</a>
 <a href="download-games.html">↓ Download Games</a>
 <a href="download-games.html">🎮 Game Discovery</a>
 <a href="#calculators">⚙ Tools</a>
-<a href="sitemap.xml">☷ Sitemap</a>
 </div>
 </nav>
+
 <header class="hero">
-<div class="hero-inner">
+<div class="hero-copy">
 <div class="eyebrow">WELCOME TO PLAYVANTA ///</div>
 <h1>EVERY GAME.<br><span class="gradient">ONE HUB.</span></h1>
 <p>Explore gaming calculators, discover new games, and access powerful tools — all in one place.</p>
-<div class="actions">
-<a class="button" href="#calculators">🎮 Explore Calculators →</a>
-<a class="button cyan" href="download-games.html">↓ Download Games →</a>
+<div class="hero-actions">
+<a class="btn" href="#calculators">🎮 Explore Calculators →</a>
+<a class="btn cyan" href="download-games.html">↓ Download Games ↓</a>
 </div>
 </div>
 </header>
+
 <main>
 <div class="quick">
-<a href="#calculators"><span class="icon">▦</span><strong>10 Game Calculators</strong><small>Stats, XP, damage and more</small><span class="mini">Explore Tools →</span></a>
-<a href="download-games.html"><span class="icon">⇩</span><strong>Download Games</strong><small>Official game websites</small><span class="mini">Explore Games →</span></a>
-<a href="download-games.html"><span class="icon">🎮</span><strong>Game Discovery</strong><small>Find your next favorite game</small><span class="mini">Discover Games →</span></a>
-<a href="#calculators"><span class="icon">⚒</span><strong>Gaming Tools</strong><small>Play smarter with PlayVanta</small><span class="mini">Open Tools →</span></a>
+<a href="#calculators">
+<span class="quick-icon">▦</span>
+<strong>10 Game Calculators</strong>
+<small>Stats, XP, damage, and more</small>
+</a>
+<a href="download-games.html">
+<span class="quick-icon">⇩</span>
+<strong>Download Games</strong>
+<small>Get games from official sources</small>
+</a>
+<a href="download-games.html">
+<span class="quick-icon">🎮</span>
+<strong>Game Discovery</strong>
+<small>Find your next favorite game</small>
+</a>
+<a href="#calculators">
+<span class="quick-icon">⚒</span>
+<strong>Gaming Tools</strong>
+<small>Useful tools for every gamer</small>
+</a>
 </div>
-<section class="section" id="featured">
-<div class="heading"><div><h2>🎮 Featured Games</h2><p>Popular games, handpicked for you.</p></div><a href="download-games.html">View All Games →</a></div>
+
+<section id="featured">
+<div class="heading">
+<div class="heading-left">
+<div class="heading-icon">🎮</div>
+<div>
+<h2>Featured Games</h2>
+<p>Popular games, handpicked for you.</p>
+</div>
+</div>
+<a href="download-games.html">View All Games →</a>
+</div>
+<div class="carousel-wrap">
+<button class="arrow prev" id="prev" aria-label="Previous featured games">‹</button>
 <div class="featured" id="featuredGrid"></div>
+<button class="arrow next" id="next" aria-label="Next featured games">›</button>
+</div>
 <div class="dots" id="dots"></div>
 </section>
-<section class="section" id="calculators">
-<div class="heading"><div><h2>▦ Game Calculators</h2><p>Quick and easy calculators for your favorite games.</p></div><a href="#calcGrid">View All Calculators →</a></div>
-<input class="search" id="search" type="search" placeholder="Search calculators, games or tools..." aria-label="Search calculators">
-<div class="calcs" id="calcGrid"></div>
-<p id="empty" hidden>No calculators found.</p>
+
+<section class="calculator-section" id="calculators">
+<div class="heading">
+<div class="heading-left">
+<div class="heading-icon">▦</div>
+<div>
+<h2>Game Calculators</h2>
+<p>Quick and easy calculators for your favorite games.</p>
+</div>
+</div>
+<a href="#calculatorGrid">View All Calculators →</a>
+</div>
+<div class="calcs" id="calculatorGrid"></div>
 </section>
 </main>
-<div class="footer-banner">
-<div><h2>READY FOR A NEW GAME?</h2><p>Discover 16 popular games and official download links.</p></div>
-<a class="button" href="download-games.html">↓ Download Games →</a>
+
+<div class="mountains"></div>
+<div class="bottom-cta">
+<div>
+<h2>READY FOR A NEW GAME?</h2>
+<p>Discover 16+ popular games, find official download links, and start your next gaming adventure today.</p>
 </div>
-<footer>PlayVanta · Every Game. One Hub. · © <span id="year"></span></footer>
+<a class="btn" href="download-games.html">↓ Download Games →</a>
 </div>
+<footer>© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
+</div>
+
 <script>
-/*
- Image URLs are embedded here.
- Steam game images use the Steam CDN.
- Other games use public image sources.
- If an image fails, an SVG title graphic replaces it.
-*/
-const art={
+const artwork={
  valorant:[
   "https://images.igdb.com/igdb/image/upload/t_1080p/co2mvt.jpg"
  ],
@@ -145,12 +407,13 @@ const art={
  roblox:[
   "https://images.igdb.com/igdb/image/upload/t_1080p/co1wyy.jpg"
  ],
+ genshin:[
+  "https://images.igdb.com/igdb/image/upload/t_1080p/co5g3r.jpg",
+  "https://cdn2.steamgriddb.com/grid/0b9a7c1e69f7b5c7f86e064cf7f4fbae.jpg"
+ ],
  cs2:[
   "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg",
   "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg"
- ],
- genshin:[
-  "https://images.igdb.com/igdb/image/upload/t_1080p/co5g3r.jpg"
  ],
  rocket:[
   "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/header.jpg",
@@ -160,15 +423,10 @@ const art={
   "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
  ],
  apex:[
-  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg",
-  "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg"
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg"
  ],
  overwatch:[
-  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2357570/header.jpg",
-  "https://cdn.cloudflare.steamstatic.com/steam/apps/2357570/header.jpg"
- ],
- pc:[
-  "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2357570/header.jpg"
  ]
 };
 const featured=[
@@ -180,30 +438,31 @@ const featured=[
  ["Counter-Strike 2","cs2","cs2-economy-calculator.html"],
  ["Rocket League","rocket","rocket-league-rank-tracker.html"],
  ["League of Legends","lol","lol-lp-calculator.html"],
- ["Apex Legends","apex","valorant-sensitivity-converter.html"],
- ["Overwatch 2","overwatch","valorant-sensitivity-converter.html"]
+ ["Apex Legends","apex","download-games.html"],
+ ["Overwatch 2","overwatch","download-games.html"]
 ];
-const calcs=[
- ["Valorant","Crosshair Generator","valorant","valorant-crosshair-generator.html"],
- ["Valorant / FPS","Sensitivity Converter","valorant","valorant-sensitivity-converter.html"],
- ["Minecraft","Nether Portal Calculator","minecraft","minecraft-nether-calculator.html"],
- ["PC Gaming","FPS Frame Time Calculator","pc","fps-frame-time-calculator.html"],
- ["Fortnite","XP Calculator","fortnite","fortnite-xp-calculator.html"],
- ["Roblox","Robux Tax Calculator","roblox","roblox-robux-tax-calculator.html"],
- ["Counter-Strike 2","Economy Calculator","cs2","cs2-economy-calculator.html"],
- ["Genshin Impact","Wish Calculator","genshin","genshin-wish-calculator.html"],
- ["Rocket League","Rank Tracker","rocket","rocket-league-rank-tracker.html"],
- ["League of Legends","LP Calculator","lol","lol-lp-calculator.html"]
+const calculators=[
+ ["◢","Valorant","Crosshair Generator","valorant-crosshair-generator.html"],
+ ["⊕","Sensitivity","Converter","valorant-sensitivity-converter.html"],
+ ["⬡","Minecraft","Nether Calculator","minecraft-nether-calculator.html"],
+ ["▥","FPS","Frame Time Calculator","fps-frame-time-calculator.html"],
+ ["F","Fortnite","XP Calculator","fortnite-xp-calculator.html"],
+ ["◆","Roblox","Robux Tax Calculator","roblox-robux-tax-calculator.html"],
+ ["♟","CS2","Economy Calculator","cs2-economy-calculator.html"],
+ ["✦","Genshin Impact","Wish Calculator","genshin-wish-calculator.html"],
+ ["◉","Rocket League","Rank Tracker","rocket-league-rank-tracker.html"],
+ ["◈","League of Legends","LP Calculator","lol-lp-calculator.html"]
 ];
 function fallback(name){
- const colors=["#8f27d6","#162c80"];
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><defs><linearGradient id="g"><stop stop-color="${colors[0]}"/><stop offset="1" stop-color="${colors[1]}"/></linearGradient></defs><rect width="800" height="500" fill="url(#g)"/><circle cx="650" cy="130" r="150" fill="#ef78ff" opacity=".22"/><path d="M0 400L200 200L370 410L560 170L800 410V500H0Z" fill="#070d30" opacity=".55"/><text x="400" y="270" text-anchor="middle" font-family="Arial" font-size="48" font-weight="bold" fill="white">${name.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</text></svg>`;
+ const safe=name.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><defs><linearGradient id="g"><stop stop-color="#6c1aaf"/><stop offset="1" stop-color="#063b83"/></linearGradient></defs><rect width="800" height="500" fill="url(#g)"/><circle cx="620" cy="110" r="155" fill="#e855ff" opacity=".24"/><path d="M0 410L200 180L350 410L530 150L800 420V500H0Z" fill="#080e2e" opacity=".6"/><text x="400" y="280" fill="white" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle">${safe}</text></svg>`;
  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
 }
-function photo(key,name){
+function imageFor(key,name){
  const img=document.createElement("img");
- img.alt=name+" artwork";img.loading="lazy";img.decoding="async";
- const urls=art[key]||[];let i=0;
+ img.alt=name+" game artwork";img.loading="lazy";
+ const urls=artwork[key]||[];
+ let i=0;
  img.onerror=()=>{
   i++;
   if(i<urls.length)img.src=urls[i];
@@ -212,45 +471,56 @@ function photo(key,name){
  img.src=urls[0]||fallback(name);
  return img;
 }
-let page=0;
-function drawFeatured(){
- const grid=document.getElementById("featuredGrid");
- grid.replaceChildren();
- featured.slice(page*5,page*5+5).forEach(([name,key,url])=>{
-  const a=document.createElement("a");a.href=url;a.className="feature";
-  a.append(photo(key,name));
-  const label=document.createElement("div");label.className="feature-label";
+let slide=0;
+const featuredGrid=document.getElementById("featuredGrid");
+function renderFeatured(){
+ featuredGrid.replaceChildren();
+ const visible=featured.slice(slide,slide+5);
+ visible.forEach(([name,key,url])=>{
+  const a=document.createElement("a");
+  a.href=url;a.className="feature";
+  a.append(imageFor(key,name));
+  const label=document.createElement("div");
+  label.className="feature-label";
   label.textContent=name;
-  const small=document.createElement("small");small.textContent="Explore Tool →";
-  label.append(small);a.append(label);grid.append(a);
+  const small=document.createElement("small");
+  small.textContent=name;
+  label.append(small);a.append(label);
+  featuredGrid.append(a);
  });
- const dots=document.getElementById("dots");dots.replaceChildren();
- for(let i=0;i<2;i++){
-  const b=document.createElement("button");b.type="button";
-  b.className=i===page?"active":"";
-  b.setAttribute("aria-label","Featured page "+(i+1));
-  b.onclick=()=>{page=i;drawFeatured()};
+ const dots=document.getElementById("dots");
+ dots.replaceChildren();
+ for(let i=0;i<4;i++){
+  const b=document.createElement("button");
+  b.type="button";b.className=i===Math.min(slide,3)?"active":"";
+  b.setAttribute("aria-label","Featured games group "+(i+1));
+  b.onclick=()=>{slide=i;renderFeatured()};
   dots.append(b);
  }
 }
-drawFeatured();
-const calcGrid=document.getElementById("calcGrid");
-calcs.forEach(([game,name,key,url])=>{
- const a=document.createElement("a");a.href=url;a.className="calc";
- a.append(photo(key,game));
- const body=document.createElement("div");body.className="calc-body";
- const title=document.createElement("strong");title.textContent=game;
- const sub=document.createElement("small");sub.textContent=name;
- const btn=document.createElement("span");btn.className="calc-btn";btn.textContent="Explore Tool →";
- body.append(title,sub,btn);a.append(body);calcGrid.append(a);
-});
-document.getElementById("search").addEventListener("input",e=>{
- const q=e.target.value.toLowerCase().trim();let count=0;
- [...calcGrid.children].forEach((el,i)=>{
-  const show=(calcs[i][0]+" "+calcs[i][1]).toLowerCase().includes(q);
-  el.style.display=show?"":"none";if(show)count++;
- });
- document.getElementById("empty").hidden=count>0;
+document.getElementById("prev").onclick=()=>{
+ slide=(slide+5)%6;renderFeatured();
+};
+document.getElementById("next").onclick=()=>{
+ slide=(slide+1)%6;renderFeatured();
+};
+renderFeatured();
+
+const calcGrid=document.getElementById("calculatorGrid");
+calculators.forEach(([icon,name,sub,url])=>{
+ const a=document.createElement("a");
+ a.href=url;a.className="calc";
+ const iconEl=document.createElement("span");
+ iconEl.className="calc-icon";iconEl.textContent=icon;
+ const text=document.createElement("span");
+ text.className="calc-text";
+ const title=document.createElement("strong");
+ title.textContent=name;
+ const desc=document.createElement("small");
+ desc.textContent=sub;
+ text.append(title,desc);
+ a.append(iconEl,text);
+ calcGrid.append(a);
 });
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
