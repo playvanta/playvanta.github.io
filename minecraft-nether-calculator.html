@@ -4,155 +4,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Minecraft Nether Portal Calculator – Coordinates & Linking | PlayVanta</title>
-<meta name="description" content="Free Minecraft Nether portal calculator. Convert Overworld and Nether X/Z coordinates using the 8:1 ratio, plan portal locations and learn portal linking.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://playvanta.github.io/minecraft-nether-calculator.html">
+<title>Minecraft Nether Portal Calculator | PlayVanta</title>
+<meta name="description" content="Convert Minecraft Overworld and Nether coordinates with an easy portal calculator.">
 <link rel="icon" href="playvanta-logo.jpg">
-<link rel="stylesheet" href="playvanta-theme.css">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Minecraft Nether Portal Calculator | PlayVanta">
-<meta property="og:description" content="Calculate Minecraft Nether portal coordinates instantly with the 8:1 rule.">
-<meta property="og:url" content="https://playvanta.github.io/minecraft-nether-calculator.html">
-<style>
-body{--accent:#63df91;--hero-art:url('https://static.actugaming.net/media/2024/09/minecraft-key-art-ps5.webp')}
-.pv-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-.pv-btn{border:1px solid #63df9170;border-radius:12px;padding:13px 19px;background:#214e3a;color:white;font-weight:800;cursor:pointer}
-.pv-btn.secondary{background:#19243d;border-color:#425374}
-.pv-status{font-size:13px;color:#a5edc1;min-height:22px;margin-top:12px}
-.pv-guide p,.pv-guide li{line-height:1.8}
-.pv-guide ul{padding-left:23px}
-.pv-faq{padding:15px 0;border-bottom:1px solid #ffffff20}
-.pv-faq summary{cursor:pointer;font-weight:800}
-.pv-faq p{margin-top:10px}
-.pv-formula{background:#142b2a;border:1px solid #63df9140;padding:16px;border-radius:12px;margin:15px 0}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Minecraft Nether Portal Calculator – PlayVanta","url":"https://playvanta.github.io/minecraft-nether-calculator.html","applicationCategory":"GameApplication","operatingSystem":"Web browser","isAccessibleForFree":true}
-</script>
+<link rel="stylesheet" href="playvanta-tools.css?v=1">
 </head>
-<body>
-<header class="site-header">
-<nav class="nav">
-<a class="brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta logo"><span>PLAY<b>VANTA</b></span></a>
-<div class="nav-links"><a href="index.html">Home</a><a href="index.html#worlds">Explore Games</a><a class="nav-cta" href="index.html#tools">All Calculators →</a></div>
+<body data-tool="nether" style="--accent:#59e476">
+<div class="tool-shell">
+<nav class="tool-nav">
+<a class="tool-brand" href="index.html"><img src="playvanta-logo.jpg" alt="PlayVanta"><span>Play<span>Vanta</span></span></a>
+<div class="tool-nav-links">
+<a href="index.html">⌂ Home</a>
+<a class="active" href="index.html#calculators">⚙ Calculators</a>
+<a href="download-games.html">↓ Download Games</a>
+<a href="download-games.html">🎮 Game Discovery</a>
+</div>
 </nav>
+<header class="tool-hero">
+<div class="tool-hero-content">
+<div class="tool-breadcrumb">Home › Calculators › <span id="toolBreadcrumb"></span></div>
+<div class="tool-eyebrow" id="toolGame"></div>
+<h1 id="toolTitle"></h1>
+<p>Find matching Nether and Overworld coordinates using Minecraft's 8:1 horizontal coordinate scale.</p>
+</div>
 </header>
-
-<section class="page-hero"><div class="hero-inner">
-<div class="overline">Minecraft / World Navigation</div>
-<h1>Nether Portal <span>Calculator</span></h1>
-<p>Convert coordinates between Minecraft's Overworld and Nether, plan portal locations and make long-distance travel easier.</p>
-<div class="hero-tags"><span>8:1 Coordinate Ratio</span><span>Overworld ↔ Nether</span><span>Java & Bedrock</span></div>
-</div></section>
-
-<main class="page-container"><div class="content-grid">
-<div>
-<section class="panel">
-<div class="panel-kicker">Coordinate Converter</div>
-<h2>Calculate Nether Portal Coordinates</h2>
-<p>Enter your X and Z coordinates and select the dimension you're starting from.</p>
-
-<div class="field-grid">
-<div class="field"><label for="direction">Conversion Direction</label>
-<select id="direction">
-<option value="nether">Overworld → Nether</option>
-<option value="overworld">Nether → Overworld</option>
-</select></div>
-<div class="field"><label for="x">X Coordinate</label><input id="x" type="number" step="any" value="800"></div>
-<div class="field"><label for="z">Z Coordinate</label><input id="z" type="number" step="any" value="-400"></div>
-<div class="field"><label for="y">Y Coordinate (optional)</label><input id="y" type="number" step="1" placeholder="e.g. 64"></div>
+<main class="tool-main">
+<div class="tool-layout">
+<section class="tool-card"><h2>🟩 Portal Coordinates</h2><div id="toolControls"></div><p id="toolMessage" class="tool-message"></p></section>
+<section class="tool-card"><h2>✦ Destination Coordinates</h2><div id="toolPreview"></div></section>
+<aside class="tool-card"><h2>⚡ Portal Guide</h2><div class="tool-note" id="toolTips"></div></aside>
 </div>
-
-<div class="results">
-<div class="metric"><span>Destination X</span><strong id="outX">—</strong></div>
-<div class="metric"><span>Destination Z</span><strong id="outZ">—</strong></div>
-<div class="metric"><span>Suggested Coordinates</span><strong id="coords">—</strong></div>
-<div class="metric"><span>Travel Ratio</span><strong id="ratio">8:1</strong></div>
+<h2 class="tool-section-title">🎮 All PlayVanta Game Tools (10)</h2>
+<div class="tool-directory" id="toolDirectory"></div>
+</main>
+<footer class="tool-footer">© <span id="year"></span> PlayVanta · Every Game. One Hub.</footer>
 </div>
-<div class="pv-actions">
-<button class="pv-btn" id="copy" type="button">Copy Coordinates</button>
-<button class="pv-btn secondary" id="swap" type="button">Reverse Conversion</button>
-<button class="pv-btn secondary" id="reset" type="button">Reset</button>
-</div>
-<p class="pv-status" id="status" role="status"></p>
-<div class="note">Only X and Z coordinates scale between dimensions. Y does not follow the 8:1 ratio. Actual portal linking also depends on nearby portals, placement and the game's portal-search behavior.</div>
-</section>
-
-<section class="panel pv-guide">
-<h2>How Minecraft Nether Coordinates Work</h2>
-<p>In Minecraft, traveling one block horizontally in the Nether corresponds to eight blocks in the Overworld. This makes Nether travel useful for connecting distant bases, villages and farms.</p>
-<div class="pv-formula"><strong>Overworld → Nether:</strong> X ÷ 8, Z ÷ 8<br><strong>Nether → Overworld:</strong> X × 8, Z × 8</div>
-<h3>Example: Overworld to Nether</h3>
-<p>If your Overworld base is at X = 800 and Z = -400, the corresponding Nether coordinates are X = 100 and Z = -50.</p>
-<h3>How to Link Nether Portals</h3>
-<ul>
-<li>Record your portal's Overworld X and Z coordinates.</li>
-<li>Divide both values by eight.</li>
-<li>Travel to the calculated location in the Nether.</li>
-<li>Build a safe portal at an appropriate height and test the connection.</li>
-<li>If it links incorrectly, inspect nearby portals and adjust placement.</li>
-</ul>
-<h3>Does the Y Coordinate Matter?</h3>
-<p>Y does not scale by eight. However, vertical distance can affect which nearby portal is selected. The calculator therefore leaves Y unchanged as a reference rather than claiming it predicts the ideal portal height.</p>
-</section>
-
-<section class="panel pv-guide">
-<h2>Minecraft Nether Calculator FAQ</h2>
-<details class="pv-faq"><summary>What is the Nether coordinate ratio?</summary><p>The horizontal coordinate ratio is 8:1. One Nether block corresponds to eight Overworld blocks.</p></details>
-<details class="pv-faq"><summary>Do negative coordinates work?</summary><p>Yes. Negative X and Z values follow the same division and multiplication rules.</p></details>
-<details class="pv-faq"><summary>Does this work in Java and Bedrock Edition?</summary><p>The 8:1 horizontal coordinate relationship applies to both, although portal-search and linking behavior can differ.</p></details>
-<details class="pv-faq"><summary>Why does my portal connect to the wrong location?</summary><p>Nearby existing portals and the game's portal-selection rules can affect the destination. Coordinate conversion alone does not guarantee a specific link.</p></details>
-<details class="pv-faq"><summary>Should I round decimal coordinates?</summary><p>Block placement requires integer coordinates. You can round to a nearby block, then test the resulting portal connection.</p></details>
-</section>
-</div>
-
-<aside>
-<section class="panel"><div class="art-tile"></div><div class="panel-kicker">Minecraft Travel</div><h2>Build Better Nether Highways</h2><p>Use coordinate conversion to plan efficient routes between distant locations. Always secure your portal area before traveling.</p></section>
-<section class="panel"><h3>Related Tools</h3><div class="related">
-<a href="minecraft-stack-calculator.html">Minecraft Stack Calculator →</a>
-<a href="fps-frame-time-calculator.html">FPS Calculator →</a>
-<a href="index.html#tools">All Gaming Tools →</a>
-</div></section>
-</aside>
-</div></main>
-
-<footer class="site-footer"><strong>PLAY<span>VANTA</span></strong><p>Every Game. One Hub.</p><p>Independent fan-made website. Not affiliated with Mojang or Microsoft.</p></footer>
-
-<script>
-const $=id=>document.getElementById(id);
-let copyValue="";
-function fmt(n){return Number(n.toFixed(4)).toString()}
-function update(){
- const x=$("x").value,z=$("z").value;
- if(x.trim()===""||z.trim()===""||!Number.isFinite(Number(x))||!Number.isFinite(Number(z))){
-  ["outX","outZ","coords"].forEach(id=>$(id).textContent="—");
-  copyValue="";return;
- }
- const factor=$("direction").value==="nether"?1/8:8;
- const a=Number(x)*factor,b=Number(z)*factor;
- $("outX").textContent=fmt(a);
- $("outZ").textContent=fmt(b);
- $("coords").textContent=fmt(a)+", "+fmt(b);
- copyValue="X: "+fmt(a)+", Z: "+fmt(b);
- $("status").textContent="";
-}
-["direction","x","z","y"].forEach(id=>$(id).addEventListener("input",update));
-$("swap").onclick=()=>{
- if(copyValue){
-  $("x").value=$("outX").textContent;
-  $("z").value=$("outZ").textContent;
- }
- $("direction").value=$("direction").value==="nether"?"overworld":"nether";
- update();
-};
-$("reset").onclick=()=>{$("direction").value="nether";$("x").value=800;$("z").value=-400;$("y").value="";update()};
-$("copy").onclick=async()=>{
- if(!copyValue){$("status").textContent="Enter valid coordinates first.";return}
- try{await navigator.clipboard.writeText(copyValue);$("status").textContent="Coordinates copied."}
- catch{$("status").textContent="Copy unavailable. Select the displayed coordinates manually."}
-};
-update();
-</script>
+<script src="playvanta-tools.js?v=1" defer></script>
 </body>
 </html>
